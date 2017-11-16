@@ -4,6 +4,6 @@
 
 <script>
   export default {
-    name: 'table'
+    name: 'v-table'
   }
 </script>

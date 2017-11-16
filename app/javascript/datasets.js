@@ -32,12 +32,12 @@
 
 import Vue from 'vue/dist/vue.esm'
 import store from './store/store.js'
-import Table from './components/table/Table.vue'
+import VTable from './components/table/Table.vue'
 
 document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
     el: '#v-app',
     store,
-    components: { Table }
+    components: { VTable }
   })
 })
