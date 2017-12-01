@@ -3,5 +3,5 @@ Rails.application.routes.draw do
 
   # root to: 'home#index'
 
-  get 'datasets', to: 'datasets#index'
+  get 'metadata', to: 'metadata#index'
 end
