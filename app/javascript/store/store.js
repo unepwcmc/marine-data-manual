@@ -8,7 +8,13 @@ Vue.use(Vuex)
 
 // create store
 export default new Vuex.Store({
-  state: {},
+  state: {
+    totalItems: [], // total number of data objects
+  },
 
-  mutations: {}
+  mutations: {
+    updateTotalItems (state, total) {
+      this.state.totalItems = total 
+    }
+  }
 })

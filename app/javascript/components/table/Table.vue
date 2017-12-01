@@ -7,10 +7,10 @@
 
     <table class="table table--body">
       <tbody>
-        <!-- <row v-for="item, key in items"
+        <row v-for="item, key in items"
           :key="key"
           :item="item">
-         --></row>
+        </row>
       </tbody>
     </table>
   </div>
@@ -26,15 +26,26 @@
 
     props: {
       filters: { type: Array },
-      projects: { type: Array }
-    }
+      metadata: { type: Array }
+    },
+
+    data () {
+      return {
+        items: []
+      }
+    },
+
+    created () {
+      this.items = this.metadata
+      this.$store.commit('updateTotalItems', this.items.length)
+    },
   }
 </script>
 
 <style lang="scss">
-  //----------------------------------------
+  //--------------------------------------------------
   // animations
-  //----------------------------------------
+  //--------------------------------------------------
   @keyframes showHeader {
     from {
       transform: translateY(-100%);
@@ -44,31 +55,20 @@
     }
   }
 
-  //**************************************************
+  //--------------------------------------------------
   // table styles
-  //**************************************************
+  //--------------------------------------------------
   .table {
+    border-collapse: collapse;
+    table-layout: fixed;
+    width: 100%;
 
     &--head {
-      // height: rem-calc(57);
       margin-top: rem-calc(30);
     }
 
     &--body {
       margin-bottom: rem-calc(40);
-    }
-  //**************************************************
-  // table head <thead>
-  //**************************************************
-    &__head {
-      &--stuck {
-        position: fixed;
-        top: 0;
-
-        width: rem-calc(1160);
-
-        animation: showHeader .25s forwards linear;
-      }
     }
 
   //**************************************************
@@ -118,12 +118,12 @@
         display: block;
 
         &--ascending {
-          background-image: image-url('icons/arrow-up-white.svg');
+          // background-image: image-url('icons/arrow-up-white.svg');
           margin-bottom: rem-calc(1);
         }
 
         &--descending {
-          background-image: image-url('icons/arrow-down-white.svg');
+          // background-image: image-url('icons/arrow-down-white.svg');
         }
       }
   }

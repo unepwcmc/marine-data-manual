@@ -1,7 +1,12 @@
 <template>
-  <thead id="sticky" :class="{ 'table__head--stuck' : isSticky }">
+  <thead id="sticky" class="table__head" :class="{ 'table__head--stuck' : isSticky }">
     <tr>
-      <table-header v-for="filter in filters" :filter="filter"></table-header>
+      <table-header v-for="filter in filters" 
+        :name="filter.name"
+        :title="filter.title"
+        :sortButtons="filter.sortButtons"
+        >
+      </table-header>
     </tr>
   </thead>
 </template>
@@ -52,3 +57,24 @@
     }
   }
 </script>
+
+<style lang="scss">
+  @import '../../scss/variables.scss';
+
+  .table__head {
+    background-color: $blue-dark;
+    border-bottom: solid $grey-light rem-calc(1);
+    color: white;
+
+    &:first-child { border-left: none; }
+
+    &--stuck {
+      position: fixed;
+      top: 0;
+
+      width: rem-calc(1160);
+
+      animation: showHeader .25s forwards linear;
+    }
+  }
+</style>

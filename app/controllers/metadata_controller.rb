@@ -49,34 +49,46 @@ class MetadataController < ApplicationController
       {
         name: "category",
         title: "Category",
-        options: ["Category 1", "Category 2", "Category 3"]
+        options: ["Category 1", "Category 2", "Category 3"],
+        sortButtons: true
       },
       {
-        title: "Resource"
+        name: "resource",
+        title: "Resource",
+        sortButtons: true
       },
       {
-        title: "Version"
+        name: 'version',
+        title: "Version",
+        sortButtons: true
       },
       {
-        title: "Contact Organistion"
+        name: 'contact_organistion',
+        title: "Contact Organistion",
+        sortButtons: true
       },
       {
-        title: "ID"
+        name: 'id',
+        title: "ID",
+        sortButtons: true
       },
       {   
         name: "metadata",
         title: "Metadata",
-        options: ["Metadata", "No Metadata"]
+        options: ["Metadata", "No Metadata"],
+        sortButtons: false
       },
       {   
         name: "factsheet",
         title: "Factsheet",
-        options: ["Factsheet", "No Factsheet"]
+        options: ["Factsheet", "No Factsheet"],
+        sortButtons: false
       },
       {   
         name: "themes",
         title: "Themes",
-        options: ["Marine spatial planning", "Education", "Ecosystem assessment", "Environmental impact assessment", "Ecosystem services"]
+        options: ["Marine spatial planning", "Education", "Ecosystem assessment", "Environmental impact assessment", "Ecosystem services"],
+        sortButtons: false
       },
     ]
    
