@@ -2,7 +2,7 @@
   <div>
     table
     <table class="table table--head">
-      <!-- <table-head :filters="filters"></table-head> -->
+      <table-head :filters="filters"></table-head>
     </table>
 
     <table class="table table--body">
@@ -16,13 +16,115 @@
   </div>
 </template>
 <script>
+  import { eventHub } from '../../metadata.js'
+  import TableHead from './TableHead.vue'
+
   export default {
-    name: 'v-table'
+    name: 'v-table',
+
+    components: { TableHead },
+
+    props: {
+      filters: { type: Array },
+      projects: { type: Array }
+    }
   }
 </script>
 
-<style>
-  body {
-    color: red;
+<style lang="scss">
+  //----------------------------------------
+  // animations
+  //----------------------------------------
+  @keyframes showHeader {
+    from {
+      transform: translateY(-100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+
+  //**************************************************
+  // table styles
+  //**************************************************
+  .table {
+
+    &--head {
+      // height: rem-calc(57);
+      margin-top: rem-calc(30);
+    }
+
+    &--body {
+      margin-bottom: rem-calc(40);
+    }
+  //**************************************************
+  // table head <thead>
+  //**************************************************
+    &__head {
+      &--stuck {
+        position: fixed;
+        top: 0;
+
+        width: rem-calc(1160);
+
+        animation: showHeader .25s forwards linear;
+      }
+    }
+
+  //**************************************************
+  // column headers <th>
+  //**************************************************
+    &__header {
+      margin-right: rem-calc(2);
+      vertical-align: middle;
+
+      display: inline-block;
+    }
+
+  //**************************************************
+  // columns
+  //**************************************************
+    
+    // fix the columns widths so that they don't change
+    // size when you use the pagination 
+    th,td {
+      &:first-child { width: 60px; }
+      &:nth-child(2) { width: 144px; }
+      &:nth-child(3) { width: 130px; }
+      &:nth-child(4) { width: 104px; }
+      &:nth-child(5) { width: 142px; }
+      &:nth-child(6) { width: 132px; }
+      &:nth-child(7) { width: 118px; }
+      &:nth-child(8) { width: 154px; }
+      &:nth-child(9) { width: 176px; }
+    }
+
+  //**************************************************
+  // sort column buttons
+  //**************************************************
+    &__sorting {
+      opacity: .7;
+      vertical-align: middle;
+
+      display: inline-block;
+
+      &:hover { opacity: .9; }
+    }
+
+      &__sort {
+        cursor: pointer;
+        width: rem-calc(8); height: rem-calc(6);
+
+        display: block;
+
+        &--ascending {
+          background-image: image-url('icons/arrow-up-white.svg');
+          margin-bottom: rem-calc(1);
+        }
+
+        &--descending {
+          background-image: image-url('icons/arrow-down-white.svg');
+        }
+      }
   }
 </style>
