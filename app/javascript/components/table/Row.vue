@@ -1,32 +1,52 @@
 <template>
-  <tr @click="openModal()" v-show="item.isActive">
-    <td>{{ item.id }}</td>
-    <td :title="item.project_title">{{ projectTitle }}</td>
-    <td>{{ checkForMultiples('donors') }}</td>
-    <td>{{ item.status }}</td>
-    <td>{{ item.category }}</td>
-    <td>{{ checkForMultiples('ecosystem') }}</td>
-    <td>{{ checkForMultiples('country') }}</td>
-    <td>{{ checkForMultiples('ocean_based_region') }}</td>
-    <td>{{ item.total_project_cost }}</td>
+  <!-- <tr @click="toggleExpand()" v-show="item.isActive"> -->
+  <tr class="table__row">
+    <td>{{ category }}</td>
+    <td>{{ resource }}</td>
+    <td>{{ version }}</td>
+    <td>{{ contactOrganistion }}</td>
+    <td>{{ id }}</td>
+    <td><a v-if="hasMetadata" :href="metadata">Link</a></td>
+    <td><a v-if="hasFactsheet" :href="factsheet">Link</a></td>
+    <td>themes</td>
   </tr>
 </template>
 
 <script>
-  import { eventHub } from '../../home.js'
+  import { eventHub } from '../../metadata.js'
 
   export default {
     name: "row",
     props: {
-      item: {
-        required: true,
-        type: Object,
-      }
+      category: { 
+        type: String 
+      },
+      resource: { 
+        type: String 
+      },
+      version: { 
+        type: String 
+      },
+      contactOrganistion: { 
+        type: String 
+      },
+      id: { 
+        type: Number 
+      },
+      metadata: { 
+        type: String 
+      },
+      factsheet: { 
+        type: String 
+      },
     },
 
     computed: {
-      projectTitle () {
-        return this.trim(this.item.project_title)
+      hasMetadata () {
+        return this.metadata.length !== 0
+      },
+      hasFactsheet () {
+        return this.factsheet.length !== 0
       }
     },
 
@@ -46,3 +66,16 @@
     }
   }
 </script>
+
+<style lang="scss">
+  @import '../../scss/includes.scss';
+
+  .table__row {
+    background-color: $grey-light;
+    cursor: pointer;
+
+    &:nth-child(even){ background-color: $blue-light; }
+
+    &:hover { background-color: $grey; }
+  }
+</style>

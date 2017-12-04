@@ -59,7 +59,7 @@
 </script>
 
 <style lang="scss">
-  @import '../../scss/variables.scss';
+  @import '../../scss/includes.scss';
 
   .table__head {
     background-color: $blue-dark;

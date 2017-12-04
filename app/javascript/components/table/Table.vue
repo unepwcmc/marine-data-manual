@@ -1,6 +1,5 @@
 <template>
   <div>
-    table
     <table class="table table--head">
       <table-head :filters="filters"></table-head>
     </table>
@@ -9,7 +8,13 @@
       <tbody>
         <row v-for="item, key in items"
           :key="key"
-          :item="item">
+          :category="item.category"
+          :resource="item.resource"
+          :version="item.version"
+          :contactOrganistion="item.contact_organistion"
+          :id="item.id"
+          :metadata="item.metadata"
+          :factsheet="item.factsheet">
         </row>
       </tbody>
     </table>
@@ -18,11 +23,12 @@
 <script>
   import { eventHub } from '../../metadata.js'
   import TableHead from './TableHead.vue'
+  import Row from './Row.vue'
 
   export default {
     name: 'v-table',
 
-    components: { TableHead },
+    components: { TableHead, Row },
 
     props: {
       filters: { type: Array },
@@ -43,6 +49,8 @@
 </script>
 
 <style lang="scss">
+  @import '../../scss/includes.scss';
+  
   //--------------------------------------------------
   // animations
   //--------------------------------------------------
@@ -69,6 +77,18 @@
 
     &--body {
       margin-bottom: rem-calc(40);
+    }
+
+    td, th {
+      border-left: solid white rem-calc(1);
+      padding: rem-calc(16 14);
+      text-align: left;
+      word-wrap: break-word;
+
+      &:first-child { 
+        font-weight: bold;
+        text-align: center;
+      }
     }
 
   //**************************************************
