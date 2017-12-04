@@ -6,6 +6,7 @@ class CreateMetadata < ActiveRecord::Migration[5.1]
       t.string :version
       t.string :contact_organisation
       t.string :dataset_id
+      t.string :website_download_link
       t.string :metadata, null: false
       t.string :factsheet, null: false
       t.boolean :marine_spatial_planning, null: false
