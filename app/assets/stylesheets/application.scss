@@ -14,5 +14,11 @@
  *= require_self
  */
 
+// utilities
+@import './utilities/rem-calc.scss';
 @import './utilities/variables.scss';
 @import './utilities/base.scss';
+
+// componetns
+
+@import 'components/*';

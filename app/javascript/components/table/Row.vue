@@ -9,11 +9,11 @@
     <td><a v-if="hasMetadata" :href="metadata">Link</a></td>
     <td><a v-if="hasFactsheet" :href="factsheet">Link</a></td>
     <td>
-      <span v-if="marineSpatialPlanning">MSP</span>
-      <span v-if="education">E</span>
-      <span v-if="environmentalImpactAssessment">EIM</span>
-      <span v-if="ecosystemAssessment">EA</span>
-      <span v-if="ecosystemServices">ES</span>
+      <span v-if="marineSpatialPlanning" class="icon--round icon--theme icon--theme-1">MSP</span>
+      <span v-if="education" class="icon--round icon--theme icon--theme-2">E</span>
+      <span v-if="environmentalImpactAssessment" class="icon--round icon--theme icon--theme-3">EIM</span>
+      <span v-if="ecosystemAssessment" class="icon--round icon--theme icon--theme-4">EA</span>
+      <span v-if="ecosystemServices" class="icon--round icon--theme icon--theme-5">ES</span>
     </td>
   </tr>
 </template>
@@ -66,6 +66,7 @@
       hasMetadata () {
         return this.metadata.length !== 0
       },
+
       hasFactsheet () {
         return this.factsheet.length !== 0
       },
