@@ -17,12 +17,12 @@ ActiveRecord::Schema.define(version: 20171204104811) do
 
   create_table "metadata", force: :cascade do |t|
     t.string "category", null: false
-    t.string "resource", null: false
+    t.string "resource"
     t.string "version"
-    t.string "contact_organisation", null: false
-    t.string "dataset_id", null: false
+    t.string "contact_organisation"
+    t.string "dataset_id"
     t.string "metadata", null: false
-    t.string "factsheet"
+    t.string "factsheet", null: false
     t.boolean "marine_spatial_planning", null: false
     t.boolean "education", null: false
     t.boolean "environmental_impact_assessment", null: false
