@@ -14,6 +14,7 @@ class CreateMetadata < ActiveRecord::Migration[5.1]
       t.boolean :ecosystem_assessment
       t.boolean :ecosystem_services
 
+      t.timestamps
     end
   end
 end

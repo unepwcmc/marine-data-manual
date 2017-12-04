@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(version: 20171204104811) do
     t.boolean "environmental_impact_assessment"
     t.boolean "ecosystem_assessment"
     t.boolean "ecosystem_services"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
