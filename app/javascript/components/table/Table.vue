@@ -14,7 +14,12 @@
           :contactOrganistion="item.contact_organistion"
           :id="item.id"
           :metadata="item.metadata"
-          :factsheet="item.factsheet">
+          :factsheet="item.factsheet"
+          :marineSpatialPlanning="item.marine_spatial_planning"
+          :education="item.education"
+          :environmentalImpactAssessment="item.environmental_impact_assessment"
+          :ecosystemAssessment="item.ecosystem_assessment"
+          :ecosystemServices="item.ecosystem_services">
         </row>
       </tbody>
     </table>
@@ -84,11 +89,6 @@
       padding: rem-calc(16 14);
       text-align: left;
       word-wrap: break-word;
-
-      &:first-child { 
-        font-weight: bold;
-        text-align: center;
-      }
     }
 
   //**************************************************

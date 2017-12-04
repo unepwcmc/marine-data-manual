@@ -8,7 +8,13 @@
     <td>{{ id }}</td>
     <td><a v-if="hasMetadata" :href="metadata">Link</a></td>
     <td><a v-if="hasFactsheet" :href="factsheet">Link</a></td>
-    <td>themes</td>
+    <td>
+      <span v-if="marineSpatialPlanning" class="icon--round icon--theme icon--theme-1">MSP</span>
+      <span v-if="education" class="icon--round icon--theme icon--theme-2">E</span>
+      <span v-if="environmentalImpactAssessment" class="icon--round icon--theme icon--theme-3">EIM</span>
+      <span v-if="ecosystemAssessment" class="icon--round icon--theme icon--theme-4">EA</span>
+      <span v-if="ecosystemServices" class="icon--round icon--theme icon--theme-5">ES</span>
+    </td>
   </tr>
 </template>
 
@@ -19,35 +25,51 @@
     name: "row",
     props: {
       category: { 
-        type: String 
+        type: String,
+        required: true
       },
-      resource: { 
-        type: String 
-      },
-      version: { 
-        type: String 
-      },
-      contactOrganistion: { 
-        type: String 
-      },
-      id: { 
-        type: Number 
-      },
+      resource: { type: String },
+      version: { type: String },
+      contactOrganistion: { type: String },
+      id: { type: Number },
       metadata: { 
-        type: String 
+        type: String,
+        required: true
       },
       factsheet: { 
-        type: String 
+        type: String,
+        required: true
       },
+      marineSpatialPlanning: {
+        type: Boolean,
+        required: true
+      },
+      education: {
+        type: Boolean,
+        required: true
+      },
+      environmentalImpactAssessment: {
+        type: Boolean,
+        required: true
+      },
+      ecosystemAssessment: {
+        type: Boolean,
+        required: true
+      },
+      ecosystemServices: {
+        type: Boolean,
+        required: true
+      }
     },
 
     computed: {
       hasMetadata () {
         return this.metadata.length !== 0
       },
+
       hasFactsheet () {
         return this.factsheet.length !== 0
-      }
+      },
     },
 
     methods: {
