@@ -11,8 +11,8 @@
           :category="item.category"
           :resource="item.resource"
           :version="item.version"
-          :contactOrganistion="item.contact_organistion"
-          :id="item.id"
+          :contactOrganisation="item.contact_organisation"
+          :id="item.dataset_id"
           :metadata="item.metadata"
           :factsheet="item.factsheet">
         </row>
@@ -50,7 +50,7 @@
 
 <style lang="scss">
   @import '../../scss/includes.scss';
-  
+
   //--------------------------------------------------
   // animations
   //--------------------------------------------------
@@ -85,7 +85,7 @@
       text-align: left;
       word-wrap: break-word;
 
-      &:first-child { 
+      &:first-child {
         font-weight: bold;
         text-align: center;
       }
@@ -104,9 +104,9 @@
   //**************************************************
   // columns
   //**************************************************
-    
+
     // fix the columns widths so that they don't change
-    // size when you use the pagination 
+    // size when you use the pagination
     th,td {
       &:first-child { width: 60px; }
       &:nth-child(2) { width: 144px; }
