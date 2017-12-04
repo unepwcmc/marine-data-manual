@@ -14,7 +14,7 @@
 
     <%= render 'global/topbar' %>
     
-    <%= render 'global/header' %>
+    <%= render 'global/header', locals: { title: yield(:title) } %>
 
     <div id="v-app" class="container">
       <%= yield %>
