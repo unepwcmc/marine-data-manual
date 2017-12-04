@@ -62,11 +62,6 @@
   @import '../../scss/includes.scss';
 
   .table__head {
-    background-color: $blue-dark;
-    border-bottom: solid $grey-light rem-calc(1);
-    color: white;
-
-    &:first-child { border-left: none; }
 
     &--stuck {
       position: fixed;

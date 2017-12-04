@@ -89,11 +89,6 @@
       padding: rem-calc(16 14);
       text-align: left;
       word-wrap: break-word;
-
-      &:first-child { 
-        font-weight: bold;
-        text-align: center;
-      }
     }
 
   //**************************************************
