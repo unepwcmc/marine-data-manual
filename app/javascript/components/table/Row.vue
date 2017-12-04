@@ -8,7 +8,13 @@
     <td>{{ id }}</td>
     <td><a v-if="hasMetadata" :href="metadata">Link</a></td>
     <td><a v-if="hasFactsheet" :href="factsheet">Link</a></td>
-    <td>themes</td>
+    <td>
+      <span v-if="marineSpatialPlanning">MSP</span>
+      <span v-if="education">E</span>
+      <span v-if="environmentalImpactAssessment">EIM</span>
+      <span v-if="ecosystemAssessment">EA</span>
+      <span v-if="ecosystemServices">ES</span>
+    </td>
   </tr>
 </template>
 
@@ -19,26 +25,41 @@
     name: "row",
     props: {
       category: { 
-        type: String 
+        type: String,
+        required: true
       },
-      resource: { 
-        type: String 
-      },
-      version: { 
-        type: String 
-      },
-      contactOrganistion: { 
-        type: String 
-      },
-      id: { 
-        type: Number 
-      },
+      resource: { type: String },
+      version: { type: String },
+      contactOrganistion: { type: String },
+      id: { type: Number },
       metadata: { 
-        type: String 
+        type: String,
+        required: true
       },
       factsheet: { 
-        type: String 
+        type: String,
+        required: true
       },
+      marineSpatialPlanning: {
+        type: Boolean,
+        required: true
+      },
+      education: {
+        type: Boolean,
+        required: true
+      },
+      environmentalImpactAssessment: {
+        type: Boolean,
+        required: true
+      },
+      ecosystemAssessment: {
+        type: Boolean,
+        required: true
+      },
+      ecosystemServices: {
+        type: Boolean,
+        required: true
+      }
     },
 
     computed: {
@@ -47,7 +68,7 @@
       },
       hasFactsheet () {
         return this.factsheet.length !== 0
-      }
+      },
     },
 
     methods: {
