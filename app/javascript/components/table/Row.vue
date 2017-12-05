@@ -1,6 +1,6 @@
 <template>
   <div>
-    <tr class="table__row" @click="toggleRow()">
+    <tr @click="toggleRow()" class="table__row" :class="{ 'table__row--active' : isOpen }" >
       <td>{{ category }}</td>
       <td>{{ trim(resource) }}</td>
       <td>{{ version }}</td>
@@ -11,15 +11,46 @@
       <td>
         <span v-if="marineSpatialPlanning" class="icon--round icon--theme icon--theme-1">MSP</span>
         <span v-if="education" class="icon--round icon--theme icon--theme-2">E</span>
-        <span v-if="environmentalImpactAssessment" class="icon--round icon--theme icon--theme-3">EIM</span>
-        <span v-if="ecosystemAssessment" class="icon--round icon--theme icon--theme-4">EA</span>
+        <span v-if="ecosystemAssessment" class="icon--round icon--theme icon--theme-3">EA</span>
+        <span v-if="environmentalImpactAssessment" class="icon--round icon--theme icon--theme-4">EIM</span>
         <span v-if="ecosystemServices" class="icon--round icon--theme icon--theme-5">ES</span>
       </td>
     </tr>
-    <tr class="table__row--expandable" :class="{ 'table__row--open' : isOpen }">
-      <td colspan="8">
-        <a href="">{{ resource }}</a>
-      </td>
+    <tr class="table__row--expandable flex" :class="{ 'table__row--open' : isOpen }">
+      
+      <div class="flex-2-fiths">
+        <h3>Resource</h3>
+        {{ resource }}
+      </div>
+      <div class="flex-3-fiths">
+        <h3>Themes</h3>
+        <div class="flex table__themes">
+          <ul class="ul-unstyled flex-2-fiths">
+            <li v-if="marineSpatialPlanning" class="table__theme">
+              <span class="icon--round icon--theme icon--theme-1">MSP</span>
+              <span class="table__theme-title">{{ themeName('marineSpatialPlanning') }}</span>
+            </li>
+            <li v-if="education" class="table__theme">
+              <span class="icon--round icon--theme icon--theme-2">E</span>
+              <span class="table__theme-title">{{ themeName('education') }}</span>
+            </li>
+            <li v-if="ecosystemAssessment" class="table__theme">
+              <span class="icon--round icon--theme icon--theme-3">EA</span>
+              <span class="table__theme-title">{{ themeName('ecosystemAssessment') }}</span>
+            </li>
+          </ul>
+          <ul class="ul-unstyled flex-3-fiths">
+            <li v-if="environmentalImpactAssessment" class="table__theme">
+              <span class="icon--round icon--theme icon--theme-4">EIM</span>
+              <span class="table__theme-title">{{ themeName('environmentalImpactAssessment') }}</span>
+            </li>
+            <li v-if="ecosystemServices" class="table__theme">
+              <span class="icon--round icon--theme icon--theme-5">ES</span> 
+              <span class="table__theme-title">{{ themeName('ecosystemServices') }}</span>
+            </li>
+          </ul>
+        </div>
+      </div>
     </tr>
   </div>
 </template>
@@ -92,7 +123,7 @@
 
       hasFactsheet () {
         return this.factsheet.length !== 0
-      },
+      }
     },
 
     methods: {
@@ -107,6 +138,10 @@
         }
 
         return output
+      },
+
+      themeName (name) {
+        return name.replace(/([A-Z])/g, ' $1')
       },
 
       toggleRow () {
@@ -129,9 +164,11 @@
 
       display: block;
 
-      transition: max-height .8s ease-in-out;
+      transition: max-height .3s ease-in-out;
     }
     
-    &--open { max-height: rem-calc(100); }
+    &--open { 
+      max-height: rem-calc(212);
+    }
   }
 </style>

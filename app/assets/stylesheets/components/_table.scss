@@ -1,4 +1,9 @@
 //--------------------------------------------------
+// variables
+//--------------------------------------------------
+$firstColumn: 130;
+
+//--------------------------------------------------
 // table
 //--------------------------------------------------
 .table {
@@ -21,7 +26,11 @@
 // size when you use the pagination 
 
   th,td {
-    &:first-child { width: 130px; }
+    border-left: solid white rem-calc(1);
+    padding: rem-calc(16 14);
+    text-align: left;
+
+    &:first-child { width: $firstColumn + px; }
     &:nth-child(2) { width: 140px; }
     &:nth-child(3) { width: 104px; }
     &:nth-child(4) { width: 226px; }
@@ -40,12 +49,39 @@
     &:nth-child(4n + 1){ background-color: $grey-light; }
 
     &:hover { background-color: $grey; }
+    
+    &--active,
+    &--active:nth-child(4n + 1) { background-color: $grey; }
 
 //--------------------------------------------------
 // expandable section
 //--------------------------------------------------
-      &--expandable {
-        background-color: $grey;
-      }
+    &--expandable {
+      background-color: $grey;
+      border-top: solid white rem-calc(1);
+      border-left: solid white rem-calc(1);
+      padding: rem-calc(0 14 0 $firstColumn + 14);
+    }
   }
+
+//--------------------------------------------------
+// themes
+//--------------------------------------------------
+      &__themes {
+        padding-bottom: rem-calc(30);
+      }
+
+        &__theme {
+          margin-bottom: rem-calc(4);
+        }
+
+        &__theme-title {
+          margin-left: rem-calc(2);
+
+          display: inline-block;
+          position: relative;
+          top: rem-calc(6);
+
+          &:first-letter { text-transform: capitalize; }
+        }
 }

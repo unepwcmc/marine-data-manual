@@ -95,12 +95,7 @@
       margin-bottom: rem-calc(40);
     }
 
-    td, th {
-      border-left: solid white rem-calc(1);
-      padding: rem-calc(16 14);
-      text-align: left;
-      word-wrap: break-word;
-    }
+    td, th { word-wrap: break-word; }
 
   //**************************************************
   // column headers <th>
