@@ -12,22 +12,18 @@ class Metadata < ApplicationRecord
         sortButtons: true
       },
       {
-        name: "resource",
         title: "Resource",
         sortButtons: true
       },
       {
-        name: 'version',
         title: "Version",
         sortButtons: true
       },
       {
-        name: 'contact_organisation',
         title: "Contact Organisation",
         sortButtons: true
       },
       {
-        name: 'id',
         title: "ID",
         sortButtons: true
       },
