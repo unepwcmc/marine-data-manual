@@ -32,6 +32,20 @@
   }
 
 //--------------------------------------------------
-// column headers <th>
+// row
 //--------------------------------------------------
+  &__row {
+    background-color: white;
+
+    &:nth-child(4n + 1){ background-color: $grey-light; }
+
+    &:hover { background-color: $grey; }
+
+//--------------------------------------------------
+// expandable section
+//--------------------------------------------------
+      &--expandable {
+        background-color: $grey;
+      }
+  }
 }

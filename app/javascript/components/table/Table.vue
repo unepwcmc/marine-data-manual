@@ -6,8 +6,9 @@
 
     <table class="table table--body">
       <tbody>
-        <row v-for="item, key in items"
-          :key="key"
+        <row v-for="(item, index) in items"
+          :key="index"
+          :index="index"
           :category="item.category"
           :resource="item.resource"
           :version="item.version"
@@ -42,14 +43,24 @@
 
     data () {
       return {
-        items: []
+        items: [],
+        children: this.$children
       }
     },
 
     created () {
       this.items = this.metadata
       this.$store.commit('updateTotalItems', this.items.length)
+      eventHub.$on('toggleRow', this.toggleRow)
     },
+
+    methods: {
+      toggleRow (index) {
+        this.children.forEach(child => {
+          child.isOpen = child.index === index
+        })
+      }
+    }
   }
 </script>
 
