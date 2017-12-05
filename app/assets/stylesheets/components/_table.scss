@@ -1,7 +1,7 @@
 //--------------------------------------------------
 // variables
 //--------------------------------------------------
-$firstColumn: 130;
+$firstColumn: 116;
 $hoverColor: $grey;
 
 //--------------------------------------------------
@@ -31,13 +31,13 @@ $hoverColor: $grey;
     text-align: left;
 
     &:first-child { width: $firstColumn + px; }
-    &:nth-child(2) { width: 140px; }
+    &:nth-child(2) { width: 134px; }
     &:nth-child(3) { width: 104px; }
-    &:nth-child(4) { width: 226px; }
-    &:nth-child(5) { width: 63px; }
-    &:nth-child(6) { width: 128px; }
-    &:nth-child(7) { width: 128px; }
-    &:nth-child(8) { width: 242px; }
+    &:nth-child(4) { width: 218px; }
+    &:nth-child(5) { width: 99px; }
+    &:nth-child(6) { width: 122px; }
+    &:nth-child(7) { width: 122px; }
+    &:nth-child(8) { width: 244px; }
   }
 
 //--------------------------------------------------
