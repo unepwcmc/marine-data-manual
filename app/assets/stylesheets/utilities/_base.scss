@@ -1,8 +1,21 @@
 //--------------------------------------------------
 // html elements
 //--------------------------------------------------
+* { 
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+
 body {
   font-family: $body-font;
+  margin: 0;
+
+  h1 {
+    color: white;
+    font-size: rem-calc(60);
+    font-style: italic;
+    margin: 0;
+  }
 }
 
 //--------------------------------------------------

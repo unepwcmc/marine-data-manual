@@ -1,3 +1,5 @@
-<h1>Datasets</h1>
+<% content_for :title do %>
+  Metadata list
+<% end %>
 
 <v-table :filters="<%= @filters %>" :metadata="<%= @metadata %>"></v-table>
