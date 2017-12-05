@@ -33,11 +33,12 @@ namespace :import do
     CSV.parse(csv, headers: true, encoding: "utf-8") do |row|
       csv_metadata_row = row.to_hash
       metadata_row_hash = {}
-      current_dataset_id = csv_metadata_row[metadata_hash[:dataset_id]]&.strip
 
       metadata_hash.keys.each do |key|
         metadata_row_hash[key] = csv_metadata_row[metadata_hash[key]]&.strip || "Empty"
       end
+
+      current_dataset_id = csv_metadata_row[metadata_hash[:dataset_id]]
 
       if Metadata.exists?(dataset_id: current_dataset_id)
         metadata = Metadata.find_by(dataset_id: current_dataset_id)
