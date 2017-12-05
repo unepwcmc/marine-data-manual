@@ -10,7 +10,7 @@ namespace :import do
 
   def import_csv_file file
 
-    csv = File.open(file, encoding: "iso-8859-3")
+    csv = File.open(file, encoding: "utf-8")
 
     csv_headers = File.readlines(csv).first.split(",")
 
@@ -30,7 +30,7 @@ namespace :import do
       ecosystem_services: csv_headers[12]
     }
 
-    CSV.parse(csv, :headers => true, encoding: "iso-8859-3") do |row|
+    CSV.parse(csv, :headers => true, encoding: "utf-8") do |row|
       metadata_row = row.to_hash
       current_dataset_id = metadata_row[metadata_hash[:dataset_id]]&.strip
 
@@ -53,8 +53,6 @@ namespace :import do
       metadata.environmental_impact_assessment = metadata_row[metadata_hash[:environmental_impact_assessment]]&.strip || "Empty"
       metadata.ecosystem_assessment = metadata_row[metadata_hash[:ecosystem_assessment]]&.strip || "Empty"
       metadata.ecosystem_services = metadata_row[metadata_hash[:ecosystem_services]]&.strip || "Empty"
-
-      puts metadata.inspect
 
       unless metadata.save!
         Rails.logger.info "Cannot import! #{metadata.resource}"
