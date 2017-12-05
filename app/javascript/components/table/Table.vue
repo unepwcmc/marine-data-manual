@@ -57,7 +57,9 @@
     methods: {
       toggleRow (index) {
         this.children.forEach(child => {
-          child.isOpen = child.index === index
+          // open the expandable section only if it is already closed and 
+          // it matches the row being clicked on
+          child.isOpen = child.index === index && child.isOpen !== true
         })
       }
     }
