@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="table__row-wrapper">
     <tr @click="toggleRow()" class="table__row" :class="{ 'table__row--active' : isOpen }" >
       <td>{{ category }}</td>
       <td>{{ trim(resource) }}</td>
