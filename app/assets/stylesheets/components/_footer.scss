@@ -1,0 +1,12 @@
+//--------------------------------------------------
+// footer
+//--------------------------------------------------
+.footer {
+  background-color: $primary;
+  color: white;
+  padding: rem-calc(0 36);
+  width: 100%; height: rem-calc(132);
+  
+  align-items: center;
+  display: flex;
+}

@@ -1,0 +1,37 @@
+//--------------------------------------------------
+// table
+//--------------------------------------------------
+.table {
+
+//--------------------------------------------------
+// table head
+//--------------------------------------------------
+  &__head {
+    background-color: $blue-dark;
+    border-bottom: solid $grey-light rem-calc(1);
+    color: white;
+
+    &:first-child { border-left: none; }
+  }
+
+//--------------------------------------------------
+// columns
+//--------------------------------------------------
+// fix the columns widths so that they don't change
+// size when you use the pagination 
+
+  th,td {
+    &:first-child { width: 130px; }
+    &:nth-child(2) { width: 140px; }
+    &:nth-child(3) { width: 104px; }
+    &:nth-child(4) { width: 226px; }
+    &:nth-child(5) { width: 63px; }
+    &:nth-child(6) { width: 128px; }
+    &:nth-child(7) { width: 128px; }
+    &:nth-child(8) { width: 242px; }
+  }
+
+//--------------------------------------------------
+// column headers <th>
+//--------------------------------------------------
+}

@@ -1,0 +1,38 @@
+//--------------------------------------------------
+// icons
+//--------------------------------------------------
+.icon {
+
+  &--round {
+    border-radius: 100%;
+    width: rem-calc(39); height: rem-calc(39);
+    text-align: center;
+
+    display: inline-block;
+  }
+
+  &--theme {
+    color: white;
+
+    &-1 { 
+      &.icon--round { background-color: $theme-1; }
+    }
+
+    &-2 { 
+      &.icon--round { background-color: $theme-2; }
+    }
+
+    &-3 { 
+      &.icon--round { background-color: $theme-3; }
+    }
+
+    &-4 { 
+      &.icon--round { background-color: $theme-4; }
+    }
+
+    &-5 { 
+      &.icon--round { background-color: $theme-5; }
+    }
+
+  }
+}
