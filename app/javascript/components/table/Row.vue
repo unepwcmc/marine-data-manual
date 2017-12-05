@@ -78,7 +78,7 @@
         type: String 
       },
       id: { 
-        type: Number 
+        type: String 
       },
       metadata: {
         type: String,
