@@ -27,32 +27,26 @@ namespace :import do
       education: csv_headers[9],
       environmental_impact_assessment: csv_headers[10],
       ecosystem_assessment: csv_headers[11],
-      ecosystem_services: csv_headers[12]
+      ecosystem_services: csv_headers[12].chomp
     }
 
-    CSV.parse(csv, :headers => true, encoding: "utf-8") do |row|
-      metadata_row = row.to_hash
-      current_dataset_id = metadata_row[metadata_hash[:dataset_id]]&.strip
+    CSV.parse(csv, headers: true, encoding: "utf-8") do |row|
+      csv_metadata_row = row.to_hash
+      metadata_row_hash = {}
+      current_dataset_id = csv_metadata_row[metadata_hash[:dataset_id]]&.strip
+
+      metadata_hash.keys.each do |key|
+        metadata_row_hash[key] = csv_metadata_row[metadata_hash[key]]&.strip || "Empty"
+      end
 
       if Metadata.exists?(dataset_id: current_dataset_id)
         metadata = Metadata.find_by(dataset_id: current_dataset_id)
+        unless metadata.update_attributes(metadata_row_hash)
+          Rails.logger.info "Cannot update! #{metadata.resource}"
+        end
       else
-        metadata = Metadata.new
-        metadata.dataset_id = current_dataset_id
+        metadata = Metadata.new(metadata_row_hash)
       end
-
-      metadata.category = metadata_row[metadata_hash[:category]]&.strip || "Empty"
-      metadata.resource = metadata_row[metadata_hash[:resource]]&.strip || "Empty"
-      metadata.version = metadata_row[metadata_hash[:version]]&.strip || "Empty"
-      metadata.contact_organisation = metadata_row[metadata_hash[:contact_organisation]]&.strip || "Empty"
-      metadata.website_download_link = metadata_row[metadata_hash[:website_download_link]]&.strip || "Empty"
-      metadata.metadata = "Empty"
-      metadata.factsheet = metadata_row[metadata_hash[:factsheet]]&.strip || "Empty"
-      metadata.marine_spatial_planning = metadata_row[metadata_hash[:marine_spatial_planning]]&.strip || "Empty"
-      metadata.education = metadata_row[metadata_hash[:education]]&.strip || "Empty"
-      metadata.environmental_impact_assessment = metadata_row[metadata_hash[:environmental_impact_assessment]]&.strip || "Empty"
-      metadata.ecosystem_assessment = metadata_row[metadata_hash[:ecosystem_assessment]]&.strip || "Empty"
-      metadata.ecosystem_services = metadata_row[metadata_hash[:ecosystem_services]]&.strip || "Empty"
 
       unless metadata.save!
         Rails.logger.info "Cannot import! #{metadata.resource}"
