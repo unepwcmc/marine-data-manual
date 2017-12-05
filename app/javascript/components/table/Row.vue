@@ -4,7 +4,7 @@
     <td>{{ category }}</td>
     <td>{{ resource }}</td>
     <td>{{ version }}</td>
-    <td>{{ contactOrganistion }}</td>
+    <td>{{ contactOrganisation }}</td>
     <td>{{ id }}</td>
     <td><a v-if="hasMetadata" :href="metadata">Link</a></td>
     <td><a v-if="hasFactsheet" :href="factsheet">Link</a></td>
@@ -24,19 +24,19 @@
   export default {
     name: "row",
     props: {
-      category: { 
+      category: {
         type: String,
         required: true
       },
       resource: { type: String },
       version: { type: String },
-      contactOrganistion: { type: String },
+      contactOrganisation: { type: String },
       id: { type: Number },
-      metadata: { 
+      metadata: {
         type: String,
         required: true
       },
-      factsheet: { 
+      factsheet: {
         type: String,
         required: true
       },
