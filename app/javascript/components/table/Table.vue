@@ -12,8 +12,8 @@
           :category="item.category"
           :resource="item.resource"
           :version="item.version"
-          :contactOrganistion="item.contact_organistion"
-          :id="item.id"
+          :contactOrganisation="item.contact_organisation"
+          :id="item.dataset_id"
           :metadata="item.metadata"
           :factsheet="item.factsheet"
           :marineSpatialPlanning="item.marine_spatial_planning"
@@ -68,7 +68,7 @@
 
 <style lang="scss">
   @import '../../scss/includes.scss';
-  
+
   //--------------------------------------------------
   // animations
   //--------------------------------------------------
@@ -112,9 +112,9 @@
   //**************************************************
   // columns
   //**************************************************
-    
+
     // fix the columns widths so that they don't change
-    // size when you use the pagination 
+    // size when you use the pagination
     th,td {
       &:first-child { width: 60px; }
       &:nth-child(2) { width: 144px; }

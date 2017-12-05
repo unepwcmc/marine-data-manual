@@ -12,4 +12,10 @@
 - Clone repo
 - `bundle install`
 - `yarn install`
-- `rails s`
+- `rails s
+
+## Importing data
+
+- Import metadata rake task
+- `rake import:metadata['lib/data/seed/marine-data-manual-2017-11-23-utf8.csv']`
+- Check logs to see any errors
