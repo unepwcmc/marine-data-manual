@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171204104811) do
+ActiveRecord::Schema.define(version: 20171206170627) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,8 +22,8 @@ ActiveRecord::Schema.define(version: 20171204104811) do
     t.string "contact_organisation"
     t.string "dataset_id"
     t.string "website_download_link"
-    t.string "metadata", null: false
-    t.string "factsheet", null: false
+    t.boolean "metadata", null: false
+    t.string "factsheet"
     t.boolean "marine_spatial_planning", null: false
     t.boolean "education", null: false
     t.boolean "environmental_impact_assessment", null: false
