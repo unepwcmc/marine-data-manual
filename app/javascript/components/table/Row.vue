@@ -60,8 +60,7 @@
 
   export default {
     name: "row",
-    props: {
-      index: {
+    props: {      index: {
         required: true
       },
       item: { 
