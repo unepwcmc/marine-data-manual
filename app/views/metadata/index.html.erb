@@ -2,4 +2,12 @@
   Metadata list
 <% end %>
 
-<v-table :filters="<%= @filters %>" :metadata="<%= @metadata %>"></v-table>
+<div class="page-padding">
+
+  <filters :filters="<%= @filters %>"></filters>
+
+  <v-table :filters="<%= @filters %>" :metadata="<%= @metadata %>"></v-table>
+
+  <pagination :items-per-page="10"></pagination>
+  
+</div>

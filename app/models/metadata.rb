@@ -17,17 +17,17 @@ class Metadata < ApplicationRecord
         sortButtons: true
       },
       {
-        name: 'version',
+        name: "version",
         title: "Version",
         sortButtons: true
       },
       {
-        name: 'contact_organisation',
+        name: "contact_organisation",
         title: "Contact Organisation",
         sortButtons: true
       },
       {
-        name: 'id',
+        name: "id",
         title: "ID",
         sortButtons: true
       },
@@ -35,13 +35,15 @@ class Metadata < ApplicationRecord
         name: "metadata",
         title: "Metadata",
         options: ["Metadata", "No Metadata"],
-        sortButtons: false
+        sortButtons: false,
+        type: "boolean"
       },
       {
         name: "factsheet",
         title: "Factsheet",
         options: ["Factsheet", "No Factsheet"],
-        sortButtons: false
+        sortButtons: false,
+        type: "boolean"
       },
       {
         name: "themes",
