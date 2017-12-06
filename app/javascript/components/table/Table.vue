@@ -6,8 +6,9 @@
 
     <table class="table table--body">
       <tbody>
-        <row v-for="item, key in items"
-          :key="key"
+        <row v-for="(item, index) in items"
+          :key="index"
+          :index="index"
           :category="item.category"
           :resource="item.resource"
           :version="item.version"
@@ -42,14 +43,26 @@
 
     data () {
       return {
-        items: []
+        items: [],
+        children: this.$children
       }
     },
 
     created () {
       this.items = this.metadata
       this.$store.commit('updateTotalItems', this.items.length)
+      eventHub.$on('toggleRow', this.toggleRow)
     },
+
+    methods: {
+      toggleRow (index) {
+        this.children.forEach(child => {
+          // open the expandable section only if it is already closed and 
+          // it matches the row being clicked on
+          child.isOpen = child.index === index && child.isOpen !== true
+        })
+      }
+    }
   }
 </script>
 
@@ -84,12 +97,7 @@
       margin-bottom: rem-calc(40);
     }
 
-    td, th {
-      border-left: solid white rem-calc(1);
-      padding: rem-calc(16 14);
-      text-align: left;
-      word-wrap: break-word;
-    }
+    td, th { word-wrap: break-word; }
 
   //**************************************************
   // column headers <th>

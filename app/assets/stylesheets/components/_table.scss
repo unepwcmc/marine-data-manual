@@ -1,4 +1,10 @@
 //--------------------------------------------------
+// variables
+//--------------------------------------------------
+$firstColumn: 116;
+$hoverColor: $grey;
+
+//--------------------------------------------------
 // table
 //--------------------------------------------------
 .table {
@@ -8,7 +14,6 @@
 //--------------------------------------------------
   &__head {
     background-color: $blue-dark;
-    border-bottom: solid $grey-light rem-calc(1);
     color: white;
 
     &:first-child { border-left: none; }
@@ -21,17 +26,77 @@
 // size when you use the pagination 
 
   th,td {
-    &:first-child { width: 130px; }
-    &:nth-child(2) { width: 140px; }
+    border-left: solid white rem-calc(1);
+    padding: rem-calc(16 14);
+    text-align: left;
+
+    &:first-child { width: $firstColumn + px; }
+    &:nth-child(2) { width: 134px; }
     &:nth-child(3) { width: 104px; }
-    &:nth-child(4) { width: 226px; }
-    &:nth-child(5) { width: 63px; }
-    &:nth-child(6) { width: 128px; }
-    &:nth-child(7) { width: 128px; }
-    &:nth-child(8) { width: 242px; }
+    &:nth-child(4) { width: 218px; }
+    &:nth-child(5) { width: 99px; }
+    &:nth-child(6) { width: 122px; }
+    &:nth-child(7) { width: 122px; }
+    &:nth-child(8) { width: 244px; }
   }
 
 //--------------------------------------------------
-// column headers <th>
+// row
 //--------------------------------------------------
-}
+  &__row-wrapper {
+    &:nth-child(odd){ 
+      .table__row { 
+        background-color: $grey-light; 
+
+        &:hover { background-color: $hoverColor; }
+      }
+    }
+  }
+
+    &__row {
+      background-color: white;
+      border-top: solid white rem-calc(1);
+
+      &:hover { background-color: $hoverColor; }
+      
+      &--active { 
+        background-color: $hoverColor; 
+        border-bottom: solid white rem-calc(1);
+
+        .table__row-wrapper:nth-child(odd) & { 
+          background-color: $hoverColor; 
+          border-bottom: solid white rem-calc(1);
+        }
+      }
+
+//--------------------------------------------------
+// expandable section
+//--------------------------------------------------
+      &--expandable {
+        background-color: $hoverColor;
+        border-left: solid white rem-calc(1);
+        padding: rem-calc(0 14 0 $firstColumn + 14);
+      }
+    }
+
+//--------------------------------------------------
+// themes
+//--------------------------------------------------
+        &__themes {
+          padding-bottom: rem-calc(30);
+        }
+
+          &__theme {
+            margin-bottom: rem-calc(4);
+          }
+
+          &__theme-title {
+            margin-left: rem-calc(2);
+
+            display: inline-block;
+            position: relative;
+            top: rem-calc(6);
+
+            &:first-letter { text-transform: capitalize; }
+          }
+  }

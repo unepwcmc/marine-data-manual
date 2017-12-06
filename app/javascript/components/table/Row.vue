@@ -1,21 +1,58 @@
 <template>
-  <!-- <tr @click="toggleExpand()" v-show="item.isActive"> -->
-  <tr class="table__row">
-    <td>{{ category }}</td>
-    <td>{{ resource }}</td>
-    <td>{{ version }}</td>
-    <td>{{ contactOrganisation }}</td>
-    <td>{{ id }}</td>
-    <td><a v-if="hasMetadata" :href="metadata">Link</a></td>
-    <td><a v-if="hasFactsheet" :href="factsheet">Link</a></td>
-    <td>
-      <span v-if="marineSpatialPlanning" class="icon--round icon--theme icon--theme-1">MSP</span>
-      <span v-if="education" class="icon--round icon--theme icon--theme-2">E</span>
-      <span v-if="environmentalImpactAssessment" class="icon--round icon--theme icon--theme-3">EIM</span>
-      <span v-if="ecosystemAssessment" class="icon--round icon--theme icon--theme-4">EA</span>
-      <span v-if="ecosystemServices" class="icon--round icon--theme icon--theme-5">ES</span>
-    </td>
-  </tr>
+  <div class="table__row-wrapper">
+    <tr @click="toggleRow()" class="table__row" :class="{ 'table__row--active' : isOpen }" >
+      <td>{{ category }}</td>
+      <td>{{ trim(resource) }}</td>
+      <td>{{ version }}</td>
+      <td>{{ contactOrganisation }}</td>
+      <td>{{ id }}</td>
+      <td><a v-if="hasMetadata" :href="metadata">Link</a></td>
+      <td><a v-if="hasFactsheet" :href="factsheet">Link</a></td>
+      <td>
+        <span v-if="marineSpatialPlanning" class="icon--round icon--theme icon--theme-1">MSP</span>
+        <span v-if="education" class="icon--round icon--theme icon--theme-2">E</span>
+        <span v-if="ecosystemAssessment" class="icon--round icon--theme icon--theme-3">EA</span>
+        <span v-if="environmentalImpactAssessment" class="icon--round icon--theme icon--theme-4">EIM</span>
+        <span v-if="ecosystemServices" class="icon--round icon--theme icon--theme-5">ES</span>
+      </td>
+    </tr>
+    <tr class="table__row--expandable flex" :class="{ 'table__row--open' : isOpen }">
+      
+      <div class="flex-2-fiths">
+        <h3>Resource</h3>
+        {{ resource }}
+      </div>
+      <div class="flex-3-fiths">
+        <h3>Themes</h3>
+        <div class="flex table__themes">
+          <ul class="ul-unstyled flex-2-fiths">
+            <li v-if="marineSpatialPlanning" class="table__theme">
+              <span class="icon--round icon--theme icon--theme-1">MSP</span>
+              <span class="table__theme-title">{{ themeName('marineSpatialPlanning') }}</span>
+            </li>
+            <li v-if="education" class="table__theme">
+              <span class="icon--round icon--theme icon--theme-2">E</span>
+              <span class="table__theme-title">{{ themeName('education') }}</span>
+            </li>
+            <li v-if="ecosystemAssessment" class="table__theme">
+              <span class="icon--round icon--theme icon--theme-3">EA</span>
+              <span class="table__theme-title">{{ themeName('ecosystemAssessment') }}</span>
+            </li>
+          </ul>
+          <ul class="ul-unstyled flex-3-fiths">
+            <li v-if="environmentalImpactAssessment" class="table__theme">
+              <span class="icon--round icon--theme icon--theme-4">EIM</span>
+              <span class="table__theme-title">{{ themeName('environmentalImpactAssessment') }}</span>
+            </li>
+            <li v-if="ecosystemServices" class="table__theme">
+              <span class="icon--round icon--theme icon--theme-5">ES</span> 
+              <span class="table__theme-title">{{ themeName('ecosystemServices') }}</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </tr>
+  </div>
 </template>
 
 <script>
@@ -24,14 +61,25 @@
   export default {
     name: "row",
     props: {
-      category: {
+      index: {
+        required: true
+      },
+      category: { 
         type: String,
         required: true
       },
-      resource: { type: String },
-      version: { type: String },
-      contactOrganisation: { type: String },
-      id: { type: Number },
+      resource: { 
+        type: String 
+      },
+      version: { 
+        type: String 
+      },
+      contactOrganisation: { 
+        type: String 
+      },
+      id: { 
+        type: String 
+      },
       metadata: {
         type: String,
         required: true
@@ -62,6 +110,12 @@
       }
     },
 
+    data () {
+      return {
+        isOpen: false
+      }
+    },
+
     computed: {
       hasMetadata () {
         return this.metadata.length !== 0
@@ -69,7 +123,7 @@
 
       hasFactsheet () {
         return this.factsheet.length !== 0
-      },
+      }
     },
 
     methods: {
@@ -84,6 +138,14 @@
         }
 
         return output
+      },
+
+      themeName (name) {
+        return name.replace(/([A-Z])/g, ' $1')
+      },
+
+      toggleRow () {
+        eventHub.$emit('toggleRow', this.index)
       }
     }
   }
@@ -93,11 +155,20 @@
   @import '../../scss/includes.scss';
 
   .table__row {
-    background-color: $grey-light;
     cursor: pointer;
 
-    &:nth-child(even){ background-color: $blue-light; }
+    &--expandable {
+      overflow: hidden;
+      height: auto;
+      max-height: 0;
 
-    &:hover { background-color: $grey; }
+      display: block;
+
+      transition: max-height .3s ease-in-out;
+    }
+    
+    &--open { 
+      max-height: rem-calc(212);
+    }
   }
 </style>
