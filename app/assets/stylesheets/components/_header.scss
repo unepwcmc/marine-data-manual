@@ -9,6 +9,9 @@
   display: flex;
 
   &__title {
+    margin-top: rem-calc(77); //match the height of the topbar
+    margin-right: rem-calc(160);
+
     h1 {
       padding: rem-calc(24 45 30 160);
 
