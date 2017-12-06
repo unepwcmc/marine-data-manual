@@ -1,7 +1,7 @@
 class EcosystemAssessmentController < ThemeController
 
   def index
-    @content = "Ecosystem Assesment"
+    @content = "Ecosystem Assessment"
   end
 
 end
