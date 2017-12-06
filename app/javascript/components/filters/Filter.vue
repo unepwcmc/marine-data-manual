@@ -124,7 +124,7 @@
 
         //update the active filters array
         this.activeOptions = this.selectedOptions
-
+        
         const newFilterOptions = {
           filter: this.name,
           options: this.activeOptions

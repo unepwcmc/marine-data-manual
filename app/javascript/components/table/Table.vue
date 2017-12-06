@@ -74,7 +74,6 @@
       },
 
       filterItems () {
-        console.log('filter items')
         this.$store.commit('clearActiveItems')
 
         // an item must match one option from each filter (if any have been selected)
@@ -87,9 +86,18 @@
             if (filter.options.length !== 0) {
               let optionMatch = false
 
-              filter.options.forEach(option => {
-                if (item[filter.name] == option) optionMatch = true
-              })
+              // check the boolean value for filters with type boolean
+              if(filter.type === 'boolean'){
+
+                filter.options.forEach(option => {
+                  if(item[filter.name] !== undefined) optionMatch = true
+                })
+              } else {
+
+                filter.options.forEach(option => {
+                  if (item[filter.name] == option) optionMatch = true
+                })
+              }
 
               // once filterMatch is set to false it will always be false and the item
               // will not be shown because it did match at least one option in every active filter

@@ -35,13 +35,15 @@ class Metadata < ApplicationRecord
         name: "metadata",
         title: "Metadata",
         options: ["Metadata", "No Metadata"],
-        sortButtons: false
+        sortButtons: false,
+        type: "boolean"
       },
       {
         name: "factsheet",
         title: "Factsheet",
         options: ["Factsheet", "No Factsheet"],
-        sortButtons: false
+        sortButtons: false,
+        type: "boolean"
       },
       {
         name: "themes",
