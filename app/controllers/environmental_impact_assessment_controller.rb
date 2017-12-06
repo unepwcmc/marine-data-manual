@@ -1,4 +1,4 @@
-class EnvironmentalImpactAssessmentController < ThemeController
+class EnvironmentalImpactAssessmentController < ThemesController
 
   def index
     @content = "Environmental Impact Assessment"

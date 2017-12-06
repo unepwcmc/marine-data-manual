@@ -1,4 +1,4 @@
-class EducationController < ThemeController
+class EducationController < ThemesController
 
   def index
     @content = "Education"
