@@ -1,50 +1,50 @@
 <template>
-  <div class="table__row-wrapper">
+  <div class="table__row-wrapper" v-show="item.isActive">
     <tr @click="toggleRow()" class="table__row" :class="{ 'table__row--active' : isOpen }" >
-      <td>{{ category }}</td>
-      <td>{{ trim(resource) }}</td>
-      <td>{{ version }}</td>
-      <td>{{ contactOrganisation }}</td>
-      <td>{{ id }}</td>
-      <td><a v-if="hasMetadata" :href="metadata">Link</a></td>
-      <td><a v-if="hasFactsheet" :href="factsheet">Link</a></td>
+      <td>{{ item.category }}</td>
+      <td>{{ trim(item.resource) }}</td>
+      <td>{{ item.version }}</td>
+      <td>{{ item.contactOrganisation }}</td>
+      <td>{{ item.id }}</td>
+      <td><a v-if="hasMetadata" :href="item.metadata">Link</a></td>
+      <td><a v-if="hasFactsheet" :href="item.factsheet">Link</a></td>
       <td>
-        <span v-if="marineSpatialPlanning" class="icon--round icon--theme icon--theme-1">MSP</span>
-        <span v-if="education" class="icon--round icon--theme icon--theme-2">E</span>
-        <span v-if="ecosystemAssessment" class="icon--round icon--theme icon--theme-3">EA</span>
-        <span v-if="environmentalImpactAssessment" class="icon--round icon--theme icon--theme-4">EIM</span>
-        <span v-if="ecosystemServices" class="icon--round icon--theme icon--theme-5">ES</span>
+        <span v-if="item.marineSpatialPlanning" class="icon--round icon--theme icon--theme-1">MSP</span>
+        <span v-if="item.education" class="icon--round icon--theme icon--theme-2">E</span>
+        <span v-if="item.ecosystemAssessment" class="icon--round icon--theme icon--theme-3">EA</span>
+        <span v-if="item.environmentalImpactAssessment" class="icon--round icon--theme icon--theme-4">EIM</span>
+        <span v-if="item.ecosystemServices" class="icon--round icon--theme icon--theme-5">ES</span>
       </td>
     </tr>
     <tr class="table__row--expandable flex" :class="{ 'table__row--open' : isOpen }">
       
       <div class="flex-2-fiths">
         <h3>Resource</h3>
-        {{ resource }}
+        {{ item.resource }}
       </div>
       <div class="flex-3-fiths">
         <h3>Themes</h3>
         <div class="flex table__themes">
           <ul class="ul-unstyled flex-2-fiths">
-            <li v-if="marineSpatialPlanning" class="table__theme">
+            <li v-if="item.marineSpatialPlanning" class="table__theme">
               <span class="icon--round icon--theme icon--theme-1">MSP</span>
               <span class="table__theme-title">{{ themeName('marineSpatialPlanning') }}</span>
             </li>
-            <li v-if="education" class="table__theme">
+            <li v-if="item.education" class="table__theme">
               <span class="icon--round icon--theme icon--theme-2">E</span>
               <span class="table__theme-title">{{ themeName('education') }}</span>
             </li>
-            <li v-if="ecosystemAssessment" class="table__theme">
+            <li v-if="item.ecosystemAssessment" class="table__theme">
               <span class="icon--round icon--theme icon--theme-3">EA</span>
               <span class="table__theme-title">{{ themeName('ecosystemAssessment') }}</span>
             </li>
           </ul>
           <ul class="ul-unstyled flex-3-fiths">
-            <li v-if="environmentalImpactAssessment" class="table__theme">
+            <li v-if="item.environmentalImpactAssessment" class="table__theme">
               <span class="icon--round icon--theme icon--theme-4">EIM</span>
               <span class="table__theme-title">{{ themeName('environmentalImpactAssessment') }}</span>
             </li>
-            <li v-if="ecosystemServices" class="table__theme">
+            <li v-if="item.ecosystemServices" class="table__theme">
               <span class="icon--round icon--theme icon--theme-5">ES</span> 
               <span class="table__theme-title">{{ themeName('ecosystemServices') }}</span>
             </li>
@@ -64,65 +64,26 @@
       index: {
         required: true
       },
-      category: { 
-        type: String,
-        required: true
-      },
-      resource: { 
-        type: String 
-      },
-      version: { 
-        type: String 
-      },
-      contactOrganisation: { 
-        type: String 
-      },
-      id: { 
-        type: String 
-      },
-      metadata: {
-        type: String,
-        required: true
-      },
-      factsheet: {
-        type: String,
-        required: true
-      },
-      marineSpatialPlanning: {
-        type: Boolean,
-        required: true
-      },
-      education: {
-        type: Boolean,
-        required: true
-      },
-      environmentalImpactAssessment: {
-        type: Boolean,
-        required: true
-      },
-      ecosystemAssessment: {
-        type: Boolean,
-        required: true
-      },
-      ecosystemServices: {
-        type: Boolean,
+      item: { 
+        type: Object,
         required: true
       }
     },
 
     data () {
       return {
-        isOpen: false
+        isOpen: false,
+        isActive: ''
       }
     },
 
     computed: {
       hasMetadata () {
-        return this.metadata.length !== 0
+        return this.item.metadata.length !== 0
       },
 
       hasFactsheet () {
-        return this.factsheet.length !== 0
+        return this.item.factsheet.length !== 0
       }
     },
 

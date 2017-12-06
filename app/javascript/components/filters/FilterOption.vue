@@ -6,8 +6,6 @@
 </template>
 
 <script>
-  import { eventHub } from '../../metadata.js'
-
   export default {
     name: 'filter-option',
 

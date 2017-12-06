@@ -61,7 +61,7 @@
     computed: {
       // only show the select if the filter is a real filter and not just a table title
       hasOptions () {
-        return this.options != undefined || this.name != undefined
+        return this.options != undefined && this.name != undefined
       },
 
       selectedOptions () {
@@ -132,7 +132,7 @@
 
         this.$store.commit('updateFilterOptions', newFilterOptions)
 
-        eventHub.$emit('filtersChanged')
+        eventHub.$emit('callFilterItems')
       }
     }
   }

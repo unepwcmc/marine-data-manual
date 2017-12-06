@@ -35,6 +35,10 @@
       }
     },
 
+    created () {
+      this.createSelectedFilterOptions()
+    },
+
     mounted () {
       eventHub.$on('clickDropdown', this.updateDropdowns)
     },
@@ -44,7 +48,26 @@
         this.children.forEach(filter => {
           filter.isOpen = filter.name == name
         })
-      }
+      },
+
+      createSelectedFilterOptions () {
+        let array = []
+
+        // create an empty array for each filter
+        this.filters.forEach(filter => {
+          if (filter.name !== undefined && filter.options !== undefined && filter.options.length > 0) {
+            let obj = {}
+
+            obj.name = filter.name
+            obj.options = []
+            obj.type = filter.type
+
+            array.push(obj)
+          }
+        })
+
+        this.$store.commit('setFilterOptions', array)
+      },
     }
   }
 </script>
