@@ -32,6 +32,7 @@
 
 import Vue from 'vue/dist/vue.esm'
 import store from './store/store.js'
+import Accordion from './components/accordion/Accordion.vue'
 import VTable from './components/table/Table.vue'
 import Filters from './components/filters/Filters.vue'
 import Pagination from './components/pagination/Pagination.vue'
@@ -43,6 +44,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
     el: '#v-app',
     store,
-    components: { VTable, Filters, Pagination }
+    components: { Accordion, VTable, Filters, Pagination }
   })
 })
