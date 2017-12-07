@@ -11,12 +11,16 @@
 </template>
 
 <script>
-  import { eventHub } from '../../metadata.js',
+  import { eventHub } from '../../metadata.js'
 
   export default {
     name: 'accordion-item',
 
     props: {
+      id: {
+        required: true,
+        type: String
+      },
       title: String
     },
 
@@ -28,23 +32,25 @@
 
     methods: {
       toggleAccordionContent () {
-        eventHub.$emit('callToggleAccordionContent');
+        eventHub.$emit('calltoggleAccordionContent', this.id);
       }
     }
   }
 </script>
 
 <style lang="scss">
+  @import '../../scss/includes.scss';
+
   .accordion-item {
     &__content {
       overflow: hidden;
-      height: 0;
-      max-height: rem-calc(1000);
+      height: auto;
+      max-height: 0;
 
-      transition: height .6s linear;
+      transition: max-height .3s ease-in-out;
 
       .accordion-item--active & {
-        height: auto;
+        max-height: rem-calc(500);
       }
     }
   }

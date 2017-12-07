@@ -5,8 +5,27 @@
 </template>
 
 <script>
+  import { eventHub } from '../../metadata.js'
 
   export default {
-    name: 'accordion'
+    name: 'accordion',
+
+    data () {
+      return {
+        children: this.$children
+      }
+    },
+
+    mounted () {
+      eventHub.$on('calltoggleAccordionContent', this.toggleAccordionContent)
+    },
+
+    methods: {
+      toggleAccordionContent (id) {
+        this.children.forEach(child => {
+          child.isActive = child.id === id && child.isActive !== true
+        })
+      }
+    }
   }
 </script>
