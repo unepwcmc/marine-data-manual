@@ -69,7 +69,7 @@ class Metadata < ApplicationRecord
     }
 
     csv << metadata_columns.join(',')
-    csv << "\r\n"
+    csv << "\n"
 
     metadata = Metadata.order(id: :asc)
 
@@ -80,7 +80,7 @@ class Metadata < ApplicationRecord
 
       metadata_attributes = metadata_attributes.values.map{ |e| "\"#{e}\"" }
       csv << metadata_attributes.join(',').to_s
-      csv << "\r\n"
+      csv << "\n"
     end
 
     csv
