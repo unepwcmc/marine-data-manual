@@ -9,4 +9,6 @@ Rails.application.routes.draw do
   get 'environmental-impact-assessment', to: 'environmental_impact_assessment#index'
   get 'ecosystem-assessment', to: 'ecosystem_assessment#index'
   get 'ecosystem-services', to: 'ecosystem_services#index'
+  get '/download', to: 'metadata#download'
+
 end
