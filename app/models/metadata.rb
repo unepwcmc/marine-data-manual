@@ -58,18 +58,13 @@ class Metadata < ApplicationRecord
     metadata.to_a.each do |meta|
       meta_attributes = meta.attributes
       meta_attributes[:themes] = []
-      meta_attributes[:themes] << "marine_spatial_planning" if meta_attributes["marine_spatial_planning"]
-      meta_attributes[:themes] << "education" if meta_attributes["education"]
-      meta_attributes[:themes] << "environmental_impact_assessment" if meta_attributes["environmental_impact_assessment"]
-      meta_attributes[:themes] << "ecosystem_assessment" if meta_attributes["ecosystem_assessment"]
-      meta_attributes[:themes] << "ecosystem_services" if meta_attributes["ecosystem_services"]
+      ["marine_spatial_planning", "education", "environmental_impact_assessment",
+      "ecosystem_assessment", "ecosystem_services"].each do |attribute|
+        meta_attributes[:themes] << attribute if meta_attributes[attribute]
+        meta_attributes.delete(attribute)
+      end
       meta_attributes.delete("created_at")
       meta_attributes.delete("updated_at")
-      meta_attributes.delete("marine_spatial_planning")
-      meta_attributes.delete("education")
-      meta_attributes.delete("environmental_impact_assessment")
-      meta_attributes.delete("ecosystem_assessment")
-      meta_attributes.delete("ecosystem_services")
       output << meta_attributes
     end
     output.to_json
