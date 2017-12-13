@@ -100,7 +100,13 @@
 
               } else if (filter.type === 'multiple') {
 
-                
+                const arrayOfValues = item[filter.name]
+
+                arrayOfValues.forEach(value => {
+                  filter.options.forEach(option => {
+                    if (value === option) optionMatch = true
+                  })
+                })
 
               } else {
                 filter.options.forEach(option => {
