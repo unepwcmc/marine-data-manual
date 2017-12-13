@@ -79,11 +79,11 @@
 
     computed: {
       hasMetadata () {
-        return this.item.metadata.length !== 0
+        return this.item.metadata && this.item.metadata.length !== 0
       },
 
       hasFactsheet () {
-        return this.item.factsheet.length !== 0
+        return this.item.factsheet && this.item.factsheet.length !== 0
       }
     },
 
