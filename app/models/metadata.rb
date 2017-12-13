@@ -65,6 +65,7 @@ class Metadata < ApplicationRecord
         meta_attributes[:themes] << attribute.capitalize.gsub('_', ' ') if meta_attributes[attribute]
         meta_attributes.delete(attribute)
       end
+      meta_attributes["metadata"] = meta_attributes["metadata"] ? "http://www.google.com" : nil
       meta_attributes.delete("created_at")
       meta_attributes.delete("updated_at")
       output << meta_attributes
