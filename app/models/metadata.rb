@@ -55,7 +55,21 @@ class Metadata < ApplicationRecord
   end
 
   def self.metadata_to_json
-    Metadata.all.order(id: :asc).to_json
+    output = []
+    metadata = Metadata.all.order(id: :asc)
+    metadata.to_a.each do |meta|
+      meta_attributes = meta.attributes
+      meta_attributes[:themes] = []
+      ["marine_spatial_planning", "education", "environmental_impact_assessment",
+      "ecosystem_assessment", "ecosystem_services"].each do |attribute|
+        meta_attributes[:themes] << attribute if meta_attributes[attribute]
+        meta_attributes.delete(attribute)
+      end
+      meta_attributes.delete("created_at")
+      meta_attributes.delete("updated_at")
+      output << meta_attributes
+    end
+    output.to_json
   end
 
   def self.to_csv
