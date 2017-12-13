@@ -63,7 +63,7 @@ class Metadata < ApplicationRecord
       meta_attributes[:themes] = []
       ["marine_spatial_planning", "education", "environmental_impact_assessment",
       "ecosystem_assessment", "ecosystem_services"].each do |attribute|
-        meta_attributes[:themes] << attribute if meta_attributes[attribute]
+        meta_attributes[:themes] << attribute.capitalize.gsub('_', ' ') if meta_attributes[attribute]
         meta_attributes.delete(attribute)
       end
       meta_attributes.delete("created_at")
