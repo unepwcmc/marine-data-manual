@@ -35,7 +35,13 @@ namespace :import do
       metadata_row_hash = {}
 
       metadata_hash.keys.each do |key|
-        metadata_row_hash[key] = csv_metadata_row[metadata_hash[key]]&.strip || "Empty"
+        if key == :metadata
+          metadata_row_hash[key] = csv_metadata_row[metadata_hash[key]]&.strip || false
+        elsif key == :factsheet
+          metadata_row_hash[key] = csv_metadata_row[metadata_hash[key]]&.strip || nil
+        else
+          metadata_row_hash[key] = csv_metadata_row[metadata_hash[key]]&.strip || "Empty"
+        end
       end
 
       current_dataset_id = csv_metadata_row[metadata_hash[:dataset_id]]
