@@ -3,8 +3,10 @@
 
     <a class="accordion-item__title" @click="toggleAccordionContent()">{{ title }}</a>
 
-    <div class="accordion-item__content">
-      <slot></slot>
+    <div class="accordion-item__content-wrapper">
+      <div class="accordion-item__content">
+        <slot></slot>
+      </div>
     </div>
 
   </div>  
@@ -42,7 +44,7 @@
   @import '../../scss/includes.scss';
 
   .accordion-item {
-    &__content {
+    &__content-wrapper {
       overflow: hidden;
       height: auto;
       max-height: 0;
