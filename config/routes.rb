@@ -10,5 +10,5 @@ Rails.application.routes.draw do
   get 'ecosystem-assessment', to: 'ecosystem_assessment#index'
   get 'ecosystem-services', to: 'ecosystem_services#index'
   get '/metadata/download', to: 'metadata#download'
-
+  get 'data-limitations', to: 'data_limitations#index'
 end
