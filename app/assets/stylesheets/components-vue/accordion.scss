@@ -1,0 +1,33 @@
+.accordion {
+  margin-bottom: rem-calc(20);
+
+  &-item {
+    margin-bottom: rem-calc(12);
+
+//--------------------------------------------------
+// title
+//--------------------------------------------------
+    &__title {
+      background-color: $primary;
+      color: white;
+      cursor: pointer;
+      font-size: rem-calc(24);
+      font-weight: bold;
+      padding: rem-calc(24);
+
+      display: block;
+
+      &:hover { background-color: rgba($primary, .7) }
+    }
+
+  //--------------------------------------------------
+  // content
+  //--------------------------------------------------
+    &__content {
+      line-height: 1.8;
+      padding: rem-calc(22 14 10 14);
+
+      p { width: 60%; }
+    }
+  }
+};
