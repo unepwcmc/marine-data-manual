@@ -59,13 +59,13 @@ class Metadata < ApplicationRecord
     metadata = Metadata.all.order(id: :asc)
     metadata.to_a.each do |meta|
       meta_attributes = meta.attributes
+      meta_attributes[:metadata] = metadata_url(meta)
       meta_attributes[:themes] = []
       ["marine_spatial_planning", "education", "environmental_impact_assessment",
       "ecosystem_assessment", "ecosystem_services"].each do |attribute|
         meta_attributes[:themes] << attribute.capitalize.gsub('_', ' ') if meta_attributes[attribute]
         meta_attributes.delete(attribute)
       end
-      meta_attributes["metadata"] = meta_attributes["metadata"] ? "http://www.google.com" : nil
       meta_attributes.delete("created_at")
       meta_attributes.delete("updated_at")
       output << meta_attributes
@@ -100,6 +100,16 @@ class Metadata < ApplicationRecord
 
     csv
 
+  end
+
+  private
+
+  def self.metadata_url(meta)
+    meta.metadata ? pdf_download_link : nil
+  end
+
+  def self.pdf_download_link
+    "http://www.google.com"
   end
 
 end
