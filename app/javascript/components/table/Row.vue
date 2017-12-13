@@ -17,7 +17,7 @@
       </td>
     </tr>
     <tr class="table__row--expandable flex" :class="{ 'table__row--open' : isOpen }">
-      
+
       <div class="flex-2-fiths">
         <h3>Resource</h3>
         {{ item.resource }}
@@ -45,7 +45,7 @@
               <span class="table__theme-title">{{ themeName('environmental_impact_assessment') }}</span>
             </li>
             <li v-if="item.ecosystem_services" class="table__theme">
-              <span class="icon--round icon--theme icon--theme-5">ES</span> 
+              <span class="icon--round icon--theme icon--theme-5">ES</span>
               <span class="table__theme-title">{{ themeName('ecosystem_services') }}</span>
             </li>
           </ul>
@@ -64,7 +64,7 @@
       index: {
         required: true
       },
-      item: { 
+      item: {
         type: Object,
         required: true
       }
@@ -127,8 +127,8 @@
 
       transition: max-height .3s ease-in-out;
     }
-    
-    &--open { 
+
+    &--open {
       max-height: rem-calc(212);
     }
   }

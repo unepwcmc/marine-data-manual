@@ -58,4 +58,33 @@ class Metadata < ApplicationRecord
     Metadata.all.order(id: :asc).to_json
   end
 
+  def self.to_csv
+    csv = ''
+    metadata_columns = Metadata.new.attributes.keys
+    metadata_columns.delete("created_at")
+    metadata_columns.delete("updated_at")
+
+    metadata_columns.map! { |e|
+      e.gsub("_", " ").capitalize
+    }
+
+    csv << metadata_columns.join(',')
+    csv << "\n"
+
+    metadata = Metadata.order(id: :asc)
+
+    metadata.to_a.each do |meta|
+      metadata_attributes = meta.attributes
+      metadata_attributes.delete("created_at")
+      metadata_attributes.delete("updated_at")
+
+      metadata_attributes = metadata_attributes.values.map{ |e| "\"#{e}\"" }
+      csv << metadata_attributes.join(',').to_s
+      csv << "\n"
+    end
+
+    csv
+
+  end
+
 end

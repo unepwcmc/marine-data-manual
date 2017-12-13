@@ -1,7 +1,10 @@
 require 'test_helper'
 
-class MetadataControllerTest < ActionDispatch::IntegrationTest
-  # test "the truth" do
-  #   assert true
-  # end
+class MetadataControllerTest < ActionController::TestCase
+
+  test "index action returns 200" do
+    get :index
+    assert_response :success
+  end
+
 end
