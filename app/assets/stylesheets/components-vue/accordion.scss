@@ -8,7 +8,7 @@
 // title
 //--------------------------------------------------
     &__title {
-      background-color: $blue-dark;
+      background-color: $primary;
       color: white;
       cursor: pointer;
       font-size: rem-calc(24);
@@ -16,6 +16,8 @@
       padding: rem-calc(24);
 
       display: block;
+
+      &:hover { background-color: rgba($primary, .7) }
     }
 
   //--------------------------------------------------
