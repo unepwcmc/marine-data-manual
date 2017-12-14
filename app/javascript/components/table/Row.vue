@@ -4,15 +4,15 @@
       <td>{{ item.category }}</td>
 
       <td>
-        <a v-if="hasResourceLink" :href="item.website_download_link">{{ trim(item.resource) }}</a>
+        <a v-if="hasResourceLink" :href="item.website_download_link" title="Visit resource website" target="_blank">{{ trim(item.resource) }}</a>
         <template v-else>{{ trim(item.resource) }}</template>
       </td>
 
       <td>{{ item.version }}</td>
       <td>{{ item.contact_organisation }}</td>
       <td>{{ item.id }}</td>
-      <td><a v-if="hasMetadata" :href="item.metadata">Link</a></td>
-      <td><a v-if="hasFactsheet" :href="item.factsheet">Link</a></td>
+      <td><a v-if="hasMetadata" :href="item.metadata" title="View metadata" target="_blank">Link</a></td>
+      <td><a v-if="hasFactsheet" :href="item.factsheet" title="View factsheet" target="_blank">Link</a></td>
       <td>
         <span v-for="theme in item.themes" class="icon--round icon--theme" :class="themeClass(theme)"></span>
       </td>
