@@ -23,12 +23,13 @@
         required: true,
         type: String
       },
-      title: String
+      title: String,
+      open: Boolean
     },
 
     data () {
       return {
-        isActive: false
+        isActive: this.open
       }
     },
 
