@@ -16,8 +16,24 @@
       padding: rem-calc(24);
 
       display: block;
+      position: relative;
 
       &:hover { background-color: rgba($primary, .7) }
+
+      &:after {
+        @extend .icon--plus;
+        @extend .vertical-center;
+
+        background-position: center;
+        background-repeat: no-repeat;
+        content: '';
+        width: rem-calc(30); height: rem-calc(30);
+      
+        display: block;
+        right: rem-calc(28);
+
+        .accordion-item--active & { @extend .icon--minus; }
+      }
     }
 
   //--------------------------------------------------

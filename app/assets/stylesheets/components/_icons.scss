@@ -11,6 +11,10 @@
     display: inline-block;
   }
 
+  &--plus { background-image: image-url('icons/plus.svg'); }
+
+  &--minus { background-image: image-url('icons/minus.svg'); }
+
   &--theme {
     color: white;
 
