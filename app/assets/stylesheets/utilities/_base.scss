@@ -9,15 +9,17 @@
 body {
   font-family: $body-font;
   margin: 0;
-
-  h1 {
-    color: white;
-    font-size: rem-calc(48);
-    margin: 0;
-  }
-
-  p { margin-top: 0; }
 }
+
+h1 {
+  color: white;
+  font-size: rem-calc(48);
+  margin: 0;
+}
+
+p { margin-top: 0; }
+
+a { color: $body-font-color; }
 
 //--------------------------------------------------
 // site structure
