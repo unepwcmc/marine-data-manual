@@ -87,15 +87,15 @@ $hoverColor: $grey;
         }
 
           &__theme {
-            margin-bottom: rem-calc(4);
+            align-items: center;
+            margin-bottom: rem-calc(8);
           }
 
           &__theme-title {
-            margin-left: rem-calc(2);
+            margin-left: rem-calc(4);
+            width: 80%;
 
             display: inline-block;
-            position: relative;
-            top: rem-calc(6);
 
             &:first-letter { text-transform: capitalize; }
           }

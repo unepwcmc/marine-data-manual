@@ -21,7 +21,7 @@ namespace :import do
       contact_organisation: csv_headers[3],
       dataset_id: csv_headers[4],
       website_download_link: csv_headers[6],
-      metadata: nil,
+      metadata: csv_headers[5],
       factsheet: csv_headers[7],
       marine_spatial_planning: csv_headers[8],
       education: csv_headers[9],

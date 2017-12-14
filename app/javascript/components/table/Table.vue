@@ -87,13 +87,28 @@
               let optionMatch = false
 
               // check the boolean value for filters with type boolean
-              if(filter.type === 'boolean'){
+              if (filter.type === 'boolean'){
 
                 filter.options.forEach(option => {
-                  if(item[filter.name] !== undefined) optionMatch = true
+                  
+                  if (option.toLowerCase() === filter.name) {
+                    if(item[filter.name] !== null) optionMatch = true
+                  } else {
+                    if (item[filter.name] === null) optionMatch = true
+                  }
                 })
-              } else {
 
+              } else if (filter.type === 'multiple') {
+
+                const arrayOfValues = item[filter.name]
+
+                arrayOfValues.forEach(value => {
+                  filter.options.forEach(option => {
+                    if (value === option) optionMatch = true
+                  })
+                })
+
+              } else {
                 filter.options.forEach(option => {
                   if (item[filter.name] == option) optionMatch = true
                 })

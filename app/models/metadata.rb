@@ -49,7 +49,8 @@ class Metadata < ApplicationRecord
         name: "themes",
         title: "Themes",
         options: ["Marine spatial planning", "Education", "Ecosystem assessment", "Environmental impact assessment", "Ecosystem services"],
-        sortButtons: false
+        sortButtons: false,
+        type: "multiple"
       },
     ].to_json
   end
