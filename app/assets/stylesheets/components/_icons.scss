@@ -12,25 +12,26 @@
   }
 
   &--theme {
+    margin-right: rem-calc(4);
     color: white;
 
-    &-1 { 
+    &-marine-spatial-planning { 
       &.icon--round { background-color: $theme-1; }
     }
-
-    &-2 { 
+    
+    &-education { 
       &.icon--round { background-color: $theme-2; }
     }
 
-    &-3 { 
+    &-ecosystem-assessment { 
       &.icon--round { background-color: $theme-3; }
     }
 
-    &-4 { 
+    &-environmental-impact-assessment { 
       &.icon--round { background-color: $theme-4; }
     }
 
-    &-5 { 
+    &-ecosystem-services { 
       &.icon--round { background-color: $theme-5; }
     }
 
