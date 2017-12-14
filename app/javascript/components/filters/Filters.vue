@@ -1,27 +1,29 @@
 <template>
-  <div>
-    <span class="filter__title bold">Filters:</span>
+  <div class="flex space-between">
+    <div>
+      <span class="filter__title bold">Filters:</span>
 
-    <v-filter v-for="filter in filters"
-      :name="filter.name"
-      :title="filter.title" 
-      :options="filter.options"
-      :type="filter.type">
-    </v-filter>
-
-    <!-- <download-csv class="inline-block"></download-csv> -->
+      <v-filter v-for="filter in filters"
+        :name="filter.name"
+        :title="filter.title" 
+        :options="filter.options"
+        :type="filter.type">
+      </v-filter>
+    </div>
+    
+    <download-csv></download-csv>
   </div>
 </template>
 
 <script>
   import { eventHub } from "../../metadata.js"
   import VFilter from './Filter.vue'
-  // import DownloadCsv from '../forms/DownloadCsv.vue'
+  import DownloadCsv from '../forms/DownloadCsv.vue'
 
   export default {
     name: 'filters',
 
-    components: { VFilter },
+    components: { VFilter, DownloadCsv },
 
     props: {
       filters: {
