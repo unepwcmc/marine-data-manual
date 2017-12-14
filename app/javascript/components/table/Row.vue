@@ -2,12 +2,17 @@
   <div class="table__row-wrapper" v-show="item.isActive">
     <tr @click="toggleRow()" class="table__row" :class="{ 'table__row--active' : isOpen }" >
       <td>{{ item.category }}</td>
-      <td>{{ trim(item.resource) }}</td>
+
+      <td>
+        <a v-if="hasResourceLink" :href="item.website_download_link" title="Visit resource website" target="_blank">{{ trim(item.resource) }}</a>
+        <template v-else>{{ trim(item.resource) }}</template>
+      </td>
+
       <td>{{ item.version }}</td>
       <td>{{ item.contact_organisation }}</td>
       <td>{{ item.id }}</td>
-      <td><a v-if="hasMetadata" :href="item.metadata">Link</a></td>
-      <td><a v-if="hasFactsheet" :href="item.factsheet">Link</a></td>
+      <td><a v-if="hasMetadata" :href="item.metadata" title="View metadata" target="_blank">Link</a></td>
+      <td><a v-if="hasFactsheet" :href="item.factsheet" title="View factsheet" target="_blank">Link</a></td>
       <td>
         <span v-for="theme in item.themes" class="icon--round icon--theme" :class="themeClass(theme)"></span>
       </td>
@@ -57,11 +62,15 @@
 
     computed: {
       hasMetadata () {
-        return this.item.metadata && this.item.metadata.length !== 0
+        return !!this.item.metadata
       },
 
       hasFactsheet () {
-        return this.item.factsheet && this.item.factsheet.length !== 0
+        return !!this.item.factsheet
+      },
+
+      hasResourceLink () {
+        return !!this.item.website_download_link
       }
     },
 
