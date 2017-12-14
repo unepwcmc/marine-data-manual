@@ -2,7 +2,12 @@
   <div class="table__row-wrapper" v-show="item.isActive">
     <tr @click="toggleRow()" class="table__row" :class="{ 'table__row--active' : isOpen }" >
       <td>{{ item.category }}</td>
-      <td>{{ trim(item.resource) }}</td>
+
+      <td>
+        <a v-if="hasResourceLink" :href="item.website_download_link">{{ trim(item.resource) }}</a>
+        <template v-else>{{ trim(item.resource) }}</template>
+      </td>
+
       <td>{{ item.version }}</td>
       <td>{{ item.contact_organisation }}</td>
       <td>{{ item.id }}</td>
@@ -79,11 +84,15 @@
 
     computed: {
       hasMetadata () {
-        return this.item.metadata.length !== 0
+        return this.item.metadata && this.item.metadata.length !== 0
       },
 
       hasFactsheet () {
-        return this.item.factsheet.length !== 0
+        return this.item.factsheet && this.item.factsheet.length !== 0
+      },
+
+      hasResourceLink () {
+        return this.item.website_download_link && this.item.website_download_link !== 0
       }
     },
 
