@@ -1,5 +1,7 @@
 <div class="topbar">
-  <img src="" alt="Logo">
+  <%= link_to '/', title: 'Ocean+' do %>
+    <img src="" alt="Logo">
+  <% end %>
 
   <nav>
     <%= link_to 'Metadata list', metadata_path, class: 'topbar__nav-link topbar__nav-link--important' %>
