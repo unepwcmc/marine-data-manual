@@ -33,6 +33,10 @@
   &--blue { @include button-background($blue); }
   &--green { @include button-background($green); }
 
+  &--white-line { border: solid white rem-calc(2); }
+
+  &--curved { border-radius: $radius-link; }
+
   &--download {
     background: $green image-url('icons/download.svg') no-repeat rem-calc(21) center;
     color: white;

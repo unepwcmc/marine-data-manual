@@ -1,0 +1,11 @@
+<div class="theme background--<%= theme[:cssName] %>">
+  <div class="container">
+    <i class="icon--theme-<%= theme[:cssName] %>"></i>
+
+    <div>
+      <h2><%= theme[:title] %></h2>
+      <p><%= theme[:content] %></p>
+      <%= link_to 'View more', theme[:link], title: 'View more information about ' + theme[:title], class: 'button button--white-line button--curved' %>
+    </div>
+  </div>
+</div>
