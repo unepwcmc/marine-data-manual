@@ -18,11 +18,10 @@
   &__nav {
     
     &-link { 
-      border-radius: $radius-link;
+      @extend .button--outline;
       color: white; 
       font-size: rem-calc(20);
       font-weight: bold;
-      padding: rem-calc(6 15 7 15);
       text-decoration: none;
 
       display: inline-block;
@@ -30,10 +29,6 @@
       &--important {
         border: solid rem-calc(2) $secondary;
         margin: rem-calc(0 6);
-      }
-
-      &:hover {
-        background-color: rgba(white, .25);
       }
     }
   }

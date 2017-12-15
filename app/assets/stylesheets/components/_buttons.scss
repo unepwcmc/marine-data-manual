@@ -35,7 +35,12 @@
 
   &--white-line { border: solid white rem-calc(2); }
 
-  &--curved { border-radius: $radius-link; }
+  &--outline { 
+    border-radius: $radius-link; 
+    padding: rem-calc(6 15 7 15);
+
+    &:hover { background-color: rgba(white, .25); }
+  }
 
   &--download {
     background: $green image-url('icons/download.svg') no-repeat rem-calc(21) center;

@@ -39,6 +39,11 @@ a {
   @extend .site-width;
 
   margin: 0 auto;
+
+  &--small {
+    margin: 0 auto;
+    width: 75%;
+  }
 }
 
 .page-padding {
