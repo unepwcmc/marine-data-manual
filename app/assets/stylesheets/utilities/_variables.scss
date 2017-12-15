@@ -37,7 +37,8 @@ $body-font-color: $black;
 // dimensions
 //--------------------------------------------------
 $site-width: rem-calc(1200);
-$site-width-small: $site-width * .80;
+$site-width-medium: $site-width * .80;
+$site-width-small: $site-width * .60;
 
 //--------------------------------------------------
 // buttons

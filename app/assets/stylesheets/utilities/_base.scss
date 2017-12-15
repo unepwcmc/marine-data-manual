@@ -42,6 +42,11 @@ a {
 
   margin: 0 auto;
 
+  &--medium {
+    margin: 0 auto;
+    width: $site-width-medium;
+  }
+
   &--small {
     margin: 0 auto;
     width: $site-width-small;
