@@ -29,6 +29,8 @@
   font-weight: bold;
   padding: rem-calc(12 17);
   text-decoration: none;
+
+  display: inline-block;
   
   &--blue { @include button-background($blue); }
   &--green { @include button-background($green); }
