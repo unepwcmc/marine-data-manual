@@ -48,6 +48,18 @@ a {
   }
 }
 
-.page-padding {
-  padding: rem-calc(42 20 120 20);
+//--------------------------------------------------
+// site padding
+//--------------------------------------------------
+.padding--page-top { padding-top: rem-calc(42); }
+
+.padding--page {
+  @extend .padding--page-top;
+  padding-right: rem-calc(20);
+  padding-bottom: rem-calc(120);
+  padding-left: rem-calc(20);
+}
+
+.padding--content-bottom {
+  padding-bottom: rem-calc(40);
 }
