@@ -16,36 +16,39 @@
   &--minus { background-image: image-url('icons/minus.svg'); }
 
   &--theme {
-    margin-right: rem-calc(4);
+    background-size: rem-calc(23);
+    background-position: center;
+    background-repeat: no-repeat;
     color: white;
+    margin-right: rem-calc(4);
 
     &-marine-spatial-planning { 
-      background: image-url('icons/placeholder.svg') center no-repeat;
+      background-image: image-url('icons/placeholder.svg');
 
       &.icon--round { background-color: $theme-1; }
     }
     
     &-education { 
-      background: image-url('icons/placeholder.svg') center no-repeat;
+      background-image: image-url('icons/placeholder.svg');
 
       &.icon--round { background-color: $theme-2; }
     }
 
     &-ecosystem-assessment { 
-      background: image-url('icons/placeholder.svg') center no-repeat;
+      background-image: image-url('icons/placeholder.svg');
 
       &.icon--round { background-color: $theme-3; }
     }
 
     &-environmental-impact-assessment { 
-      background: image-url('icons/placeholder.svg') center no-repeat;
+      background-image: image-url('icons/placeholder.svg');
 
       &.icon--round { background-color: $theme-4; }
     }
 
     &-ecosystem-services { 
-      background: image-url('icons/placeholder.svg') center no-repeat;
-      
+      background-image: image-url('icons/placeholder.svg');
+
       &.icon--round { background-color: $theme-5; }
     }
 
