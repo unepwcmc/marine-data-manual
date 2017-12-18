@@ -1,16 +1,27 @@
 //--------------------------------------------------
 // helpers
 //--------------------------------------------------
+// - colours
 // - font
 // - lists
 // - positioning
 //
+//--------------------------------------------------
+// colours
+//--------------------------------------------------
+.background--marine-spatial-planning { background-color: $theme-1; }
+.background--education { background-color: $theme-2; }
+.background--ecosystem-assessment { background-color: $theme-3; }
+.background--environmental-impact-assessment { background-color: $theme-4; }
+.background--ecosystem-services { background-color: $theme-5; }
+
 //--------------------------------------------------
 // font
 //--------------------------------------------------
 .bold { font-weight: bold; }
 .italic { font-style: italic; }
 .text-center { text-align: center; }
+.intro { line-height: 1.8; }
 
 //--------------------------------------------------
 // lists

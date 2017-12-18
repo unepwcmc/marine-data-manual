@@ -29,9 +29,20 @@
   font-weight: bold;
   padding: rem-calc(12 17);
   text-decoration: none;
+
+  display: inline-block;
   
   &--blue { @include button-background($blue); }
   &--green { @include button-background($green); }
+
+  &--white-line { border: solid white rem-calc(2); }
+
+  &--outline { 
+    border-radius: $radius-link; 
+    padding: rem-calc(6 15 7 15);
+
+    &:hover { background-color: rgba(white, .25); }
+  }
 
   &--download {
     background: $green image-url('icons/download.svg') no-repeat rem-calc(21) center;

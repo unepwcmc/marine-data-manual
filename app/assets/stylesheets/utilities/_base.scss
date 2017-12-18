@@ -17,6 +17,8 @@ h1 {
   margin: 0;
 }
 
+h2 { margin: rem-calc(0 0 10 0); }
+
 h3 { 
   font-size: rem-calc(24); 
   margin: rem-calc(0 0 16 0);
@@ -39,8 +41,30 @@ a {
   @extend .site-width;
 
   margin: 0 auto;
+
+  &--medium {
+    margin: 0 auto;
+    width: $site-width-medium;
+  }
+
+  &--small {
+    margin: 0 auto;
+    width: $site-width-small;
+  }
 }
 
-.page-padding {
-  padding: rem-calc(42 20 120 20);
+//--------------------------------------------------
+// site padding
+//--------------------------------------------------
+.padding--page-top { padding-top: rem-calc(42); }
+
+.padding--page {
+  @extend .padding--page-top;
+  padding-right: rem-calc(20);
+  padding-bottom: rem-calc(120);
+  padding-left: rem-calc(20);
+}
+
+.padding--content-bottom {
+  padding-bottom: rem-calc(40);
 }

@@ -1,0 +1,23 @@
+//--------------------------------------------------
+// theme
+//--------------------------------------------------
+.theme {
+  border-bottom: solid white rem-calc(3);
+  color: white;
+  padding: rem-calc(50 0);
+
+  &__icon {
+    flex: 1 0 auto;
+    width: rem-calc(122); height: rem-calc(122);
+
+    display: block;
+  }
+
+  &__content {
+    margin-left: rem-calc(36);
+  }
+  
+    &__copy {
+      margin-bottom: rem-calc(20);
+    }
+}

@@ -2,12 +2,14 @@
   Metadata list
 <% end %>
 
-<div class="page-padding">
+<div id="v-app" class="container">
+  <div class="padding--page">
 
-  <filters :filters="<%= @filters %>"></filters>
+    <filters :filters="<%= @filters %>"></filters>
 
-  <v-table :filters="<%= @filters %>" :metadata="<%= @metadata %>"></v-table>
+    <v-table :filters="<%= @filters %>" :metadata="<%= @metadata %>"></v-table>
 
-  <pagination :items-per-page="10"></pagination>
-  
+    <pagination :items-per-page="10"></pagination>
+    
+  </div>
 </div>
