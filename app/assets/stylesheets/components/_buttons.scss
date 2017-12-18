@@ -31,17 +31,22 @@
   text-decoration: none;
 
   display: inline-block;
+
+  &--large { font-size: rem-calc(20); }
   
   &--blue { @include button-background($blue); }
   &--green { @include button-background($green); }
 
-  &--white-line { border: solid white rem-calc(2); }
+  &--line-white { border: solid white rem-calc(2); }
+  &--line-orange { border: solid $secondary rem-calc(2); }
 
   &--outline { 
     border-radius: $radius-link; 
     padding: rem-calc(6 15 7 15);
 
     &:hover { background-color: rgba(white, .25); }
+
+    &.button--large { padding: rem-calc(7 18 8 18); }
   }
 
   &--download {
