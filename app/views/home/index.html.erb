@@ -1,8 +1,8 @@
 <div class="container--medium padding--page-top padding--content-bottom intro">
   <h2>About</h2>
-  <p><%= @about %></p>
+  <p><%= about %></p>
 </div>
 
-<% @themes.each do |theme| %>
+<% themes.each do |theme| %>
   <%= render partial: '/home/partials/theme', locals: { theme: theme } %>
 <% end %>
