@@ -10,4 +10,8 @@ module ApplicationHelper
   def pageTitle
     content_for?(:title) ? content_for(:title) : siteTitle
   end
+
+  def createClass(string)
+    string.downcase.tr(" ", "-")
+  end
 end
