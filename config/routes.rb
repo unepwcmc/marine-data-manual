@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  # root to: 'home#index'
+  root to: 'home#index'
 
   get 'metadata', to: 'metadata#index'
   get 'marine-spatial-planning', to: 'marine_spatial_planning#index'
