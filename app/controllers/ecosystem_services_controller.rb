@@ -1,7 +1,11 @@
 class EcosystemServicesController < ThemesController
 
   def index
-    @content = "Ecosystem Services"
+    @title = helpers.EcosystemServicesTitle
+
+    @headerClass = helpers.createClass(@title)
+
+    @intro = helpers.EcosystemServicesIntro
   end
 
 end

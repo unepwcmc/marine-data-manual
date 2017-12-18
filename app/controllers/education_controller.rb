@@ -1,7 +1,11 @@
 class EducationController < ThemesController
 
   def index
-    @content = "Education"
+    @title = helpers.EducationTitle
+
+    @headerClass = helpers.createClass(@title)
+
+    @intro = helpers.EducationIntro
   end
 
 end
