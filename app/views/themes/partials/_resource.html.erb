@@ -4,7 +4,7 @@
     <p><%= resource[:content] %></p>
 
     <% if resource[:url] %>
-      <%= link_to 'Further information', resource[:url], title: "Further information about #{resource[:title]}", class: 'button button--outline button--line-orange button--text-blue' %>
+      <%= link_to 'Further information', resource[:url], title: "Further information about #{resource[:title]}", target: '_blank', class: 'button--link button--link-chevron' %>
     <% end %>
   </div>
   

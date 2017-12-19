@@ -37,6 +37,9 @@
   &--blue { @include button-background($blue); }
   &--green { @include button-background($green); }
 
+  &--line-white { border: solid white rem-calc(2); }
+  &--line-orange { border: solid $secondary rem-calc(2); }
+
   &--outline { 
     border-radius: $radius-link; 
     padding: rem-calc(6 15 7 15);
@@ -44,15 +47,6 @@
     &:hover { background-color: rgba(white, .25); }
 
     &.button--large { padding: rem-calc(7 18 8 18); }
-  }
-
-  &--line-white { border: solid white rem-calc(2); }
-  &--line-orange { border: solid $secondary rem-calc(2); }
-
-  &--text-blue { 
-    color: $primary; 
-
-    &:hover { background-color: rgba($secondary, .1); }
   }
 
   &--download {
@@ -92,4 +86,13 @@
   }
 
   &--link--green { color: $green; }
+
+  &--link-chevron {
+    font-weight: bold;
+
+    &:after {
+      background-image: image-url('cheveron-right.svg');
+      content: ' >'
+    }
+  }
 }
