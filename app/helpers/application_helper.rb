@@ -12,7 +12,7 @@ module ApplicationHelper
   end
 
   def create_class(string)
-    string.downcase.tr(" ", "-")
+    string.downcase.tr("/ |_/", "-")
   end
 
   def url_encode (text)
