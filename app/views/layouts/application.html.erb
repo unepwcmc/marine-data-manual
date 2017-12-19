@@ -1,22 +1,20 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= titleMetaTag %></title>
-    <%= csrf_meta_tags %>
-
-    <link href="https://fonts.googleapis.com/css?family=Noto+Sans:400,400i,700" rel="stylesheet">
-
-    <%= stylesheet_pack_tag 'application' %>
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= render 'global/head' %>
   </head>
 
   <body>
 
     <%= render 'global/topbar' %>
 
-    <%= render partial: 'global/header', locals: { title: pageTitle } %>
+    <%= render partial: 'global/header', locals: { title: page_title } %>
 
-    <%= yield %>
+    <div id="v-app">
+      <%= render 'global/social-sharing' %>
+
+      <%= yield %>
+    </div>
 
     <%= render 'global/cta' %>
 
