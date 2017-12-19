@@ -62,6 +62,7 @@
   @import '../../scss/includes.scss';
 
   .table__head {
+    position: absolute;
 
     &--stuck {
       position: fixed;
