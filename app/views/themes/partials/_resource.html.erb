@@ -1,0 +1,14 @@
+<div class="resource flex space-between">
+  <div class="resource__content flex-3-fiths">
+    <h3><%= resource[:title] %></h3>
+    <p><%= resource[:content] %></p>
+
+    <% if resource[:url] %>
+      <%= link_to 'Further information', resource[:url], title: "Further information about #{resource[:title]}", class: 'button button--outline button--line-orange button--text-blue' %>
+    <% end %>
+  </div>
+  
+  <% if resource[:image] %>
+    <img class="resource__image" src="" alt="">
+  <% end %>
+</div>
