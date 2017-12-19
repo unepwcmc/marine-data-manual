@@ -41,7 +41,7 @@ module ApplicationHelper
 
   def create_social_twitter_link
     title = url_encode('Share ' + page_title + ' on Twitter')
-    text = url_encode('Ocean+')
+    text = url_encode(site_title)
     url = encoded_page_url
     href = 'https://twitter.com/intent/tweet/?text=' + text + '&url=' + url
     
