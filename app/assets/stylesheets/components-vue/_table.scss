@@ -91,6 +91,10 @@ $hoverColor: $grey;
             margin-bottom: rem-calc(8);
           }
 
+          &__theme-icon {
+            margin-right: rem-calc(4);
+          }
+
           &__theme-title {
             margin-left: rem-calc(4);
             width: 80%;

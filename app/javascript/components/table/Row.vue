@@ -14,7 +14,7 @@
       <td><a v-if="hasMetadata" :href="item.metadata" title="View metadata" target="_blank">Link</a></td>
       <td><a v-if="hasFactsheet" :href="item.factsheet" title="View factsheet" target="_blank">Link</a></td>
       <td>
-        <span v-for="theme in item.themes" class="icon--round icon--theme" :class="themeClass(theme)"></span>
+        <span v-for="theme in item.themes" class="table__theme-icon icon--round icon--theme" :class="themeClass(theme)"></span>
       </td>
     </tr>
     <tr class="table__row--expandable flex" :class="{ 'table__row--open' : isOpen }">
@@ -27,7 +27,7 @@
         <h3>Themes</h3>
         <div class="flex table__themes">
           <ul class="ul-unstyled flex flex-wrap">
-            <li v-for="theme in item.themes" class="table__theme flex-1-half flex" :class="themeClass(theme)">
+            <li v-for="theme in item.themes" class="table__theme flex-1-half flex">
               <span class="icon--round icon--theme" :class="themeClass(theme)"></span>
               <span class="table__theme-title">{{ theme }}</span>
             </li>
