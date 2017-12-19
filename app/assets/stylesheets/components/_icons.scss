@@ -4,6 +4,7 @@
 .icon {
 
   &--round {
+    background-size: 100%;
     border-radius: 100%;
     width: rem-calc(39); height: rem-calc(39);
     text-align: center;
@@ -16,17 +17,16 @@
   &--minus { background-image: image-url('icons/minus.svg'); }
 
   &--theme {
-    background-size: 100%;
     background-position: center;
     background-repeat: no-repeat;
+    background-size: contain;
     color: white;
-    margin-right: rem-calc(4);
 
     display: inline-block;
 
     &-marine-spatial-planning { 
-      background-image: image-url('icons/placeholder.svg');
-
+      background-image: image-url('icons/marine.svg');
+      
       &.icon--round { 
         background-color: $theme-1; 
         background-size: rem-calc(23);
@@ -34,7 +34,7 @@
     }
     
     &-education { 
-      background-image: image-url('icons/placeholder.svg');
+      background-image: image-url('icons/education.svg');
 
       &.icon--round { 
         background-color: $theme-2; 
@@ -43,7 +43,7 @@
     }
 
     &-ecosystem-assessment { 
-      background-image: image-url('icons/placeholder.svg');
+      background-image: image-url('icons/ecosystem-assessment.svg');
 
       &.icon--round { 
         background-color: $theme-3;
@@ -52,7 +52,7 @@
     }
 
     &-environmental-impact-assessment { 
-      background-image: image-url('icons/placeholder.svg');
+      background-image: image-url('icons/environmental.svg');
 
       &.icon--round { 
         background-color: $theme-4; 
@@ -61,7 +61,7 @@
     }
 
     &-ecosystem-services { 
-      background-image: image-url('icons/placeholder.svg');
+      background-image: image-url('icons/ecosystem-services.svg');
 
       &.icon--round { 
         background-color: $theme-5; 
