@@ -11,7 +11,7 @@ module ApplicationHelper
     content_for?(:title) ? content_for(:title) : siteTitle
   end
 
-  def createClass(string)
-    string.downcase.tr(" ", "-")
+  def create_class(string)
+    string.downcase.tr("/ |_/g", "-")
   end
 end

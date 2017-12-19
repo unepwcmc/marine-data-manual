@@ -1,4 +1,10 @@
 //--------------------------------------------------
+// header
+//--------------------------------------------------
+// - global
+// - theme
+// - hero images
+//--------------------------------------------------
 // global header
 //--------------------------------------------------
 .header {
@@ -47,4 +53,11 @@
       width: rem-calc(66); height: rem-calc(66);
     }
   }
+
+//--------------------------------------------------
+// hero images
+//--------------------------------------------------
+  &--home { background-image: image-url('hero/turtle.jpg'); }
+  &--metadata { background-image: image-url('hero/coral.jpg'); }
+  &--data-limitations { background-image: image-url('hero/river.jpg'); }
 }
