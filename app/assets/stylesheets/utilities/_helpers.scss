@@ -9,6 +9,7 @@
 //--------------------------------------------------
 // colours
 //--------------------------------------------------
+.background--grey { background-color: $grey-light; }
 .background--marine-spatial-planning { background-color: $theme-1; }
 .background--education { background-color: $theme-2; }
 .background--ecosystem-assessment { background-color: $theme-3; }
@@ -32,9 +33,24 @@
   padding: 0;
 }
 
+.ul-2-columns {
+  @extend .flex;
+  @extend .flex-wrap;
+  margin-top: rem-calc(26);
+  padding-left: 0;
+
+  li {
+    flex: 1 1 48%;
+    margin-left: 2%;
+    margin-bottom: rem-calc(14);
+    padding-right: rem-calc(26);
+  }
+}
+
 //--------------------------------------------------
 // positioning
 //--------------------------------------------------
+.center { text-align: center; }
 .inline-block { display: inline-block; }
 .float-left { float: left; }
 

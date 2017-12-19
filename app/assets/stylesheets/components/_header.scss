@@ -1,5 +1,5 @@
 //--------------------------------------------------
-// header
+// global header
 //--------------------------------------------------
 .header {
   background-color: $primary;
@@ -29,6 +29,22 @@
         right: 0;
         z-index: -1;
       }
+    }
+  }
+
+//--------------------------------------------------
+// theme header
+//--------------------------------------------------
+  &--theme {
+    color: white;
+    padding: rem-calc(170 0 120 0);
+
+    h1 { margin: rem-calc(10 0 22 0); }
+
+    &__intro { margin-bottom: rem-calc(24); }
+
+    &__icon {
+      width: rem-calc(66); height: rem-calc(66);
     }
   }
 }

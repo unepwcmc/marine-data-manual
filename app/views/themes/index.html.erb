@@ -1,1 +1,28 @@
-This page is <%= @content %>
+<div class="container--medium padding--page-top padding--content-bottom">
+  <h2>Case Studies</h2>
+
+  <p><%= @case_study_intro %></p>
+  
+  <% if @case_study_bullets %>
+    <ul class="ul-2-columns">
+      <% @case_study_bullets.each do |bullet| %>
+        <li><%= bullet %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  
+</div>
+
+<% if @resources %>
+  <div class="background--grey padding--page">
+    <div class="container--medium">
+      <h2>Tools & Resources</h2>
+
+      <% @resources.each do |resource| %>
+        <%= render partial: 'themes/partials/resource', locals: { resource: resource } %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+

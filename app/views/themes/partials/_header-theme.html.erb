@@ -1,0 +1,8 @@
+<header class="header--theme background--<%= @headerClass %>">
+  <div class="header--theme__title container--medium center">
+    <i class="header--theme__icon icon--theme icon--theme-<%= @headerClass %>"></i>
+    <h1><%= @title %></h1>
+    <p class="header--theme__intro intro"><%= @intro %></p>
+    <%= link_to 'Metadata list', metadata_path, title: 'View the list of Metadata', class: 'button button--large button--outline button--line-orange' %>
+  </div>
+</header>

@@ -1,0 +1,14 @@
+//--------------------------------------------------
+// resource
+//--------------------------------------------------
+.resource {
+  margin-bottom: rem-calc(36);
+
+  h3 { margin-bottom: rem-calc(8); }
+
+  &__image {
+    background-color: $grey;
+    margin-top: rem-calc(16);
+    width: rem-calc(315); height: auto;
+  }
+}

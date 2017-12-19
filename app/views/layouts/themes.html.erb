@@ -14,9 +14,11 @@
 
     <%= render 'global/topbar' %>
 
-    <%= render partial: 'global/header', locals: { title: pageTitle } %>
+    <%= render partial: 'themes/partials/header-theme', locals: { title: @title, headerClass: @headerClass, intro: @intro } %>
 
     <%= yield %>
+
+    <%= render 'global/cta' %>
 
     <%= render 'global/footer' %>
 
