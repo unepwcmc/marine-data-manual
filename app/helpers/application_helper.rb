@@ -11,11 +11,15 @@ module ApplicationHelper
     content_for?(:title) ? content_for(:title) : site_title
   end
 
-  def create_class(string)
+  def create_class string
     string.downcase.tr("/ |_/", "-")
   end
 
-  def url_encode (text)
+  def remove_spaces string
+    string.downcase.gsub(" ", "")
+  end
+
+  def url_encode text
     ERB::Util.url_encode(text)
   end
 

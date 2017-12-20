@@ -12,6 +12,7 @@
       <ul class="ul-unstyled filter__options-list" :class="filterClass">
         <filter-option v-for="option in options" 
           :option="option"
+          :isTheme="isThemeFilter"
           :selected="false">
         </filter-option>
       </ul>
@@ -58,7 +59,17 @@
       }
     },
 
+    created () {
+      eventHub.$on('applyFilters', this.apply)
+    },
+
     computed: {
+      // set a flag for theme options that belong to the theme filter
+      // this is used to prefilter the table for an individual theme
+      isThemeFilter () {
+        return this.name === 'themes'  
+      },
+
       // only show the select if the filter is a real filter and not just a table title
       hasOptions () {
         return this.options != undefined && this.name != undefined

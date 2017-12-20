@@ -7,6 +7,7 @@ class EcosystemAssessmentController < ThemesController
     @case_study_intro = helpers.ecosystem_assessment_case_study_intro
     @case_study_bullets = helpers.ecosystem_assessment_case_study_bullets
     @resources = helpers.ecosystem_assessment_resources
+    @theme = helpers.remove_spaces(@title)
   end
 
 end
