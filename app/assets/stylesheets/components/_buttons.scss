@@ -90,9 +90,6 @@
   &--link-chevron {
     font-weight: bold;
 
-    &:after {
-      background-image: image-url('cheveron-right.svg');
-      content: ' >'
-    }
+    &:after { content: ' >' }
   }
 }
