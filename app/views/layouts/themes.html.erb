@@ -1,13 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title_meta_tag %></title>
-    <%= csrf_meta_tags %>
-
-    <link href="https://fonts.googleapis.com/css?family=Noto+Sans:400,400i,700" rel="stylesheet">
-
-    <%= stylesheet_pack_tag 'application' %>
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= render 'global/head' %>
   </head>
 
   <body>
@@ -15,8 +9,12 @@
     <%= render 'global/topbar' %>
 
     <%= render partial: 'themes/partials/header-theme', locals: { title: @title, headerClass: @headerClass, intro: @intro } %>
+    
+    <div id="v-app">
+      <%= render 'global/social-sharing' %>
 
-    <%= yield %>
+      <%= yield %>
+    </div>
 
     <%= render 'global/cta' %>
 
