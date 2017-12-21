@@ -20,7 +20,14 @@ $hoverColor: $grey;
 
     &:first-child { border-left: none; }
   }
+    
+    &__header {
+      margin-right: rem-calc(2);
+      vertical-align: middle;
 
+      display: inline-block;
+    }
+    
 //--------------------------------------------------
 // columns
 //--------------------------------------------------

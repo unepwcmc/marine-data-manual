@@ -242,15 +242,5 @@
     }
 
     td, th { word-wrap: break-word; }
-
-  //**************************************************
-  // column headers <th>
-  //**************************************************
-    &__header {
-      margin-right: rem-calc(2);
-      vertical-align: middle;
-
-      display: inline-block;
-    }
   }
 </style>
