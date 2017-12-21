@@ -26,9 +26,9 @@
       <div class="flex-3-fiths">
         <h3>Themes</h3>
         <div class="flex table__themes">
-          <ul class="ul-unstyled flex flex-wrap">
-            <li v-for="theme in item.themes" class="table__theme flex-1-half flex">
-              <a :href="themeUrl(theme)">
+          <ul class="ul-unstyled">
+            <li v-for="theme in item.themes" class="table__theme">
+              <a :href="themeUrl(theme)" class="table__theme-link flex f-v-center">
                 <span class="icon--round icon--theme" :class="themeClass(theme)"></span>
                 <span class="table__theme-title">{{ theme }}</span>
               </a>
@@ -104,7 +104,7 @@
 
       themeUrl (theme) {
         const regex = new RegExp(' ', 'g')
-        
+
         return '/' + theme.toLowerCase().replace(regex, '-')
       }
     }

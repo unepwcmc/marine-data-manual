@@ -129,10 +129,13 @@ $hoverColor: $grey;
         &__themes {
           padding-bottom: rem-calc(30);
         }
-
-          &__theme {
-            align-items: center;
+          
+          //N.B flexbox layout doesn't work in IE so going back to using float
+          &__theme { 
             margin-bottom: rem-calc(8);
+            width: 50%;
+
+            float: left;
           }
 
           &__theme-icon {
