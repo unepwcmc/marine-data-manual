@@ -28,8 +28,10 @@
         <div class="flex table__themes">
           <ul class="ul-unstyled flex flex-wrap">
             <li v-for="theme in item.themes" class="table__theme flex-1-half flex">
-              <span class="icon--round icon--theme" :class="themeClass(theme)"></span>
-              <span class="table__theme-title">{{ theme }}</span>
+              <a :href="themeUrl(theme)">
+                <span class="icon--round icon--theme" :class="themeClass(theme)"></span>
+                <span class="table__theme-title">{{ theme }}</span>
+              </a>
             </li>
           </ul>
         </div>
@@ -98,6 +100,12 @@
 
       toggleRow () {
         eventHub.$emit('toggleRow', this.index)
+      },
+
+      themeUrl (theme) {
+        const regex = new RegExp(' ', 'g')
+        
+        return '/' + theme.toLowerCase().replace(regex, '-')
       }
     }
   }
