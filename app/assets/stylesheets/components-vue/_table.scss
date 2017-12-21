@@ -9,7 +9,7 @@ $hoverColor: $grey;
 //--------------------------------------------------
 .table {
 
-  &--head { height: rem-calc(56); }
+  &--head { height: rem-calc(64); }
 
 //--------------------------------------------------
 // table head
@@ -27,7 +27,7 @@ $hoverColor: $grey;
 
       display: inline-block;
     }
-    
+
 //--------------------------------------------------
 // columns
 //--------------------------------------------------
@@ -35,20 +35,25 @@ $hoverColor: $grey;
 // size when you use the pagination 
 
   th,td {
-    padding: rem-calc(16 14);
     text-align: left;
 
     &:first-child { width: $firstColumn + px; }
-    &:nth-child(2) { width: 134px; }
+    &:nth-child(2) { width: 148px; }
     &:nth-child(3) { width: 104px; }
     &:nth-child(4) { width: 218px; }
     &:nth-child(5) { width: 99px; }
-    &:nth-child(6) { width: 122px; }
-    &:nth-child(7) { width: 122px; }
+    &:nth-child(6) { width: 115px; }
+    &:nth-child(7) { width: 115px; }
     &:nth-child(8) { width: 244px; }
   }
 
-  td { border-left: solid white rem-calc(1); }
+  th { padding: rem-calc(20 14); }
+
+  td { 
+    border-left: solid white rem-calc(1); 
+    padding: rem-calc(14);
+    vertical-align: middle;
+  }
 
 //--------------------------------------------------
 // row
