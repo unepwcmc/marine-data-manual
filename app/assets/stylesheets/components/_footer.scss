@@ -9,4 +9,8 @@
   
   align-items: center;
   display: flex;
+
+  &__logo {
+    width: rem-calc(105); height: rem-calc(36);
+  }
 }
