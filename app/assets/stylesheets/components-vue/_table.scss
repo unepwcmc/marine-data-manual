@@ -95,6 +95,8 @@ $hoverColor: $grey;
         background-color: $hoverColor;
         border-left: solid white rem-calc(1);
         padding: rem-calc(0 14 0 $firstColumn + 14);
+
+        h3 { margin-top: rem-calc(18); }
       }
     }
 

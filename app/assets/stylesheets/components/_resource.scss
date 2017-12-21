@@ -4,7 +4,10 @@
 .resource {
   margin-bottom: rem-calc(36);
 
-  h3 { margin-bottom: rem-calc(8); }
+  h3 { 
+    font-size: rem-calc(24); 
+    margin-bottom: rem-calc(8); 
+  }
 
   &__image {
     background-color: $grey;
