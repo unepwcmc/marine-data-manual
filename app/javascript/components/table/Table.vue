@@ -233,14 +233,6 @@
     table-layout: fixed;
     width: 100%;
 
-    &--head {
-      margin-top: rem-calc(30);
-    }
-
-    &--body {
-      margin-bottom: rem-calc(40);
-    }
-
     td, th { word-wrap: break-word; }
   }
 </style>

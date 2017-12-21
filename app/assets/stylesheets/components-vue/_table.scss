@@ -9,7 +9,12 @@ $hoverColor: $grey;
 //--------------------------------------------------
 .table {
 
-  &--head { height: rem-calc(64); }
+  &--head { 
+    margin-top: rem-calc(30);
+    height: rem-calc(64);  // must match height of the <head> tag
+  }
+
+  &--body { margin-bottom: rem-calc(40); }
 
 //--------------------------------------------------
 // table head
@@ -53,6 +58,8 @@ $hoverColor: $grey;
     border-left: solid white rem-calc(1); 
     padding: rem-calc(14);
     vertical-align: middle;
+
+    &:nth-child(3) { font-weight: bold; }
   }
 
 //--------------------------------------------------
@@ -84,9 +91,6 @@ $hoverColor: $grey;
         }
       }
 
-//--------------------------------------------------
-// expandable section
-//--------------------------------------------------
       &--expandable {
         background-color: $hoverColor;
         border-left: solid white rem-calc(1);
