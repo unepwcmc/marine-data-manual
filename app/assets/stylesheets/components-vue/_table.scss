@@ -83,6 +83,26 @@ $hoverColor: $grey;
     }
 
 //--------------------------------------------------
+// sort
+//--------------------------------------------------
+    &__sorting {
+      opacity: .7;
+      vertical-align: middle;
+
+      display: inline-block;
+
+      &:hover { opacity: .9; }
+    }
+
+      &__sort {
+        background-image: image-url('icons/sort.svg');
+        cursor: pointer;
+        width: rem-calc(8); height: rem-calc(13);
+
+        display: block;
+      }
+
+//--------------------------------------------------
 // themes
 //--------------------------------------------------
         &__themes {

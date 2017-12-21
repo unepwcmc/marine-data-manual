@@ -270,33 +270,5 @@
       &:nth-child(8) { width: 154px; }
       &:nth-child(9) { width: 176px; }
     }
-
-  //**************************************************
-  // sort column buttons
-  //**************************************************
-    &__sorting {
-      opacity: .7;
-      vertical-align: middle;
-
-      display: inline-block;
-
-      &:hover { opacity: .9; }
-    }
-
-      &__sort {
-        cursor: pointer;
-        width: rem-calc(8); height: rem-calc(6);
-
-        display: block;
-
-        &--ascending {
-          // background-image: image-url('icons/arrow-up-white.svg');
-          margin-bottom: rem-calc(1);
-        }
-
-        &--descending {
-          // background-image: image-url('icons/arrow-down-white.svg');
-        }
-      }
   }
 </style>

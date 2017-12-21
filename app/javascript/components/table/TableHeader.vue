@@ -3,8 +3,7 @@
     <span class="table__header">{{ title }}</span>
 
     <div v-if="sortButtons" class="table__sorting" @click="sort()">
-      <span alt="Sort results" class="table__sort table__sort--ascending"></span>
-      <span alt="Sort results" class="table__sort table__sort--descending"></span>
+      <span alt="Sort results" class="table__sort"></span>
     </div>
   </th>
 </template>
