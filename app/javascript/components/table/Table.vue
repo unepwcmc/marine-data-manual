@@ -252,23 +252,5 @@
 
       display: inline-block;
     }
-
-  //**************************************************
-  // columns
-  //**************************************************
-
-    // fix the columns widths so that they don't change
-    // size when you use the pagination
-    th,td {
-      &:first-child { width: 60px; }
-      &:nth-child(2) { width: 144px; }
-      &:nth-child(3) { width: 130px; }
-      &:nth-child(4) { width: 104px; }
-      &:nth-child(5) { width: 142px; }
-      &:nth-child(6) { width: 132px; }
-      &:nth-child(7) { width: 118px; }
-      &:nth-child(8) { width: 154px; }
-      &:nth-child(9) { width: 176px; }
-    }
   }
 </style>
