@@ -28,7 +28,6 @@ $hoverColor: $grey;
 // size when you use the pagination 
 
   th,td {
-    border-left: solid white rem-calc(1);
     padding: rem-calc(16 14);
     text-align: left;
 
@@ -41,6 +40,8 @@ $hoverColor: $grey;
     &:nth-child(7) { width: 122px; }
     &:nth-child(8) { width: 244px; }
   }
+
+  td { border-left: solid white rem-calc(1); }
 
 //--------------------------------------------------
 // row
