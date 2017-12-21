@@ -14,7 +14,10 @@ $hoverColor: $grey;
     height: rem-calc(64);  // must match height of the <head> tag
   }
 
-  &--body { margin-bottom: rem-calc(40); }
+  &--body { 
+    border-bottom: solid rem-calc(2) $grey;
+    margin-bottom: rem-calc(40); 
+  }
 
 //--------------------------------------------------
 // table head
