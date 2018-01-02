@@ -67,8 +67,7 @@ class Metadata < ApplicationRecord
         meta_attributes[:themes] << attribute.capitalize.gsub('_', ' ') if meta_attributes[attribute]
         meta_attributes.delete(attribute)
       end
-      meta_attributes.delete("created_at")
-      meta_attributes.delete("updated_at")
+      meta_attributes.delete_if { |k, v| ["created_at", "updated_at"].include? k }
       output << meta_attributes
     end
     output.to_json
@@ -77,8 +76,7 @@ class Metadata < ApplicationRecord
   def self.to_csv
     csv = ''
     metadata_columns = Metadata.new.attributes.keys
-    metadata_columns.delete("created_at")
-    metadata_columns.delete("updated_at")
+    metadata_columns.delete_if { |k, v| ["created_at", "updated_at"].include? k }
 
     metadata_columns.map! { |e|
       e.gsub("_", " ").capitalize
@@ -91,8 +89,7 @@ class Metadata < ApplicationRecord
 
     metadata.to_a.each do |meta|
       metadata_attributes = meta.attributes
-      metadata_attributes.delete("created_at")
-      metadata_attributes.delete("updated_at")
+      metadata_attributes.delete_if { |k, v| ["created_at", "updated_at"].include? k }
 
       metadata_attributes = metadata_attributes.values.map{ |e| "\"#{e}\"" }
       csv << metadata_attributes.join(',').to_s
