@@ -233,6 +233,6 @@
     table-layout: fixed;
     width: 100%;
 
-    td, th { word-wrap: break-word; }
+    td, th { word-break: break-word; }
   }
 </style>
