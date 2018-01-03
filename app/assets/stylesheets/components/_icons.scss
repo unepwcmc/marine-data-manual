@@ -76,16 +76,15 @@
   &--social {
     background-position: center;
     background-repeat: no-repeat;
-    padding: rem-calc(12);
-    width: rem-calc(58); height: rem-calc(58);
+    width: rem-calc(58); height: rem-calc(48);
 
     display: block;
 
     &:hover { opacity: .75; }
 
-    &-facebook { background-image: url('icons/facebook.svg'); }
-    &-email { background-image: url('icons/email.svg'); }
-    &-twitter { background-image: url('icons/twitter.svg'); }
-    &-linkedin { background-image: url('icons/linkedin.svg'); }
+    &-facebook { background-image: image-url('icons/facebook.svg'); }
+    &-email { background-image: image-url('icons/email.svg'); }
+    &-twitter { background-image: image-url('icons/twitter.svg'); }
+    &-linkedin { background-image: image-url('icons/linkedin.svg'); }
   }
 }

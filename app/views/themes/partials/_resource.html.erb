@@ -9,6 +9,6 @@
   </div>
   
   <% if resource[:image] %>
-    <img class="resource__image" src="" alt="">
+    <%= image_tag resource[:image], width: 315, height: 177, class: "resource__image" %>
   <% end %>
 </div>

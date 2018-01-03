@@ -9,7 +9,15 @@ $hoverColor: $grey;
 //--------------------------------------------------
 .table {
 
-  &--head { height: rem-calc(56); }
+  &--head { 
+    margin-top: rem-calc(30);
+    height: rem-calc(64);  // must match height of the <head> tag
+  }
+
+  &--body { 
+    border-bottom: solid rem-calc(2) $grey;
+    margin-bottom: rem-calc(40);
+  }
 
 //--------------------------------------------------
 // table head
@@ -20,6 +28,13 @@ $hoverColor: $grey;
 
     &:first-child { border-left: none; }
   }
+    
+    &__header {
+      margin-right: rem-calc(2);
+      vertical-align: middle;
+
+      display: inline-block;
+    }
 
 //--------------------------------------------------
 // columns
@@ -28,18 +43,26 @@ $hoverColor: $grey;
 // size when you use the pagination 
 
   th,td {
-    border-left: solid white rem-calc(1);
-    padding: rem-calc(16 14);
     text-align: left;
 
     &:first-child { width: $firstColumn + px; }
-    &:nth-child(2) { width: 134px; }
+    &:nth-child(2) { width: 148px; }
     &:nth-child(3) { width: 104px; }
     &:nth-child(4) { width: 218px; }
-    &:nth-child(5) { width: 99px; }
-    &:nth-child(6) { width: 122px; }
-    &:nth-child(7) { width: 122px; }
+    &:nth-child(5) { width: 100px; }
+    &:nth-child(6) { width: 115px; }
+    &:nth-child(7) { width: 115px; }
     &:nth-child(8) { width: 244px; }
+  }
+
+  th { padding: rem-calc(20 14); }
+
+  td { 
+    border-left: solid white rem-calc(1); 
+    padding: rem-calc(14);
+    vertical-align: middle;
+
+    &:nth-child(3) { font-weight: bold; }
   }
 
 //--------------------------------------------------
@@ -71,15 +94,34 @@ $hoverColor: $grey;
         }
       }
 
-//--------------------------------------------------
-// expandable section
-//--------------------------------------------------
       &--expandable {
         background-color: $hoverColor;
         border-left: solid white rem-calc(1);
         padding: rem-calc(0 14 0 $firstColumn + 14);
+
+        h3 { margin-top: rem-calc(18); }
       }
     }
+
+//--------------------------------------------------
+// sort
+//--------------------------------------------------
+    &__sorting {
+      opacity: .7;
+      vertical-align: middle;
+
+      display: inline-block;
+
+      &:hover { opacity: .9; }
+    }
+
+      &__sort {
+        background-image: image-url('icons/sort.svg');
+        cursor: pointer;
+        width: rem-calc(8); height: rem-calc(13);
+
+        display: block;
+      }
 
 //--------------------------------------------------
 // themes
@@ -87,10 +129,13 @@ $hoverColor: $grey;
         &__themes {
           padding-bottom: rem-calc(30);
         }
-
-          &__theme {
-            align-items: center;
+          
+          //N.B flexbox layout doesn't work in IE so going back to using float
+          &__theme { 
             margin-bottom: rem-calc(8);
+            width: 50%;
+
+            float: left;
           }
 
           &__theme-icon {
