@@ -40,7 +40,7 @@ namespace :import do
         elsif key == :factsheet
           metadata_row_hash[key] = csv_metadata_row[metadata_hash[key]]&.strip || nil
         else
-          metadata_row_hash[key] = csv_metadata_row[metadata_hash[key]]&.strip || "Empty"
+          metadata_row_hash[key] = csv_metadata_row[metadata_hash[key]]&.strip
         end
       end
 
