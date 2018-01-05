@@ -107,7 +107,7 @@ class Metadata < ApplicationRecord
   end
 
   def self.pdf_download_link
-    "http://www.google.com"
+    "http://wcmc.io/metadata"
   end
 
 end
