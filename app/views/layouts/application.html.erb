@@ -21,5 +21,9 @@
     <%= render 'global/footer' %>
 
     <%= javascript_pack_tag 'application' %>
+    <% if Rails.env == 'production' %>
+      <%= render 'shared/google_analytics' %>
+    <% end %>
+
   </body>
 </html>
