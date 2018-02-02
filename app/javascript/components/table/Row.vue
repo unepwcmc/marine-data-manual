@@ -26,7 +26,7 @@
       <div class="flex-3-fiths">
         <h3>Themes</h3>
         <div class="flex table__themes">
-          <ul class="ul-unstyled">
+          <ul class="ul-unstyled table__themes-list">
             <li v-for="theme in item.themes" class="table__theme">
               <a :href="themeUrl(theme)" class="table__theme-link flex f-v-center">
                 <span class="icon--round icon--theme" :class="themeClass(theme)"></span>

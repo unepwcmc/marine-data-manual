@@ -130,24 +130,26 @@ $hoverColor: $grey;
           padding-bottom: rem-calc(30);
         }
           
-          //N.B flexbox layout doesn't work in IE so going back to using float
-          &__theme { 
-            margin-bottom: rem-calc(8);
-            width: 50%;
+          &__themes-list { width: 100%; }
 
-            float: left;
-          }
+            //N.B flexbox layout doesn't work in IE so going back to using float
+            &__theme { 
+              margin-bottom: rem-calc(8);
+              width: 50%;
 
-          &__theme-icon {
-            margin-right: rem-calc(4);
-          }
+              float: left;
+            }
 
-          &__theme-title {
-            margin-left: rem-calc(4);
-            width: 80%;
+            &__theme-icon {
+              margin-right: rem-calc(4);
+            }
 
-            display: inline-block;
+            &__theme-title {
+              margin-left: rem-calc(4);
+              width: 80%;
 
-            &:first-letter { text-transform: capitalize; }
-          }
+              display: inline-block;
+
+              &:first-letter { text-transform: capitalize; }
+            }
   }
