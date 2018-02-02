@@ -33,7 +33,7 @@ module HomeHelper
         title: 'Ecosystem services and natural capital',
         content: 'Natural capital and ecosystem services underpin our economy and society, and are therefore directly relevant to policy and business decision-making. Improved data enables the development of ecosystem valuation indicators that can be incorporated into government and businesses management.',
         link: ecosystem_services_path,
-        cssName: 'ecosystem-services-and-natural-capital'
+        cssName: 'ecosystem-services'
       }
     ]
   end

@@ -3,6 +3,10 @@ module EnvironmentalImpactAssessmentHelper
     "Environmental impact assessment"
   end
 
+  def environmental_impact_assessment_class
+    "environmental-impact-assessment"
+  end
+
   def environmental_impact_assessment_intro
     "<p>Environmental impact assessment (EIA) refers to the process of examining the anticipated environmental effects of a proposed project, which begins at the project’s design stage. A report is curated and then evaluated by a competent authority, who encompas public responses and decide whether a project is allowed to proceed.</p><p>The development and use of biodiversity tools can support environmental impact assessment reporting, supporting more informed and robust conclusions. For example, the Integrated Biodiversity Assessment Tool for Business (IBAT) provides a gateway to information and tools that aid decisions about biodiversity risk and reports on environmental performance.</p><p>An important emerging regulatory framework on environmental sustainability for business operations is the International Finance Corporation’s (IFC’s) Performance Standard 6 (PS6). Within this framework, biodiversity significance is represented through the concept of ‘Critical Habitat’, a definition developed by the IFC and detailed through criteria aligned with those that support internationally accepted biodiversity designations.</p><p>Martin et al. (2015) present a preliminary global map that classifies more than 13 million km2 of marine and coastal areas of importance for biodiversity based on their overlap with the IFC PS6’s Critical Habitat criteria. This work is likely to be of particular use for industries operating in the marine and coastal realms as an early screening aid prior to in situ Critical Habitat assessment, as well as to financial institutions making investment decisions.</p>"
   end

@@ -3,6 +3,10 @@ module MarineSpatialPlanningHelper
     "Marine spatial planning"
   end
 
+  def marine_spatial_planning_class
+    "marine-spatial-planning"
+  end
+
   def marine_spatial_planning_intro
     "<p>Marine spatial planning facilitates management of competing interests by planning where different activities will happen. During the planning process, marine stakeholders with different interests, including industry and government representatives and those interested in conservation and recreational uses,  are brought together to make better informed and collaborative decisions about how best to use ocean resources.</p><p>While each maritime country has its own area of national jurisdiction, the interconnected nature of the ocean requires cooperation between countries and stakeholders to share resources effectively and sustainably. The process can be challenging due of the many users involved. For example, one area might be designated for tourism, another for commercial fishing, and another for oil and gas drilling. This is further complicated when resources are split across multiple countries or states, which requires joint consideration of impacts and ways of achieving mutually beneficial outcomes. Identifying good practices, particularly in cases where cross-border cooperation is required, can assist marine spatial planning and aid national policy.</p><p>Global, regional and national datasets on environmental and ecological states, marine spatial uses and boundaries have been developed, and can be used to guide spatial planning and identify priority areas for conservation.</p>"
   end

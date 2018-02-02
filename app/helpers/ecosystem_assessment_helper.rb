@@ -3,6 +3,10 @@ module EcosystemAssessmentHelper
     "Ecosystem assessment"
   end
 
+  def ecosystem_assessment_class
+    "ecosystem-assessment"
+  end
+
   def ecosystem_assessment_intro
     "<p>Limited access to the data required to track long-term changes in marine and coastal ecosystems or species can make it difficult to assess changes in condition, and to respond with appropriate and timely management measures.</p><p>Effective measurements of biodiversity change require a clear understanding of the biological and ecological characteristics of the feature of interest, and the appropriate scale and time frames over which a significant change in health and condition would occur.</p><p>To achieve this, the development and use of biodiversity indicators can help to implement appropriate monitoring initiatives and determine targeted management outcomes, such as the conservation and sustainable use of marine and coastal biodiversity.</p><p>A biodiversity indicator is <i>‘a measure based on verifiable data that conveys information about more than itself’</i>, which can be used to inform decision-making and adaptive management.</p><p>Global datasets are frequently collated from multiple sources over various time frames and with gaps in coverage, and therefore are often not suitable for use in assessments of change. However, they do offer an understanding of the state of our knowledge with regards to the locations and extent of marine and coastal biodiversity globally, and can be complemented or ground-truthed through <i>in situ</i> data collected at the local or national scale.</p><p>In some cases, globally-consistent datasets can be used to develop global indicators, such as those hosted by the Biodiversity Indicators Partnership, which can be used to track progress towards the Aichi Biodiversity Targets.</p>"
   end

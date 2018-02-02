@@ -3,6 +3,10 @@ module EducationHelper
     "Education"
   end
 
+  def education_class
+    "education"
+  end
+
   def education_intro
     "<p>Marine datasets and the tools that accompany them can be useful in an educational setting to further students’ understanding of the ocean, and to support the teaching of new subjects and software.</p><p>For example, data layers can often be downloaded as shapefiles and used to teach students how to use ArcGIS or open source mapping software, such as QGIS. This provides students with an opportunity to work with datasets that demonstrate the current state of knowledge with regards to the ocean, while also learning new skills.</p>"
   end

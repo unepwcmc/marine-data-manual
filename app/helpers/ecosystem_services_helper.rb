@@ -3,6 +3,10 @@ module EcosystemServicesHelper
     "Ecosystem services and natural capital"
   end
 
+  def ecosystem_services_class
+    "ecosystem-services"
+  end
+
   def ecosystem_services_intro
     "<p>Natural capital and ecosystem services underpin our economy and society, and are therefore directly relevant to policy and business decision-making. The World Forum on Natural Capital defines natural capital as <i>‘the world's stock of natural resources, which includes geology, soils, air, water and all living organisms’</i>.</p><p>Natural capital assets provide people with a wide range of free goods and services, often called ‘ecosystem services’. For example, a coral reef is a component of natural capital, while climate regulation is the ecosystem service it provides (the coral reef does this by sequestering and storing ‘blue’ carbon from the atmosphere and oceans).</p><p>Ecosystem services are split into four broad categories:</p><p>Provisional – <i>e.g. food production</i><br>Regulating – <i>e.g. control of climate and disease</i><br>Supporting – <i>e.g. nutrient cycles and pollination</i><br>Cultural – <i>e.g. recreational and spiritual benefits</i></p><p>Understanding the precise concepts of these terms allows them to be measured, monitored reported, and then incorporated into policy and business decision-making. To achieve this, the development and use of indicators can help to implement appropriate monitoring and valuation of marine biodiversity.</p><p>There are also a wide range of tools to aid valuation. For instance, the Toolkit for Ecosystem Service Site-based Assessment (TESSA) can be used to evaluate the benefits people receive from nature at particular sites in order to generate information that can be used to influence decision-making.</p>"
   end
