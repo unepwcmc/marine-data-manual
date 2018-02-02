@@ -1,12 +1,12 @@
 <div class="container--medium padding--page-top padding--content-bottom">
   <h2>Case Studies</h2>
 
-  <p><%= @case_study_intro %></p>
+  <p><%= @case_study_intro.html_safe %></p>
   
   <% if @case_study_bullets %>
     <ul class="ul-2-columns">
       <% @case_study_bullets.each do |bullet| %>
-        <li><%= bullet %></li>
+        <li><%= bullet.html_safe %></li>
       <% end %>
     </ul>
   <% end %>
