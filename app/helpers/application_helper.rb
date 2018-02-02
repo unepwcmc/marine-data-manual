@@ -15,6 +15,10 @@ module ApplicationHelper
     content_for?(:title) ? content_for(:title) : site_title
   end
 
+  def social_image
+    image_url('social-ocean-plus-turtle.jpg')
+  end
+
   def create_class string
     string.downcase.tr("/ |_/", "-")
   end
