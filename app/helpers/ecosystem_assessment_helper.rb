@@ -25,25 +25,21 @@ module EcosystemAssessmentHelper
       {
         title: "Sub-Global Assessment Network",
         content: "The Sub-Global Assessment Network (SGAN) is a community of practice, creating a common platform for ecosystem assessment practitioners at sub-global scales (regional, sub-regional, national, sub-national). The platform builds capacity through: training opportunities and e-learning tools; capturing, synthesising and disseminating examples of best practices and lessons learned; supporting knowledge exchange; and helping to build links within the scientific community.",
-        image: "",
         url: "http://www.ecosystemassessments.net/"
       },
       {
         title: "Biodiversity Indicators Partnership",
         content: "The Biodiversity Indicators Partnership (BIP) brings together a host of international organisations working on indicator development to provide the best available information on biodiversity indicators and trends.",
-        image: "",
         url: "https://www.bipindicators.net/"
       },
       {
         title: "Guidance for National Biodiversity Indicator Development and Use (Biodiversity Indicators Partnership, 2011)",
         content: "This guidance document is designed to help the development of biodiversity indicators at the national level for uses such as reporting, policy-making, environmental management, and education. The document has been separated into two clear sections: the first defines what indicators are and how they may be used, while the second is organised around the Biodiversity Indicator Development Framework and presents a series of key steps in successful indicator development.",
-        image: "",
         url: "http://www.bipnational.net/LinkClick.aspx?fileticket=6JNUXXo6xOA%3D&tabid=38&language=en-US"
       },
       {
         title: "Species+",
         content: "Species+, developed by UNEP-WCMC and the Convention on International Trade in Endangered Species of Wild Fauna and Flora (CITES) Secretariat, is a website designed to assist Parties with implementing CITES, the Convention of Migratory Species (CMS) and other multilateral environmental agreements (MEAs). Species+ provides a centralised portal for accessing key information on species of global concern.",
-        image: "",
         url: "https://www.speciesplus.net/"
       }
     ]

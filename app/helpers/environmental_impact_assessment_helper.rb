@@ -26,13 +26,11 @@ module EnvironmentalImpactAssessmentHelper
       {
         title: "Integrated Biodiversity Assessment Tool for Business (IBAT)",
         content: "The Integrated Biodiversity Assessment Tool for Business (IBAT) is a global biodiversity decision-support platform, providing access to information and tools that inform decisions about biodiversity risk and reporting on environmental performance. Access to online maps and toolkits are tailored to business needs and offer information on the location of protected areas, priority sites for conservation and threatened species.",
-        image: "",
         url: "https://www.ibatforbusiness.org/"
       },
       {
         title: "A global map to aid the identification and screening of critical habitat for marine industries",
         content: "Industries operating in the marine environment face a number of risks that require analysis before decisions are made on the siting of operations and facilities. This global screening layer aligns with the International Finance Corporation’s Performance Standard 6 criteria, where biodiversity significance is expressed through the concept of “Critical Habitat.” The layer classifies more than 13 million km2 of marine and coastal areas of importance for biodiversity, and can be used to support early screening prior to <i>in situ</i> assessments.",
-        image: "",
         url: "https://doi.org/10.1016/j.marpol.2014.11.007"
       }
     ]

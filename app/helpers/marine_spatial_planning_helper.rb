@@ -24,7 +24,6 @@ module MarineSpatialPlanningHelper
       {
         title: "Cross-border cooperation in Maritime Spatial Planning",
         content: "<p>This study offers a look at four specific case studies of cross-border maritime spatial planning. These case studies include:</p><ul><li>The Rhode Island Ocean special area management plan</li><li>The Commission for the Conservation of Antarctic Marine Living Resources (CCAMLR) in the Southern Ocean</li><li>The Coral Triangle Initiative on Coral Reefs, Fisheries and Food Security (CTI-CFF)</li><li>Marine functional zoning in Xiamen, China.</li></ul>",
-        image: "",
         url: "https://www.unep-wcmc.org/resources-and-data/cross-border-cooperation-in-maritime-spatial-planning"
       }
     ]
