@@ -1,5 +1,5 @@
 <template>
-  <div class="flex space-between">
+  <div class="flex flex-h-between">
     <div>
       <span class="filter__title bold">Filters:</span>
 
