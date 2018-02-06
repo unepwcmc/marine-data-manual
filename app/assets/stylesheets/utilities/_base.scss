@@ -88,15 +88,19 @@ a {
 // site padding
 //--------------------------------------------------
 .padding--page-top { 
-  padding-top: rem-calc(16);
+  padding-top: rem-calc(18);
   @include breakpoint($small){ padding-top: rem-calc(42); }
 }
 
 .padding--page {
   @extend .padding--page-top;
-  padding-right: rem-calc(20);
-  padding-bottom: rem-calc(120);
-  padding-left: rem-calc(20);
+  padding-bottom: rem-calc(18);
+  
+  @include breakpoint($small){ 
+    padding-right: rem-calc(20);
+    padding-bottom: rem-calc(120);
+    padding-left: rem-calc(20);
+  }
 }
 
 .padding--content-bottom {
