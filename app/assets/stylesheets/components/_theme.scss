@@ -4,24 +4,43 @@
 .theme {
   border-bottom: solid white rem-calc(4);
   color: white;
-  padding: rem-calc(50 0);
+  padding: rem-calc(30 0);
 
-  &__icon {
-    flex: 1 0 auto;
-    width: rem-calc(122); height: rem-calc(122);
+  @include breakpoint($small){ padding: rem-calc(50 0); }
 
-    display: block;
+  &__container {
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+
+    @include breakpoint($small){
+      flex-direction: row;
+      text-align: left;
+    }    
   }
 
-  &__content {
-    margin-left: rem-calc(36);
-  }
-  
-    &__copy {
-      margin-bottom: rem-calc(20);
+    &__icon {
+      flex: 1 0 auto;
+      margin-bottom: rem-calc(18);
+      width: rem-calc(70); height: rem-calc(70);
+
+      display: block;
+
+      @include breakpoint($small){
+        margin-bottom: 0;
+        width: rem-calc(122); height: rem-calc(122);
+      }
     }
 
-    &__button {
-      font-size: rem-calc(16);
+    &__content {
+      @include breakpoint($small){ margin-left: rem-calc(36); }
     }
+    
+      &__copy {
+        margin-bottom: rem-calc(20);
+      }
+
+      &__button {
+        font-size: rem-calc(16);
+      }
 }

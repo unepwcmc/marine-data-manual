@@ -13,11 +13,19 @@ body {
 
 h1 {
   color: white;
-  font-size: rem-calc(48);
+  font-size: rem-calc(26);
   margin: 0;
+
+  @include breakpoint($small){ font-size: rem-calc(42); }
+  @include breakpoint($medium){ font-size: rem-calc(48); }
 }
 
-h2 { margin: rem-calc(0 0 10 0); }
+h2 { 
+  font-size: rem-calc(22);
+  margin: rem-calc(0 0 10 0); 
+
+  @include breakpoint($small){ font-size: rem-calc(24); }
+}
 
 h3 { 
   font-size: rem-calc(16);
@@ -35,28 +43,54 @@ a {
 //--------------------------------------------------
 // site structure
 //--------------------------------------------------
-.site-width { width: $site-width; }
+.site-width { 
+  @include breakpoint($medium) { width: $site-width; } 
+}
 
 .container {
-  @extend .site-width;
-
   margin: 0 auto;
+  padding: rem-calc(0 $gutter-small);
+  width: 100%;
+
+  @include breakpoint($medium){ 
+    @extend .site-width;
+    padding: rem-calc(0 $gutter-medium); 
+  }
 
   &--medium {
     margin: 0 auto;
-    width: $site-width-medium;
+    padding: rem-calc(0 $gutter-small);
+    width: 100%;
+
+    @include breakpoint($small){ width: 85%; }
+
+    @include breakpoint($medium){ 
+      padding: rem-calc(0 $gutter-medium); 
+      width: $site-width-medium;
+    }
   }
 
   &--small {
     margin: 0 auto;
-    width: $site-width-small;
+    padding: rem-calc(0 $gutter-small);
+    width: 100%;
+    
+    @include breakpoint($small){ width: 65%; }
+
+    @include breakpoint($medium){ 
+      padding: rem-calc(0 $gutter-medium); 
+      width: $site-width-small;
+    } 
   }
 }
 
 //--------------------------------------------------
 // site padding
 //--------------------------------------------------
-.padding--page-top { padding-top: rem-calc(42); }
+.padding--page-top { 
+  padding-top: rem-calc(16);
+  @include breakpoint($small){ padding-top: rem-calc(42); }
+}
 
 .padding--page {
   @extend .padding--page-top;

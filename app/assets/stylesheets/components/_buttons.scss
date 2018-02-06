@@ -25,7 +25,6 @@
   border: none;
   color: white;
   cursor: pointer;
-  font-size: rem-calc(18);
   font-weight: bold;
   padding: rem-calc(12 17);
   text-decoration: none;
@@ -42,7 +41,9 @@
 
   &--outline { 
     border-radius: $radius-link; 
-    padding: rem-calc(6 15 7 15);
+    padding: rem-calc(2 6);
+    
+    @include breakpoint($small) { padding: rem-calc(6 15 7 15); }
 
     &:hover { background-color: rgba(white, .25); }
 

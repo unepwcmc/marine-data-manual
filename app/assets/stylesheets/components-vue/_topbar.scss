@@ -4,13 +4,23 @@
 .topbar {
   background-color: $black-translucent;
   color: white;
-  padding: rem-calc(17 20 16 20);
+  padding: rem-calc(13) $gutter-small rem-calc(14);
   width: 100%;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
   position: absolute;
+
+  @include breakpoint($small){ padding: rem-calc(17 20 16 20); }
+  
+  &__logo {
+    width: rem-calc(94); height: rem-calc(33);
+
+    display: block;
+
+    @include breakpoint($small){ width: rem-calc(183); height: rem-calc(63); }
+  }
 
 //--------------------------------------------------
 // topbar nav
@@ -20,11 +30,13 @@
     &-link { 
       @extend .button--outline;
       color: white; 
-      font-size: rem-calc(20);
+      font-size: rem-calc(14);
       font-weight: bold;
       text-decoration: none;
 
       display: inline-block;
+
+      @include breakpoint($small){ font-size: rem-calc(20); }
 
       &--important {
         border: solid rem-calc(2) $secondary;
