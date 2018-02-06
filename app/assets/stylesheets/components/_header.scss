@@ -57,7 +57,9 @@
 //--------------------------------------------------
   &--theme {
     color: white;
-    padding: rem-calc(170 0 120 0);
+    padding: rem-calc(90 0 40 0);
+
+    @include breakpoint($small){ padding: rem-calc(170 0 120 0); }
 
     h1 { margin: rem-calc(10 0 22 0); }
 

@@ -31,7 +31,11 @@
 
   display: inline-block;
 
-  &--large { font-size: rem-calc(20); }
+  &--large { 
+    font-size: rem-calc(18);
+
+    @include breakpoint($small){ font-size: rem-calc(20); }
+  }
   
   &--blue { @include button-background($blue); }
   &--green { @include button-background($green); }
@@ -41,13 +45,14 @@
 
   &--outline { 
     border-radius: $radius-link; 
-    padding: rem-calc(2 6);
-    
-    @include breakpoint($small) { padding: rem-calc(6 15 7 15); }
+    padding: rem-calc(6 15 7 15);
 
     &:hover { background-color: rgba(white, .25); }
 
-    &.button--large { padding: rem-calc(7 18 8 18); }
+    &.button--large { 
+      padding: rem-calc(4 10 5 10); 
+      @include breakpoint($small){ padding: rem-calc(7 18 8 18); }
+    }
   }
 
   &--download {
