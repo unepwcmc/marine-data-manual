@@ -1,5 +1,10 @@
-<footer class="footer flex flex-h-between f-v-center">
+<footer class="footer flex flex-h-between flex-v-center">
   <%= image_tag 'logos/logo-ocean-plus.svg', alt: 'Ocean+ logo', class: 'footer__logo' %>
 
-  <span class="italic">&copy; Copyright <%= Date.today.year %></span>
+  <div class="flex flex-v-center">
+  	<%= link_to '/' do %>
+  		<%= image_tag 'https://s3.amazonaws.com/wcmc.logo/UN-Environment-WCMC+logo+2017+white.svg', alt: 'UN Environment World Conservation Monitoring Centre logo', class: 'footer__logo--wcmc' %>
+  	<% end %>
+  	<span class="italic">&copy; Copyright <%= Date.today.year %></span>
+  </div>
 </footer>
