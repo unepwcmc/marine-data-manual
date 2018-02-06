@@ -5,13 +5,18 @@
   margin-bottom: rem-calc(36);
 
   h3 { 
-    font-size: rem-calc(24); 
+    font-size: rem-calc(18); 
     margin-bottom: rem-calc(8); 
-  }
+
+    @include breakpoint($small){ font-size: rem-calc(21); }
+  } 
 
   &__image {
     background-color: $grey;
-    margin-top: rem-calc(16);
-    width: rem-calc(315); height: rem-calc(176);
+
+    @include breakpoint($small){
+      margin-top: rem-calc(16);
+      width: rem-calc(315); height: rem-calc(176);
+    }
   }
 }
