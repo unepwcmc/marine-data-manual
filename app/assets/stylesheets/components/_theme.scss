@@ -28,8 +28,10 @@
 
       @include breakpoint($small){
         margin-bottom: 0;
-        width: rem-calc(122); height: rem-calc(122);
+        width: rem-calc(90); height: rem-calc(90);
       }
+
+      @include breakpoint($medium){ width: rem-calc(122); height: rem-calc(122); }
     }
 
     &__content {

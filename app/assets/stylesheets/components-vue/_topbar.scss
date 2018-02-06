@@ -19,7 +19,8 @@
 
     display: block;
 
-    @include breakpoint($small){ width: rem-calc(183); height: rem-calc(63); }
+    @include breakpoint($small){ width: rem-calc(140); height: rem-calc(48); }
+    @include breakpoint($medium){ width: rem-calc(183); height: rem-calc(63); }
   }
 
 //--------------------------------------------------

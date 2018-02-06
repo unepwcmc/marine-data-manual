@@ -13,15 +13,18 @@
   background-size: cover;
   height: rem-calc(250);
 
-  @include breakpoint($small){ height: rem-calc(451); }
+  @include breakpoint($small){ height: rem-calc(390); }
+  @include breakpoint($medium){ height: rem-calc(451); }
   
   align-items: center;
   display: flex;
 
   &__title {
     margin-top: rem-calc(60); //match the height of the topbar
+    
+    @include breakpoint($small){ margin-top: rem-calc(81); } //match the height of the topbar
 
-    @include breakpoint($small){ 
+    @include breakpoint($medium){ 
       margin-top: rem-calc(77); //match the height of the topbar
       margin-right: rem-calc(160);
     }
