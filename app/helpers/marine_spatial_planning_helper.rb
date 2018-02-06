@@ -3,6 +3,10 @@ module MarineSpatialPlanningHelper
     "Marine spatial planning"
   end
 
+  def marine_spatial_planning_tagline
+    "Marine spatial planning involves managing competing interests by planning where different activities will happen. Marine and coastal biodiversity data can be used to guide spatial planning and identify priority areas for conservation."
+  end
+
   def marine_spatial_planning_class
     "marine-spatial-planning"
   end

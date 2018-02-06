@@ -3,6 +3,10 @@ module EnvironmentalImpactAssessmentHelper
     "Environmental impact assessment"
   end
 
+  def environmental_impact_assessment_tagline
+    "Environmental impact assessments (EIAs) examine the anticipated environmental effects of proposed projects, which begin at the design stage. Suitable data informing predictions of an activity impact on the marine ecosystem are therefore required to effectively assess environmental impacts."
+  end
+
   def environmental_impact_assessment_class
     "environmental-impact-assessment"
   end

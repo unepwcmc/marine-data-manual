@@ -3,6 +3,10 @@ module EcosystemAssessmentHelper
     "Ecosystem assessment"
   end
 
+  def ecosystem_assessment_tagline
+    "Effective measurements of biodiversity change require a clear understanding of the biological and ecological characteristics of the feature of interest, and the appropriate scales and time frames over which a significant change in condition would occur. Appropriate data are essential to assess changes in condition, and to respond with appropriate and timely management measures."
+  end
+
   def ecosystem_assessment_class
     "ecosystem-assessment"
   end

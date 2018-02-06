@@ -7,31 +7,31 @@ module HomeHelper
     [
       {
         title: 'Marine spatial planning',
-        content: 'Marine spatial planning involves managing competing interests by planning where different activities will happen. Marine and coastal biodiversity data can be used to guide spatial planning and identify priority areas for conservation.',
+        content: marine_spatial_planning_tagline,
         link: marine_spatial_planning_path,
         cssName: 'marine-spatial-planning'
       },
       {
         title: 'Education',
-        content: 'Marine datasets and the tools that accompany them can be useful in an educational setting to further students’ understanding of the ocean, and to support the teaching of marine-related subjects and software.',
+        content: education_tagline,
         link: education_path,
         cssName: 'education'
       },
       {
         title: 'Environmental impact assessment',
-        content: 'Environmental impact assessments (EIAs) examine the anticipated environmental effects of proposed projects, which begin at the design stage. Suitable data informing predictions of an activity impact on the marine ecosystem are therefore required to effectively assess environmental impacts.',
+        content: environmental_impact_assessment_tagline,
         link: environmental_impact_assessment_path,
         cssName: 'environmental-impact-assessment'
       },
       {
         title: 'Ecosystem assessment',
-        content: 'Effective measurements of biodiversity change require a clear understanding of the biological and ecological characteristics of the feature of interest, and the appropriate scales and time frames over which a significant change in condition would occur. Appropriate data are essential to assess changes in condition, and to respond with appropriate and timely management measures.',
+        content: ecosystem_assessment_tagline,
         link: ecosystem_assessment_path,
         cssName: 'ecosystem-assessment'
       },
       {
         title: 'Ecosystem services and natural capital',
-        content: 'Natural capital and ecosystem services underpin our economy and society, and are therefore directly relevant to policy and business decision-making. Improved data enables the development of ecosystem valuation indicators that can be incorporated into government and businesses management.',
+        content: ecosystem_services_tagline,
         link: ecosystem_services_path,
         cssName: 'ecosystem-services'
       }

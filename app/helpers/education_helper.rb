@@ -3,6 +3,10 @@ module EducationHelper
     "Education"
   end
 
+  def education_tagline
+    "Marine datasets and the tools that accompany them can be useful in an educational setting to further students’ understanding of the ocean, and to support the teaching of marine-related subjects and software."
+  end
+
   def education_class
     "education"
   end
