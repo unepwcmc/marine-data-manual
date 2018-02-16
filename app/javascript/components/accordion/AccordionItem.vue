@@ -53,7 +53,7 @@
       transition: max-height .3s ease-in-out;
 
       .accordion-item--active & {
-        max-height: rem-calc(500);
+        max-height: rem-calc(1000);
       }
     }
   }
