@@ -39,7 +39,7 @@ module EducationHelper
       {
         title: "Protected Planet",
         content: "<p>Protected Planet is a publicly available online platform that hosts the most up-to-date information on terrestrial and marine protected areas. The site is updated monthly and enables a spectrum of users to utilise data for information-based decision making, policy development, and business and conservation planning.</p><p>Users can access area statistics and download data from the World Database on Protected Areas (WDPA). Protected Planet is managed by the UN Environment World Conservation Monitoring Centre (UNEP-WCMC) with support from IUCN and its World Commission on Protected Areas (WCPA).</p>",
-        url: "http://www.wdpa.org/"
+        url: "https://protectedplanet.net/"
       },
       {
         title: "The Importance of Mangroves to People",
