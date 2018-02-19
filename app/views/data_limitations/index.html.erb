@@ -6,15 +6,14 @@
   <div class="padding--page">
 
     <accordion>
-      <accordion-item id="1" title="title 1" :open="true">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <accordion-item id="1" title="<%= accordion_1_title %>" :open="true">
+        <%= accordion_1_content.html_safe %>
       </accordion-item>
-      <accordion-item id="2" title="title 2">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <accordion-item id="2" title="<%= accordion_2_title %>">
+        <%= accordion_2_content.html_safe %>
       </accordion-item>
-      <accordion-item id="3" title="title 3">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      <accordion-item id="3" title="<%= accordion_3_title %>">
+        <%= accordion_3_content.html_safe %>
       </accordion-item>
     </accordion>
     

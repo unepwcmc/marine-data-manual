@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="haveResults">
+    <div v-if="haveResults" class="right">
       <span class="bold">{{ firstItem }} - {{ lastItem }} of {{ totalItems }}</span>
 
       <button 
