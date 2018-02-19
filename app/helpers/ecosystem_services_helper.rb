@@ -24,7 +24,7 @@ module EcosystemServicesHelper
       "<b>Not-for-profit</b> and <b>UN-associated organisations</b> to assess natural capital, ecosystem value and blue carbon",
       "<b>Governments</b> to assess habitats for blue carbon (e.g., scoping studies, national- and global-level carbon assessments)",
       "<b>Research institutions</b> to map resources and conduct ecosystem valuation (e.g., blue carbon)",
-      "<b>Media organisations</b>to compare habitat distributions in terms of ecological or economic value",
+      "<b>Media organisations</b> to compare habitat distributions in terms of ecological or economic value",
       "The <b>development financing sector</b> to identify environmental assets in a region"
     ]
   end
