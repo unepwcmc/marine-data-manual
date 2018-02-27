@@ -1,18 +1,21 @@
-<footer class="footer flex flex-h-between flex-v-center">
+<footer class="footer flex-stacked-small flex-h-between flex-v-center">
   <%= image_tag 'logos/logo-ocean-plus.svg', alt: 'Ocean+ logo', class: 'footer__logo' %>
 
-  <div class="flex flex-v-center">
-    <%= link_to 'http://geobon.org', title: 'Visit GEO BON', target: '_blank' do %>
-      <%= image_tag 'logos/logo-geobon.svg', alt: 'GEO BON logo', class: 'footer__logo--wcmc' %>
-    <% end %>
+  <div class="flex-stacked-small flex-v-center">
+    <div class="footer__partner-logos">
+      <%= link_to 'http://geobon.org', title: 'Visit GEO BON', target: '_blank' do %>
+        <%= image_tag 'logos/logo-geobon.svg', alt: 'GEO BON logo', class: 'footer__logo--geobon' %>
+      <% end %>
 
-    <%= link_to 'http://proteuspartners.org', title: 'Visit Proteus Partners', target: '_blank' do %>
-      <%= image_tag 'logos/logo-proteus.svg', alt: 'Proteus Partners logo', class: 'footer__logo--geobon' %>
-    <% end %>
+      <%= link_to 'http://proteuspartners.org', title: 'Visit Proteus Partners', target: '_blank' do %>
+        <%= image_tag 'logos/logo-proteus.svg', alt: 'Proteus Partners logo', class: 'footer__logo--proteus' %>
+      <% end %>
 
-    <%= link_to 'http://unep-wcmc.org', title: 'Visit the UN Environment World Conservation Monitoring Centre', target: '_blank' do %>
-      <%= image_tag 'https://s3.amazonaws.com/wcmc.logo/UN-Environment-WCMC+logo+2017+white.svg', alt: 'UN Environment World Conservation Monitoring Centre logo', class: 'footer__logo--proteus' %>
-  	<% end %>
+      <%= link_to 'http://unep-wcmc.org', title: 'Visit the UN Environment World Conservation Monitoring Centre', target: '_blank' do %>
+        <%= image_tag 'https://s3.amazonaws.com/wcmc.logo/UN-Environment-WCMC+logo+2017+white.svg', alt: 'UN Environment World Conservation Monitoring Centre logo', class: 'footer__logo--wcmc' %>
+    	<% end %>
+    </div>
+
   	<span class="italic">&copy; Copyright <%= Date.today.year %></span>
   </div>
 </footer>
