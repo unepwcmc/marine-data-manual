@@ -109,3 +109,10 @@
   @extend .flex-h-center;
   @extend .flex-v-center;
 }
+
+.flex-stacked-small {
+	@extend .flex;
+	@extend .flex-column;
+
+	@include breakpoint($small){ flex-direction: row; }
+}
