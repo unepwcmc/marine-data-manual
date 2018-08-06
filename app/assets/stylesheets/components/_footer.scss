@@ -23,19 +23,30 @@
     @include breakpoint($small) { padding: 0; }
   }
 
-  &__logo {
-    width: rem-calc(80); height: rem-calc(28);
+    &__link { text-decoration: none; }
 
-    @include breakpoint($small) { width: rem-calc(105); height: rem-calc(36); }
+      &__logo {
+        width: rem-calc(80); height: rem-calc(28);
 
-    &--wcmc, &--geobon, &--proteus {
-      margin-right: rem-calc(12);
-      width: rem-calc(85); height: rem-calc(28);
+        @include breakpoint($small) { width: rem-calc(90); height: rem-calc(34); }
+        @include breakpoint($medium) { width: rem-calc(105); height: rem-calc(36); }
 
-      @include breakpoint($small) {
-        margin-right: rem-calc(22);
-        width: rem-calc(110); height: rem-calc(36);
+        &--wcmc, 
+        &--geobon, 
+        &--proteus,
+        &--panorama {
+          margin-right: rem-calc(12);
+          width: rem-calc(60); height: rem-calc(20);
+
+          @include breakpoint($small) {
+            margin-right: rem-calc(20);
+            width: rem-calc(90); height: rem-calc(34);
+          }
+
+          @include breakpoint($medium) {
+            margin-right: rem-calc(22);
+            width: rem-calc(110); height: rem-calc(36);
+          }
+        }
       }
-    }
-  }
 }
