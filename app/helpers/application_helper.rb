@@ -1,10 +1,10 @@
 module ApplicationHelper
   def site_title
-    'Ocean+ Data'
+    'Ocean+ Library'
   end 
 
   def site_description
-    'Ocean+ Data provides an overview of global marine and coastal datasets of biodiversity importance. It can be thought of as a library of available ocean-related resources that can be found online, providing information on and links to these resources.'
+    'Ocean+ Library provides an overview of global marine and coastal datasets of biodiversity importance. It can be thought of as a library of available ocean-related resources that can be found online, providing information on and links to these resources.'
   end
 
   def title_meta_tag
@@ -53,7 +53,7 @@ module ApplicationHelper
 
   def create_social_twitter_link
     title = url_encode('Share ' + page_title + ' on Twitter')
-    text = url_encode('Ocean+ Data provides an overview of global marine and coastal datasets of biodiversity importance.')
+    text = url_encode('Ocean+ Library provides an overview of global marine and coastal datasets of biodiversity importance.')
     url = encoded_home_url
     href = 'https://twitter.com/intent/tweet/?text=' + text + '&url=' + url
     
