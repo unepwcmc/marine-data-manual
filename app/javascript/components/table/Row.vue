@@ -8,11 +8,8 @@
         <template v-else>{{ trim(item.resource) }}</template>
       </td>
 
-      <td>{{ item.version }}</td>
       <td>{{ item.contact_organisation }}</td>
-      <td>{{ item.id }}</td>
-      <td><a v-if="hasMetadata" :href="item.metadata" title="View metadata" target="_blank">Link</a></td>
-      <td><a v-if="hasFactsheet" :href="item.factsheet" title="View factsheet" target="_blank">Link</a></td>
+
       <td>
         <span v-for="theme in item.themes" class="table__theme-icon icon--round icon--theme" :class="themeClass(theme)"></span>
       </td>
@@ -22,6 +19,11 @@
       <div class="flex-2-fiths">
         <h3>Resource</h3>
         {{ item.resource }}
+        <p><span class="bold">Version:</span>{{ item.version }}</p>
+        <p><span class="bold">ID:</span>{{ item.id }}</p>
+        <p><span class="bold">Metadata:</span><a v-if="hasMetadata" :href="item.metadata" title="View metadata" target="_blank">Link</a></p>
+        <p><span class="bold">Factsheet:</span><a v-if="hasFactsheet" :href="item.factsheet" title="View factsheet" target="_blank">Link</a></p>
+        <p><span class="bold">License:</span>{{ item.license }}</p>
       </div>
       <div class="flex-3-fiths">
         <h3>Themes</h3>
@@ -81,10 +83,10 @@
         const length = phrase.length
         let output
 
-        if (length <= 30) {
+        if (length <= 90) {
           output = phrase
         } else {
-          output = phrase.substring(0,27) + '...'
+          output = phrase.substring(0,87) + '...'
         }
 
         return output

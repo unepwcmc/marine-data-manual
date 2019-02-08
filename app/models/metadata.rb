@@ -55,6 +55,31 @@ class Metadata < ApplicationRecord
     ].to_json
   end
 
+  def self.table_headers_to_json
+    table_headers = [
+      {
+        name: "category",
+        title: "Category",
+        sortButtons: true
+      },
+      {
+        name: "resource",
+        title: "Resource",
+        sortButtons: true
+      },
+      {
+        name: "contact_organisation",
+        title: "Contact Organisation",
+        sortButtons: true
+      },
+      {
+        name: "themes",
+        title: "Themes",
+        sortButtons: false
+      }
+    ].to_json
+  end
+
   def self.metadata_to_json
     output = []
     metadata = Metadata.all.order(id: :asc)

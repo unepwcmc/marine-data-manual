@@ -1,10 +1,10 @@
 <template>
   <thead id="sticky" class="table__head" :class="{ 'table__head--stuck' : isSticky }">
     <tr>
-      <table-header v-for="filter in filters" 
-        :name="filter.name"
-        :title="filter.title"
-        :sortButtons="filter.sortButtons"
+      <table-header v-for="tableHeader in tableHeaders" 
+        :name="tableHeader.name"
+        :title="tableHeader.title"
+        :sortButtons="tableHeader.sortButtons"
         >
       </table-header>
     </tr>
@@ -20,7 +20,7 @@
     components: { TableHeader },
 
     props: {
-      filters: {
+      tableHeaders: {
         required: true,
         type: Array
       }
