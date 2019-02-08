@@ -18,6 +18,8 @@ $hoverColor: $grey;
   &--head { 
     margin-top: rem-calc(30);
     height: rem-calc(64);  // must match height of the <head> tag
+
+    position: relative;
   }
 
   &--body { 
@@ -41,6 +43,14 @@ $hoverColor: $grey;
 
       display: inline-block;
     }
+
+      &__button {
+        position: absolute; 
+        top: 50%;
+        right: rem-calc(9);
+
+        transform: translateY(-50%);
+      }
 
 //--------------------------------------------------
 // columns
@@ -75,7 +85,6 @@ $hoverColor: $grey;
     &__row {
       @extend %row-template;
       background-color: white;
-      border-top: solid white rem-calc(1);
       cursor: pointer;
 
       &:hover { background-color: $hoverColor; }
@@ -84,11 +93,9 @@ $hoverColor: $grey;
       
       &--active { 
         background-color: $hoverColor; 
-        border-bottom: solid white rem-calc(1);
 
         .table__row-wrapper:nth-child(odd) & { 
-          background-color: $hoverColor; 
-          border-bottom: solid white rem-calc(1);
+          background-color: $hoverColor;
         }
       }
 
@@ -123,6 +130,7 @@ $hoverColor: $grey;
         }
 
       &--open {
+        border-top: solid white rem-calc(1);
         max-height: rem-calc(610);
 
         @include breakpoint($medium) { max-height: rem-calc(310); }

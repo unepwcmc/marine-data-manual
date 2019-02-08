@@ -10,20 +10,17 @@
         :type="filter.type">
       </v-filter>
     </div>
-    
-    <download-csv></download-csv>
   </div>
 </template>
 
 <script>
   import { eventHub } from "../../metadata.js"
   import VFilter from './Filter.vue'
-  import DownloadCsv from '../forms/DownloadCsv.vue'
 
   export default {
     name: 'filters',
 
-    components: { VFilter, DownloadCsv },
+    components: { VFilter },
 
     props: {
       filters: {

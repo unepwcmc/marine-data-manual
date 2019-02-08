@@ -5,6 +5,8 @@
     <div v-if="sortButtons" class="table__sorting" @click="sort()">
       <span alt="Sort results" class="table__sort"></span>
     </div>
+
+    <slot></slot>
   </th>
 </template>
 
