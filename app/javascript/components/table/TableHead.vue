@@ -5,7 +5,7 @@
         :name="tableHeader.name"
         :title="tableHeader.title"
         :sortButtons="tableHeader.sortButtons"
-        >
+        :onMobile="tableHeader.onMobile">
       </table-header>
     </tr>
   </thead>

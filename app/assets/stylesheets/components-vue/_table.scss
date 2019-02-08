@@ -4,8 +4,10 @@
 $hoverColor: $grey;
 
 %row-template {
+  grid-template-columns: 1fr;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 2fr;
+
+  @include breakpoint($medium) { grid-template-columns: 1fr 1fr 1fr 2fr; }
 }
 
 //--------------------------------------------------
@@ -74,6 +76,7 @@ $hoverColor: $grey;
       @extend %row-template;
       background-color: white;
       border-top: solid white rem-calc(1);
+      cursor: pointer;
 
       &:hover { background-color: $hoverColor; }
 
@@ -91,16 +94,39 @@ $hoverColor: $grey;
 
       &--expandable {
         background-color: $hoverColor;
-        
+        overflow: hidden;
+        height: auto;
+        max-height: 0;
+
         display: grid;
-        grid-template-columns: 2fr 3fr;
+        grid-template-columns: 1fr;
+
+        transition: max-height .3s ease-in-out;
+
+        @include breakpoint($medium) { grid-template-columns: 2fr 3fr; }
 
         h3 { margin-top: rem-calc(18); }
       }
 
         &--expandable__td {
-          padding: rem-calc(18 14);      
+          &:first-child { 
+            padding: rem-calc(18 14 0 14); 
+
+            @include breakpoint($medium) { padding: rem-calc(18 14); }
+          }
+
+          &:last-child { 
+            padding: rem-calc(0 14); 
+
+            @include breakpoint($medium) { padding: rem-calc(18 14); }
+          }
         }
+
+      &--open {
+        max-height: rem-calc(610);
+
+        @include breakpoint($medium) { max-height: rem-calc(310); }
+      } 
     }
 
 //--------------------------------------------------
@@ -130,26 +156,32 @@ $hoverColor: $grey;
           padding-bottom: rem-calc(30);
         }
           
-          &__themes-list { width: 100%; }
+          &__themes-list { 
+            width: 100%; 
+
+            display: grid;
+            grid-template-columns: 1fr;
+
+            @include breakpoint($medium) { grid-template-columns: 1fr 1fr; }
+          }
 
             //N.B flexbox layout doesn't work in IE so going back to using float
             &__theme { 
               margin-bottom: rem-calc(8);
-              width: 50%;
 
-              float: left;
+              // float: left;
             }
 
-            &__theme-icon {
-              margin-right: rem-calc(4);
-            }
+                &__theme-icon {
+                  margin-right: rem-calc(4);
+                }
 
-            &__theme-title {
-              margin-left: rem-calc(4);
-              width: 80%;
+                &__theme-title {
+                  margin-left: rem-calc(8);
+                  width: 80%;
 
-              display: inline-block;
+                  display: inline-block;
 
-              &:first-letter { text-transform: capitalize; }
-            }
+                  &:first-letter { text-transform: capitalize; }
+                }
   }

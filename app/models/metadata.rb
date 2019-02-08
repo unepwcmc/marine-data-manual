@@ -60,22 +60,26 @@ class Metadata < ApplicationRecord
       {
         name: "category",
         title: "Category",
-        sortButtons: true
+        sortButtons: true,
+        onMobile: false
       },
       {
         name: "resource",
         title: "Resource",
-        sortButtons: true
+        sortButtons: true,
+        onMobile: true
       },
       {
         name: "contact_organisation",
         title: "Contact Organisation",
-        sortButtons: true
+        sortButtons: true,
+        onMobile: false
       },
       {
         name: "themes",
         title: "Themes",
-        sortButtons: false
+        sortButtons: false,
+        onMobile: false
       }
     ].to_json
   end
