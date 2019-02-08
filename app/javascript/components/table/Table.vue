@@ -2,6 +2,7 @@
   <div>
     <table class="table table--head">
       <table-head :tableHeaders="tableHeaders"></table-head>
+      <download-csv class="table__button"></download-csv>
     </table>
     
     <table class="table table--body">
@@ -17,13 +18,14 @@
 </template>
 <script>
   import { eventHub } from '../../metadata.js'
+  import DownloadCsv from '../forms/DownloadCsv.vue'
   import TableHead from './TableHead.vue'
   import Row from './Row.vue'
 
   export default {
     name: 'v-table',
 
-    components: { TableHead, Row },
+    components: { DownloadCsv, TableHead, Row },
 
     props: {
       tableHeaders: { type: Array },
