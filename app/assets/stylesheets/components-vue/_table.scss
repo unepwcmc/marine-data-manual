@@ -1,8 +1,14 @@
 //--------------------------------------------------
 // variables
 //--------------------------------------------------
-$firstColumn: 116;
 $hoverColor: $grey;
+
+%row-template {
+  grid-template-columns: 1fr;
+  display: grid;
+
+  @include breakpoint($medium) { grid-template-columns: 1fr 1fr 1fr 2fr; }
+}
 
 //--------------------------------------------------
 // table
@@ -42,23 +48,11 @@ $hoverColor: $grey;
 // fix the columns widths so that they don't change
 // size when you use the pagination 
 
-  th,td {
-    text-align: left;
-
-    &:first-child { width: $firstColumn + px; }
-    &:nth-child(2) { width: 148px; }
-    &:nth-child(3) { width: 104px; }
-    &:nth-child(4) { width: 218px; }
-    &:nth-child(5) { width: 100px; }
-    &:nth-child(6) { width: 115px; }
-    &:nth-child(7) { width: 115px; }
-    &:nth-child(8) { width: 244px; }
-  }
+  th,td { text-align: left;}
 
   th { padding: rem-calc(20 14); }
 
   td { 
-    border-left: solid white rem-calc(1); 
     padding: rem-calc(14);
     vertical-align: middle;
 
@@ -77,12 +71,16 @@ $hoverColor: $grey;
       }
     }
   }
-
+  
     &__row {
+      @extend %row-template;
       background-color: white;
       border-top: solid white rem-calc(1);
+      cursor: pointer;
 
       &:hover { background-color: $hoverColor; }
+
+      &--head { @extend %row-template; }
       
       &--active { 
         background-color: $hoverColor; 
@@ -96,11 +94,39 @@ $hoverColor: $grey;
 
       &--expandable {
         background-color: $hoverColor;
-        border-left: solid white rem-calc(1);
-        padding: rem-calc(0 14 0 $firstColumn + 14);
+        overflow: hidden;
+        height: auto;
+        max-height: 0;
+
+        display: grid;
+        grid-template-columns: 1fr;
+
+        transition: max-height .3s ease-in-out;
+
+        @include breakpoint($medium) { grid-template-columns: 2fr 3fr; }
 
         h3 { margin-top: rem-calc(18); }
       }
+
+        &--expandable__td {
+          &:first-child { 
+            padding: rem-calc(18 14 0 14); 
+
+            @include breakpoint($medium) { padding: rem-calc(18 14); }
+          }
+
+          &:last-child { 
+            padding: rem-calc(0 14); 
+
+            @include breakpoint($medium) { padding: rem-calc(18 14); }
+          }
+        }
+
+      &--open {
+        max-height: rem-calc(610);
+
+        @include breakpoint($medium) { max-height: rem-calc(310); }
+      } 
     }
 
 //--------------------------------------------------
@@ -130,26 +156,32 @@ $hoverColor: $grey;
           padding-bottom: rem-calc(30);
         }
           
-          &__themes-list { width: 100%; }
+          &__themes-list { 
+            width: 100%; 
+
+            display: grid;
+            grid-template-columns: 1fr;
+
+            @include breakpoint($medium) { grid-template-columns: 1fr 1fr; }
+          }
 
             //N.B flexbox layout doesn't work in IE so going back to using float
             &__theme { 
               margin-bottom: rem-calc(8);
-              width: 50%;
 
-              float: left;
+              // float: left;
             }
 
-            &__theme-icon {
-              margin-right: rem-calc(4);
-            }
+                &__theme-icon {
+                  margin-right: rem-calc(4);
+                }
 
-            &__theme-title {
-              margin-left: rem-calc(4);
-              width: 80%;
+                &__theme-title {
+                  margin-left: rem-calc(8);
+                  width: 80%;
 
-              display: inline-block;
+                  display: inline-block;
 
-              &:first-letter { text-transform: capitalize; }
-            }
+                  &:first-letter { text-transform: capitalize; }
+                }
   }

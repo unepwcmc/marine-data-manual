@@ -1,7 +1,7 @@
 <template>
   <div>
     <table class="table table--head">
-      <table-head :filters="filters"></table-head>
+      <table-head :tableHeaders="tableHeaders"></table-head>
     </table>
     
     <table class="table table--body">
@@ -26,7 +26,7 @@
     components: { TableHead, Row },
 
     props: {
-      filters: { type: Array },
+      tableHeaders: { type: Array },
       metadata: { type: Array }
     },
 

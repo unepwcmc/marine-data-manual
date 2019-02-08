@@ -1,6 +1,7 @@
 class MetadataController < ApplicationController
   def index
     @filters = Metadata.filters_to_json
+    @table_headers = Metadata.table_headers_to_json
     @metadata = Metadata.metadata_to_json
   end
 
