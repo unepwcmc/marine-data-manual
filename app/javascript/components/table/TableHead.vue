@@ -1,6 +1,6 @@
 <template>
   <thead id="sticky" class="table__head" :class="{ 'table__head--stuck' : isSticky }">
-    <tr>
+    <tr class="table__row--head">
       <table-header v-for="tableHeader in tableHeaders" 
         :name="tableHeader.name"
         :title="tableHeader.title"
@@ -62,8 +62,6 @@
   @import '../../scss/includes.scss';
 
   .table__head {
-    position: absolute;
-
     &--stuck {
       position: fixed;
       top: 0;

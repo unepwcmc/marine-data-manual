@@ -1,8 +1,12 @@
 //--------------------------------------------------
 // variables
 //--------------------------------------------------
-$firstColumn: 206;
 $hoverColor: $grey;
+
+%row-template {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 2fr;
+}
 
 //--------------------------------------------------
 // table
@@ -42,19 +46,11 @@ $hoverColor: $grey;
 // fix the columns widths so that they don't change
 // size when you use the pagination 
 
-  th,td {
-    text-align: left;
-
-    &:first-child { width: $firstColumn + px; }
-    &:nth-child(2) { width: 270px; }
-    &:nth-child(3) { width: 280px; }
-    &:nth-child(4) { width: 400px; }
-  }
+  th,td { text-align: left;}
 
   th { padding: rem-calc(20 14); }
 
   td { 
-    border-left: solid white rem-calc(1); 
     padding: rem-calc(14);
     vertical-align: middle;
 
@@ -73,12 +69,15 @@ $hoverColor: $grey;
       }
     }
   }
-
+  
     &__row {
+      @extend %row-template;
       background-color: white;
       border-top: solid white rem-calc(1);
 
       &:hover { background-color: $hoverColor; }
+
+      &--head { @extend %row-template; }
       
       &--active { 
         background-color: $hoverColor; 
@@ -92,11 +91,16 @@ $hoverColor: $grey;
 
       &--expandable {
         background-color: $hoverColor;
-        border-left: solid white rem-calc(1);
-        padding: rem-calc(0 14 0 $firstColumn + 14);
+        
+        display: grid;
+        grid-template-columns: 2fr 3fr;
 
         h3 { margin-top: rem-calc(18); }
       }
+
+        &--expandable__td {
+          padding: rem-calc(18 14);      
+        }
     }
 
 //--------------------------------------------------

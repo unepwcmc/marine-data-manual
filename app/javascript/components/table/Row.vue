@@ -14,19 +14,20 @@
         <span v-for="theme in item.themes" class="table__theme-icon icon--round icon--theme" :class="themeClass(theme)"></span>
       </td>
     </tr>
-    <tr class="table__row--expandable flex" :class="{ 'table__row--open' : isOpen }">
-
-      <div class="flex-2-fiths">
-        <h3>Resource</h3>
-        {{ item.resource }}
-        <p><span class="bold">Version:</span>{{ item.version }}</p>
-        <p><span class="bold">ID:</span>{{ item.id }}</p>
-        <p><span class="bold">Metadata:</span><a v-if="hasMetadata" :href="item.metadata" title="View metadata" target="_blank">Link</a></p>
-        <p><span class="bold">Factsheet:</span><a v-if="hasFactsheet" :href="item.factsheet" title="View factsheet" target="_blank">Link</a></p>
-        <p><span class="bold">License:</span>{{ item.license }}</p>
+    <tr class="table__row--expandable" :class="{ 'table__row--open' : isOpen }">
+      <div class="table__row--expandable__td">
+        <div>
+          <p class="bold no-margin">Resource:</p> 
+          <p>{{ item.resource }}</p>
+        </div>
+        <p><span class="bold">Version:</span> {{ item.version }}</p>
+        <p><span class="bold">ID:</span> {{ item.id }}</p>
+        <p><span class="bold">Metadata:</span> <a v-if="hasMetadata" :href="item.metadata" title="View metadata" target="_blank">Link</a></p>
+        <p><span class="bold">Factsheet:</span> <a v-if="hasFactsheet" :href="item.factsheet" title="View factsheet" target="_blank">Link</a></p>
+        <p><span class="bold">License:</span> {{ item.license }}</p>
       </div>
-      <div class="flex-3-fiths">
-        <h3>Themes</h3>
+      <div class="table__row--expandable__td">
+        <p class="bold">Themes</p>
         <div class="flex table__themes">
           <ul class="ul-unstyled table__themes-list">
             <li v-for="theme in item.themes" class="table__theme">
@@ -130,7 +131,7 @@
     }
 
     &--open {
-      max-height: rem-calc(212);
+      max-height: rem-calc(310);
     }
   }
 </style>
