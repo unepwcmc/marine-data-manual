@@ -23,30 +23,6 @@ export default new Vuex.Store({
       this.state.requestedPage = page
     },
 
-    updatePageItemsStart (state, total) {
-      this.state.requestedPage = total
-    },
-
-    updatePageItemsEnd (state, total) {
-      this.state.requestedPage = total
-    },
-
-    updateTotalItems (state, total) {
-      this.state.requestedPage = totalge
-    },
-
-    updateActiveItems (state, item) {
-      this.state.activeItems.push(item)
-    },
-
-    clearActiveItems () {
-      this.state.activeItems = []
-    },
-    
-    updateCurrentPage (state, currentPage) {
-      this.state.currentPage = currentPage
-    },
-
     setFilterOptions (state, options) {
       this.state.selectedFilterOptions = options
     },
@@ -83,16 +59,8 @@ export default new Vuex.Store({
       })
     },
 
-    updateModalContent (state, content) {
-      this.state.modalContent = content
-    },
-
     updateSortDirection (state, direction) {
       this.state.sortDirection = direction
-    },
-
-    setItemsPerPage (state, total) {
-      this.state.itemsPerPage = total
     }
   }
 })

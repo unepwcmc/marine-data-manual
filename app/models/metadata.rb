@@ -84,7 +84,7 @@ class Metadata < ApplicationRecord
     ].to_json
   end
 
-  def self.metadata_to_json
+  def self.metadata
     output = []
     metadata = Metadata.all.order(id: :asc)
     metadata.to_a.each do |meta|
@@ -99,7 +99,7 @@ class Metadata < ApplicationRecord
       meta_attributes.delete_if { |k, v| ["created_at", "updated_at"].include? k }
       output << meta_attributes
     end
-    output.to_json
+    output
   end
 
   def self.to_csv

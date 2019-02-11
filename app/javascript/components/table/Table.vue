@@ -7,7 +7,7 @@
     
     <table class="table table--body">
       <tbody>
-        <row v-for="(item, index) in items"
+        <row v-for="(item, index) in metadata"
           :key="index"
           :index="index"
           :item="item">
@@ -17,7 +17,6 @@
   </div>
 </template>
 <script>
-  import axios from 'axios'
   import { eventHub } from '../../metadata.js'
 
   import DownloadCsv from '../forms/DownloadCsv.vue'
@@ -34,19 +33,8 @@
       metadata: { type: Array }
     },
 
-    data () {
-      return {
-        items: []
-      }
-    },
-
-    created () {
-      // this.updateProperties(this.metadata)
-      
-    },
-
     mounted () {
-      eventHub.$on('getNewItems', this.getNewItems)
+      // eventHub.$on('getNewItems', this.getNewItems)
 
       // refilter the items when the filters are changed
       // eventHub.$on('callFilterItems', this.filterItems)
