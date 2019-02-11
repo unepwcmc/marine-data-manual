@@ -144,6 +144,7 @@
         this.$store.commit('updateFilterOptions', newFilterOptions)
 
         eventHub.$emit('callFilterItems')
+        eventHub.$emit('getNewItems')
       }
     }
   }

@@ -2,7 +2,7 @@
   <div>
     <filters :filters="filters"></filters>
 
-    <!-- <v-table :tableHeaders="tableHeaders" :metadata="metadata"></v-table> -->
+    <v-table :tableHeaders="tableHeaders" :metadata="metadata"></v-table>
 
     <pagination 
       :currentPage="currentPage"
@@ -71,10 +71,13 @@
       getNewItems () {
         let data = {
           params: {
-            requested_page: this.$store.state.requestedPage,
-            filters: this.$store.state.selectedFilterOptions
+            filters: this.$store.state.selectedFilterOptions,
+            items_per_page: this.itemsPerPage,
+            requested_page: this.$store.state.requestedPage
           }
         }
+
+        console.log('data', data)
 
         const csrf = document.querySelectorAll('meta[name="csrf-token"]')[0].getAttribute('content')
         axios.defaults.headers.common['X-CSRF-Token'] = csrf
@@ -82,7 +85,6 @@
 
         axios.post('/metadata-list', data)
         .then(response => {
-          console.log(response.data)
           this.updateProperties(response.data)
         })
         .catch(function (error) {
