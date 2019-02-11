@@ -34,9 +34,7 @@ import Vue from 'vue/dist/vue.esm'
 import store from './store/store.js'
 import Accordion from './components/accordion/Accordion.vue'
 import AccordionItem from './components/accordion/AccordionItem'
-import VTable from './components/table/Table.vue'
-import Filters from './components/filters/Filters.vue'
-import Pagination from './components/pagination/Pagination.vue'
+import Metadata from './components/Metadata.vue'
 
 // create event hub and export so that it can be imported into .vue files
 export const eventHub = new Vue()
@@ -45,6 +43,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
     el: '#v-app',
     store,
-    components: { Accordion, AccordionItem, VTable, Filters, Pagination }
+    components: { Accordion, AccordionItem, Metadata }
   })
 })

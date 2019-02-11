@@ -9,23 +9,30 @@ Vue.use(Vuex)
 // create store
 export default new Vuex.Store({
   state: {
-    items: [], // contains array of objects
-    totalItems: [], // contains total number of objects
-    activeItems: [], // contains indices of objects that match the filters
-    currentPage: 1,
+    totalItemsOnCurrenPage: 0,
+    pageItemsStart: 0,
+    pageItemsEnd: 0,
+    totalItems: 0,
+    requestedPage: 1,
     selectedFilterOptions: [], // an array containing an object for each filter that has an array of selected options
-    modalContent: {},
-    sortDirection: '',
-    itemsPerPage: '' // this variable is set in by the pagination component and used by the table component
+    sortDirection: ''
   },
 
   mutations: {
-    setItems (state, items) {
-      this.state.items = items
+    updateRequestedPage (state, page) {
+      this.state.requestedPage = page
+    },
+
+    updatePageItemsStart (state, total) {
+      this.state.requestedPage = total
+    },
+
+    updatePageItemsEnd (state, total) {
+      this.state.requestedPage = total
     },
 
     updateTotalItems (state, total) {
-      this.state.totalItems = total 
+      this.state.requestedPage = totalge
     },
 
     updateActiveItems (state, item) {

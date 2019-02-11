@@ -1,15 +1,13 @@
 <template>
-  <div class="flex flex-h-between">
-    <div>
-      <span class="filter__title bold">Filters:</span>
+  <div>
+    <span class="filter__title bold">Filters:</span>
 
-      <v-filter v-for="filter in filters"
-        :name="filter.name"
-        :title="filter.title" 
-        :options="filter.options"
-        :type="filter.type">
-      </v-filter>
-    </div>
+    <v-filter v-for="filter in filters"
+      :name="filter.name"
+      :title="filter.title" 
+      :options="filter.options"
+      :type="filter.type">
+    </v-filter>
   </div>
 </template>
 
