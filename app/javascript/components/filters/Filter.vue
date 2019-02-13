@@ -12,10 +12,13 @@
 
       <template v-if="type == 'search'">
         <div>
-          <input type="text" v-model="searchTerm" v-on:update="search">
+          <input type="text" v-model="searchTerm" >
         </div>
+        
         <ul class="ul-unstyled">
-          <p v-for="option in options">{{ option }}</p>
+          <p v-for="option in options">
+            <span v-show="matches(option)">{{ option }}</span>
+          </p>
         </ul>
       </template>
 
@@ -115,8 +118,12 @@
     },
 
     methods: {
-      search () {
-        console.log('search')
+      matches (option) {
+        const noSearch = this.searchTerm == '',
+          regex = new RegExp(`${this.searchTerm}`, 'i'),
+          match = option.match(regex)
+        
+        return noSearch || match
       },
 
       openSelect () {
