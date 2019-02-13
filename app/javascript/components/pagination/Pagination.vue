@@ -55,7 +55,7 @@
       },
 
       nextIsActive () {
-        return  this.currentPage < this.totalItems
+        return  this.pageItemsEnd < this.totalItems
       },
 
       previousIsActive () {

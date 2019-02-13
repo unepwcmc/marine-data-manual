@@ -141,9 +141,7 @@
           options: this.activeOptions
         }
 
-        this.$store.commit('updateFilterOptions', newFilterOptions)
-
-        eventHub.$emit('callFilterItems')
+        this.$store.dispatch('updateFilterParameters', newFilterOptions)
         eventHub.$emit('getNewItems')
       }
     }

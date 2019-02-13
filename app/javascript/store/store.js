@@ -15,7 +15,7 @@ export default new Vuex.Store({
     totalItems: 0,
     requestedPage: 1,
     selectedFilterOptions: [], // an array containing an object for each filter that has an array of selected options
-    sortDirection: 0,
+    sortDirection: '',
     sortField: ''
   },
 
@@ -39,27 +39,6 @@ export default new Vuex.Store({
       })
     },
 
-    clearFilterOptions () {
-      this.state.selectedFilterOptions.forEach(filter => {
-        filter.options = []
-      })
-    },
-
-    removeFilterOption (state, removeOption) {
-
-      this.state.selectedFilterOptions.forEach(filter => {
-        if(filter.name == removeOption.name){ 
-          filter.options.forEach(option => {
-            if(option == removeOption.option){
-              const index = filter.options.indexOf(removeOption.option)
-
-              filter.options.splice(index, 1)
-            }
-          })
-        }
-      })
-    },
-
     updateSortDirection (state, direction) {
       this.state.sortDirection = direction
     },
@@ -73,6 +52,14 @@ export default new Vuex.Store({
     updateSortParameters ({ commit }, sortParamters) {
       commit('updateSortDirection', sortParamters.direction)
       commit('updateSortField', sortParamters.field)
+      commit('updateRequestedPage', 1)
+    },
+
+    updateFilterParameters ({ commit }, filterOptions) {
+      commit('updateFilterOptions', filterOptions)
+      commit('updateSortDirection', '')
+      commit('updateSortField', '')
+      commit('updateRequestedPage', 1)
     }
   }
 })
