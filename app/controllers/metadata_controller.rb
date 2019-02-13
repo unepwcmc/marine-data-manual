@@ -2,7 +2,9 @@ class MetadataController < ApplicationController
   DEFAULT_ATTRIBUTES = {
     'filters': [],
     'items_per_page': 10,
-    'requested_page': 1
+    'requested_page': 1,
+    'sortDirection': 'ASC',
+    'sortField': 'id'
   }.freeze
 
   def index
@@ -28,6 +30,7 @@ class MetadataController < ApplicationController
   private
 
   def permitted_attributes
-    params.require(:params).permit(:requested_page, :items_per_page, filters: [:name, :type, options: []])
+    params.require(:params)
+          .permit(:requested_page, :items_per_page, :sortDirection, :sortField, filters: [:name, :type, options: []])
   end
 end

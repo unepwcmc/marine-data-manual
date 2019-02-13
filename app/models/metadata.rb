@@ -85,8 +85,8 @@ class Metadata < ApplicationRecord
   def self.metadata(params)
     output = []
     filters = sanitize_params(params['filters'])
-    filter_data = params.dig('filters').present? ? Metadata.where(filters).order(id: :asc) : Metadata.all.order(id: :asc)
-    metadata = filter_data.paginate(page: params['requested_page'] || 1, per_page: 10)
+    filter_data = params.dig('filters').present? ? Metadata.where(filters) : Metadata.all
+    metadata = sorting_data(params, filter_data)
     metadata.to_a.each do |meta|
       meta_attributes = meta.attributes
       meta_attributes[:metadata] = metadata_url(meta)
@@ -112,6 +112,13 @@ class Metadata < ApplicationRecord
       total_pages: (total.count / 10.0).ceil,
       items: items
     }.to_json
+  end
+
+  def self.sorting_data(params, data)
+    field = params['sortField'].presence || 'id'
+    direction = params['sortDirection'].presence || 'ASC'
+    data.order("#{field} #{direction}")
+        .paginate(page: params['requested_page'] || 1, per_page: 10)
   end
 
   def self.sanitize_params(filters)
