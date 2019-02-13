@@ -15,7 +15,7 @@ export default new Vuex.Store({
     totalItems: 0,
     requestedPage: 1,
     selectedFilterOptions: [], // an array containing an object for each filter that has an array of selected options
-    sortDirection: 0,
+    sortDirection: '',
     sortField: ''
   },
 
@@ -73,6 +73,12 @@ export default new Vuex.Store({
     updateSortParameters ({ commit }, sortParamters) {
       commit('updateSortDirection', sortParamters.direction)
       commit('updateSortField', sortParamters.field)
+    },
+
+    updateFilterParameters ({ commit }, filterOptions) {
+      commit('updateFilterOptions', filterOptions)
+      commit('updateSortDirection', '')
+      commit('updateSortField', '')
     }
   }
 })
