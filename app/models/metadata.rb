@@ -99,17 +99,17 @@ class Metadata < ApplicationRecord
       meta_attributes.delete_if { |k| ["created_at", "updated_at"].include? k }
       output << meta_attributes
     end
-    pagination(params['requested_page'], output)
+    pagination(params['requested_page'], output, filter_data)
   end
 
-  def self.pagination(page, items)
+  def self.pagination(page, items, total)
     page ||= 1
     {
       current_page: page,
       page_items_start: page * 10 - 9,
-      page_items_end: [page * 10, items.count].min,
-      total_items: items.count,
-      total_pages: (items.count / 10.0).ceil,
+      page_items_end: [page * 10, total.count].min,
+      total_items: total.count,
+      total_pages: (total.count / 10.0).ceil,
       items: items
     }.to_json
   end
