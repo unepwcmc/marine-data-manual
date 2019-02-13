@@ -40,7 +40,7 @@
 
     data () {
       return {
-        sortDirection: 0
+        sortDirection: 1
       }
     },
 
