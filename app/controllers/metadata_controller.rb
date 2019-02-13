@@ -1,22 +1,19 @@
 class MetadataController < ApplicationController
+  DEFAULT_ATTRIBUTES = {
+    'filters': [],
+    'items_per_page': 10,
+    'requested_page': 1
+  }.freeze
+
   def index
     @filters = Metadata.filters_to_json
-    @table_headers = Metadata.table_headers_to_json
-    @metadata = Metadata.metadata.to_json
+    @table_headers = Metadata::TABLE_HEADERS
+    @metadata = Metadata.metadata(DEFAULT_ATTRIBUTES.as_json)
   end
 
-  def metadata_list 
-    
-    #TODO - LUCA - use posted parameters and make data below dynamic dynamic
-    @metadata = {
-      current_page: 1,
-      page_items_start: 1,
-      page_items_end: 10,
-      total_items: 100,
-      total_pages: 10,
-      items: Metadata.metadata
-    }
-
+  def metadata_list
+    @metadata = Metadata.metadata(permitted_attributes.as_json)
+byebug
     render json: @metadata
   end
 
@@ -26,5 +23,11 @@ class MetadataController < ApplicationController
               disposition: "attachment",
               filename: "marine-data-manual-#{Date.today}.csv" }
 
+  end
+
+  private
+
+  def permitted_attributes
+    params.require(:params).permit(:requested_page, :items_per_page, filters: [:name, :type, options: []])
   end
 end
