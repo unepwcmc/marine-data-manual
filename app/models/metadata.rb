@@ -78,6 +78,13 @@ class Metadata < ApplicationRecord
         options: ["Marine spatial planning", "Education", "Ecosystem assessment", "Environmental impact assessment", "Ecosystem services"],
         sortButtons: false,
         type: "multiple"
+      },
+      {
+        name: "country",
+        title: "Country",
+        options: ["UK", "Italy", "Spain", "country", "country", "country", "country", "country", "country", "country", "country", "country"],
+        sortButtons: false,
+        type: "search"
       }
     ].to_json
   end

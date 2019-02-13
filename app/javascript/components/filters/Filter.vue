@@ -9,20 +9,33 @@
     </p>
     
     <div class="filter__options" :class="{ 'filter__options--active' : isOpen }">
-      <ul class="ul-unstyled filter__options-list" :class="filterClass">
-        <filter-option v-for="option in options" 
-          :option="option"
-          :isTheme="isThemeFilter"
-          :selected="false">
-        </filter-option>
-      </ul>
 
-      <div class="filter__buttons">
-        <button @click="clear()" class="button--link bold float-left">Clear</button>
-        <button @click="cancel()" class="button--link">Cancel</button>
-        <button @click="apply()" class="button--link button--link--green bold">Apply</button>
-      </div>
+      <template v-if="type == 'search'">
+        <div>
+          <input type="text" v-model="searchTerm" v-on:update="search">
+        </div>
+        <ul class="ul-unstyled">
+          <p v-for="option in options">{{ option }}</p>
+        </ul>
+      </template>
+
+      <template v-else>
+        <ul class="ul-unstyled filter__options-list" :class="filterClass">
+          <filter-option v-for="option in options" 
+            :option="option"
+            :isTheme="isThemeFilter"
+            :selected="false">
+          </filter-option>
+        </ul>
+
+        <div class="filter__buttons">
+          <button @click="clear()" class="button--link bold float-left">Clear</button>
+          <button @click="cancel()" class="button--link">Cancel</button>
+          <button @click="apply()" class="button--link button--link--green bold">Apply</button>
+        </div>
+      </template>
     </div>
+
   </div>
 </template>
 
@@ -55,7 +68,8 @@
       return {
         children: this.$children,
         isOpen: false,
-        activeOptions: []
+        activeOptions: [],
+        searchTerm: ''
       }
     },
 
@@ -101,6 +115,10 @@
     },
 
     methods: {
+      search () {
+        console.log('search')
+      },
+
       openSelect () {
         // if the filter is open is close it, else open it and close the others
         if(this.isOpen){
