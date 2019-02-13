@@ -142,8 +142,6 @@
         }
 
         this.$store.dispatch('updateFilterParameters', newFilterOptions)
-
-        eventHub.$emit('callFilterItems')
         eventHub.$emit('getNewItems')
       }
     }

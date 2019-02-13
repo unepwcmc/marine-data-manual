@@ -39,27 +39,6 @@ export default new Vuex.Store({
       })
     },
 
-    clearFilterOptions () {
-      this.state.selectedFilterOptions.forEach(filter => {
-        filter.options = []
-      })
-    },
-
-    removeFilterOption (state, removeOption) {
-
-      this.state.selectedFilterOptions.forEach(filter => {
-        if(filter.name == removeOption.name){ 
-          filter.options.forEach(option => {
-            if(option == removeOption.option){
-              const index = filter.options.indexOf(removeOption.option)
-
-              filter.options.splice(index, 1)
-            }
-          })
-        }
-      })
-    },
-
     updateSortDirection (state, direction) {
       this.state.sortDirection = direction
     },
