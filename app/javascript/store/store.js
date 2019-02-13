@@ -79,6 +79,7 @@ export default new Vuex.Store({
       commit('updateFilterOptions', filterOptions)
       commit('updateSortDirection', '')
       commit('updateSortField', '')
+      commit('updateRequestedPage', 1)
     }
   }
 })

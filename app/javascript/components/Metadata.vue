@@ -79,7 +79,7 @@
           }
         }
 
-        console.log('data', data.params.filters[3])
+        console.log(data.params)
 
         const csrf = document.querySelectorAll('meta[name="csrf-token"]')[0].getAttribute('content')
         axios.defaults.headers.common['X-CSRF-Token'] = csrf
