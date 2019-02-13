@@ -73,6 +73,7 @@ export default new Vuex.Store({
     updateSortParameters ({ commit }, sortParamters) {
       commit('updateSortDirection', sortParamters.direction)
       commit('updateSortField', sortParamters.field)
+      commit('updateRequestedPage', 1)
     },
 
     updateFilterParameters ({ commit }, filterOptions) {
