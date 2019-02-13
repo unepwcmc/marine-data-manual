@@ -13,7 +13,7 @@ class MetadataController < ApplicationController
 
   def metadata_list
     @metadata = Metadata.metadata(permitted_attributes.as_json)
-byebug
+
     render json: @metadata
   end
 
