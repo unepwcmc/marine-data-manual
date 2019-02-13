@@ -2,7 +2,7 @@
   <div>
     <filters :filters="filters"></filters>
 
-    <v-table :tableHeaders="tableHeaders" :metadata="metadata"></v-table>
+    <v-table :tableHeaders="tableHeaders" :items="items"></v-table>
 
     <pagination 
       :currentPage="currentPage"
@@ -31,7 +31,6 @@
     props: {
       filters: Array,
       tableHeaders: Array,
-      metadata: Array,
       itemsPerPage: {
         type: Number,
         default: 10
@@ -51,8 +50,6 @@
     },
 
     created () {
-      
-      
     },
 
     mounted () {

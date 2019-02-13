@@ -6,7 +6,7 @@
     
     <table class="table table--body">
       <tbody>
-        <row v-for="(item, index) in metadata"
+        <row v-for="(item, index) in items"
           :key="index"
           :index="index"
           :item="item">
@@ -28,7 +28,7 @@
 
     props: {
       tableHeaders: { type: Array },
-      metadata: { type: Array }
+      items: { type: Array }
     },
 
     mounted () {
