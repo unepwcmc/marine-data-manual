@@ -8,16 +8,19 @@
         :onMobile="tableHeader.onMobile">
       </table-header>
     </tr>
+
+    <download-csv class="table__button"></download-csv>
   </thead>
 </template>
 
 <script>
+  import DownloadCsv from '../forms/DownloadCsv.vue'
   import TableHeader from './TableHeader.vue'
 
   export default {
     name: 'table-head',
 
-    components: { TableHeader },
+    components: { DownloadCsv, TableHeader },
 
     props: {
       tableHeaders: {

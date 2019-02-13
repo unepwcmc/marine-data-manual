@@ -51,10 +51,13 @@
     },
 
     created () {
-      this.getNewItems()
+      
+      
     },
 
     mounted () {
+      this.checkThemeParameter()
+      this.getNewItems()
       eventHub.$on('getNewItems', this.getNewItems)
     },
 
@@ -73,11 +76,13 @@
           params: {
             filters: this.$store.state.selectedFilterOptions,
             items_per_page: this.itemsPerPage,
-            requested_page: this.$store.state.requestedPage
+            requested_page: this.$store.state.requestedPage,
+            sortDirection: this.$store.state.sortDirection,
+            sortField: this.$store.state.sortField
           }
         }
 
-        console.log('data', data)
+        console.log('data', data.params.filters[3])
 
         const csrf = document.querySelectorAll('meta[name="csrf-token"]')[0].getAttribute('content')
         axios.defaults.headers.common['X-CSRF-Token'] = csrf
@@ -91,6 +96,38 @@
           console.log(error)
         })
       },
+
+      checkThemeParameter () {
+        let queryString = window.location.search.slice(1);
+        
+        if(queryString) {
+          let obj = {}
+
+          // anything after # is not part of query string, so get rid of it
+          queryString = queryString.split('#')[0]
+
+          // split the query string into its component parts
+          let arr = queryString.split('&')
+
+          for (let i=0; i<arr.length; i++) {
+
+            // separate the keys and the values
+            const a = arr[i].split('=');
+
+            // build up object
+            obj[a[0]] = a[1]
+          }
+
+          // check to see if there is a theme parameter
+          if(obj['theme']){
+
+            const eventSelectTheme = 'select_' + obj['theme']
+
+            // trigger functions to select the theme filter option and apply the filters
+            eventHub.$emit(eventSelectTheme, obj['theme'])
+          }
+        }
+      }
     }
   }
 </script>

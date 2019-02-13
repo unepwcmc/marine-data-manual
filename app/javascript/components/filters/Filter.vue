@@ -59,10 +59,6 @@
       }
     },
 
-    created () {
-      eventHub.$on('applyFilters', this.apply)
-    },
-
     computed: {
       // set a flag for theme options that belong to the theme filter
       // this is used to prefilter the table for an individual theme
@@ -98,6 +94,10 @@
       filterClass () {
         return 'filter__options--' + this.name.replace('_| |(|)', '-').toLowerCase()
       }
+    },
+
+    created () {
+      eventHub.$on('apply', this.apply)
     },
 
     methods: {

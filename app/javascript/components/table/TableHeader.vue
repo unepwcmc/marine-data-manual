@@ -21,10 +21,12 @@
         required: true,
         type: String
       },
+
       title: {
         required: true,
         type: String
       },
+
       sortButtons: {
         required: true,
         type: Boolean
@@ -36,9 +38,19 @@
       }
     },
 
+    data () {
+      return {
+        sortDirection: 0
+      }
+    },
+
     methods: {
       sort () {
-        eventHub.$emit('sort', this.name)
+        this.sortDirection = this.sortDirection * -1
+        const order = this.sortDirection == 1 ? "ASC" : "DESC"
+
+        this.$store.dispatch('updateSortParameters', { direction: order, field: this.name })
+        eventHub.$emit('getNewItems')
       }
     }
   }
