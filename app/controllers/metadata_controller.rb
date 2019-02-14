@@ -8,13 +8,13 @@ class MetadataController < ApplicationController
   }.freeze
 
   def index
-    @filters = Metadata.filters_to_json
-    @table_headers = Metadata::TABLE_HEADERS
-    @metadata = Metadata.metadata(DEFAULT_ATTRIBUTES.as_json)
+    @filters = MetadataSerializer.filters_to_json
+    @table_headers = MetadataSerializer::TABLE_HEADERS
+    @metadata = MetadataSerializer.metadata(DEFAULT_ATTRIBUTES.as_json)
   end
 
   def metadata_list
-    @metadata = Metadata.metadata(permitted_attributes.as_json)
+    @metadata = MetadataSerializer.metadata(permitted_attributes.as_json)
 
     render json: @metadata
   end
