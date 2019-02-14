@@ -27,7 +27,10 @@ namespace :import do
       education: csv_headers[9],
       environmental_impact_assessment: csv_headers[10],
       ecosystem_assessment: csv_headers[11],
-      ecosystem_services: csv_headers[12].chomp
+      ecosystem_services: csv_headers[12],
+      license_number: csv_headers[13],
+      region: csv_headers[14],
+      country: csv_headers[15].chomp
     }
 
     CSV.parse(csv, headers: true, encoding: "utf-8") do |row|

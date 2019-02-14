@@ -30,6 +30,9 @@ class Metadata < ApplicationRecord
   def self.filters_to_json
     metadata = Metadata.all
     unique_categories = metadata.pluck(:category).compact.uniq.sort
+    unique_country = metadata.pluck(:country).compact.uniq.sort
+    unique_region = metadata.pluck(:region).compact.uniq.sort
+    unique_license = metadata.pluck(:license_number).compact.uniq.sort
 
     [
       {
@@ -82,9 +85,22 @@ class Metadata < ApplicationRecord
       {
         name: "country",
         title: "Country",
-        options: ["UK", "Italy", "Spain", "country", "country", "country", "country", "country", "country", "country", "country", "country"],
+        options: unique_country,
         sortButtons: false,
         type: "search"
+      },
+      {
+        name: "region",
+        title: "Region",
+        options: unique_region,
+        sortButtons: false,
+        type: "search"
+      },
+      {
+        name: "license_number",
+        title: "License",
+        options: unique_license,
+        sortButtons: false
       }
     ].to_json
   end
