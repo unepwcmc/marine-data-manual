@@ -11,9 +11,12 @@
     <div class="filter__options" :class="{ 'filter__options--active' : isOpen }">
       <ul class="ul-unstyled filter__options-list" :class="filterClass">
         <template v-if="type == 'boolean'">
-          <filter-radio v-for="option in options" 
-            :option="getBooleanTitle(option)">
-          </filter-radio>
+          <filter-radio-buttons
+            :options="options"
+            :name="name"
+            :title="title"
+            :type="type">
+          </filter-radio-buttons>
         </template>
 
         <template v-else>
@@ -37,12 +40,12 @@
 <script>
   import { eventHub } from '../../metadata.js'
   import FilterOption from './FilterOption.vue'
-  import FilterRadio from './FilterRadio.vue'
+  import FilterRadioButtons from './FilterRadioButtons.vue'
 
   export default {
     name: 'v-filter',
 
-    components: { FilterOption, FilterRadio },
+    components: { FilterOption, FilterRadioButtons },
 
     props: {
       name: {
@@ -83,11 +86,17 @@
       selectedOptions () {
         let selectedArray = []
 
-        this.children.forEach(child => {
-          if(child.isSelected){ 
-            selectedArray.push(child.option) 
+        if(this.type == 'boolean') {
+          if(this.children && this.children.length) {
+            selectedArray.push(this.children[0].selected) 
           }
-        })
+        } else {
+          this.children.forEach(child => {
+            if(child.isSelected){ 
+              selectedArray.push(child.option) 
+            }
+          })
+        }
 
         return selectedArray
       },
@@ -152,13 +161,6 @@
 
         this.$store.dispatch('updateFilterParameters', newFilterOptions)
         eventHub.$emit('getNewItems')
-      },
-
-      getBooleanTitle (boolean) {
-        console.log(boolean)
-        const title = boolean ? this.title : `No ${this.title}`
-        console.log(title)
-        return title
       }
     }
   }
