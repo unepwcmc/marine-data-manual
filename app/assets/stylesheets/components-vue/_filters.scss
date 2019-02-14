@@ -81,7 +81,6 @@ $color-text-active: $black;
     border-radius: $radius-global;
     font-size: rem-calc(16);
     margin-top: rem-calc(18);
-    padding: rem-calc(30 25);
     min-width: rem-calc(300);
 
     display: none;
@@ -125,13 +124,18 @@ $color-text-active: $black;
     &__option {
       font-size: rem-calc(16);
       margin-bottom: rem-calc(16);
-      padding: rem-calc(0 20 0 38);
+      padding: rem-calc(0 20 0 0);
       width: 100%;
 
       display: block;
       position: relative;
 
       label { cursor: pointer; }
+    }
+
+    &__option--checkbox {
+      @extend .filter__option;
+      padding-left: rem-calc(38);
     }
 
 //--------------------------------------------------
@@ -167,5 +171,18 @@ $color-text-active: $black;
   &__buttons {
     margin-top: rem-calc(18);
     text-align: right;
+  }
+
+//--------------------------------------------------
+// search
+//--------------------------------------------------
+  &__search {
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    border: none;
+    border-bottom: 1px solid grey;
+    font-size: rem-calc(16);
+    padding: rem-calc(0 25);
+    width: 100%; height: 56px;
   }
 }

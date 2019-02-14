@@ -9,26 +9,29 @@
     </p>
 
     <div class="filter__options" :class="{ 'filter__options--active' : isOpen }">
-
-      <template v-if="type == 'search'">
+      <template v-if="isSearch">
         <div>
-          <input type="text" v-model="searchTerm" >
+          <input type="text" v-model="searchTerm" class="filter__search">
         </div>
-        
-        <ul class="ul-unstyled">
-          <p v-for="option in options">
-            <span v-show="matches(option)">{{ option }}</span>
-          </p>
-        </ul>
       </template>
 
-      <template v-else>
-        <ul class="ul-unstyled filter__options-list" :class="filterClass">
-          <filter-option v-for="option in options"
-            :option="option"
-            :isTheme="isThemeFilter"
-            :selected="false">
-          </filter-option>
+      <div class="filter__options-padding ">
+        <ul class="ul-unstyled filter__options-list">
+          <template v-if="isSearch" v-for="option in options">
+            <filter-radio v-show="matches(option)"
+              :option="option"
+              :selected="false"
+              :name="name">
+            </filter-radio>
+          </template>
+
+          <template v-else>
+            <filter-option v-for="option in options"
+              :option="option"
+              :isTheme="isThemeFilter"
+              :selected="false">
+            </filter-option>
+          </template>
         </ul>
 
         <div class="filter__buttons">
@@ -36,7 +39,7 @@
           <button @click="cancel()" class="button--link">Cancel</button>
           <button @click="apply()" class="button--link button--link--green bold">Apply</button>
         </div>
-      </template>
+      </div>
     </div>
 
   </div>
@@ -45,12 +48,12 @@
 <script>
   import { eventHub } from '../../metadata.js'
   import FilterOption from './FilterOption.vue'
-  import FilterRadioButtons from './FilterRadioButtons.vue'
+  import FilterRadio from './FilterRadio.vue'
 
   export default {
     name: 'v-filter',
 
-    components: { FilterOption, FilterRadioButtons },
+    components: { FilterOption, FilterRadio },
 
     props: {
       name: {
@@ -115,6 +118,10 @@
 
       filterClass () {
         return 'filter__options--' + this.name.replace('_| |(|)', '-').toLowerCase()
+      },
+
+      isSearch () {
+        return this.type == 'search'
       }
     },
 
@@ -127,7 +134,7 @@
         const noSearch = this.searchTerm == '',
           regex = new RegExp(`${this.searchTerm}`, 'i'),
           match = option.match(regex)
-        
+
         return noSearch || match
       },
 
