@@ -17,8 +17,8 @@
     
       <div class="filter__options-padding ">
         <ul class="ul-unstyled filter__options-list">
-          <template v-if="isSearch" v-for="option in options">
-            <filter-radio v-show="matches(option)" 
+          <template v-if="isSearch">
+            <filter-radio v-for="option in options" v-show="matches(option)" 
               :option="option"
               :selected="false"
               :name="name">
