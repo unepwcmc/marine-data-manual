@@ -8,14 +8,15 @@ class MetadataController < ApplicationController
   }.freeze
 
   def index
-    @filters = MetadataSerializer.filters_to_json
-    @table_headers = MetadataSerializer::TABLE_HEADERS
-    @metadata = MetadataSerializer.metadata(DEFAULT_ATTRIBUTES.as_json)
+    @filters = MetadataSerializer.new(Metadata.all).filters_to_json
+    @table_headers = Metadata::TABLE_HEADERS
+    data, count = Metadata.metadata(DEFAULT_ATTRIBUTES.as_json)
+    @metadata = MetadataSerializer.new(data).pagination(params['requested_page'], count)
   end
 
   def metadata_list
-    @metadata = MetadataSerializer.metadata(permitted_attributes.as_json)
-
+    data, count = Metadata.metadata(permitted_attributes.as_json)
+    @metadata = MetadataSerializer.new(data).pagination(params['requested_page'], count)
     render json: @metadata
   end
 
