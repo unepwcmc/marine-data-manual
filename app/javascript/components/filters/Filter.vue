@@ -10,11 +10,19 @@
     
     <div class="filter__options" :class="{ 'filter__options--active' : isOpen }">
       <ul class="ul-unstyled filter__options-list" :class="filterClass">
-        <filter-option v-for="option in options" 
-          :option="option"
-          :isTheme="isThemeFilter"
-          :selected="false">
-        </filter-option>
+        <template v-if="type == 'boolean'">
+          <filter-radio v-for="option in options" 
+            :option="getBooleanTitle(option)">
+          </filter-radio>
+        </template>
+
+        <template v-else>
+          <filter-option v-for="option in options" 
+            :option="option"
+            :isTheme="isThemeFilter"
+            :selected="false">
+          </filter-option>
+        </template>
       </ul>
 
       <div class="filter__buttons">
@@ -29,11 +37,12 @@
 <script>
   import { eventHub } from '../../metadata.js'
   import FilterOption from './FilterOption.vue'
+  import FilterRadio from './FilterRadio.vue'
 
   export default {
     name: 'v-filter',
 
-    components: { FilterOption },
+    components: { FilterOption, FilterRadio },
 
     props: {
       name: {
@@ -143,6 +152,13 @@
 
         this.$store.dispatch('updateFilterParameters', newFilterOptions)
         eventHub.$emit('getNewItems')
+      },
+
+      getBooleanTitle (boolean) {
+        console.log(boolean)
+        const title = boolean ? this.title : `No ${this.title}`
+        console.log(title)
+        return title
       }
     }
   }
