@@ -53,6 +53,26 @@ class MetadataSerializer
         options: ["Marine spatial planning", "Education", "Ecosystem assessment", "Environmental impact assessment", "Ecosystem services"],
         sortButtons: false,
         type: "multiple"
+      },
+      {
+        name: "country",
+        title: "Country",
+        options: unique_country,
+        sortButtons: false,
+        type: "search"
+      },
+      {
+        name: "region",
+        title: "Region",
+        options: unique_region,
+        sortButtons: false,
+        type: "search"
+      },
+      {
+        name: "license_number",
+        title: "License",
+        options: unique_license,
+        sortButtons: false
       }
     ].to_json
   end
