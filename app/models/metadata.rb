@@ -61,14 +61,14 @@ class Metadata < ApplicationRecord
       {
         name: "metadata",
         title: "Metadata",
-        options: ["true", "false"],
+        options: [true, false],
         sortButtons: false,
         type: "boolean"
       },
       {
         name: "factsheet",
         title: "Factsheet",
-        options: ["true", "false"],
+        options: [true, false],
         sortButtons: false,
         type: "boolean"
       },
