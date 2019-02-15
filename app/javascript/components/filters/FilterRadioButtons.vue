@@ -1,7 +1,8 @@
 <template>
   <ul>
     <li class="filter__option" v-for="option in options">
-      <input type="radio" :name="name" :id="optionId(option)" :value="option" v-model="selected" class="filter__checkbox" :class="{ 'filter__checkbox--active' : isSelected(option) }">
+
+      <input type="radio" :name="name" :id="optionId(option)" :value="option" v-model="isSelected" class="filter__checkbox" :class="{ 'filter__checkbox--active' : isActive(option) }">
       <label :for="optionId(option)" class="filter__checkbox-label">{{ optionTitle(option) }}</label>
     </li>
   </ul>
@@ -32,13 +33,13 @@
 
     data () {
       return {
-        selected: null
+        isSelected: null
       }
     },
 
     methods : {
-      isSelected (option) {
-        return option == this.selected
+      isActive (option) {
+        return option == this.isSelected
       },
 
       optionId (option) {

@@ -86,17 +86,15 @@
       selectedOptions () {
         let selectedArray = []
 
-        if(this.type == 'boolean') {
-          if(this.children && this.children.length) {
-            selectedArray.push(this.children[0].selected) 
-          }
-        } else {
-          this.children.forEach(child => {
-            if(child.isSelected){ 
+        this.children.forEach(child => {
+          if(this.type == 'boolean' && child.isSelected != null) {
+            selectedArray.push(child.isSelected) 
+          } else {
+            if(child.isSelected){
               selectedArray.push(child.option) 
             }
-          })
-        }
+          }
+        })
 
         return selectedArray
       },
@@ -106,6 +104,7 @@
       },
 
       totalSelectedOptions () {
+        console.log(this.selectedOptions)
         return this.selectedOptions.length
       },
 
@@ -144,7 +143,7 @@
       clear () {
         // set the isSelected property on all options to false
         this.children.forEach(child => {
-          child.isSelected = false
+          child.isSelected = this.type == 'boolean' ? null : false
         })
       },
 
