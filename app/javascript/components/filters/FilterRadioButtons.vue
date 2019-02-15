@@ -1,22 +1,31 @@
 <template>
   <div>
-    <li class="filter__option--checkbox" v-for="option in options">
-      <template v-if="type == 'search'">
+    <template v-if="type == 'search'">
+      <li v-for="option in options">
         <p v-show="matches(option)" class="no-margin">
-          <input type="radio" :name="name" :id="optionId(option)" :value="option" v-model="isSelected" class="filter__checkbox" :class="{ 'filter__checkbox--active' : isActive(option) }">
-          <label :for="optionId(option)" class="filter__checkbox-label">{{ optionTitle(option) }}</label>
-        </p>  
-      </template>
+          <input type="radio" :name="name" :id="optionId(option)" :value="option" v-model="isSelected" class="hide">
+          <label :for="optionId(option)" 
+            @click="search(option)"
+            class="filter__search-label" 
+            :class="{ 'filter__search-label--active' : isActive(option) }">
+            {{ optionTitle(option) }}
+          </label>
+        </p>
+      </li>
+    </template>
 
-      <template v-else>
+    <template v-else>
+      <li class="filter__option--checkbox" v-for="option in options">
         <input type="radio" :name="name" :id="optionId(option)" :value="option" v-model="isSelected" class="filter__checkbox" :class="{ 'filter__checkbox--active' : isActive(option) }">
         <label :for="optionId(option)" class="filter__checkbox-label">{{ optionTitle(option) }}</label>
-      </template>
-    </li>
+      </li>
+    </template>
   </div>
 </template>
 
 <script>
+  import { eventHub } from '../../metadata.js'
+
   export default {
     name: 'filter-radio-button',
 
@@ -37,7 +46,8 @@
         required: true,
         type: String
       },
-      searchTerm: String
+      searchTerm: String,
+      eventName: String
     },
 
     data () {
@@ -71,6 +81,11 @@
 
         return noSearch || match
       },
+
+      search(option) {
+        console.log('emit ')
+        this.$emit('update:search-term', option)
+      }
     },
   }
 </script>

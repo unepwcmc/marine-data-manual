@@ -9,14 +9,18 @@
     </p>
     
     <div class="filter__options" :class="{ 'filter__options--active' : isOpen }">
-
-      <template v-if="isSearch">
-        <filter-search
-          :options="options"
-          :name="name"
-          :title="title"
-          :type="type">
-        </filter-search>
+      
+      <template v-if="type == 'search'">
+        <ul class="ul-unstyled filter__options-list" :class="filterClass">
+          <filter-search
+            v-on:apply:filter="apply"
+            :options="options"
+            :name="name"
+            :title="title"
+            :type="type"
+            :eventName="eventName">
+          </filter-search>
+        </ul>
       </template>
 
       <template v-else>
@@ -105,7 +109,7 @@
         let selectedArray = []
 
         this.children.forEach(child => {
-          if(this.type == 'boolean' && child.isSelected != null) {
+          if((this.type == 'boolean' || this.type == 'search') && child.isSelected != null) {
             selectedArray.push(child.isSelected) 
           } else {
             if(child.isSelected){
@@ -122,7 +126,6 @@
       },
 
       totalSelectedOptions () {
-        console.log(this.selectedOptions)
         return this.selectedOptions.length
       },
 
@@ -130,13 +133,13 @@
         return 'filter__options--' + this.name.replace('_| |(|)', '-').toLowerCase()
       },
 
-      isSearch () {
-        return this.type == 'search'
+      eventName () {
+        return `apply-${this.name}`
       }
     },
 
-    created () {
-      eventHub.$on('apply', this.apply)
+    mounted () {
+      eventHub.$on(this.eventName, this.apply)
     },
 
     methods: {

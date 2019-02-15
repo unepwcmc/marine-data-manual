@@ -1,21 +1,23 @@
 <template>
   <div>
-    <input type="text" v-model="searchTerm" class="filter__search">
+    <input type="text" v-model="searchTerm" @keyup.enter="applySearch()" class="filter__search">
 
-    <div class="filter__options-padding">
+    <div class="">
       <filter-radio-buttons
+        v-on:update:search-term="applySearch"
         :options="options"
         :name="name"
         :title="title"
         :type="type"
         :searchTerm="searchTerm"
-        >
+        :eventName="eventName">
       </filter-radio-buttons>
     </div>
   </div>
 </template>
 
 <script>
+  import { eventHub } from '../../metadata.js'
   import FilterRadioButtons from './FilterRadioButtons.vue'
 
   export default {
@@ -39,17 +41,34 @@
       type: {
         required: true,
         type: String
+      },
+      eventName: {
+        required: true,
+        type: String
       }
     },
 
     data () {
       return {
-        searchTerm: ''
+        searchTerm: '',
+        isSelected: null
       }
     },
 
+    mounted () {
+      eventHub.$on('updateSearchTerm', this.updateSearchTerm)
+    },
+
     methods: {
-      
+      updateSearchTerm (searchTerm) {
+        this.searchTerm = searchTerm
+      },
+
+      applySearch (option) {
+        this.searchTerm = option
+        this.isSelected = option
+        this.$emit('apply:filter')
+      }
     }
   }
 </script>

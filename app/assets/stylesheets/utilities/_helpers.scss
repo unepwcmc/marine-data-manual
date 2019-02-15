@@ -3,6 +3,7 @@
 //--------------------------------------------------
 // - colours
 // - font
+// - margin
 // - lists
 // - positioning
 //
@@ -23,6 +24,13 @@
 .italic { font-style: italic; }
 .text-center { text-align: center; }
 .intro { line-height: 1.8; }
+
+//--------------------------------------------------
+// margin & padding
+//--------------------------------------------------
+.no-margin--top { margin-top: 0; }
+.no-margin { margin: 0; }
+.margin-center { margin: 0 auto; }
 
 //--------------------------------------------------
 // lists
@@ -66,3 +74,5 @@
 
   transform: translateY(-50%);
 }
+
+.hide { display: none; }
