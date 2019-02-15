@@ -194,4 +194,19 @@ $color-text-active: $black;
     padding: rem-calc(0 25);
     width: 100%; height: 56px;
   }
+    &__search-label {
+      cursor: pointer;
+      padding: rem-calc(9 25);
+
+      display: block;
+
+      &:hover {
+        background-color: lighten($color-active, 30%);
+      }
+
+      &--active,
+      &--active:hover {
+        background-color: $color-active;
+      }
+    }
 }
