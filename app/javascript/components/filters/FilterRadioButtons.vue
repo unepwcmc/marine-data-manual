@@ -1,9 +1,17 @@
 <template>
   <div>
     <li class="filter__option--checkbox" v-for="option in options">
+      <template v-if="type == 'search'">
+        <p v-show="matches(option)" class="no-margin">
+          <input type="radio" :name="name" :id="optionId(option)" :value="option" v-model="isSelected" class="filter__checkbox" :class="{ 'filter__checkbox--active' : isActive(option) }">
+          <label :for="optionId(option)" class="filter__checkbox-label">{{ optionTitle(option) }}</label>
+        </p>  
+      </template>
 
-      <input type="radio" :name="name" :id="optionId(option)" :value="option" v-model="isSelected" class="filter__checkbox" :class="{ 'filter__checkbox--active' : isActive(option) }">
-      <label :for="optionId(option)" class="filter__checkbox-label">{{ optionTitle(option) }}</label>
+      <template v-else>
+        <input type="radio" :name="name" :id="optionId(option)" :value="option" v-model="isSelected" class="filter__checkbox" :class="{ 'filter__checkbox--active' : isActive(option) }">
+        <label :for="optionId(option)" class="filter__checkbox-label">{{ optionTitle(option) }}</label>
+      </template>
     </li>
   </div>
 </template>
@@ -28,7 +36,8 @@
       type: {
         required: true,
         type: String
-      }
+      },
+      searchTerm: String
     },
 
     data () {
@@ -53,7 +62,15 @@
 
       booleanTitle (boolean) {
         return boolean ? this.title : `No ${this.title}`
-      }
+      },
+
+      matches (option) {
+        const noSearch = this.searchTerm == '',
+          regex = new RegExp(`${this.searchTerm}`, 'i'),
+          match = option.match(regex)
+
+        return noSearch || match
+      },
     },
   }
 </script>

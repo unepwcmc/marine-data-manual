@@ -9,48 +9,47 @@
     </p>
     
     <div class="filter__options" :class="{ 'filter__options--active' : isOpen }">
+
       <template v-if="isSearch">
-        <div>
-          <input type="text" v-model="searchTerm" class="filter__search">
+        <filter-search
+          :options="options"
+          :name="name"
+          :title="title"
+          :type="type">
+        </filter-search>
+      </template>
+
+      <template v-else>
+        <div class="filter__options-padding">
+          <ul class="ul-unstyled filter__options-list" :class="filterClass">
+      
+            <template v-if="type == 'boolean'">
+              <filter-radio-buttons
+                :options="options"
+                :name="name"
+                :title="title"
+                :type="type">
+              </filter-radio-buttons>
+            </template>
+
+            <template v-else>
+              <filter-option v-for="option in options" 
+                :option="option"
+                :isTheme="isThemeFilter"
+                :selected="false">
+              </filter-option>
+            </template>
+          </ul>
+
+        </div>
+
+        <div class="filter__buttons">
+          <button @click="clear()" class="button--link bold float-left">Clear</button>
+          <button @click="cancel()" class="button--link">Cancel</button>
+          <button @click="apply()" class="button--link button--link--green bold">Apply</button>
         </div>
       </template>
-    
-      <div class="filter__options-padding">
-        <ul class="ul-unstyled filter__options-list" :class="filterClass">
-          <template v-if="isSearch">
-            <!-- <filter-radio v-for="option in options" v-show="matches(option)" 
-              :option="option"
-              :selected="false"
-              :name="name">
-            </filter-radio> -->
-          </template>
-
-          <template v-if="type == 'boolean'">
-            <filter-radio-buttons
-              :options="options"
-              :name="name"
-              :title="title"
-              :type="type">
-            </filter-radio-buttons>
-          </template>
-
-          <template v-else>
-            <filter-option v-for="option in options" 
-              :option="option"
-              :isTheme="isThemeFilter"
-              :selected="false">
-            </filter-option>
-          </template>
-        </ul>
-      </div>
-
-      <div class="filter__buttons">
-        <button @click="clear()" class="button--link bold float-left">Clear</button>
-        <button @click="cancel()" class="button--link">Cancel</button>
-        <button @click="apply()" class="button--link button--link--green bold">Apply</button>
-      </div>
     </div>
-
   </div>
 </template>
 
@@ -58,11 +57,12 @@
   import { eventHub } from '../../metadata.js'
   import FilterOption from './FilterOption.vue'
   import FilterRadioButtons from './FilterRadioButtons.vue'
+  import FilterSearch from './FilterSearch.vue'
 
   export default {
     name: 'v-filter',
 
-    components: { FilterOption, FilterRadioButtons },
+    components: { FilterOption, FilterRadioButtons, FilterSearch },
 
     props: {
       name: {
@@ -140,14 +140,6 @@
     },
 
     methods: {
-      matches (option) {
-        const noSearch = this.searchTerm == '',
-          regex = new RegExp(`${this.searchTerm}`, 'i'),
-          match = option.match(regex)
-        
-        return noSearch || match
-      },
-
       openSelect () {
         // if the filter is open is close it, else open it and close the others
         if(this.isOpen){
