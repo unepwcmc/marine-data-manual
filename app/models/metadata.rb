@@ -1,5 +1,4 @@
 class Metadata < ApplicationRecord
-
   TABLE_HEADERS = [
     {
       name: "category",
@@ -27,61 +26,6 @@ class Metadata < ApplicationRecord
     }
   ].to_json
 
-  def self.filters_to_json
-    metadata = Metadata.all
-    unique_categories = metadata.pluck(:category).compact.uniq.sort
-
-    [
-      {
-        name: "category",
-        title: "Category",
-        options: unique_categories,
-        sortButtons: true
-      },
-      {
-        name: "resource",
-        title: "Resource",
-        sortButtons: true
-      },
-      {
-        name: "version",
-        title: "Version",
-        sortButtons: true
-      },
-      {
-        name: "contact_organisation",
-        title: "Contact Organisation",
-        sortButtons: true
-      },
-      {
-        name: "id",
-        title: "ID",
-        sortButtons: true
-      },
-      {
-        name: "metadata",
-        title: "Metadata",
-        options: [true, false],
-        sortButtons: false,
-        type: "boolean"
-      },
-      {
-        name: "factsheet",
-        title: "Factsheet",
-        options: [true, false],
-        sortButtons: false,
-        type: "boolean"
-      },
-      {
-        name: "themes",
-        title: "Themes",
-        options: ["Marine spatial planning", "Education", "Ecosystem assessment", "Environmental impact assessment", "Ecosystem services"],
-        sortButtons: false,
-        type: "multiple"
-      }
-    ].to_json
-  end
-
   def self.metadata(params)
     output = []
     filters = sanitize_params(params['filters'])
@@ -99,19 +43,8 @@ class Metadata < ApplicationRecord
       meta_attributes.delete_if { |k| ["created_at", "updated_at"].include? k }
       output << meta_attributes
     end
-    pagination(params['requested_page'], output, filter_data)
-  end
-
-  def self.pagination(page, items, total)
-    page ||= 1
-    {
-      current_page: page,
-      page_items_start: page * 10 - 9,
-      page_items_end: [page * 10, total.count].min,
-      total_items: total.count,
-      total_pages: (total.count / 10.0).ceil,
-      items: items
-    }.to_json
+    # pagination(params['requested_page'], output, filter_data)
+    [output, filter_data.count]
   end
 
   def self.sorting_data(params, data)
@@ -132,6 +65,14 @@ class Metadata < ApplicationRecord
       end
     end
     query.delete_if { |_k, v| v.empty? }
+  end
+
+  def self.metadata_url(meta)
+    meta.metadata ? pdf_download_link : nil
+  end
+
+  def self.pdf_download_link
+    "http://wcmc.io/metadata"
   end
 
   def self.to_csv
@@ -157,13 +98,4 @@ class Metadata < ApplicationRecord
 
     csv
   end
-
-  def self.metadata_url(meta)
-    meta.metadata ? pdf_download_link : nil
-  end
-
-  def self.pdf_download_link
-    "http://wcmc.io/metadata"
-  end
-
 end
