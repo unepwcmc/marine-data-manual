@@ -68,7 +68,7 @@ class Metadata < ApplicationRecord
         query[filter['name']] = filter['options']
       end
     end
-    query.delete_if { |k, v| v.empty? || 'factsheet'.include?(k) }
+    query.delete_if { |k, v| v.empty? || k == 'factsheet' }
   end
 
   def self.factsheet_filter(filters, data)
