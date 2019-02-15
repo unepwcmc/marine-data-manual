@@ -1,6 +1,6 @@
 <template>
   <div>
-    <input type="text" v-model="searchTerm" @keyup.enter="applySearch()" class="filter__search">
+    <input type="text" v-model="searchTerm" @keyup.enter="enterPressed(searchTerm)" class="filter__search">
 
     <div class="">
       <filter-radio-buttons
@@ -10,7 +10,8 @@
         :title="title"
         :type="type"
         :searchTerm="searchTerm"
-        :eventName="eventName">
+        :eventName="eventName"
+        :propIsSelected="isSelected">
       </filter-radio-buttons>
     </div>
   </div>
@@ -55,18 +56,29 @@
       }
     },
 
-    mounted () {
-      eventHub.$on('updateSearchTerm', this.updateSearchTerm)
+    computed: {
+      noSearchTerm () {
+        return this.searchTerm.length == 0
+      }
     },
 
     methods: {
-      updateSearchTerm (searchTerm) {
-        this.searchTerm = searchTerm
+      enterPressed () { 
+        const optionIndex = this.options.indexOf(this.searchTerm)
+        
+        if(optionIndex > 0) {
+          this.applySearch(this.options[optionIndex])
+        }
+
+        if(this.noSearchTerm) {
+          this.applySearch(this.searchTerm) 
+          this.isSelected = null
+        }
       },
 
       applySearch (option) {
+        this.isSelected = this.noSearchTerm ? null : option
         this.searchTerm = option
-        this.isSelected = option
         this.$emit('apply:filter')
       }
     }
