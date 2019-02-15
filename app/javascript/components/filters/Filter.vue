@@ -15,14 +15,23 @@
         </div>
       </template>
     
-      <div class="filter__options-padding ">
-        <ul class="ul-unstyled filter__options-list">
+      <div class="filter__options-padding">
+        <ul class="ul-unstyled filter__options-list" :class="filterClass">
           <template v-if="isSearch">
-            <filter-radio v-for="option in options" v-show="matches(option)" 
+            <!-- <filter-radio v-for="option in options" v-show="matches(option)" 
               :option="option"
               :selected="false"
               :name="name">
-            </filter-radio>
+            </filter-radio> -->
+          </template>
+
+          <template v-if="type == 'boolean'">
+            <filter-radio-buttons
+              :options="options"
+              :name="name"
+              :title="title"
+              :type="type">
+            </filter-radio-buttons>
           </template>
 
           <template v-else>
@@ -33,12 +42,12 @@
             </filter-option>
           </template>
         </ul>
+      </div>
 
-        <div class="filter__buttons">
-          <button @click="clear()" class="button--link bold float-left">Clear</button>
-          <button @click="cancel()" class="button--link">Cancel</button>
-          <button @click="apply()" class="button--link button--link--green bold">Apply</button>
-        </div>
+      <div class="filter__buttons">
+        <button @click="clear()" class="button--link bold float-left">Clear</button>
+        <button @click="cancel()" class="button--link">Cancel</button>
+        <button @click="apply()" class="button--link button--link--green bold">Apply</button>
       </div>
     </div>
 
@@ -48,12 +57,12 @@
 <script>
   import { eventHub } from '../../metadata.js'
   import FilterOption from './FilterOption.vue'
-  import FilterRadio from './FilterRadio.vue'
+  import FilterRadioButtons from './FilterRadioButtons.vue'
 
   export default {
     name: 'v-filter',
 
-    components: { FilterOption, FilterRadio },
+    components: { FilterOption, FilterRadioButtons },
 
     props: {
       name: {
@@ -96,8 +105,12 @@
         let selectedArray = []
 
         this.children.forEach(child => {
-          if(child.isSelected){ 
-            selectedArray.push(child.option) 
+          if(this.type == 'boolean' && child.isSelected != null) {
+            selectedArray.push(child.isSelected) 
+          } else {
+            if(child.isSelected){
+              selectedArray.push(child.option) 
+            }
           }
         })
 
@@ -109,6 +122,7 @@
       },
 
       totalSelectedOptions () {
+        console.log(this.selectedOptions)
         return this.selectedOptions.length
       },
 
@@ -159,7 +173,7 @@
       clear () {
         // set the isSelected property on all options to false
         this.children.forEach(child => {
-          child.isSelected = false
+          child.isSelected = this.type == 'boolean' ? null : false
         })
       },
 

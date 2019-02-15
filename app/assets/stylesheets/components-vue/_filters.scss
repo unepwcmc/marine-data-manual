@@ -92,7 +92,6 @@ $color-text-active: $black;
     }
 
     &-list {
-      margin-bottom: rem-calc(20);
       max-height: rem-calc(300);
       overflow-y: scroll;
       overflow-x: hidden; //for IE11
@@ -169,7 +168,7 @@ $color-text-active: $black;
       }
 
   &__buttons {
-    margin-top: rem-calc(18);
+    padding: rem-calc(0 25 30 25);
     text-align: right;
   }
 
