@@ -46,6 +46,7 @@
         required: true,
         type: String
       },
+      propIsSelected: String,
       searchTerm: String,
       eventName: String
     },
@@ -54,6 +55,12 @@
       return {
         default: null,
         isSelected: null
+      }
+    },
+
+    watch: {
+      propIsSelected () {
+        this.isSelected = this.propIsSelected
       }
     },
 
@@ -84,7 +91,6 @@
       },
 
       search(option) {
-        console.log('emit ')
         this.$emit('update:search-term', option)
       }
     },
