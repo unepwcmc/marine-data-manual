@@ -104,7 +104,6 @@
       },
 
       totalSelectedOptions () {
-        console.log(this.selectedOptions)
         return this.selectedOptions.length
       },
 
@@ -135,7 +134,12 @@
         
         // reset each option to the correct state
         this.children.forEach(child => {
-          child.isSelected = this.activeOptions.includes(child.option) ? true : false
+          if(this.type == 'boolean') { 
+            child.isSelected = this.activeOptions[0]
+          } else {
+            child.isSelected = this.activeOptions.includes(child.option) ? true : false
+          }
+          
         })
       },
 

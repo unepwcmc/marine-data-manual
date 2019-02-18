@@ -20,6 +20,7 @@
 
     data () {
       return {
+        default: false,
         isSelected: false
       }
     },
