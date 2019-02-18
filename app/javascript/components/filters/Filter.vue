@@ -144,9 +144,8 @@
 
     methods: {
       openSelect () {
-        // if the filter is open is close it, else open it and close the others
         if(this.isOpen){
-          this.isOpen = false
+          this.cancel()
         } else {
           eventHub.$emit('clickDropdown', this.name)  
         }
@@ -161,7 +160,12 @@
         
         // reset each option to the correct state
         this.children.forEach(child => {
-          child.isSelected = this.activeOptions.includes(child.option) ? true : false
+          if(this.type == 'boolean') { 
+            child.isSelected = this.activeOptions[0]
+          } else {
+            child.isSelected = this.activeOptions.includes(child.option) ? true : false
+          }
+          
         })
       },
 

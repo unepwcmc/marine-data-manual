@@ -43,7 +43,11 @@
     methods: {
       updateDropdowns (name) {
         this.children.forEach(filter => {
-          filter.isOpen = filter.name == name
+          if(filter.name == name) {
+            filter.isOpen = true
+          } else {
+            filter.cancel()  
+          }
         })
       },
 

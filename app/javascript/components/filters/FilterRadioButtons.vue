@@ -53,6 +53,7 @@
 
     data () {
       return {
+        default: null,
         isSelected: null
       }
     },
