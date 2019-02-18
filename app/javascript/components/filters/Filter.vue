@@ -119,9 +119,8 @@
 
     methods: {
       openSelect () {
-        // if the filter is open is close it, else open it and close the others
         if(this.isOpen){
-          this.isOpen = false
+          this.cancel()
         } else {
           eventHub.$emit('clickDropdown', this.name)  
         }
