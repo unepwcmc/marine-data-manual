@@ -10,11 +10,22 @@
     
     <div class="filter__options" :class="{ 'filter__options--active' : isOpen }">
       <ul class="ul-unstyled filter__options-list" :class="filterClass">
-        <filter-option v-for="option in options" 
-          :option="option"
-          :isTheme="isThemeFilter"
-          :selected="false">
-        </filter-option>
+        <template v-if="type == 'boolean'">
+          <filter-radio-buttons
+            :options="options"
+            :name="name"
+            :title="title"
+            :type="type">
+          </filter-radio-buttons>
+        </template>
+
+        <template v-else>
+          <filter-option v-for="option in options" 
+            :option="option"
+            :isTheme="isThemeFilter"
+            :selected="false">
+          </filter-option>
+        </template>
       </ul>
 
       <div class="filter__buttons">
@@ -29,11 +40,12 @@
 <script>
   import { eventHub } from '../../metadata.js'
   import FilterOption from './FilterOption.vue'
+  import FilterRadioButtons from './FilterRadioButtons.vue'
 
   export default {
     name: 'v-filter',
 
-    components: { FilterOption },
+    components: { FilterOption, FilterRadioButtons },
 
     props: {
       name: {
@@ -59,10 +71,6 @@
       }
     },
 
-    created () {
-      eventHub.$on('applyFilters', this.apply)
-    },
-
     computed: {
       // set a flag for theme options that belong to the theme filter
       // this is used to prefilter the table for an individual theme
@@ -79,8 +87,12 @@
         let selectedArray = []
 
         this.children.forEach(child => {
-          if(child.isSelected){ 
-            selectedArray.push(child.option) 
+          if(this.type == 'boolean' && child.isSelected != null) {
+            selectedArray.push(child.isSelected) 
+          } else {
+            if(child.isSelected){
+              selectedArray.push(child.option) 
+            }
           }
         })
 
@@ -100,11 +112,14 @@
       }
     },
 
+    created () {
+      eventHub.$on('apply', this.apply)
+    },
+
     methods: {
       openSelect () {
-        // if the filter is open is close it, else open it and close the others
         if(this.isOpen){
-          this.isOpen = false
+          this.cancel()
         } else {
           eventHub.$emit('clickDropdown', this.name)  
         }
@@ -119,14 +134,19 @@
         
         // reset each option to the correct state
         this.children.forEach(child => {
-          child.isSelected = this.activeOptions.includes(child.option) ? true : false
+          if(this.type == 'boolean') { 
+            child.isSelected = this.activeOptions[0]
+          } else {
+            child.isSelected = this.activeOptions.includes(child.option) ? true : false
+          }
+          
         })
       },
 
       clear () {
         // set the isSelected property on all options to false
         this.children.forEach(child => {
-          child.isSelected = false
+          child.isSelected = this.type == 'boolean' ? null : false
         })
       },
 
@@ -141,9 +161,8 @@
           options: this.activeOptions
         }
 
-        this.$store.commit('updateFilterOptions', newFilterOptions)
-
-        eventHub.$emit('callFilterItems')
+        this.$store.dispatch('updateFilterParameters', newFilterOptions)
+        eventHub.$emit('getNewItems')
       }
     }
   }

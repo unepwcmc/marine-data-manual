@@ -20,6 +20,7 @@
 
     data () {
       return {
+        default: false,
         isSelected: false
       }
     },
@@ -30,10 +31,9 @@
       // is directed to the metadata list page from a theme page
       if(this.isTheme) {
         const regex = new RegExp(' ', 'g')
-
         const event = 'select_' + this.option.toLowerCase().replace(regex, '')
-
-        eventHub.$on(event, this.selectOption)
+        
+        eventHub.$on(event, this.preselectOption)
       }
     },
 
@@ -46,6 +46,11 @@
     methods: {
       selectOption (option) {
         this.isSelected = true
+      },
+
+      preselectOption (option) {
+        this.selectOption(option)
+        eventHub.$emit('apply')
       }
     }
   }

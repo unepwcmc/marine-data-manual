@@ -1,5 +1,5 @@
 <template>
-  <div class="table__row-wrapper" v-show="item.isActive">
+  <div class="table__row-wrapper">
     <tr @click="toggleRow()" class="table__row" :class="{ 'table__row--active' : isOpen }" >
       <td class="breakpoint-medium-up">{{ item.category }}</td>
 
@@ -57,8 +57,7 @@
 
     data () {
       return {
-        isOpen: false,
-        isActive: ''
+        isOpen: false
       }
     },
 

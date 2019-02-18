@@ -9,35 +9,19 @@ Vue.use(Vuex)
 // create store
 export default new Vuex.Store({
   state: {
-    items: [], // contains array of objects
-    totalItems: [], // contains total number of objects
-    activeItems: [], // contains indices of objects that match the filters
-    currentPage: 1,
+    totalItemsOnCurrenPage: 0,
+    pageItemsStart: 0,
+    pageItemsEnd: 0,
+    totalItems: 0,
+    requestedPage: 1,
     selectedFilterOptions: [], // an array containing an object for each filter that has an array of selected options
-    modalContent: {},
     sortDirection: '',
-    itemsPerPage: '' // this variable is set in by the pagination component and used by the table component
+    sortField: ''
   },
 
   mutations: {
-    setItems (state, items) {
-      this.state.items = items
-    },
-
-    updateTotalItems (state, total) {
-      this.state.totalItems = total 
-    },
-
-    updateActiveItems (state, item) {
-      this.state.activeItems.push(item)
-    },
-
-    clearActiveItems () {
-      this.state.activeItems = []
-    },
-    
-    updateCurrentPage (state, currentPage) {
-      this.state.currentPage = currentPage
+    updateRequestedPage (state, page) {
+      this.state.requestedPage = page
     },
 
     setFilterOptions (state, options) {
@@ -55,37 +39,27 @@ export default new Vuex.Store({
       })
     },
 
-    clearFilterOptions () {
-      this.state.selectedFilterOptions.forEach(filter => {
-        filter.options = []
-      })
-    },
-
-    removeFilterOption (state, removeOption) {
-
-      this.state.selectedFilterOptions.forEach(filter => {
-        if(filter.name == removeOption.name){ 
-          filter.options.forEach(option => {
-            if(option == removeOption.option){
-              const index = filter.options.indexOf(removeOption.option)
-
-              filter.options.splice(index, 1)
-            }
-          })
-        }
-      })
-    },
-
-    updateModalContent (state, content) {
-      this.state.modalContent = content
-    },
-
     updateSortDirection (state, direction) {
       this.state.sortDirection = direction
     },
 
-    setItemsPerPage (state, total) {
-      this.state.itemsPerPage = total
+    updateSortField (state, field) {
+      this.state.sortField = field
+    }
+  },
+
+  actions: {
+    updateSortParameters ({ commit }, sortParamters) {
+      commit('updateSortDirection', sortParamters.direction)
+      commit('updateSortField', sortParamters.field)
+      commit('updateRequestedPage', 1)
+    },
+
+    updateFilterParameters ({ commit }, filterOptions) {
+      commit('updateFilterOptions', filterOptions)
+      commit('updateSortDirection', '')
+      commit('updateSortField', '')
+      commit('updateRequestedPage', 1)
     }
   }
 })
