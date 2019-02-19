@@ -4,7 +4,6 @@ class MetadataSerializer
   end
 
   def filters_to_json
-    metadata = Metadata.all
     unique_categories = @metadata.pluck(:category).compact.uniq.sort
     unique_country = @metadata.pluck(:country).compact.uniq.sort
     unique_region = @metadata.pluck(:region).compact.uniq.sort
