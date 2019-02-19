@@ -7,6 +7,17 @@ $color-text-active: $black;
 //--------------------------------------------------
 // filters
 //--------------------------------------------------
+.filters {
+  @include breakpoint_down($medium) {
+    overflow-x: scroll;
+
+    display: flex;
+  }
+}
+
+//--------------------------------------------------
+// filter
+//--------------------------------------------------
 .filter {
   margin-right: rem-calc(20);
 
