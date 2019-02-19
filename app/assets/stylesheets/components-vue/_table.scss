@@ -5,9 +5,14 @@ $hoverColor: $grey;
 
 %row-template {
   grid-template-columns: 1fr;
+  -ms-grid-template-columns: 1fr;
   display: grid;
+  display: -ms-grid;
 
-  @include breakpoint($medium) { grid-template-columns: 1fr 1fr 1fr 2fr; }
+  @include breakpoint($medium) { 
+    grid-template-columns: 1fr 1fr 1fr 2fr; 
+    -ms-grid-template-columns: 1fr 1fr 1fr 2fr; 
+  }
 }
 
 //--------------------------------------------------
@@ -118,11 +123,16 @@ $hoverColor: $grey;
         max-height: 0;
 
         display: grid;
+        display: -ms-grid;
         grid-template-columns: 1fr;
+        -ms-grid-template-columns: 1fr;
 
         transition: max-height .3s ease-in-out;
 
-        @include breakpoint($medium) { grid-template-columns: 2fr 3fr; }
+        @include breakpoint($medium) { 
+          grid-template-columns: 2fr 3fr; 
+          -ms-grid-template-columns: 2fr 3fr; 
+        }
 
         h3 { margin-top: rem-calc(18); }
       }
@@ -180,9 +190,14 @@ $hoverColor: $grey;
             width: 100%; 
 
             display: grid;
+            display: -ms-grid;
             grid-template-columns: 1fr;
+            -ms-grid-template-columns: 1fr;
 
-            @include breakpoint($medium) { grid-template-columns: 1fr 1fr; }
+            @include breakpoint($medium) { 
+              grid-template-columns: 1fr 1fr; 
+              -ms-grid-template-columns: 1fr 1fr; 
+            }
           }
 
             //N.B flexbox layout doesn't work in IE so going back to using float
