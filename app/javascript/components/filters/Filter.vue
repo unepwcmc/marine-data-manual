@@ -159,9 +159,8 @@
           if(this.type == 'boolean' || this.type == 'search') {
             child.isSelected = this.activeOptions[0]
           } else {
-            child.isSelected = this.activeOptions.includes(child.option) ? true : false
+            child.isSelected = this.activeOptions.indexOf(child.option) > -1 ? true : false
           }
-
         })
       },
 
