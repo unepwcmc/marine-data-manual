@@ -3,8 +3,19 @@
     <%= image_tag 'logos/logo-ocean-plus-library.svg', alt: 'Ocean+ Library logo', class: 'topbar__logo' %>
   <% end %>
 
-  <nav>
-    <%= link_to 'Metadata list', metadata_path, class: 'topbar__nav-link' %>
-    <%= link_to 'Data limitations', data_limitations_path, class: 'topbar__nav-link' %>
-  </nav>
+  <nav-burger classes="nav--burger">
+    <nav-link 
+      href="<%= metadata_path %>" 
+      :current-page="<%= active_nav_item? metadata_path %>"
+      title="Metadata list"
+      classes="topbar__nav-link">
+    </nav-link>
+
+    <nav-link 
+      href="<%= data_limitations_path %>"
+      :current-page="<%= active_nav_item? data_limitations_path %>"
+      title="Data limitations"
+      classes="topbar__nav-link">
+    </nav-link>
+  </nav-burger>
 </div>

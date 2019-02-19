@@ -27,6 +27,10 @@ module ApplicationHelper
     string.downcase.gsub(" ", "")
   end
 
+  def active_nav_item?(test_path)
+    request.fullpath == test_path
+  end
+
   def url_encode text
     ERB::Util.url_encode(text)
   end
