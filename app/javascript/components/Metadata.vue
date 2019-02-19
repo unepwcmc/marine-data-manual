@@ -79,12 +79,15 @@
           }
         }
 
+        console.log(data)
+
         const csrf = document.querySelectorAll('meta[name="csrf-token"]')[0].getAttribute('content')
         axios.defaults.headers.common['X-CSRF-Token'] = csrf
         axios.defaults.headers.common['Accept'] = 'application/json'
 
         axios.post('/metadata-list', data)
         .then(response => {
+          console.log(response.data)
           this.updateProperties(response.data)
         })
         .catch(function (error) {

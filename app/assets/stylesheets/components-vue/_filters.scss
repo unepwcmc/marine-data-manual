@@ -81,6 +81,7 @@ $color-text-active: $black;
     border-radius: $radius-global;
     font-size: rem-calc(16);
     margin-top: rem-calc(18);
+    overflow: hidden;
     min-width: rem-calc(300);
 
     display: none;
@@ -184,7 +185,7 @@ $color-text-active: $black;
 //--------------------------------------------------
 // search
 //--------------------------------------------------
-  &__search {
+  &--search {
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
     border: none;
@@ -194,7 +195,7 @@ $color-text-active: $black;
     width: 100%; height: 56px;
   }
 
-    &__search-icon {
+    &--search-icon {
       background: image-url('icons/search.svg') no-repeat center;
       background-size: 50%;
       cursor: pointer;
@@ -211,19 +212,19 @@ $color-text-active: $black;
       }
     }
 
-    &__search-label {
-      cursor: pointer;
-      padding: rem-calc(9 25);
+      &--search-label {
+        cursor: pointer;
+        padding: rem-calc(9 25);
 
-      display: block;
+        display: block;
 
-      &:hover {
-        background-color: lighten($color-active, 30%);
+        &:hover {
+          background-color: lighten($color-active, 30%);
+        }
+
+        &--active,
+        &--active:hover {
+          background-color: $color-active;
+        }
       }
-
-      &--active,
-      &--active:hover {
-        background-color: $color-active;
-      }
-    }
 }
