@@ -124,6 +124,11 @@ $color-text-active: $black;
 
     &--search {
       height: calc(100% - 65px);
+
+      @include breakpoint($small) { 
+        height: auto; 
+        max-height: rem-calc(300); 
+      }
     }
 
     &-list {
@@ -132,6 +137,7 @@ $color-text-active: $black;
       overflow-x: hidden; //for IE11
 
       @include breakpoint($small) {
+        height: auto;
         max-height: rem-calc(300);
         white-space: nowrap;        
       }
