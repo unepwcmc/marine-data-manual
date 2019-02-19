@@ -35,7 +35,7 @@ class Metadata < ApplicationRecord
                   else
                     Metadata.all
                   end
-    metadata = sorting_data(params, filter_data)
+    metadata = sorting_data(params, filter_data, pagination)
     metadata.to_a.each do |meta|
       meta_attributes = meta.attributes
       meta_attributes[:metadata] = metadata_url(meta)
@@ -51,11 +51,11 @@ class Metadata < ApplicationRecord
     [output, filter_data.count]
   end
 
-  def self.sorting_data(params, data)
+  def self.sorting_data(params, data, pagination)
     field = params['sortField'].presence || 'id'
     direction = params['sortDirection'].presence || 'ASC'
     data.order("#{field} #{direction}")
-        .paginate(page: params['requested_page'] || 1, per_page: 10)
+        .paginate(page: params['requested_page'] || 1, per_page: pagination ? 10 : data.count)
   end
 
   def self.sanitize_params(filters)
@@ -86,7 +86,7 @@ class Metadata < ApplicationRecord
     "http://wcmc.io/metadata"
   end
 
-  def self.to_csv
+  def self.to_csv(metadata)
     csv = ''
     metadata_columns = Metadata.new.attributes.keys
     metadata_columns.delete_if { |k| ["created_at", "updated_at"].include? k }
@@ -96,9 +96,8 @@ class Metadata < ApplicationRecord
     csv << metadata_columns.join(',')
     csv << "\n"
 
-    metadata = Metadata.order(id: :asc)
-
-    metadata.to_a.each do |meta|
+    data = Metadata.where(id: metadata.pluck('id'))
+    data.to_a.each do |meta|
       metadata_attributes = meta.attributes
       metadata_attributes.delete_if { |k| ["created_at", "updated_at"].include? k }
 

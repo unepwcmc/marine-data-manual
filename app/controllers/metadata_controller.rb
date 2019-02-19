@@ -21,7 +21,9 @@ class MetadataController < ApplicationController
   end
 
   def download
-    send_data Metadata.to_csv, {
+    attributes = params.as_json['filters'].presence || {}
+    data = Metadata.metadata(attributes.as_json, false).first
+    send_data Metadata.to_csv(data), {
               type: "text/csv; charset=iso-8859-1; header=present",
               disposition: "attachment",
               filename: "marine-data-manual-#{Date.today}.csv" }
