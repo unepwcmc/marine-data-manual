@@ -8,7 +8,7 @@ $color-text-active: $black;
 // filters
 //--------------------------------------------------
 .filters {
-  @include breakpoint_down($medium) {
+  @include breakpoint_down($small) {
     overflow-x: scroll;
 
     display: flex;
@@ -91,13 +91,27 @@ $color-text-active: $black;
     border: solid rem-calc(1) $black;
     border-radius: $radius-global;
     font-size: rem-calc(16);
-    margin-top: rem-calc(18);
-    overflow: hidden;
-    min-width: rem-calc(300);
-
+    
+    grid-template-rows: 1fr auto;
     display: none;
-    position: absolute;
+    position: fixed;
+    top: $gutter-small;
+    right: $gutter-small;
+    bottom: $gutter-small;
+    left: $gutter-small;
     z-index: 1;
+
+    @include breakpoint($small) {
+      margin-top: rem-calc(18);
+      overflow: hidden;
+      min-width: rem-calc(300);
+
+      position: absolute;
+      top: initial;
+      right: initial;
+      bottom: initial;
+      left: initial;
+    }
 
     .filter:last-child & {
       right: 0;
@@ -108,11 +122,17 @@ $color-text-active: $black;
     }
 
     &-list {
-      max-height: rem-calc(300);
+      height: 100%;
       overflow-y: scroll;
       overflow-x: hidden; //for IE11
-      white-space: nowrap; 
+
+      @include breakpoint($small) {
+        max-height: rem-calc(300);
+        white-space: nowrap;        
+      } 
     }
+
+    &-fixed-height { height: calc(100% - 60px); }
 
     &-padding { padding: rem-calc(30 25); }
 

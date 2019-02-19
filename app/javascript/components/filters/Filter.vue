@@ -24,7 +24,7 @@
       </template>
 
       <template v-else>
-        <div class="filter__options-padding">
+        <div class="filter__options-padding filter__options-fixed-height">
           <ul class="ul-unstyled filter__options-list" :class="filterClass">
 
             <template v-if="type == 'boolean'">
