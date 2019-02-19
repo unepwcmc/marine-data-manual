@@ -26,6 +26,64 @@ class Metadata < ApplicationRecord
     }
   ].to_json
 
+  def self.filters_to_json
+    metadata = Metadata.all
+    unique_categories = metadata.pluck(:category).compact.uniq.sort
+    unique_country = metadata.pluck(:country).compact.uniq.sort
+    unique_region = metadata.pluck(:region).compact.uniq.sort
+    unique_license = metadata.pluck(:license_number).compact.uniq.sort
+
+    [
+      {
+        name: "category",
+        title: "Category",
+        options: unique_categories,
+        sortButtons: true
+      },
+      {
+        name: "resource",
+        title: "Resource",
+        sortButtons: true
+      },
+      {
+        name: "version",
+        title: "Version",
+        sortButtons: true
+      },
+      {
+        name: "contact_organisation",
+        title: "Contact Organisation",
+        sortButtons: true
+      },
+      {
+        name: "id",
+        title: "ID",
+        sortButtons: true
+      },
+      {
+        name: "metadata",
+        title: "Metadata",
+        options: ["true", "false"],
+        sortButtons: false,
+        type: "boolean"
+      },
+      {
+        name: "factsheet",
+        title: "Factsheet",
+        options: ["true", "false"],
+        sortButtons: false,
+        type: "boolean"
+      },
+      {
+        name: "themes",
+        title: "Themes",
+        options: ["Marine spatial planning", "Education", "Ecosystem assessment", "Environmental impact assessment", "Ecosystem services"],
+        sortButtons: false,
+        type: "multiple"
+      }
+    ].to_json
+  end
+
   def self.metadata(params)
     output = []
     filters = sanitize_params(params['filters'])

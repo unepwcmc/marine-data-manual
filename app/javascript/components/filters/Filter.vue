@@ -1,15 +1,15 @@
 <template>
   <div v-if="hasOptions" class="filter">
     <p
-      @click="openSelect()" 
-      class="filter__button button" 
+      @click="openSelect()"
+      class="filter__button button"
       :class="{ 'filter__button--active' : isOpen , 'filter__button--has-selected' : hasSelected }">
 
       {{ title }} <span v-show="hasSelected" class="filter__button-total">{{ totalSelectedOptions }}</span>
     </p>
-    
+
     <div class="filter__options" :class="{ 'filter__options--active' : isOpen }">
-      
+
       <template v-if="type == 'search'">
         <ul class="ul-unstyled filter__options-list" :class="filterClass">
           <filter-search
@@ -26,7 +26,7 @@
       <template v-else>
         <div class="filter__options-padding">
           <ul class="ul-unstyled filter__options-list" :class="filterClass">
-      
+
             <template v-if="type == 'boolean'">
               <filter-radio-buttons
                 :options="options"
@@ -73,7 +73,7 @@
         type: String
       },
       title: {
-        required: true, 
+        required: true,
         type: String
       },
       options: {
@@ -97,7 +97,7 @@
       // set a flag for theme options that belong to the theme filter
       // this is used to prefilter the table for an individual theme
       isThemeFilter () {
-        return this.name === 'themes'  
+        return this.name === 'themes'
       },
 
       // only show the select if the filter is a real filter and not just a table title
@@ -110,10 +110,10 @@
 
         this.children.forEach(child => {
           if((this.type == 'boolean' || this.type == 'search') && child.isSelected != null) {
-            selectedArray.push(child.isSelected) 
+            selectedArray.push(child.isSelected)
           } else {
             if(child.isSelected){
-              selectedArray.push(child.option) 
+              selectedArray.push(child.option)
             }
           }
         })
@@ -147,7 +147,7 @@
         if(this.isOpen){
           this.cancel()
         } else {
-          eventHub.$emit('clickDropdown', this.name)  
+          eventHub.$emit('clickDropdown', this.name)
         }
       },
 
@@ -157,15 +157,15 @@
 
       cancel() {
         this.closeSelect()
-        
+
         // reset each option to the correct state
         this.children.forEach(child => {
-          if(this.type == 'boolean' || this.type == 'search') { 
+          if(this.type == 'boolean' || this.type == 'search') {
             child.isSelected = this.activeOptions[0]
           } else {
             child.isSelected = this.activeOptions.includes(child.option) ? true : false
           }
-          
+
         })
       },
 
@@ -181,7 +181,7 @@
 
         //update the active filters array
         this.activeOptions = this.selectedOptions
-        
+
         const newFilterOptions = {
           filter: this.name,
           options: this.activeOptions
