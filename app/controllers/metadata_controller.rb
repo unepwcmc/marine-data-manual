@@ -11,12 +11,12 @@ class MetadataController < ApplicationController
     @filters = MetadataSerializer.new(Metadata.all).filters_to_json
     @table_headers = Metadata::TABLE_HEADERS
     data, count = Metadata.metadata(DEFAULT_ATTRIBUTES.as_json)
-    @metadata = MetadataSerializer.new(data).pagination(params['requested_page'], count)
+    @metadata = MetadataSerializer.new(data).pagination(permitted_attributes.as_json['requested_page'], count)
   end
 
   def metadata_list
     data, count = Metadata.metadata(permitted_attributes.as_json)
-    @metadata = MetadataSerializer.new(data).pagination(params['requested_page'], count)
+    @metadata = MetadataSerializer.new(data).pagination(permitted_attributes.as_json['requested_page'], count)
     render json: @metadata
   end
 
