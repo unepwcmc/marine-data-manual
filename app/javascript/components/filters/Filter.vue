@@ -37,7 +37,7 @@
             </template>
 
             <template v-else>
-              <filter-option v-for="option in options"
+              <filter-option v-for="option in options" 
                 :option="option"
                 :isTheme="isThemeFilter"
                 :selected="false">

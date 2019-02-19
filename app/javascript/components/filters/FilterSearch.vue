@@ -1,16 +1,20 @@
 <template>
   <div>
-    <input type="text" v-model="searchTerm" @keyup.enter="enterPressed()" class="filter__search">
+    <div class="relative">
+      <input type="text" v-model="searchTerm" @keyup.enter="enterPressed()" class="filter--search">
+      <i class="filter--search-icon" v-show="noSearchTerm" @click="enterPressed()"></i>
+      <i class="filter--search-icon close" v-show="!noSearchTerm" @click="clear()"></i>
+    </div>
 
     <ul class="ul-unstyled">
-      <li v-for="option in options">
-        <p v-show="matches(option)" class="no-margin">
-          <label 
-            @click="clickOption(option)"
-            class="filter__search-label" 
-            :class="{ 'filter__search-label--active' : isActive(option) }">
-            {{ option }}
-          </label>
+      <li v-for="option in options" class="filter--search-option">
+        <p 
+          v-show="matches(option)" 
+          @click="clickOption(option)"
+          class="filter--search-label no-margin"
+          :class="{ 'filter--search-label--active' : isActive(option) }">
+          
+          {{ option }}
         </p>
       </li>
     </ul>
@@ -74,6 +78,12 @@
           match = option.match(regex)
 
         return noSearch || match
+      },
+
+      clear () {
+        this.searchTerm = ''
+        this.isSelected = null
+        this.applySearch()
       },
 
       enterPressed () { 
