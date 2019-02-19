@@ -60,18 +60,3 @@
     }
   }
 </script>
-
-<style lang="scss">
-  @import '../../scss/includes.scss';
-
-  .table__head {
-    &--stuck {
-      position: fixed;
-      top: 0;
-
-      width: rem-calc(1160);
-
-      animation: showHeader .25s forwards linear;
-    }
-  }
-</style>

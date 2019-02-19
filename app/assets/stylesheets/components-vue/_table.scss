@@ -35,6 +35,18 @@ $hoverColor: $grey;
     color: white;
 
     &:first-child { border-left: none; }
+
+    &--stuck {
+      position: fixed;
+      top: 0;
+
+      width: calc(100% - #{$gutter-small * 2});
+
+      animation: showHeader .25s forwards linear;
+
+      @include breakpoint($small) { width: calc(100% - #{$gutter-medium * 4}); }
+      @include breakpoint($medium) { width: rem-calc(1160); }
+    }
   }
     
     &__header {

@@ -8,7 +8,7 @@ $color-text-active: $black;
 // filters
 //--------------------------------------------------
 .filters {
-  @include breakpoint_down($medium) {
+  @include breakpoint_down($small) {
     overflow-x: scroll;
 
     display: flex;
@@ -91,49 +91,55 @@ $color-text-active: $black;
     border: solid rem-calc(1) $black;
     border-radius: $radius-global;
     font-size: rem-calc(16);
-    margin-top: rem-calc(18);
-    overflow: hidden;
-    min-width: rem-calc(300);
-
+    
+    grid-template-rows: 1fr auto;
     display: none;
-    position: absolute;
+    position: fixed;
+    top: $gutter-small;
+    right: $gutter-small;
+    bottom: $gutter-small;
+    left: $gutter-small;
     z-index: 1;
 
+    @include breakpoint($small) {
+      margin-top: rem-calc(18);
+      overflow: hidden;
+      min-width: rem-calc(300);
+
+      position: absolute;
+      top: initial;
+      right: initial;
+      bottom: initial;
+      left: initial;  
+    }
+
     .filter:last-child & {
-      right: 0;
+      @include breakpoint($small) { right: 0; }
     }
 
     &--active {
-      display: block;
+      display: flex;
+      flex-direction: column;
+    }
+
+    &--search {
+      height: calc(100% - 65px);
     }
 
     &-list {
-      max-height: rem-calc(300);
+      height: calc(100% - 100px);
       overflow-y: scroll;
       overflow-x: hidden; //for IE11
-      white-space: nowrap; 
+
+      @include breakpoint($small) {
+        max-height: rem-calc(300);
+        white-space: nowrap;        
+      }
+
+      &--search { margin-bottom: rem-calc(25) }
     }
 
     &-padding { padding: rem-calc(30 25); }
-
-    &--donors {
-      column-count: 2;
-      flex-wrap: wrap;
-      width: 928px;
-      white-space: normal;
-
-      display: flex;
-
-      li {
-        flex: 1 0 50%;
-
-        float: left;
-      }
-    }
-    
-    &--category { max-width: rem-calc(803); }
-    &--country { max-width: rem-calc(480); }
-    &--ocean-region { max-width: rem-calc(300); }
   }
 
     &__option {
@@ -184,8 +190,11 @@ $color-text-active: $black;
       }
 
   &__buttons {
+    margin-top: auto;
     padding: rem-calc(0 25 30 25);
     text-align: right;
+
+    justify-self: flex-end;
   }
 
 //--------------------------------------------------
@@ -229,7 +238,7 @@ $color-text-active: $black;
 
       &--search-label {
         cursor: pointer;
-        padding: rem-calc(9 25);
+        padding: rem-calc(9 30);
 
         display: block;
 
