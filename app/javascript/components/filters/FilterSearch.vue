@@ -1,30 +1,27 @@
 <template>
   <div>
-    <input type="text" v-model="searchTerm" @keyup.enter="enterPressed(searchTerm)" class="filter__search">
+    <input type="text" v-model="searchTerm" @keyup.enter="enterPressed()" class="filter__search">
 
-    <div class="">
-      <filter-radio-buttons
-        v-on:update:search-term="applySearch"
-        :options="options"
-        :name="name"
-        :title="title"
-        :type="type"
-        :searchTerm="searchTerm"
-        :eventName="eventName"
-        :propIsSelected="isSelected">
-      </filter-radio-buttons>
-    </div>
+    <ul class="ul-unstyled">
+      <li v-for="option in options">
+        <p v-show="matches(option)" class="no-margin">
+          <label 
+            @click="clickOption(option)"
+            class="filter__search-label" 
+            :class="{ 'filter__search-label--active' : isActive(option) }">
+            {{ option }}
+          </label>
+        </p>
+      </li>
+    </ul>
   </div>
 </template>
 
 <script>
   import { eventHub } from '../../metadata.js'
-  import FilterRadioButtons from './FilterRadioButtons.vue'
 
   export default {
     name: 'filter-search',
-
-    components: { FilterRadioButtons },
 
     props: {
       options: {
@@ -63,22 +60,43 @@
     },
 
     methods: {
+      isActive (option) {
+        return option == this.isSelected
+      },
+
+      optionId (option) {
+        return option.replace(' |(|)|_', '-').toLowerCase()
+      },
+
+      matches (option) {
+        const noSearch = this.searchTerm == '',
+          regex = new RegExp(`${this.searchTerm}`, 'i'),
+          match = option.match(regex)
+
+        return noSearch || match
+      },
+
       enterPressed () { 
         const optionIndex = this.options.indexOf(this.searchTerm)
         
         if(optionIndex > 0) {
-          this.applySearch(this.options[optionIndex])
+          this.isSelected = this.options[optionIndex]
         }
 
         if(this.noSearchTerm) {
-          this.applySearch(this.searchTerm) 
           this.isSelected = null
         }
+
+        this.applySearch()
       },
 
-      applySearch (option) {
-        this.isSelected = this.noSearchTerm ? null : option
-        this.searchTerm = option
+      clickOption (option) {
+        this.isSelected = option
+        this.searchTerm = this.isSelected
+        this.applySearch()
+      },
+
+      applySearch () {
         this.$emit('apply:filter')
       }
     }
