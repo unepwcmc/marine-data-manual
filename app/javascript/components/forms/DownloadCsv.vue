@@ -29,7 +29,10 @@
         axios.defaults.headers.common['X-CSRF-Token'] = csrf
         axios.defaults.headers.common['Accept'] = 'application/json'
 
-        axios.post('/download', data)
+        axios.post('/metadata/download', data)
+          .then(function (response) {
+            console.log(response);
+          })
           .catch(function (error) {
             console.log(error)
           })
