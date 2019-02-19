@@ -1,25 +1,9 @@
 <template>
   <div>
-    <template v-if="type == 'search'">
-      <li v-for="option in options">
-        <p v-show="matches(option)" class="no-margin">
-          <input type="radio" :name="name" :id="optionId(option)" :value="option" v-model="isSelected" class="hide">
-          <label :for="optionId(option)" 
-            @click="search(option)"
-            class="filter__search-label" 
-            :class="{ 'filter__search-label--active' : isActive(option) }">
-            {{ optionTitle(option) }}
-          </label>
-        </p>
-      </li>
-    </template>
-
-    <template v-else>
-      <li class="filter__option--checkbox" v-for="option in options">
-        <input type="radio" :name="name" :id="optionId(option)" :value="option" v-model="isSelected" class="filter__checkbox" :class="{ 'filter__checkbox--active' : isActive(option) }">
-        <label :for="optionId(option)" class="filter__checkbox-label">{{ optionTitle(option) }}</label>
-      </li>
-    </template>
+    <li class="filter__option--checkbox" v-for="option in options">
+      <input type="radio" :name="name" :id="optionId(option)" :value="option" v-model="isSelected" class="filter__checkbox" :class="{ 'filter__checkbox--active' : isActive(option) }">
+      <label :for="optionId(option)" class="filter__checkbox-label">{{ optionTitle(option) }}</label>
+    </li>
   </div>
 </template>
 
@@ -46,9 +30,7 @@
         required: true,
         type: String
       },
-      propIsSelected: String,
-      searchTerm: String,
-      eventName: String
+      propIsSelected: Boolean
     },
 
     data () {
@@ -80,18 +62,6 @@
 
       booleanTitle (boolean) {
         return boolean ? this.title : `No ${this.title}`
-      },
-
-      matches (option) {
-        const noSearch = this.searchTerm == '',
-          regex = new RegExp(`${this.searchTerm}`, 'i'),
-          match = option.match(regex)
-
-        return noSearch || match
-      },
-
-      search(option) {
-        this.$emit('update:search-term', option)
       }
     },
   }
