@@ -11,7 +11,7 @@
     <div class="filter__options" :class="{ 'filter__options--active' : isOpen }">
 
       <template v-if="type == 'search'">
-        <ul class="ul-unstyled filter__options-list" :class="filterClass">
+        <div class="filter__options--search" :class="filterClass">
           <filter-search
             v-on:apply:filter="apply"
             :options="options"
@@ -20,39 +20,35 @@
             :type="type"
             :eventName="eventName">
           </filter-search>
-        </ul>
+        </div>
       </template>
 
       <template v-else>
-        <div class="filter__options-padding filter__options-fixed-height">
-          <ul class="ul-unstyled filter__options-list" :class="filterClass">
+        <ul class="ul-unstyled filter__options-list filter__options-padding" :class="filterClass">
+          <template v-if="type == 'boolean'">
+            <filter-radio-buttons
+              :options="options"
+              :name="name"
+              :title="title"
+              :type="type">
+            </filter-radio-buttons>
+          </template>
 
-            <template v-if="type == 'boolean'">
-              <filter-radio-buttons
-                :options="options"
-                :name="name"
-                :title="title"
-                :type="type">
-              </filter-radio-buttons>
-            </template>
-
-            <template v-else>
-              <filter-option v-for="option in options" 
-                :option="option"
-                :isTheme="isThemeFilter"
-                :selected="false">
-              </filter-option>
-            </template>
-          </ul>
-
-        </div>
-
-        <div class="filter__buttons">
-          <button @click="clear()" class="button--link bold float-left">Clear</button>
-          <button @click="cancel()" class="button--link">Cancel</button>
-          <button @click="apply()" class="button--link button--link--green bold">Apply</button>
-        </div>
+          <template v-else>
+            <filter-option v-for="option in options" 
+              :option="option"
+              :isTheme="isThemeFilter"
+              :selected="false">
+            </filter-option>
+          </template>
+        </ul>
       </template>
+
+      <div class="filter__buttons">
+        <button @click="clear()" class="button--link bold float-left">Clear</button>
+        <button @click="cancel()" class="button--link">Cancel</button>
+        <button @click="apply()" class="button--link button--link--green bold">Apply</button>
+      </div>
     </div>
   </div>
 </template>

@@ -110,50 +110,36 @@ $color-text-active: $black;
       top: initial;
       right: initial;
       bottom: initial;
-      left: initial;
+      left: initial;  
     }
 
     .filter:last-child & {
-      right: 0;
+      @include breakpoint($small) { right: 0; }
     }
 
     &--active {
-      display: block;
+      display: flex;
+      flex-direction: column;
+    }
+
+    &--search {
+      height: calc(100% - 65px);
     }
 
     &-list {
-      height: 100%;
+      height: calc(100% - 100px);
       overflow-y: scroll;
       overflow-x: hidden; //for IE11
 
       @include breakpoint($small) {
         max-height: rem-calc(300);
         white-space: nowrap;        
-      } 
-    }
+      }
 
-    &-fixed-height { height: calc(100% - 60px); }
+      &--search { margin-bottom: rem-calc(25) }
+    }
 
     &-padding { padding: rem-calc(30 25); }
-
-    &--donors {
-      column-count: 2;
-      flex-wrap: wrap;
-      width: 928px;
-      white-space: normal;
-
-      display: flex;
-
-      li {
-        flex: 1 0 50%;
-
-        float: left;
-      }
-    }
-    
-    &--category { max-width: rem-calc(803); }
-    &--country { max-width: rem-calc(480); }
-    &--ocean-region { max-width: rem-calc(300); }
   }
 
     &__option {
@@ -204,8 +190,11 @@ $color-text-active: $black;
       }
 
   &__buttons {
+    margin-top: auto;
     padding: rem-calc(0 25 30 25);
     text-align: right;
+
+    justify-self: flex-end;
   }
 
 //--------------------------------------------------
@@ -249,7 +238,7 @@ $color-text-active: $black;
 
       &--search-label {
         cursor: pointer;
-        padding: rem-calc(9 25);
+        padding: rem-calc(9 30);
 
         display: block;
 

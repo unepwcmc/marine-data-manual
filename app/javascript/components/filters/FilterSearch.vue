@@ -1,12 +1,12 @@
 <template>
-  <div>
+  <div class="height-100">
     <div class="relative">
       <input type="text" v-model="searchTerm" @keyup.enter="enterPressed()" class="filter--search">
       <i class="filter--search-icon" v-show="noSearchTerm" @click="enterPressed()"></i>
       <i class="filter--search-icon close" v-show="!noSearchTerm" @click="clear()"></i>
     </div>
 
-    <ul class="ul-unstyled">
+    <ul class="ul-unstyled filter__options-list filter__options-list--search">
       <li v-for="option in options" class="filter--search-option">
         <p 
           v-show="matches(option)" 
