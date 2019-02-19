@@ -1,6 +1,13 @@
 <div class="sticky">
-  <%= create_social_twitter_link %>
-  <%= create_social_linkedin_link %>
-  <%= create_social_facebook_link %>
-  <%= create_social_email_link %>
+  <popout>
+    <template slot="link">
+      <i class="icon--share icon--social"></i>
+    </template>
+    <template slot="popout"> 
+      <%= create_social_twitter_link %>
+      <%= create_social_linkedin_link %>
+      <%= create_social_facebook_link %>
+      <%= create_social_email_link %>
+    </template>
+  </popout>
 </div>

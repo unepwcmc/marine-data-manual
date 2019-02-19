@@ -35,6 +35,7 @@ import store from './store/store.js'
 import Accordion from './components/accordion/Accordion.vue'
 import AccordionItem from './components/accordion/AccordionItem'
 import Metadata from './components/Metadata.vue'
+import Popout from './components/popout/Popout.vue'
 
 // create event hub and export so that it can be imported into .vue files
 export const eventHub = new Vue()
@@ -43,6 +44,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
     el: '#v-app',
     store,
-    components: { Accordion, AccordionItem, Metadata }
+    components: { Accordion, AccordionItem, Metadata, Popout }
   })
 })
