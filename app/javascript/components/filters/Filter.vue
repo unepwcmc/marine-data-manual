@@ -160,7 +160,7 @@
 
         // reset each option to the correct state
         this.children.forEach(child => {
-          if(this.type == 'boolean') {
+          if(this.type == 'boolean' || this.type == 'search') {
             child.isSelected = this.activeOptions[0]
           } else {
             child.isSelected = this.activeOptions.includes(child.option) ? true : false
