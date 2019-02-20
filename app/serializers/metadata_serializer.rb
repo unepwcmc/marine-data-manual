@@ -8,6 +8,7 @@ class MetadataSerializer
     unique_country = @metadata.pluck(:country).compact.uniq.sort
     unique_region = @metadata.pluck(:region).compact.uniq.sort
     unique_license = @metadata.pluck(:license_number).compact.uniq.sort
+    unique_resource = @metadata.pluck(:resource).compact.uniq.sort
 
     [
       {
@@ -19,7 +20,9 @@ class MetadataSerializer
       {
         name: "resource",
         title: "Resource",
-        sortButtons: true
+        options: unique_resource,
+        sortButtons: true,
+        type: 'search'
       },
       {
         name: "version",
@@ -39,13 +42,6 @@ class MetadataSerializer
       {
         name: "metadata",
         title: "Metadata",
-        options: [true, false],
-        sortButtons: false,
-        type: "boolean"
-      },
-      {
-        name: "factsheet",
-        title: "Factsheet",
         options: [true, false],
         sortButtons: false,
         type: "boolean"
