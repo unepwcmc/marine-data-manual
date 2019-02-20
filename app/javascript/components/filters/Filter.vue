@@ -44,7 +44,7 @@
         </ul>
       </template>
 
-      <div class="filter__buttons">
+      <div :class="['filter__buttons', { 'filter__buttons--search': type == 'search' }]">
         <button @click="clear()" class="button--link bold float-left">Clear</button>
         <button @click="cancel()" class="button--link">Cancel</button>
         <button @click="apply()" class="button--link button--link--green bold">Apply</button>
