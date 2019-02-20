@@ -1,11 +1,11 @@
 set :stage, :staging
-set :branch, "master"
+set :branch, "develop"
 
 
 server "web-staging.linode.unep-wcmc.org", user: 'wcmc', roles: %w{app web db}
 
-set :application, "marine-data-manual"
-set :server_name, "marine-data-manual"
+set :application, "ocean-plus-library"
+set :server_name, "ocean-plus-library"
 set :sudo_user, "wcmc"
 set :app_port, "80"
 

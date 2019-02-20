@@ -1,0 +1,88 @@
+//--------------------------------------------------
+// nav
+//--------------------------------------------------
+.nav {
+
+//--------------------------------------------------
+// burger nav 
+//--------------------------------------------------
+  &--burger {
+  
+    .nav {
+      &__trigger {
+        background-image: image-url('icons/burger.svg');
+        background-size: cover;
+        cursor: pointer;
+        width: rem-calc(30); height: rem-calc(22); 
+        display: block;
+
+        @include breakpoint($small) { display: none; }
+      }
+
+      &__target{
+        background-color: rgba(black, 0.9);
+        padding: rem-calc(100 20 45 24);
+        width: 100%;
+
+        position: fixed;
+        top: 0;
+        right: rem-calc(-10);
+        bottom: 0;
+        z-index: 2000;
+
+        transform: translateX(100%);
+
+        transition: transform .3s ease-in-out;
+        
+        @include breakpoint($small) { 
+          background-color: transparent;
+          padding: 0;
+          width: auto;
+
+          position: relative;
+          top: initial;
+          right: 0;
+          bottom: initial;
+
+          transform: translateX(0);
+        }
+
+        &.active { transform: translateX(-10px); }
+      }
+    
+        &__close {
+          background-image: image-url('icons/close-white.svg');
+          background-size: cover;
+          cursor: pointer;
+          width: rem-calc(26); height: rem-calc(26);
+
+          position: absolute;
+          top: rem-calc(17);
+          right: rem-calc(13);
+
+          @include breakpoint($small) { display: none; }
+        }
+
+        &__a {
+          @extend .button--outline;
+          color: white;
+          font-size: rem-calc(20);
+          font-weight: bold;
+          margin-bottom: rem-calc(14);
+          text-decoration: none;
+          width: 100%;
+
+          display: block; 
+
+          @include breakpoint($small) { 
+            margin-bottom: 0;
+            width: auto;
+
+            display: inline-block; 
+          }
+
+          &.active { border: solid rem-calc(2) $secondary; }
+        }
+    }
+  }
+}

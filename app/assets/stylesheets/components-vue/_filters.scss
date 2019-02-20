@@ -7,6 +7,17 @@ $color-text-active: $black;
 //--------------------------------------------------
 // filters
 //--------------------------------------------------
+.filters {
+  @include breakpoint_down($small) {
+    overflow-x: scroll;
+
+    display: flex;
+  }
+}
+
+//--------------------------------------------------
+// filter
+//--------------------------------------------------
 .filter {
   margin-right: rem-calc(20);
 
@@ -80,58 +91,80 @@ $color-text-active: $black;
     border: solid rem-calc(1) $black;
     border-radius: $radius-global;
     font-size: rem-calc(16);
-    margin-top: rem-calc(18);
-    padding: rem-calc(30 25);
-    min-width: rem-calc(300);
-
+    
+    grid-template-rows: 1fr auto;
     display: none;
-    position: absolute;
+    position: fixed;
+    top: $gutter-small;
+    right: $gutter-small;
+    bottom: $gutter-small;
+    left: $gutter-small;
     z-index: 1;
 
+    @include breakpoint($small) {
+      margin-top: rem-calc(18);
+      overflow: hidden;
+      min-width: rem-calc(300);
+
+      position: absolute;
+      top: inherit; // must be inherit for IE
+      right: inherit; // must be inherit for IE
+      bottom: inherit; // must be inherit for IE
+      left: inherit; // must be inherit for IE
+
+    }
+
+    .filter:last-child & {
+      @include breakpoint($small) { right: 0; }
+    }
+
     &--active {
-      display: block;
+      display: flex;
+      flex-direction: column;
+    }
+
+    &--search {
+      height: calc(100% - 65px);
+
+      @include breakpoint($small) { height: auto; }
     }
 
     &-list {
-      margin-bottom: rem-calc(20);
-      max-height: rem-calc(300);
+      height: calc(100% - 100px);
       overflow-y: scroll;
       overflow-x: hidden; //for IE11
-      white-space: nowrap; 
+
+      @include breakpoint($small) {
+        height: auto;
+        max-height: rem-calc(300);
+        white-space: nowrap;        
+      }
+
+      &--search { 
+        margin-bottom: rem-calc(25);
+  
+        @include breakpoint($small) { margin-bottom: 0; }
+      }
     }
 
     &-padding { padding: rem-calc(30 25); }
-
-    &--donors {
-      column-count: 2;
-      flex-wrap: wrap;
-      width: 928px;
-      white-space: normal;
-
-      display: flex;
-
-      li {
-        flex: 1 0 50%;
-
-        float: left;
-      }
-    }
-    
-    &--category { max-width: rem-calc(803); }
-    &--country { max-width: rem-calc(480); }
-    &--ocean-region { max-width: rem-calc(300); }
   }
 
     &__option {
       font-size: rem-calc(16);
       margin-bottom: rem-calc(16);
-      padding: rem-calc(0 20 0 38);
+      padding: rem-calc(0 20 0 0);
       width: 100%;
 
       display: block;
       position: relative;
 
       label { cursor: pointer; }
+    }
+
+    &__option--checkbox {
+      @extend .filter__option;
+      padding-left: rem-calc(38);
     }
 
 //--------------------------------------------------
@@ -165,7 +198,69 @@ $color-text-active: $black;
       }
 
   &__buttons {
-    margin-top: rem-calc(18);
+    margin-top: auto;
+    padding: rem-calc(0 25 30 25);
     text-align: right;
+
+    justify-self: flex-end;
+
+    &--search {
+      @include breakpoint($small) { display: none; }
+    }
   }
+
+//--------------------------------------------------
+// radio
+//--------------------------------------------------
+      &__radio {
+
+        &--active {
+          background-color: $color-active;
+        }
+      }
+//--------------------------------------------------
+// search
+//--------------------------------------------------
+  &--search {
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    border: none;
+    border-bottom: 1px solid grey;
+    font-size: rem-calc(16);
+    padding: rem-calc(0 56 0 25);
+    width: 100%; height: 56px;
+  }
+
+    &--search-icon {
+      background: image-url('icons/search.svg') no-repeat center;
+      background-size: 50%;
+      cursor: pointer;
+      width: rem-calc(50);
+
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+
+      &.close {
+        background-image: image-url('icons/close.svg');
+        background-size: 35%;
+      }
+    }
+
+      &--search-label {
+        cursor: pointer;
+        padding: rem-calc(9 30);
+
+        display: block;
+
+        &:hover {
+          background-color: lighten($color-active, 30%);
+        }
+
+        &--active,
+        &--active:hover {
+          background-color: $color-active;
+        }
+      }
 }

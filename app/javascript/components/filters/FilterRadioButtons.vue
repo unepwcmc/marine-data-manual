@@ -1,7 +1,6 @@
 <template>
   <div>
-    <li class="filter__option" v-for="option in options">
-
+    <li class="filter__option--checkbox" v-for="option in options">
       <input type="radio" :name="name" :id="optionId(option)" :value="option" v-model="isSelected" class="filter__checkbox" :class="{ 'filter__checkbox--active' : isActive(option) }">
       <label :for="optionId(option)" class="filter__checkbox-label">{{ optionTitle(option) }}</label>
     </li>
@@ -9,6 +8,8 @@
 </template>
 
 <script>
+  import { eventHub } from '../../metadata.js'
+
   export default {
     name: 'filter-radio-button',
 
@@ -28,13 +29,20 @@
       type: {
         required: true,
         type: String
-      }
+      },
+      propIsSelected: Boolean
     },
 
     data () {
       return {
         default: null,
         isSelected: null
+      }
+    },
+
+    watch: {
+      propIsSelected () {
+        this.isSelected = this.propIsSelected
       }
     },
 

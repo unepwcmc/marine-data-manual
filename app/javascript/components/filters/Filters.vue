@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="filters">
     <span class="filter__title bold">Filters:</span>
 
     <v-filter v-for="filter in filters"

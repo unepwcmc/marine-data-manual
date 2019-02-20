@@ -60,6 +60,10 @@ export default new Vuex.Store({
       commit('updateSortDirection', '')
       commit('updateSortField', '')
       commit('updateRequestedPage', 1)
+    },
+
+    search ({ commit }, searchTerm) {
+
     }
   }
 })
