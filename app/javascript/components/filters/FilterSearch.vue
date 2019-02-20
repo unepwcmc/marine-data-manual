@@ -14,7 +14,7 @@
           class="filter--search-label no-margin"
           :class="{ 'filter--search-label--active' : isActive(option) }">
           
-          {{ option }}
+          {{ trim(option) }}
         </p>
       </li>
     </ul>
@@ -60,7 +60,7 @@
     computed: {
       noSearchTerm () {
         return this.searchTerm.length == 0
-      }
+      },
     },
 
     methods: {
@@ -70,6 +70,19 @@
 
       optionId (option) {
         return option.replace(' |(|)|_', '-').toLowerCase()
+      },
+
+      trim (phrase) {
+        const length = phrase.length
+        let output
+
+        if (length <= 90) {
+          output = phrase
+        } else {
+          output = phrase.substring(0,87) + '...'
+        }
+
+        return output
       },
 
       matches (option) {

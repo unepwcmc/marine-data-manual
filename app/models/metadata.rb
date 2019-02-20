@@ -33,7 +33,6 @@ class Metadata < ApplicationRecord
     filters = sanitize_params(params['filters'])
     filter_data = if params.dig('filters').present?
                     data = Metadata.where(filters)
-                    factsheet_filter(params['filters'], data)
                   else
                     Metadata.all
                   end
@@ -71,14 +70,7 @@ class Metadata < ApplicationRecord
         query[filter['name']] = filter['options']
       end
     end
-    query.delete_if { |k, v| v.empty? || k == 'factsheet' }
-  end
-
-  def self.factsheet_filter(filters, data)
-    return data unless filters.each { |filter| 'factsheet'.include? filter['name'] }
-    sheet_filter = filters.select { |filter| filter['name'] == 'factsheet' }.first
-    return data if sheet_filter['options'].empty?
-    sheet_filter['options'].first ? data.where.not(factsheet: nil) : data.where(factsheet: nil)
+    query.delete_if { |k, v| v.empty? }
   end
 
   def self.metadata_url(meta)
