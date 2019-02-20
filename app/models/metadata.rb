@@ -28,7 +28,7 @@ class Metadata < ApplicationRecord
     }
   ].to_json
 
-  def self.metadata(params)
+  def self.metadata(params, pagination = true)
     output = []
     filters = sanitize_params(params['filters'])
     filter_data = if params.dig('filters').present?
