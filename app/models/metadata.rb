@@ -56,8 +56,9 @@ class Metadata < ApplicationRecord
   def self.sorting_data(params, data, pagination)
     field = params['sortField'].presence || 'id'
     direction = params['sortDirection'].presence || 'ASC'
+    page = pagination ? params['requested_page'] || 1 : 1
     data.order("#{field} #{direction}")
-        .paginate(page: params['requested_page'] || 1, per_page: pagination ? 10 : data.count)
+        .paginate(page: page, per_page: pagination ? 10 : data.count)
   end
 
   def self.sanitize_params(filters)
