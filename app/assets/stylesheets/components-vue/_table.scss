@@ -3,23 +3,26 @@
 //--------------------------------------------------
 $hoverColor: $grey;
 
-%row-template {
-  grid-template-columns: 1fr;
-  -ms-grid-template-columns: 1fr;
-  display: grid;
-  display: -ms-grid;
-
-  @include breakpoint($medium) { 
-    grid-template-columns: 1fr 1fr 1fr 2fr; 
-    -ms-grid-template-columns: 1fr 1fr 1fr 2fr; 
+%table-layout {
+  &:nth-child(1),
+  &:nth-child(2),
+  &:nth-child(3) {
+    width: 20%;
   }
+
+  &:nth-child(2) {
+    @include breakpoint-down($small) {
+      width: 100%;
+    }
+  }
+
+  &:nth-child(4) { width: 40%; }
 }
 
 //--------------------------------------------------
 // table
 //--------------------------------------------------
 .table {
-
   &--head { 
     margin-top: rem-calc(30);
     height: rem-calc(64);  // must match height of the <head> tag
@@ -100,13 +103,13 @@ $hoverColor: $grey;
   }
   
     &__row {
-      @extend %row-template;
+      display: flex;
       background-color: white;
       cursor: pointer;
 
       &:hover { background-color: $hoverColor; }
 
-      &--head { @extend %row-template; }
+      &--head { display: flex; }
       
       &--active { 
         background-color: $hoverColor; 
@@ -122,32 +125,35 @@ $hoverColor: $grey;
         height: auto;
         max-height: 0;
 
-        display: grid;
-        display: -ms-grid;
-        grid-template-columns: 1fr;
-        -ms-grid-template-columns: 1fr;
-
+        display: flex;
+        flex-wrap: wrap;
+      
         transition: max-height .3s ease-in-out;
 
-        @include breakpoint($medium) { 
-          grid-template-columns: 2fr 3fr; 
-          -ms-grid-template-columns: 2fr 3fr; 
-        }
+        @include breakpoint($small) { flex-wrap: nowrap; }
 
         h3 { margin-top: rem-calc(18); }
-      }
+      } 
 
         &--expandable__td {
           &:first-child { 
             padding: rem-calc(18 14 0 14); 
+            width: 100%;
 
-            @include breakpoint($medium) { padding: rem-calc(18 14); }
+            @include breakpoint($medium) { 
+              padding: rem-calc(18 14); 
+              width: 40%;
+            }
           }
 
           &:last-child { 
             padding: rem-calc(0 14); 
+            width: 100%;
 
-            @include breakpoint($medium) { padding: rem-calc(18 14); }
+            @include breakpoint($medium) { 
+              padding: rem-calc(18 14); 
+              width: 60%;
+            }
           }
         }
 
@@ -158,6 +164,11 @@ $hoverColor: $grey;
         @include breakpoint($medium) { max-height: rem-calc(310); }
       } 
     }
+
+      &__th,
+      &__td {
+        @extend %table-layout;
+      }
 
 //--------------------------------------------------
 // sort
@@ -189,22 +200,16 @@ $hoverColor: $grey;
           &__themes-list { 
             width: 100%; 
 
-            display: grid;
-            display: -ms-grid;
-            grid-template-columns: 1fr;
-            -ms-grid-template-columns: 1fr;
-
-            @include breakpoint($medium) { 
-              grid-template-columns: 1fr 1fr; 
-              -ms-grid-template-columns: 1fr 1fr; 
-            }
+            display: block;
           }
 
             //N.B flexbox layout doesn't work in IE so going back to using float
             &__theme { 
               margin-bottom: rem-calc(8);
 
-              // float: left;
+              float: left;
+
+              @include breakpoint($small) { width: 50%; }
             }
 
                 &__theme-icon {

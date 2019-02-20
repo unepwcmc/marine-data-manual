@@ -1,16 +1,16 @@
 <template>
   <div class="table__row-wrapper">
     <tr @click="toggleRow()" class="table__row" :class="{ 'table__row--active' : isOpen }" >
-      <td class="breakpoint-medium-up">{{ item.category }}</td>
+      <td class="table__td breakpoint-medium-up">{{ item.category }}</td>
 
-      <td>
+      <td class="table__td">
         <a v-if="hasResourceLink" :href="item.website_download_link" title="Visit resource website" target="_blank">{{ trim(item.resource) }}</a>
         <template v-else>{{ trim(item.resource) }}</template>
       </td>
 
-      <td class="breakpoint-medium-up">{{ item.contact_organisation }}</td>
+      <td class="table__td breakpoint-medium-up">{{ item.contact_organisation }}</td>
 
-      <td class="breakpoint-medium-up">
+      <td class="table__td breakpoint-medium-up">
         <span v-for="theme in item.themes" class="table__theme-icon icon--round icon--theme" :class="themeClass(theme)"></span>
       </td>
     </tr>
