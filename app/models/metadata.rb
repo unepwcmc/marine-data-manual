@@ -1,3 +1,5 @@
+require 'csv'
+
 class Metadata < ApplicationRecord
   TABLE_HEADERS = [
     {
@@ -26,7 +28,7 @@ class Metadata < ApplicationRecord
     }
   ].to_json
 
-  def self.metadata(params)
+  def self.metadata(params, pagination = true)
     output = []
     filters = sanitize_params(params['filters'])
     filter_data = if params.dig('filters').present?
@@ -34,7 +36,7 @@ class Metadata < ApplicationRecord
                   else
                     Metadata.all
                   end
-    metadata = sorting_data(params, filter_data)
+    metadata = sorting_data(params, filter_data, pagination)
     metadata.to_a.each do |meta|
       meta_attributes = meta.attributes
       meta_attributes[:metadata] = metadata_url(meta)
@@ -50,11 +52,12 @@ class Metadata < ApplicationRecord
     [output, filter_data.count]
   end
 
-  def self.sorting_data(params, data)
+  def self.sorting_data(params, data, pagination)
     field = params['sortField'].presence || 'id'
     direction = params['sortDirection'].presence || 'ASC'
+    page = pagination ? params['requested_page'] || 1 : 1
     data.order("#{field} #{direction}")
-        .paginate(page: params['requested_page'] || 1, per_page: 10)
+        .paginate(page: page, per_page: pagination ? 10 : data.count)
   end
 
   def self.sanitize_params(filters)
@@ -78,27 +81,25 @@ class Metadata < ApplicationRecord
     "http://wcmc.io/metadata"
   end
 
-  def self.to_csv
-    csv = ''
-    metadata_columns = Metadata.new.attributes.keys
-    metadata_columns.delete_if { |k| ["created_at", "updated_at"].include? k }
+  def self.to_csv(metadata)
+    csv_string = CSV.generate(encoding: 'UTF-8') do |csv|
+      metadata_columns = Metadata.new.attributes.keys
+      metadata_columns.delete_if { |k| ["id", "created_at", "updated_at"].include? k }
 
-    metadata_columns.map! { |e| e.tr('_', ' ').capitalize }
+      metadata_columns.map! { |e| e.tr('_', ' ').capitalize }
 
-    csv << metadata_columns.join(',')
-    csv << "\n"
+      csv << metadata_columns.flatten
 
-    metadata = Metadata.order(id: :asc)
+      data = Metadata.where(id: metadata.pluck('id'))
+      data.to_a.each do |meta|
+        metadata_attributes = meta.attributes
+        metadata_attributes.delete_if { |k| ["id", "created_at", "updated_at"].include? k }
 
-    metadata.to_a.each do |meta|
-      metadata_attributes = meta.attributes
-      metadata_attributes.delete_if { |k| ["created_at", "updated_at"].include? k }
-
-      metadata_attributes = metadata_attributes.values.map { |e| "\"#{e}\"" }
-      csv << metadata_attributes.join(',').to_s
-      csv << "\n"
+        metadata_attributes = metadata_attributes.values.map(&:to_s)
+        csv << metadata_attributes
+      end
+      csv
     end
-
-    csv
+    csv_string
   end
 end
