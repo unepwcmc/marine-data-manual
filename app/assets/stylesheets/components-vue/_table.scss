@@ -172,7 +172,6 @@ $hoverColor: $grey;
       }
 
       &__th {
-        @extend .flex;
         @extend .flex-v-center;
       }
 

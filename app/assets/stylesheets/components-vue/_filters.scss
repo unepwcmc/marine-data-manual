@@ -126,10 +126,7 @@ $color-text-active: $black;
     &--search {
       height: calc(100% - 65px);
 
-      @include breakpoint($small) { 
-        height: auto; 
-        max-height: rem-calc(300); 
-      }
+      @include breakpoint($small) { height: auto; }
     }
 
     &-list {
@@ -143,7 +140,11 @@ $color-text-active: $black;
         white-space: nowrap;        
       }
 
-      &--search { margin-bottom: rem-calc(25) }
+      &--search { 
+        margin-bottom: rem-calc(25);
+  
+        @include breakpoint($small) { margin-bottom: 0; }
+      }
     }
 
     &-padding { padding: rem-calc(30 25); }
