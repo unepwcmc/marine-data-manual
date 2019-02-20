@@ -47,13 +47,6 @@ class MetadataSerializer
         type: "boolean"
       },
       {
-        name: "factsheet",
-        title: "Factsheet",
-        options: [true, false],
-        sortButtons: false,
-        type: "boolean"
-      },
-      {
         name: "themes",
         title: "Themes",
         options: ["Marine spatial planning", "Education", "Ecosystem assessment", "Environmental impact assessment", "Ecosystem services"],
