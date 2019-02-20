@@ -107,10 +107,11 @@ $color-text-active: $black;
       min-width: rem-calc(300);
 
       position: absolute;
-      top: initial;
-      right: initial;
-      bottom: initial;
-      left: initial;  
+      top: inherit; // must be inherit for IE
+      right: inherit; // must be inherit for IE
+      bottom: inherit; // must be inherit for IE
+      left: inherit; // must be inherit for IE
+
     }
 
     .filter:last-child & {

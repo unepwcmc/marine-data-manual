@@ -4,19 +4,19 @@
 $hoverColor: $grey;
 
 %table-layout {
+  @include breakpoint($medium) { display: inline-flex; }
+
   &:nth-child(1),
   &:nth-child(2),
   &:nth-child(3) {
-    width: 20%;
+    width: 100%;
+
+    @include breakpoint($medium) { width: rem-calc(232); }
   }
 
-  &:nth-child(2) {
-    @include breakpoint-down($small) {
-      width: 100%;
-    }
+  &:nth-child(4) { 
+    @include breakpoint($medium) { width: rem-calc(464); }
   }
-
-  &:nth-child(4) { width: 40%; }
 }
 
 //--------------------------------------------------
@@ -58,7 +58,7 @@ $hoverColor: $grey;
   }
     
     &__header {
-      margin-right: rem-calc(2);
+      margin-right: rem-calc(6);
       vertical-align: middle;
 
       display: inline-block;
@@ -103,9 +103,10 @@ $hoverColor: $grey;
   }
   
     &__row {
-      display: flex;
       background-color: white;
       cursor: pointer;
+
+      display: flex;
 
       &:hover { background-color: $hoverColor; }
 
@@ -150,7 +151,7 @@ $hoverColor: $grey;
             padding: rem-calc(0 14); 
             width: 100%;
 
-            @include breakpoint($medium) { 
+            @include breakpoint($small) { 
               padding: rem-calc(18 14); 
               width: 60%;
             }
@@ -168,6 +169,11 @@ $hoverColor: $grey;
       &__th,
       &__td {
         @extend %table-layout;
+      }
+
+      &__th {
+        @extend .flex;
+        @extend .flex-v-center;
       }
 
 //--------------------------------------------------
@@ -206,10 +212,11 @@ $hoverColor: $grey;
             //N.B flexbox layout doesn't work in IE so going back to using float
             &__theme { 
               margin-bottom: rem-calc(8);
-
+              width: 100%; 
+    
               float: left;
 
-              @include breakpoint($small) { width: 50%; }
+              @include breakpoint($medium) { width: 50%; }
             }
 
                 &__theme-icon {
