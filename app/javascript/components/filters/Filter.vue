@@ -167,7 +167,14 @@
       clear () {
         // set the isSelected property on all options to false
         this.children.forEach(child => {
-          child.isSelected = this.type == 'boolean' ? null : false
+          if(this.type == 'boolean') {
+            child.isSelected = null
+          } else if(this.type == 'search') {
+            child.isSelected = null
+            child.searchTerm = ''
+          } else {
+            child.isSelected = false
+          }
         })
       },
 
@@ -188,3 +195,4 @@
     }
   }
 </script>
+  
