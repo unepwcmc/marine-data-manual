@@ -1,3 +1,5 @@
+require 'csv'
+
 class Metadata < ApplicationRecord
   TABLE_HEADERS = [
     {
@@ -87,25 +89,24 @@ class Metadata < ApplicationRecord
   end
 
   def self.to_csv(metadata)
-    csv = ''
-    metadata_columns = Metadata.new.attributes.keys
-    metadata_columns.delete_if { |k| ["created_at", "updated_at"].include? k }
+    csv_string = CSV.generate(encoding: 'UTF-8') do |csv|
+      metadata_columns = Metadata.new.attributes.keys
+      metadata_columns.delete_if { |k| ["id", "created_at", "updated_at"].include? k }
 
-    metadata_columns.map! { |e| e.tr('_', ' ').capitalize }
+      metadata_columns.map! { |e| e.tr('_', ' ').capitalize }
 
-    csv << metadata_columns.join(',')
-    csv << "\n"
+      csv << metadata_columns.flatten
 
-    data = Metadata.where(id: metadata.pluck('id'))
-    data.to_a.each do |meta|
-      metadata_attributes = meta.attributes
-      metadata_attributes.delete_if { |k| ["created_at", "updated_at"].include? k }
+      data = Metadata.where(id: metadata.pluck('id'))
+      data.to_a.each do |meta|
+        metadata_attributes = meta.attributes
+        metadata_attributes.delete_if { |k| ["id", "created_at", "updated_at"].include? k }
 
-      metadata_attributes = metadata_attributes.values.map { |e| "\"#{e}\"" }
-      csv << metadata_attributes.join(',').to_s
-      csv << "\n"
+        metadata_attributes = metadata_attributes.values.map(&:to_s)
+        csv << metadata_attributes
+      end
+      csv
     end
-
-    csv
+    csv_string
   end
 end

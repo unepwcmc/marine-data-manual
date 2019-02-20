@@ -21,13 +21,11 @@ class MetadataController < ApplicationController
   end
 
   def download
-    attributes = params.as_json['filters'].presence || {}
-    data = Metadata.metadata(attributes.as_json, false).first
+    data = Metadata.metadata(permitted_attributes.as_json, false).first
     send_data Metadata.to_csv(data), {
-              type: "text/csv; charset=iso-8859-1; header=present",
+              type: "text/csv; charset=utf-8; header=present",
               disposition: "attachment",
               filename: "marine-data-manual-#{Date.today}.csv" }
-
   end
 
   private

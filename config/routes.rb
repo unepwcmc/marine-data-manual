@@ -12,5 +12,5 @@ Rails.application.routes.draw do
   get 'data-limitations', to: 'data_limitations#index'
 
   post '/metadata-list', to: 'metadata#metadata_list'
-  post '/metadata/download', to: 'metadata#download'
+  post '/download', to: 'metadata#download'
 end

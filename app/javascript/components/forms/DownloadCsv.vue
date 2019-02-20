@@ -1,7 +1,7 @@
 <template>
-  <a 
+  <a
     @click="download()"
-    title="Download CSV file" 
+    title="Download CSV file"
     class="inline-block button button--download button--green filter__download">
     CSV
   </a>
@@ -29,7 +29,7 @@
         axios.defaults.headers.common['X-CSRF-Token'] = csrf
         axios.defaults.headers.common['Accept'] = 'application/json'
 
-        axios.post('/metadata/download', data)
+        axios.post('/download', data)
           .then(function (response) {
             console.log(response);
           })
