@@ -1,5 +1,5 @@
 <template>
-  <th :class="{ 'breakpoint-medium-up': !onMobile }">
+  <th :class="['table__th', { 'breakpoint-medium-up': !onMobile }]">
     <span class="table__header">{{ title }}</span>
 
     <div v-if="sortButtons" class="table__sorting" @click="sort()">

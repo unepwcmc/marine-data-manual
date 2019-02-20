@@ -78,7 +78,8 @@ class MetadataSerializer
         name: "license_number",
         title: "License",
         options: unique_license,
-        sortButtons: false
+        sortButtons: false,
+        type: "search"
       }
     ].to_json
   end
