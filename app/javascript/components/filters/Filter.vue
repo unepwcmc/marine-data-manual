@@ -132,15 +132,7 @@
 
       filterClass () {
         return 'filter__options--' + this.name.replace('_| |(|)', '-').toLowerCase()
-      },
-
-      eventName () {
-        return `apply-${this.name}`
       }
-    },
-
-    mounted () {
-      eventHub.$on(this.eventName, this.apply)
     },
 
     methods: {
