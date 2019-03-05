@@ -85,8 +85,7 @@
       return {
         children: this.$children,
         isOpen: false,
-        activeOptions: [],
-        searchTerm: ''
+        activeOptions: []
       }
     },
 
@@ -193,6 +192,8 @@
 
       apply () {
         this.closeSelect()
+
+        if(this.type == 'search') { eventHub.$emit('resetSearchTerm') }
 
         //update the active filters array
         this.activeOptions = this.selectedOptions

@@ -72,6 +72,10 @@
       }
     },
 
+    created () {
+      eventHub.$on('resetSearchTerm', this.resetSearchTerm)
+    },
+
     methods: {
       isActive (option) {
         return option == this.isSelected
@@ -102,8 +106,12 @@
         return noSearch || match
       },
 
-      clear () {
+      resetSearchTerm () {
         this.searchTerm = ''
+      },
+
+      clear () {
+        this.resetSearchTerm()
         // this.applySearch()
         this.$emit('clear:filter')
       },
@@ -129,7 +137,7 @@
       // },
 
       applySearch () {
-        this.searchTerm = ''
+        this.resetSearchTerm()
         this.$emit('apply:filter')
       }
     }
