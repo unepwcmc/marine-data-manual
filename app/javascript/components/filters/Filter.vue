@@ -18,8 +18,7 @@
             :options="options"
             :name="name"
             :title="title"
-            :type="type"
-            :eventName="eventName">
+            :type="type">
           </filter-search>
         </div>
       </template>
@@ -119,7 +118,7 @@
             }
           }
         })
-        console.log('selectedArray', selectedArray)
+
         return selectedArray
       },
 
@@ -184,6 +183,7 @@
             child.children.forEach(child => {
               child.isSelected = false
             })
+            child.searchTerm = ''
           } else {
             child.isSelected = false
           }
