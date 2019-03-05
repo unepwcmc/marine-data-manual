@@ -123,6 +123,10 @@ $color-text-active: $black;
       flex-direction: column;
     }
 
+    &--resource { 
+      @include breakpoint($small){ width: rem-calc(500); }
+    }
+
     &--search {
       height: calc(100% - 65px);
 
@@ -130,14 +134,13 @@ $color-text-active: $black;
     }
 
     &-list {
-      height: calc(100% - 100px);
+      height: calc(100% - 55px);
       overflow-y: scroll;
       overflow-x: hidden; //for IE11
 
       @include breakpoint($small) {
         height: auto;
-        max-height: rem-calc(300);
-        white-space: nowrap;        
+        max-height: rem-calc(300);   
       }
 
       &--search { 
@@ -147,7 +150,7 @@ $color-text-active: $black;
       }
     }
 
-    &-padding { padding: rem-calc(30 25); }
+    &-padding { padding: rem-calc(30 25 0 25); }
   }
 
     &__option {
@@ -199,7 +202,7 @@ $color-text-active: $black;
 
   &__buttons {
     margin-top: auto;
-    padding: rem-calc(0 25 30 25);
+    padding: rem-calc(20 25 30 25);
     text-align: right;
 
     justify-self: flex-end;
