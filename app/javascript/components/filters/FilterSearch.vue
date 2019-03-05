@@ -1,7 +1,7 @@
 <template>
   <div class="height-100">
     <div class="relative">
-      <input type="text" v-model="searchTerm" class="filter--search">
+      <input type="text" v-model="searchTerm" :placeholder="placeholder" class="filter--search">
       <i class="filter--search-icon" v-show="noSearchTerm" @click="applySearch()"></i>
       <i class="filter--search-icon close" v-show="!noSearchTerm" @click="clear()"></i>
     </div>
@@ -55,6 +55,10 @@
     computed: {
       noSearchTerm () {
         return this.searchTerm.length == 0
+      },
+
+      placeholder () {
+        return `Search ${this.title}`
       }
     },
 
