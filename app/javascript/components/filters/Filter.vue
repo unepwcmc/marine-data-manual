@@ -14,6 +14,7 @@
         <div class="filter__options--search" :class="filterClass">
           <filter-search
             v-on:apply:filter="apply"
+            v-on:clear:filter="clear"
             :options="options"
             :name="name"
             :title="title"
@@ -105,15 +106,21 @@
         let selectedArray = []
 
         this.children.forEach(child => {
-          if((this.type == 'boolean' || this.type == 'search') && child.isSelected != null) {
+          if(this.type == 'boolean' && child.isSelected != null) {
             selectedArray.push(child.isSelected)
+          } else if (this.type == 'search') {
+            child.children.forEach(child => {
+              if(child.isSelected){
+                selectedArray.push(child.option)
+              }
+            })
           } else {
             if(child.isSelected){
               selectedArray.push(child.option)
             }
           }
         })
-
+        console.log('selectedArray', selectedArray)
         return selectedArray
       },
 
@@ -156,8 +163,13 @@
 
         // reset each option to the correct state
         this.children.forEach(child => {
-          if(this.type == 'boolean' || this.type == 'search') {
+          if(this.type == 'boolean') {
             child.isSelected = this.activeOptions[0]
+          } else if(this.type == 'search') {
+            child.children.forEach(child => {
+              child.isSelected = this.activeOptions.indexOf(child.option) > -1 ? true : false
+            })
+            child.searchTerm = ''
           } else {
             child.isSelected = this.activeOptions.indexOf(child.option) > -1 ? true : false
           }
@@ -170,8 +182,9 @@
           if(this.type == 'boolean') {
             child.isSelected = null
           } else if(this.type == 'search') {
-            child.isSelected = null
-            child.searchTerm = ''
+            child.children.forEach(child => {
+              child.isSelected = false
+            })
           } else {
             child.isSelected = false
           }

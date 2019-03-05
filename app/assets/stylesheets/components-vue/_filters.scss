@@ -203,10 +203,6 @@ $color-text-active: $black;
     text-align: right;
 
     justify-self: flex-end;
-
-    &--search {
-      @include breakpoint($small) { display: none; }
-    }
   }
 
 //--------------------------------------------------
