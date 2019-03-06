@@ -2,7 +2,7 @@ require 'csv'
 
 namespace :import do
   desc "import CSV data into database"
-  task :metadata, [:csv_file] => [:environment] do |t, args|
+  task :metadata, [:csv_file] => [:environment] do |_t, args|
 
     import_csv_file(args.csv_file)
 
@@ -52,7 +52,9 @@ namespace :import do
 
       begin
         ActiveRecord::Base.transaction do
-          meta = Metadata.find_or_create_by(dataset_id: current_dataset_id)
+          meta = Metadata.find_or_create_by(dataset_id: current_dataset_id) do |metadata|
+                   metadata.update_attributes(metadata_row_hash)
+                 end
 
           import_location('country', csv_country_row, meta)
           import_location('region', csv_region_row, meta)
