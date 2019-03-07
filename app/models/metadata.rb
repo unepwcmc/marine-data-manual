@@ -35,10 +35,11 @@ class Metadata < ApplicationRecord
     output = []
     filters = sanitize_params(params['filters'])
     filter_data = if params.dig('filters').present?
-                    data = Metadata.where(filters)
+                    Metadata.where(filters)
                   else
                     Metadata.all
                   end
+    filter_data = location_filter(filter_data, @location_filters)
     metadata = sorting_data(params, filter_data, pagination)
     metadata.to_a.each do |meta|
       meta_attributes = meta.attributes
@@ -73,7 +74,18 @@ class Metadata < ApplicationRecord
         query[filter['name']] = filter['options']
       end
     end
-    query.delete_if { |k, v| v.empty? }
+    @location_filters = query.extract!('country', 'region')
+    query.delete_if { |_k, v| v.empty? }
+  end
+
+  def self.location_filter(data, filters)
+    return data if filters.nil?
+    filters.each do |k, v|
+      next if v.blank?
+      association = k.pluralize.to_sym
+      data = data.joins(association).where(association => { name: v })
+    end
+    data
   end
 
   def self.metadata_url(meta)
