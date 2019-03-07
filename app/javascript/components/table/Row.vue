@@ -21,7 +21,7 @@
         <p><span class="bold">ID:</span> {{ item.dataset_id }}</p>
         <p><span class="bold">Metadata:</span> <a v-if="hasMetadata" :href="item.metadata" title="View metadata" target="_blank">Link</a></p>
         <p><span class="bold">Factsheet:</span> <a v-if="hasFactsheet" :href="item.factsheet" title="View factsheet" target="_blank">Link</a></p>
-        <p><span class="bold">Licence:</span> {{ item.license }}</p>
+        <p><span class="bold">Licence:</span> {{ item.license_number }}</p>
       </div>
       <div class="table__row--expandable__td">
         <p class="bold">Themes:</p>
