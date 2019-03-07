@@ -100,10 +100,11 @@ class Metadata < ApplicationRecord
     csv_string = CSV.generate(encoding: 'UTF-8') do |csv|
       metadata_columns = Metadata.new.attributes.keys
       metadata_columns.delete_if { |k| ["id", "created_at", "updated_at"].include? k }
+      (metadata_columns << ['country', 'region']).flatten!
 
       metadata_columns.map! { |e| e.tr('_', ' ').capitalize }
 
-      csv << metadata_columns.flatten
+      csv << metadata_columns
 
       data = Metadata.where(id: metadata.pluck('id'))
       data.to_a.each do |meta|
@@ -111,10 +112,31 @@ class Metadata < ApplicationRecord
         metadata_attributes.delete_if { |k| ["id", "created_at", "updated_at"].include? k }
 
         metadata_attributes = metadata_attributes.values.map(&:to_s)
+        country_query = <<-SQL
+          SELECT countries.name
+          FROM countries
+          INNER JOIN countries_metadata
+          ON countries.id = countries_metadata.country_id
+          WHERE countries_metadata.metadata_id = #{meta.id}
+        SQL
+        region_query = <<-SQL
+          SELECT regions.name
+          FROM regions
+          INNER JOIN metadata_regions
+          ON regions.id = metadata_regions.region_id
+          WHERE metadata_regions.metadata_id = #{meta.id}
+        SQL
+
+        (metadata_attributes << execute_query(country_query).values.join(','))
+        (metadata_attributes << execute_query(region_query).values.join(','))
         csv << metadata_attributes
       end
       csv
     end
     csv_string
+  end
+
+  def self.execute_query(query)
+    ActiveRecord::Base.connection.execute(query)
   end
 end
