@@ -69,7 +69,7 @@ class MetadataSerializer
       },
       {
         name: "license_number",
-        title: "License",
+        title: "Licence",
         options: unique_license,
         sortButtons: false,
         type: "search"
