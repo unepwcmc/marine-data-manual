@@ -19,7 +19,7 @@
         <p><span class="bold">Resource:</span> {{ item.resource }}</p>
         <p><span class="bold">Version:</span> {{ item.version }}</p>
         <p><span class="bold">ID:</span> {{ item.dataset_id }}</p>
-        <p><span class="bold">Metadata:</span> <a v-if="hasMetadata" :href="item.metadata" title="View metadata" target="_blank">Link</a></p>
+        <p><span class="bold">Metadata:</span> <a v-if="hasMetadata" :href="item.pdf_link" title="View metadata" target="_blank">Link</a></p>
         <p><span class="bold">Factsheet:</span> <a v-if="hasFactsheet" :href="item.factsheet" title="View factsheet" target="_blank">Link</a></p>
         <p><span class="bold">Licence:</span> {{ item.license_number }}</p>
       </div>
