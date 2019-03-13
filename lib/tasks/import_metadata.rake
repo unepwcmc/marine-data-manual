@@ -2,7 +2,7 @@ require 'csv'
 
 namespace :import do
   desc "import CSV data into database"
-  task :metadata, [:csv_file] => [:environment] do |t, args|
+  task :metadata, [:csv_file] => [:environment] do |_t, args|
 
     import_csv_file(args.csv_file)
 
@@ -20,18 +20,23 @@ namespace :import do
       version: csv_headers[2],
       contact_organisation: csv_headers[3],
       dataset_id: csv_headers[4],
-      website_download_link: csv_headers[6],
       metadata: csv_headers[5],
+      website_download_link: csv_headers[6],
       factsheet: csv_headers[7],
-      marine_spatial_planning: csv_headers[8],
-      education: csv_headers[9],
-      environmental_impact_assessment: csv_headers[10],
-      ecosystem_assessment: csv_headers[11],
-      ecosystem_services: csv_headers[12].chomp
+      license_number: csv_headers[10],
+      marine_spatial_planning: csv_headers[12],
+      education: csv_headers[13],
+      environmental_impact_assessment: csv_headers[14],
+      ecosystem_assessment: csv_headers[15],
+      ecosystem_services: csv_headers[16],
+      pdf_link: csv_headers[17].chomp
     }
 
     CSV.parse(csv, headers: true, encoding: "utf-8") do |row|
-      csv_metadata_row = row.to_hash
+      csv_hash = row.to_hash
+      csv_metadata_row = csv_hash.except('Country', 'Region', 'Other access use constraints')
+      csv_country_row = csv_hash.delete('Country').split(';')
+      csv_region_row = csv_hash.delete('Region').split(';')
       metadata_row_hash = {}
 
       metadata_hash.keys.each do |key|
@@ -46,19 +51,19 @@ namespace :import do
 
       current_dataset_id = csv_metadata_row[metadata_hash[:dataset_id]]
 
-      if Metadata.exists?(dataset_id: current_dataset_id)
-        metadata = Metadata.find_by(dataset_id: current_dataset_id)
-        unless metadata.update_attributes(metadata_row_hash)
-          Rails.logger.info "Cannot update! #{metadata.resource}"
+      begin
+        ActiveRecord::Base.transaction do
+          meta = Metadata.find_or_create_by(dataset_id: current_dataset_id) do |metadata|
+                   metadata.update_attributes(metadata_row_hash)
+                 end
+
+          import_location('country', csv_country_row, meta)
+          import_location('region', csv_region_row, meta)
         end
-      else
-        metadata = Metadata.new(metadata_row_hash)
+      rescue => e
+        p e
+        raise ActiveRecord::Rollback
       end
-
-      unless metadata.save!
-        Rails.logger.info "Cannot import! #{metadata.resource}"
-      end
-
     end
 
     csv.close
@@ -66,4 +71,15 @@ namespace :import do
     Rails.logger.info "Imported Metadata, total records: #{Metadata.count}"
   end
 
+  def import_location(field, values, metadata)
+    klass = field.titleize.constantize
+    association = field.pluralize
+    values.each do |value|
+      value = value.strip
+      obj = klass.find_or_create_by(name: value)
+      unless metadata.public_send(association).include? obj
+        metadata.public_send(association) << obj
+      end
+    end
+  end
 end

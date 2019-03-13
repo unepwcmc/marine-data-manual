@@ -1,26 +1,29 @@
 <template>
   <thead id="sticky" class="table__head" :class="{ 'table__head--stuck' : isSticky }">
-    <tr>
-      <table-header v-for="filter in filters" 
-        :name="filter.name"
-        :title="filter.title"
-        :sortButtons="filter.sortButtons"
-        >
+    <tr class="table__row--head">
+      <table-header v-for="tableHeader in tableHeaders" 
+        :name="tableHeader.name"
+        :title="tableHeader.title"
+        :sortButtons="tableHeader.sortButtons"
+        :onMobile="tableHeader.onMobile">
       </table-header>
     </tr>
+
+    <download-csv class="table__button"></download-csv>
   </thead>
 </template>
 
 <script>
+  import DownloadCsv from '../forms/DownloadCsv.vue'
   import TableHeader from './TableHeader.vue'
 
   export default {
     name: 'table-head',
 
-    components: { TableHeader },
+    components: { DownloadCsv, TableHeader },
 
     props: {
-      filters: {
+      tableHeaders: {
         required: true,
         type: Array
       }
@@ -57,20 +60,3 @@
     }
   }
 </script>
-
-<style lang="scss">
-  @import '../../scss/includes.scss';
-
-  .table__head {
-    position: absolute;
-
-    &--stuck {
-      position: fixed;
-      top: 0;
-
-      width: rem-calc(1160);
-
-      animation: showHeader .25s forwards linear;
-    }
-  }
-</style>

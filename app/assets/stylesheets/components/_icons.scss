@@ -16,6 +16,8 @@
 
   &--minus { background-image: image-url('icons/minus.svg'); }
 
+  &--share { background-image: image-url('icons/share.svg'); }
+
   &--theme {
     background-position: center;
     background-repeat: no-repeat;
@@ -76,9 +78,11 @@
   &--social {
     background-position: center;
     background-repeat: no-repeat;
-    width: rem-calc(58); height: rem-calc(48);
+    width: rem-calc(48); height: rem-calc(48);
 
     display: block;
+
+    @include breakpoint($small) { width: rem-calc(58); }
 
     &:hover { opacity: .75; }
 

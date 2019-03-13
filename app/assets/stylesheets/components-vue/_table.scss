@@ -1,17 +1,33 @@
 //--------------------------------------------------
 // variables
 //--------------------------------------------------
-$firstColumn: 116;
 $hoverColor: $grey;
+
+%table-layout {
+  @include breakpoint($medium) { display: inline-flex; }
+
+  &:nth-child(1),
+  &:nth-child(2),
+  &:nth-child(3) {
+    width: 100%;
+
+    @include breakpoint($medium) { width: rem-calc(232); }
+  }
+
+  &:nth-child(4) { 
+    @include breakpoint($medium) { width: rem-calc(464); }
+  }
+}
 
 //--------------------------------------------------
 // table
 //--------------------------------------------------
 .table {
-
   &--head { 
     margin-top: rem-calc(30);
     height: rem-calc(64);  // must match height of the <head> tag
+
+    position: relative;
   }
 
   &--body { 
@@ -27,14 +43,34 @@ $hoverColor: $grey;
     color: white;
 
     &:first-child { border-left: none; }
+
+    &--stuck {
+      position: fixed;
+      top: 0;
+
+      width: calc(100% - #{$gutter-small * 2});
+
+      animation: showHeader .25s forwards linear;
+
+      @include breakpoint($small) { width: calc(100% - #{$gutter-medium * 4}); }
+      @include breakpoint($medium) { width: rem-calc(1160); }
+    }
   }
     
     &__header {
-      margin-right: rem-calc(2);
+      margin-right: rem-calc(6);
       vertical-align: middle;
 
       display: inline-block;
     }
+
+      &__button {
+        position: absolute; 
+        top: 50%;
+        right: rem-calc(9);
+
+        transform: translateY(-50%);
+      }
 
 //--------------------------------------------------
 // columns
@@ -42,23 +78,11 @@ $hoverColor: $grey;
 // fix the columns widths so that they don't change
 // size when you use the pagination 
 
-  th,td {
-    text-align: left;
-
-    &:first-child { width: $firstColumn + px; }
-    &:nth-child(2) { width: 148px; }
-    &:nth-child(3) { width: 104px; }
-    &:nth-child(4) { width: 218px; }
-    &:nth-child(5) { width: 100px; }
-    &:nth-child(6) { width: 115px; }
-    &:nth-child(7) { width: 115px; }
-    &:nth-child(8) { width: 244px; }
-  }
+  th,td { text-align: left;}
 
   th { padding: rem-calc(20 14); }
 
   td { 
-    border-left: solid white rem-calc(1); 
     padding: rem-calc(14);
     vertical-align: middle;
 
@@ -77,31 +101,79 @@ $hoverColor: $grey;
       }
     }
   }
-
+  
     &__row {
       background-color: white;
-      border-top: solid white rem-calc(1);
+      cursor: pointer;
+
+      display: flex;
 
       &:hover { background-color: $hoverColor; }
+
+      &--head { display: flex; }
       
       &--active { 
         background-color: $hoverColor; 
-        border-bottom: solid white rem-calc(1);
 
         .table__row-wrapper:nth-child(odd) & { 
-          background-color: $hoverColor; 
-          border-bottom: solid white rem-calc(1);
+          background-color: $hoverColor;
         }
       }
 
       &--expandable {
         background-color: $hoverColor;
-        border-left: solid white rem-calc(1);
-        padding: rem-calc(0 14 0 $firstColumn + 14);
+        overflow: hidden;
+        height: auto;
+        max-height: 0;
+
+        display: flex;
+        flex-wrap: wrap;
+      
+        transition: max-height .3s ease-in-out;
+
+        @include breakpoint($small) { flex-wrap: nowrap; }
 
         h3 { margin-top: rem-calc(18); }
-      }
+      } 
+
+        &--expandable__td {
+          &:first-child { 
+            padding: rem-calc(18 14 0 14); 
+            width: 100%;
+
+            @include breakpoint($medium) { 
+              padding: rem-calc(18 14); 
+              width: 40%;
+            }
+          }
+
+          &:last-child { 
+            padding: rem-calc(0 14); 
+            width: 100%;
+
+            @include breakpoint($small) { 
+              padding: rem-calc(18 14); 
+              width: 60%;
+            }
+          }
+        }
+
+      &--open {
+        border-top: solid white rem-calc(1);
+        max-height: rem-calc(610);
+
+        @include breakpoint($medium) { max-height: rem-calc(310); }
+      } 
     }
+
+      &__th,
+      &__td {
+        @extend %table-layout;
+      }
+
+      &__th {
+        @extend .flex-v-center;
+      }
 
 //--------------------------------------------------
 // sort
@@ -130,26 +202,32 @@ $hoverColor: $grey;
           padding-bottom: rem-calc(30);
         }
           
-          &__themes-list { width: 100%; }
+          &__themes-list { 
+            width: 100%; 
+
+            display: block;
+          }
 
             //N.B flexbox layout doesn't work in IE so going back to using float
             &__theme { 
               margin-bottom: rem-calc(8);
-              width: 50%;
-
+              width: 100%; 
+    
               float: left;
+
+              @include breakpoint($medium) { width: 50%; }
             }
 
-            &__theme-icon {
-              margin-right: rem-calc(4);
-            }
+                &__theme-icon {
+                  margin-right: rem-calc(4);
+                }
 
-            &__theme-title {
-              margin-left: rem-calc(4);
-              width: 80%;
+                &__theme-title {
+                  margin-left: rem-calc(8);
+                  width: 80%;
 
-              display: inline-block;
+                  display: inline-block;
 
-              &:first-letter { text-transform: capitalize; }
-            }
+                  &:first-letter { text-transform: capitalize; }
+                }
   }

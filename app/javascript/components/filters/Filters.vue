@@ -1,29 +1,24 @@
 <template>
-  <div class="flex flex-h-between">
-    <div>
-      <span class="filter__title bold">Filters:</span>
+  <div class="filters">
+    <span class="filter__title bold">Filters:</span>
 
-      <v-filter v-for="filter in filters"
-        :name="filter.name"
-        :title="filter.title" 
-        :options="filter.options"
-        :type="filter.type">
-      </v-filter>
-    </div>
-    
-    <download-csv></download-csv>
+    <v-filter v-for="filter in filters"
+      :name="filter.name"
+      :title="filter.title" 
+      :options="filter.options"
+      :type="filter.type">
+    </v-filter>
   </div>
 </template>
 
 <script>
   import { eventHub } from "../../metadata.js"
   import VFilter from './Filter.vue'
-  import DownloadCsv from '../forms/DownloadCsv.vue'
 
   export default {
     name: 'filters',
 
-    components: { VFilter, DownloadCsv },
+    components: { VFilter },
 
     props: {
       filters: {
@@ -48,7 +43,11 @@
     methods: {
       updateDropdowns (name) {
         this.children.forEach(filter => {
-          filter.isOpen = filter.name == name
+          if(filter.name == name) {
+            filter.isOpen = true
+          } else {
+            filter.cancel()  
+          }
         })
       },
 
@@ -73,7 +72,3 @@
     }
   }
 </script>
-
-<style lang="scss">
-  
-</style>

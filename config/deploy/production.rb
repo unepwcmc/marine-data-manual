@@ -4,8 +4,8 @@ set :branch, "master"
 
 server "web-production.linode.unep-wcmc.org", user: 'wcmc', roles: %w{app web db}
 
-set :application, "marine-data-manual"
-set :server_name, "marine-data-manual.web-production.linode.unep-wcmc.org"
+set :application, "ocean-plus-library"
+set :server_name, "ocean-plus-library.web-production.linode.unep-wcmc.org"
 set :sudo_user, "wcmc"
 set :app_port, "80"
 
