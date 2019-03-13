@@ -85,7 +85,7 @@ class Metadata < ApplicationRecord
       association = k.pluralize.to_sym
       data = data.joins(association).where(association => { name: v })
     end
-    data
+    data.distinct
   end
 
   def self.metadata_url(meta)
