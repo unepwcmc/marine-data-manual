@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   root to: 'home#index'
 
+  get 'contact', to: 'contact#index'
   get 'metadata', to: 'metadata#index'
   get 'marine-spatial-planning', to: 'marine_spatial_planning#index'
   get 'education', to: 'education#index'

@@ -11,6 +11,10 @@ body {
   margin: 0;
 }
 
+main {
+  display: block; //ie fix
+}
+
 h1 {
   color: white;
   font-size: rem-calc(26);
