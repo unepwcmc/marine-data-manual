@@ -21,7 +21,6 @@ class ContactController < ApplicationController
             id: 'licence_link',
             label: 'Link to licence',
             type: 'text_field',
-            required: true,
             comment: 'Please enter URL link'
           },
           {
@@ -44,6 +43,7 @@ class ContactController < ApplicationController
       },
       {
         title: 'Contact details',
+        intro: 'If you are happy for us to contact you if more information is needed, please add your details here. These will only be used for this purpose and, in accordance with GDPR, will be deleted once the entry (or a full metadata sheet, if appropriate) has been completed.',
         fields: [
           {
             id: 'name',
@@ -59,6 +59,7 @@ class ContactController < ApplicationController
             id: 'email',
             label: 'Email address',
             type: 'email_field',
+            placeholder: 'example@email.com'
           },
         ]
       }

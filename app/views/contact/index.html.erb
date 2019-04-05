@@ -12,11 +12,14 @@
 
   <em class="form__required">*These fields are required</em>
 
-  <%= form_tag('/contact', remote: true) do %>
+  <%= form_tag('/contact', remote: true, class: 'form') do %>
 
     <% @contact_form.each do |section| %>
 
       <h3 class="form__section-header"><%= section[:title] %></h3>
+      <% if section[:intro] %>
+        <p><%= section[:intro] %></p>
+        <% end %>
 
       <% section[:fields].each do |field| %>
 
@@ -34,10 +37,13 @@
 
     <% end %>
 
-    <div class="form__checkbox-row flex flex-v-center">
-      <%= check_box_tag :gdpr_statement, '', false, required: true, class: 'form__checkbox' %>
-      <%= label_tag :gdpr_statement, 'GDPR Statement' %>
+    <div class="form__checkbox-row">
+      <%= check_box_tag :gdpr_statement, '', false, required: true, class: 'form__default-checkbox' %>
+      <%= label_tag :gdpr_statement, class: "flex flex-v-center" do %>
+        <span class="form__checkbox"></span>
+        <span>GDPR Statement</span>
+      <% end %>
     </div>
-    <%= submit_tag 'Send' %>
+    <%= submit_tag 'Send', class: 'form__submit button button--grey' %>
   <% end %>
 </main>

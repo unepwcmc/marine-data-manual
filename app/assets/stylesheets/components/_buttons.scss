@@ -39,6 +39,7 @@
   
   &--blue { @include button-background($blue); }
   &--green { @include button-background($green); }
+  &--grey { @include button-background($grey-dark); }
 
   &--line-white { border: solid white rem-calc(2); }
   &--line-orange { border: solid $secondary rem-calc(2); }
