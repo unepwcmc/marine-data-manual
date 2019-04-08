@@ -1,6 +1,4 @@
 class ContactController < ApplicationController
-  skip_before_action :verify_authenticity_token, raise: false
-
   def contact_form
     [
       {
@@ -74,7 +72,6 @@ class ContactController < ApplicationController
 
   def submission
     form_data = params.except(:utf8, :commit, :controller, :action)
-
     response = contact_form
 
     response.each do |section|
