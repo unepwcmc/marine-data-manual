@@ -15,14 +15,14 @@ class ContactController < ApplicationController
           {
             id: 'resource_location',
             label: 'Resource location',
-            type: 'text_field',
+            type: 'url_field',
             required: true,
             comment: 'Please enter URL link'
           },
           {
             id: 'licence_link',
             label: 'Link to licence',
-            type: 'text_field',
+            type: 'url_field',
             comment: 'Please enter URL link'
           },
           {
