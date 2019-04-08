@@ -1,0 +1,20 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Ocean+ Library Metadata Submission</h1>
+    <% params[:response].each do |section| %>
+
+      <h3><%= section[:title] %></h3>
+      <ul style="list-style-type: none; padding: 0;">
+      <% section[:fields].each do |field| %>
+        <li><%= field[:label] %>: <%= field[:response] %></li>
+      <% end %>
+      </ul>
+
+    <% end %>
+  </body>
+</html>

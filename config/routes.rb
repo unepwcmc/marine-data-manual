@@ -14,4 +14,6 @@ Rails.application.routes.draw do
 
   post '/metadata-list', to: 'metadata#metadata_list'
   post '/download', to: 'metadata#download'
+  post '/contact', to: 'contact#submission'
+
 end

@@ -1,6 +1,8 @@
 class ContactController < ApplicationController
-  def index
-    @contact_form = [
+  skip_before_action :verify_authenticity_token, raise: false
+
+  def contact_form
+    [
       {
         title: 'Resource details',
         fields: [
@@ -64,5 +66,30 @@ class ContactController < ApplicationController
         ]
       }
     ]
+  end
+
+  def index
+    @contact_form = contact_form
+  end
+
+  def submission
+    form_data = params.except(:utf8, :commit, :controller, :action)
+
+    response = contact_form
+
+    response.each do |section|
+      section[:fields].each do |field|
+        field[:response] = form_data[field[:id]]
+      end
+    end
+
+    ContactMailer.with(
+      response: response
+    ).submit_metadata.deliver_now
+
+    respond_to do |f|
+      f.html { redirect_to contact_path }
+      f.js {  }
+    end
   end
 end
