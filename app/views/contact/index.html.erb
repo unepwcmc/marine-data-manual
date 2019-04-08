@@ -19,7 +19,7 @@
       <h3 class="form__section-header"><%= section[:title] %></h3>
       <% if section[:intro] %>
         <p><%= section[:intro] %></p>
-        <% end %>
+      <% end %>
 
       <% section[:fields].each do |field| %>
 
@@ -38,12 +38,12 @@
     <% end %>
 
     <div class="form__checkbox-row">
-      <%= check_box_tag :gdpr_statement, '', false, required: true, class: 'form__default-checkbox' %>
-      <%= label_tag :gdpr_statement, class: "flex flex-v-center" do %>
+      <%= label_tag :gdpr_statement, class: "flex flex-v-center relative" do %>
+        <%= check_box_tag :gdpr_statement, '', false, required: true, class: 'form__default-checkbox' %>
         <span class="form__checkbox"></span>
         <span>GDPR Statement</span>
       <% end %>
     </div>
-    <%= submit_tag 'Send', class: 'form__submit button button--grey' %>
+    <%= submit_tag 'Send', class: 'form__submit button button--grey', 'data-no-turbolink': true %>
   <% end %>
 </main>
