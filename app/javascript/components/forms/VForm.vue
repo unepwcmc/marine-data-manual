@@ -27,7 +27,7 @@ import mixinFocusCapture from '../../mixins/mixin-focus-capture'
 import axios from 'axios'
 
 export default {
-  mixins: [ mixinFocusCapture({}) ],
+  mixins: [ mixinFocusCapture({toggleVariable: 'isPopupActive'}) ],
 
   props: {
     title: String,
@@ -66,10 +66,6 @@ export default {
 
     handleSuccess() {
       this.open()
-      this.$nextTick( () => {
-        this.addEventListeners()
-        this.mixinFocusFirstInputIfExists()
-      })
     },
 
     addSubmitListener() {
