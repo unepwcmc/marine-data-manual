@@ -85,8 +85,8 @@ class ContactController < ApplicationController
     ).submit_metadata.deliver_now
 
     respond_to do |f|
-      f.html { redirect_to contact_path }
-      f.js {  }
+      f.html { }
+      f.js { }
     end
   end
 end

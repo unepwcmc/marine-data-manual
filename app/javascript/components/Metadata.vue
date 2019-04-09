@@ -16,6 +16,7 @@
 <script>
   import axios from 'axios'
   import { eventHub } from '../metadata.js'
+  import { setCsrfToken } from '../helpers/request-helpers'
 
   import Filters from './filters/Filters.vue'
   import Pagination from './pagination/Pagination.vue'
@@ -78,9 +79,9 @@
             sortField: this.$store.state.sortField
           }
         }
-        const csrf = document.querySelectorAll('meta[name="csrf-token"]')[0].getAttribute('content')
-        axios.defaults.headers.common['X-CSRF-Token'] = csrf
+        setCsrfToken(axios)
         axios.defaults.headers.common['Accept'] = 'application/json'
+
 
         axios.post('/metadata-list', data)
         .then(response => {

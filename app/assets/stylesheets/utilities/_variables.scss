@@ -3,6 +3,7 @@
 //--------------------------------------------------
 $black: #000000;
 $black-translucent: rgba(black, .5);
+$white: #ffffff;
 
 $blue-faint: #33548F;
 $blue-light: #EDEEF1;
@@ -42,6 +43,10 @@ $body-font-color: $black;
 $site-width: rem-calc(1200);
 $site-width-medium: $site-width * .80;
 $site-width-small: $site-width * .60;
+
+$z-100: 100;
+$z-200: 200;
+$z-300: 300;
 
 //--------------------------------------------------
 // buttons
