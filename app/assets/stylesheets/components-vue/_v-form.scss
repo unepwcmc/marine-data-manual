@@ -40,7 +40,7 @@
         background-size: rem-calc(50 50);
         background-position: center;
         background-repeat: no-repeat;
-        border: solid 2px $white;
+        border: solid rem-calc(2) $white;
         border-radius: 100%;
         padding: rem-calc(20);
         width: rem-calc(90); height: rem-calc(90);
