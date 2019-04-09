@@ -5,14 +5,14 @@
 
     <div v-if="isPopupActive" class="v-form__overlay">
       <div 
-        :id="modalId"
+        :id="mixinModalId"
         class="v-form__success flex flex-column flex-center">
         <div class="v-form__success-icon icon--tick" title="Success"></div>
         <h1 class="v-form__success-title">{{ title }}</h1>
         <p class="v-form__success-message">{{ successMessage }}</p>
         <button
           :aria-haspopup="true"
-          :aria-controls="modalId"
+          :aria-controls="mixinModalId"
           :aria-expanded="true"
           @click="close"
           class="v-form__success-button button button--grey">Close</button>
@@ -22,9 +22,13 @@
 </template>
 
 <script>
-import { setCsrfToken } from '../../helpers/request-helpers';
-import axios from 'axios';
+import { setCsrfToken } from '../../helpers/request-helpers'
+import mixinFocusCapture from '../../mixins/mixin-focus-capture'
+import axios from 'axios'
+
 export default {
+  mixins: [ mixinFocusCapture({}) ],
+
   props: {
     title: String,
     errorMessage: String,
@@ -35,7 +39,7 @@ export default {
     return {
       isPopupActive: false,
       error: false,
-      modalId: 'v-form-modal'
+      mixinModalId: 'v-form-modal'
     }
   },
 
@@ -60,6 +64,14 @@ export default {
       })
     },
 
+    handleSuccess() {
+      this.open()
+      this.$nextTick( () => {
+        this.addEventListeners()
+        this.mixinFocusFirstInputIfExists()
+      })
+    },
+
     addSubmitListener() {
       const form = this.$el.querySelector('form')
 
@@ -71,7 +83,7 @@ export default {
 
         axios.post(action, data)
           .then(response => {
-            this.open()
+            this.handleSuccess()
           })
           .catch(error => {
             this.handleException()
