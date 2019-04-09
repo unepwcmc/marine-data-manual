@@ -10,6 +10,7 @@
 ## Local development
 
 - Clone repo
+- Request an `.env` file from the team
 - `bundle install`
 - `yarn install`
 - `rails s`
