@@ -1,0 +1,56 @@
+<% content_for :title do %>
+  Contact form
+<% end %>
+
+<main class="container--small padding--page">
+  <h2>We welcome new resources!</h2>
+
+  <p>Please add suggestions below, which we will review for integration into the online database. We are aiming to update the database on a quarterly basis each year.</p>
+  <p>Equally, if you would like anything changed or to provide further information for an existing entry, please email us at 
+  <a href="mailto:marine@unep-wcmc.org">marine@unep-wcmc.org</a>.</p>
+
+  <em class="form__required">*These fields are required</em>
+
+  <v-form
+    title="Sent"
+    error-message="It looks like there has been an error submitting your form."
+    success-message="Thank you for your submission!">
+    <%= form_tag('/contact', remote: true, authenticity_token: true, id: 'contact-form', class: 'form') do %>
+
+      <% @contact_form.each do |section| %>
+
+        <h3 class="form__section-header"><%= section[:title] %></h3>
+        <% if section[:intro] %>
+          <p><%= section[:intro] %></p>
+        <% end %>
+
+        <% section[:fields].each do |field| %>
+
+          <%= label_tag field[:id], field_label(field).html_safe, class: 'form__label' %>
+          <%= send(
+            "#{field[:type]}_tag", 
+            field[:id].to_sym, 
+            '',
+            required: field[:required], 
+            placeholder: field[:placeholder],
+            class: 'form__field'
+          ) %>
+
+        <% end %>
+
+      <% end %>
+
+      <div class="form__checkbox-row">
+        <%= label_tag :gdpr_statement, class: "flex flex-v-center relative" do %>
+          <%= check_box_tag :gdpr_statement, '', false, required: true, class: 'form__default-checkbox' %>
+          <span class="form__checkbox"></span>
+          <span>GDPR Statement</span>
+        <% end %>
+      </div>
+
+      <%= submit_tag 'Send', class: 'form__submit button button--grey', 'data-no-turbolink': true %>
+
+    <% end %>
+  </v-form>
+
+</main>

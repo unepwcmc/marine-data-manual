@@ -1,0 +1,88 @@
+$border: solid rem-calc(1) $grey;
+$checkbox-width: rem-calc(30);
+
+.form {
+  &__section-header {
+    margin-top: rem-calc(34);
+    padding-bottom: rem-calc(20);
+    border-bottom: $border;
+  }
+
+  &__field {
+    border-radius: rem-calc(3);
+    border: $border;
+    font-size: inherit;
+    padding: rem-calc(14);
+    width: 100%; height: rem-calc(50);
+
+    display: block;
+  }
+
+  &__label {
+    font-size: rem-calc(16);
+    font-weight: bold;
+    margin: rem-calc(16 0 10 0);
+
+    display: inline-block;
+  }
+
+    &__label-comment {
+      font-weight: normal;
+    }
+
+  &__checkbox-row {
+    margin: rem-calc(16 0 10 0);
+  }
+
+    &__default-checkbox {
+      @extend %hidden-input;
+      top: $checkbox-width;
+      left: $checkbox-width / 2;
+    }
+
+    &__checkbox {
+      border: $border;
+      cursor: pointer;
+      margin-right: rem-calc(8);
+      width: $checkbox-width; height: $checkbox-width;
+
+      display: inline-block;
+    }
+
+  &__submit {
+    border-radius: rem-calc(2);
+    font-size: rem-calc(16);
+    margin-top: rem-calc(20);
+    padding: rem-calc(12 65);
+  }
+
+  &__required {
+    color: $red-required;
+    font-weight: bold;
+    font-style: inherit;
+  }
+}
+
+@include custom_input_checked('.form__default-checkbox', '.form__checkbox') {
+  &::after {
+    background: $blue image-url('icons/tick.svg') center no-repeat;
+    content: '';
+    width: $checkbox-width;
+    height: $checkbox-width;
+
+    display: block;
+  }
+}
+
+@include custom_input_focus_default('.form__default-checkbox', '.form__checkbox');
+
+::-webkit-input-placeholder {
+  font-style: italic;
+} 
+
+:-ms-input-placeholder {
+  font-style: italic;
+}
+::placeholder {
+  font-style: italic;
+}
