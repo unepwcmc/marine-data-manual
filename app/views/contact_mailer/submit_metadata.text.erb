@@ -1,0 +1,11 @@
+Ocean+ Library Metadata Submission
+==================================
+<% params[:response].each do |section| %>
+
+<%= section[:title] %>
+-----
+<% section[:fields].each do |field| %>
+<%= field[:label] %>: <%= field[:response] %>
+<% end %>
+
+<% end %>

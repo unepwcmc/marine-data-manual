@@ -14,7 +14,9 @@
       <%= yield %>
     </div>
 
-    <%= render 'global/cta' %>
+    <% if controller_name != 'contact' %>
+      <%= render 'global/cta' %>
+    <% end %>
 
     <%= render 'global/footer' %>
 

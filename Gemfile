@@ -59,6 +59,7 @@ group :development do
   gem 'capistrano-passenger', '~> 0.1.1', require: false
   gem 'capistrano-yarn'
   gem 'capistrano-nvm'
+  gem 'letter_opener'
 end
 
 

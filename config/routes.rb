@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   root to: 'home#index'
 
+  get 'contact', to: 'contact#index'
   get 'metadata', to: 'metadata#index'
   get 'marine-spatial-planning', to: 'marine_spatial_planning#index'
   get 'education', to: 'education#index'
@@ -13,4 +14,6 @@ Rails.application.routes.draw do
 
   post '/metadata-list', to: 'metadata#metadata_list'
   post '/download', to: 'metadata#download'
+  post '/contact', to: 'contact#submission'
+
 end
