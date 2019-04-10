@@ -1,3 +1,7 @@
+### 2.1.0
+
+* Addition of a contact form to submit metadata suggestions
+
 ### 2.0.0
 
 **Ocean+ Library:**
