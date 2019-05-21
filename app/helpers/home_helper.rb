@@ -1,6 +1,14 @@
 module HomeHelper
+  def title
+    'Diving into marine meta data'
+  end
+
   def about
     '<p>Accurate and up-to-date data and information are required to support adaptive conservation and resource management that can help to mitigate these impacts, and to conserve marine species and habitats.</p><p>Ocean+ Library addresses this need for information by providing an overview of global marine and coastal datasets of biodiversity importance, including some datasets of regional interest.</p>'
+  end
+
+  def theme_title 
+    'Explore how you can use data'
   end
 
   def themes 

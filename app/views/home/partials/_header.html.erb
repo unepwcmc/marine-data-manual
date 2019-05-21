@@ -2,6 +2,10 @@
   <div class="header__content container--medium">
     <h1><%= title %></h1>
     <%= about.html_safe %>
-    <%= link_to 'Explore the Metadata list', metadata_path, title: 'Explore the Metadata list', class: 'button button--xlarge button--outline button--line-orange' %>
+
+    <%= link_to 'Explore the Metadata list', 
+      metadata_path, 
+      title: 'Explore the Metadata list', 
+      class: 'button button--xlarge button--outline button--line-orange item-margin--top item-margin--bottom' %>
   </div>
 </header>

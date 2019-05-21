@@ -25,15 +25,22 @@ h1 {
 }
 
 h2 { 
-  font-size: rem-calc(22);
-  margin: rem-calc(0 0 10 0); 
+  font-size: rem-calc(26);
+  margin: .6em;
 
-  @include breakpoint($small){ font-size: rem-calc(24); }
+  @include breakpoint($small){ font-size: rem-calc(36); }
 }
 
 h3 { 
   font-size: rem-calc(16);
   margin: rem-calc(0 0 16 0);
+
+  &.heading--theme {
+    font-size: rem-calc(22);
+    margin: rem-calc(14 0 10 0); 
+
+    @include breakpoint($small){ font-size: rem-calc(24); }
+  }
 }
 
 p { 
@@ -56,45 +63,111 @@ a {
 //--------------------------------------------------
 // site structure
 //--------------------------------------------------
-.site-width { 
-  @include breakpoint($medium) { width: $site-width; } 
+// .site-width { 
+//   @include breakpoint($medium) { width: $site-width; } 
+// }
+
+// .container {
+//   margin: 0 auto;
+//   padding: rem-calc(0 $gutter-small);
+//   width: 100%;
+
+//   @include breakpoint($small){ padding: rem-calc(0) $gutter-medium; }
+
+//   @include breakpoint($medium){ 
+//     padding: 0;
+//     width: $site-width;
+//   }
+
+//   &--medium {
+//     margin: 0 auto;
+//     padding: rem-calc(0 $gutter-small);
+//     width: 100%;
+
+//     @include breakpoint($small){ padding: rem-calc(0 $gutter-medium); }
+
+//     @include breakpoint($medium){ width: $site-width-medium; }
+//   }
+
+//   &--small {
+//     margin: 0 auto;
+//     padding: rem-calc(0 $gutter-small);
+//     width: 100%;
+    
+//     @include breakpoint($small){ width: 65%; }
+
+//     @include breakpoint($medium){ 
+//       padding: rem-calc(0 $gutter-medium); 
+//       width: $site-width-small;
+//     } 
+//   }
+// }
+
+
+//--------------------------------------------------
+// site structure - reusable styles/mixins
+//--------------------------------------------------
+@mixin gutters($sides:'both', $type:'padding') {
+  $sides: if($sides == 'both', ('left', 'right'), ($sides));
+
+  @each $s in $sides {
+    #{$type}-#{$s}: $gutter-small;
+
+    @include breakpoint($small) { #{$type}-#{$s}: $gutter-medium; }
+    @include breakpoint($medium) { #{$type}-#{$s}: $gutter-large; }
+  }
+}
+
+@mixin item-padding($sides:'all', $type:'padding') {
+  $sides: if($sides == 'all', ('top','bottom','left','right'), ($sides));
+
+  @each $s in $sides {
+    #{$type}-#{$s}: $item-padding-small;
+
+    @include breakpoint($small) { #{$type}-#{$s}: $item-padding-medium; }
+    @include breakpoint($medium) { #{$type}-#{$s}: $item-padding-large; }
+  }
+}
+
+%container {
+  @include gutters('both', 'padding');
+
+  margin: 0 auto;
+  width: 100%;
+}
+
+//--------------------------------------------------
+// site structure
+//--------------------------------------------------
+.site-width {
+  @include breakpoint($medium){ width: $site-width; }
+}
+
+.site-width-medium {
+  @include breakpoint($medium){ width: $site-width-medium; }
+}
+
+.gutter {
+  &-left {
+    @include gutters('left');
+  }
+
+  &-right {
+    @include gutters('right');
+  }
+}
+
+.gutters {
+  @include gutters;
 }
 
 .container {
-  margin: 0 auto;
-  padding: rem-calc(0 $gutter-small);
-  width: 100%;
-
-  @include breakpoint($small){ padding: rem-calc(0) $gutter-medium; }
-
-  @include breakpoint($medium){ 
-    padding: 0;
-    width: $site-width;
-  }
+  @extend .site-width;
+  @extend %container;
 
   &--medium {
-    margin: 0 auto;
-    padding: rem-calc(0 $gutter-small);
-    width: 100%;
-
-    @include breakpoint($small){ padding: rem-calc(0 $gutter-medium); }
-
-    @include breakpoint($medium){ 
-      width: $site-width-medium;
-    }
-  }
-
-  &--small {
-    margin: 0 auto;
-    padding: rem-calc(0 $gutter-small);
-    width: 100%;
-    
-    @include breakpoint($small){ width: 65%; }
-
-    @include breakpoint($medium){ 
-      padding: rem-calc(0 $gutter-medium); 
-      width: $site-width-small;
-    } 
+    @extend .site-width-medium;
+    @extend %container;
   }
 }
 
@@ -120,3 +193,18 @@ a {
 .padding--content-bottom {
   padding-bottom: rem-calc(40);
 }
+
+//--------------------------------------------------
+// item padding
+//--------------------------------------------------
+.item-padding { @include item-padding(); }
+
+.item-padding--sides {
+  @include item-padding('left', 'right');
+}
+
+.item-padding--top { @include item-padding('top'); }
+.item-padding--bottom { @include item-padding('bottom'); }
+
+.item-margin--top { @include item-padding('top', 'margin'); }
+.item-margin--bottom { @include item-padding('bottom', 'margin'); }

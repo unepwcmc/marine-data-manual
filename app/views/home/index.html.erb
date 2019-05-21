@@ -1,5 +1,11 @@
-<%= render partial: 'home/partials/header', locals: { title: 'Diving into marine metadata' } %>
+<%= render partial: 'home/partials/header', locals: { title: title } %>
 
-<% themes.each do |theme| %>
-  <%= render partial: '/home/partials/theme', locals: { theme: theme } %>
-<% end %>
+<div class="padding--page">
+  <h2 class="center"><%= theme_title %></h2>
+
+  <div class="site-width-medium margin-center flex flex-wrap flex-h-between">
+    <% themes.each do |theme| %>
+      <%= render partial: '/home/partials/theme', locals: { theme: theme } %>
+    <% end %>
+  </div>
+</div>

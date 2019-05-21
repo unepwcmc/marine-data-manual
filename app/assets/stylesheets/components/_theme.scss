@@ -2,47 +2,45 @@
 // theme
 //--------------------------------------------------
 .theme {
-  border-bottom: solid white rem-calc(4);
   color: white;
-  padding: rem-calc(30 0);
+  margin: 1%;
+  padding: rem-calc(30);
 
-  @include breakpoint($small){ padding: rem-calc(50 0); }
+  &:nth-child(1),
+  &:nth-child(2),
+  &:nth-child(3) { 
+    width: 100%;
 
-  &__container {
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-
-    @include breakpoint($small){
-      flex-direction: row;
-      text-align: left;
-    }    
+    @include breakpoint($medium) { width: 31%; }
   }
 
-    &__icon {
-      flex: 1 0 auto;
-      margin-bottom: rem-calc(18);
-      width: rem-calc(70); height: rem-calc(70);
+  &:nth-child(4),
+  &:nth-child(5) { 
+    width: 100%;
 
-      display: block;
+    @include breakpoint($medium) { width: 48%; }
+  }
 
-      @include breakpoint($small){
-        margin-bottom: 0;
-        width: rem-calc(90); height: rem-calc(90);
-      }
+  &__icon {
+    margin-bottom: rem-calc(18);
+    width: rem-calc(70); height: rem-calc(70);
 
-      @include breakpoint($medium){ width: rem-calc(122); height: rem-calc(122); }
+    display: block;
+
+    @include breakpoint($small){
+      margin-bottom: 0;
+      width: rem-calc(90); height: rem-calc(90);
     }
 
-    &__content {
-      @include breakpoint($small){ margin-left: rem-calc(36); }
-    }
-    
-      &__copy {
-        margin-bottom: rem-calc(20);
-      }
+    @include breakpoint($medium){ width: rem-calc(122); height: rem-calc(122); }
+  }
 
-      &__button {
-        font-size: rem-calc(16);
-      }
+  &__copy {
+    margin-bottom: rem-calc(20);
+  }
+
+  &__button {
+    font-size: rem-calc(16);
+    margin: auto auto 0 auto;
+  }
 }
