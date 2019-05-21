@@ -1,10 +1,4 @@
-<% content_for :title do %>
-  Diving into marine data
-<% end %>
-
-<div class="container--medium padding--page-top padding--content-bottom intro">
-  <p><%= about.html_safe %></p>
-</div>
+<%= render partial: 'home/partials/header', locals: { title: 'Diving into marine metadata' } %>
 
 <% themes.each do |theme| %>
   <%= render partial: '/home/partials/theme', locals: { theme: theme } %>

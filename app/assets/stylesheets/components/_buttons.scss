@@ -54,6 +54,11 @@
       padding: rem-calc(4 10 5 10); 
       @include breakpoint($small){ padding: rem-calc(7 18 8 18); }
     }
+
+    &.button--xlarge { 
+      border-radius: rem-calc(38);
+      @include breakpoint($small){ padding: rem-calc(22 34 24 34); }
+    }
   }
 
   &--download {

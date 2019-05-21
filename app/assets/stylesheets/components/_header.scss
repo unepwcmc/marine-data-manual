@@ -2,6 +2,7 @@
 // header
 //--------------------------------------------------
 // - global
+// - home
 // - theme
 // - hero images
 //--------------------------------------------------
@@ -53,6 +54,31 @@
   }
 
 //--------------------------------------------------
+// home header
+//--------------------------------------------------
+  &--home {
+    background-image: image-url('hero/turtle.jpg');
+    background-position: center;
+    background-size: cover;
+    padding-top: rem-calc(180);
+
+    h1 { margin-bottom: .5em; }
+
+    .header {
+      &__content {
+        background-color: $black-translucent;
+        color: white;
+        font-size: rem-calc(20);
+        padding: rem-calc(14 25 18 25);
+        text-align: center;
+
+        @include breakpoint($small){ padding: rem-calc(20 35 24 35); }
+        @include breakpoint($medium){ padding: rem-calc(42 60); }
+      }
+    }
+  }
+
+//--------------------------------------------------
 // theme header
 //--------------------------------------------------
   &--theme {
@@ -73,7 +99,6 @@
 //--------------------------------------------------
 // hero images
 //--------------------------------------------------
-  &--home { background-image: image-url('hero/turtle.jpg'); }
   &--metadata { background-image: image-url('hero/coral.jpg'); }
   &--data-limitations { background-image: image-url('hero/river.jpg'); }
   &--contact { background-image: image-url('hero/shark.jpg'); }
