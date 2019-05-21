@@ -3,7 +3,7 @@
     @click="download()"
     title="Download CSV file"
     class="inline-block button button--download button--green filter__download">
-    CSV
+    Download
   </a>
 </template>
 
