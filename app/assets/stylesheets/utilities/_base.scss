@@ -25,10 +25,17 @@ h1 {
 }
 
 h2 { 
-  font-size: rem-calc(26);
-  margin: .6em;
+  font-size: rem-calc(22);
+  margin: rem-calc(14 0 10 0);
 
-  @include breakpoint($small){ font-size: rem-calc(36); }
+  @include breakpoint($small){ font-size: rem-calc(24); }
+
+  &.heading--home {
+    font-size: rem-calc(26);
+    margin: 0 0 .6em 0;
+
+    @include breakpoint($small){ font-size: rem-calc(36); }
+  }
 }
 
 h3 { 
@@ -143,6 +150,10 @@ a {
   @include breakpoint($medium){ width: $site-width; }
 }
 
+.site-width-small {
+  @include breakpoint($medium){ width: $site-width-small; }
+}
+
 .site-width-medium {
   @include breakpoint($medium){ width: $site-width-medium; }
 }
@@ -164,6 +175,11 @@ a {
 .container {
   @extend .site-width;
   @extend %container;
+
+  &--small {
+    @extend .site-width-small;
+    @extend %container;
+  }
 
   &--medium {
     @extend .site-width-medium;
