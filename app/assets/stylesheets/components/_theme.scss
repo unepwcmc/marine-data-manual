@@ -3,8 +3,10 @@
 //--------------------------------------------------
 .theme {
   color: white;
-  margin: 1%;
   padding: rem-calc(30);
+  
+  @include breakpoint($small) { margin: 1% 0 1% 0; }
+  @include breakpoint($medium) { margin: 1%; }
 
   &:nth-child(1),
   &:nth-child(2),
