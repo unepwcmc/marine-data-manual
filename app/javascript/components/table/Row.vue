@@ -19,9 +19,9 @@
         <p><span class="bold">Resource:</span> {{ item.resource }}</p>
         <p><span class="bold">Version:</span> {{ item.version }}</p>
         <p><span class="bold">ID:</span> {{ item.dataset_id }}</p>
-        <p><span class="bold">Metadata:</span> <a v-if="hasMetadata" :href="item.pdf_link" title="View metadata" target="_blank">Link</a></p>
-        <p><span class="bold">Factsheet:</span> <a v-if="hasFactsheet" :href="item.factsheet" title="View factsheet" target="_blank">Link</a></p>
-        <p><span class="bold">Licence:</span> {{ item.license_number }}</p>
+        <p><span class="bold">Metadata:</span> <a v-if="hasMetadata" :href="item.pdf_link" title="View metadata" class="external" target="_blank">Link ></a></p>
+        <p><span class="bold">Factsheet:</span> <a v-if="hasFactsheet" :href="item.factsheet" title="View factsheet" class="external" target="_blank">Link ></a></p>
+        <p><span class="bold">Licence:</span> <a v-if="hasLicence" :href="item.licence_url" title="View licence" class="external" target="_blank">Link ></a></p>
       </div>
       <div class="table__row--expandable__td">
         <p class="bold">Themes:</p>
@@ -68,6 +68,10 @@
 
       hasFactsheet () {
         return !!this.item.factsheet
+      },
+
+      hasLicence () {
+        return !!this.item.licence
       },
 
       hasResourceLink () {

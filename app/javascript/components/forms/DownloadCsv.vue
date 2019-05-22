@@ -15,6 +15,8 @@
 
     methods: {
       download () {
+        window.ga('send', 'event', 'Button', 'click', 'Download metadata csv')
+        
         const csrf = document.querySelectorAll('meta[name="csrf-token"]')[0].getAttribute('content'),
         data = {
           params: {

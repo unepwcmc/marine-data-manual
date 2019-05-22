@@ -65,6 +65,14 @@ a {
   color: $body-font-color; 
   
   &:hover { text-decoration: none; }
+
+  &.external {
+    color: $blue-link;
+    font-weight: 400;
+    text-decoration: underline;
+
+    &:hover { text-decoration: none; }
+  }
 }
 
 //--------------------------------------------------

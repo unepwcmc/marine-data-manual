@@ -8,6 +8,7 @@
     "es6-promise": "^4.1.1",
     "vue": "^2.5.3",
     "vue-loader": "^13.5.0",
+    "vue-multianalytics": "^1.11.7",
     "vue-template-compiler": "^2.5.3",
     "vuex": "^3.0.1",
     "webpack-merge": "^4.1.1"
