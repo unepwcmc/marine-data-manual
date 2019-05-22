@@ -1,13 +1,15 @@
 <template>
-  <div class="filters">
-    <span class="filter__title bold">Filters:</span>
+  <div class="filters flex flex-h-between">
+    <div>
+      <v-filter v-for="filter in filters"
+        :name="filter.name"
+        :title="filter.title" 
+        :options="filter.options"
+        :type="filter.type">
+      </v-filter>
+    </div>
 
-    <v-filter v-for="filter in filters"
-      :name="filter.name"
-      :title="filter.title" 
-      :options="filter.options"
-      :type="filter.type">
-    </v-filter>
+    <button @click="clearFilters" class="filters__clear button--plain">Clear all filters</button>
   </div>
 </template>
 
@@ -69,6 +71,11 @@
 
         this.$store.commit('setFilterOptions', array)
       },
+
+      clearFilters () {
+        console.log('clearFilters')
+        eventHub.$emit('clearFilter')
+      }
     }
   }
 </script>

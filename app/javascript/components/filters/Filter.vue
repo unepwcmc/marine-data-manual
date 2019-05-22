@@ -65,19 +65,13 @@
     components: { FilterOption, FilterRadioButtons, FilterSearch },
 
     props: {
-      name: {
-        type: String
-      },
       title: {
         required: true,
         type: String
       },
-      options: {
-        type: Array
-      },
-      type: {
-        type: String
-      }
+      name: String,
+      options: Array,
+      type: String
     },
 
     data () {
@@ -135,6 +129,10 @@
       }
     },
 
+    created () {
+      eventHub.$on('clearFilter', this.reset)
+    },
+
     methods: {
       openSelect () {
         if(this.isOpen){
@@ -167,6 +165,7 @@
       },
 
       clear () {
+        console.log('clear', this.name)
         // set the isSelected property on all options to false
         this.children.forEach(child => {
           if(this.type == 'boolean') {
@@ -197,6 +196,11 @@
 
         this.$store.dispatch('updateFilterParameters', newFilterOptions)
         eventHub.$emit('getNewItems')
+      },
+
+      reset () {
+        this.clear()
+        this.apply()
       }
     }
   }

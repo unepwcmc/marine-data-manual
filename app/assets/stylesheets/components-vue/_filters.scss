@@ -13,6 +13,27 @@ $color-text-active: $black;
 
     display: flex;
   }
+
+//--------------------------------------------------
+// clear
+//--------------------------------------------------
+  &__clear {
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+
+    &:before {
+      @extend .icon--clear;
+      background-size: cover; 
+      content: '';
+      margin-right: rem-calc(7);
+      width: rem-calc(18); height: rem-calc(18);
+
+      display: inline-block;
+      position: relative;
+      top: rem-calc(4);
+    }
+  }
 }
 
 //--------------------------------------------------
@@ -28,6 +49,7 @@ $color-text-active: $black;
     font-size: rem-calc(20);
     margin-right: rem-calc(20);
   }
+
 //--------------------------------------------------
 // button
 //--------------------------------------------------
@@ -37,7 +59,7 @@ $color-text-active: $black;
     cursor: pointer;
     font-weight: bold;
     margin: 0;
-    padding:rem-calc(9 39 10 13);
+    padding:rem-calc(9 32 10 13);
 
     position: relative;
 
@@ -50,7 +72,7 @@ $color-text-active: $black;
       margin: rem-calc(2 0 0 7);
       width: rem-calc(8); height: rem-calc(6);
 
-      right: rem-calc(24);
+      right: rem-calc(17);
     }
     
     &--active {
