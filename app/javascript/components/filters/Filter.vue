@@ -14,11 +14,13 @@
         <div class="filter__options--search" :class="filterClass">
           <filter-search
             v-on:apply:filter="apply"
-            v-on:clear:filter="clear"
+            v-on:clear:filter="updateAllTo(false)"
+            v-on:click:selectMultipleOptions="updateAllTo"
             :options="options"
             :name="name"
             :title="title"
-            :type="type">
+            :type="type"
+            :selectMultiple="selectMultiple">
           </filter-search>
         </div>
       </template>
@@ -45,7 +47,7 @@
       </template>
 
       <div :class="['filter__buttons', { 'filter__buttons--search': type == 'search' }]">
-        <button @click="clear()" class="button--link bold float-left">Clear</button>
+        <button @click="updateAllTo(false)" class="button--link bold float-left">Clear</button>
         <button @click="cancel()" class="button--link">Cancel</button>
         <button @click="apply()" class="button--link button--link--green bold">Apply</button>
       </div>
@@ -71,7 +73,8 @@
       },
       name: String,
       options: Array,
-      type: String
+      type: String,
+      selectMultiple: Object
     },
 
     data () {
@@ -164,21 +167,42 @@
         })
       },
 
-      clear () {
-        console.log('clear', this.name)
-        // set the isSelected property on all options to false
-        this.children.forEach(child => {
-          if(this.type == 'boolean') {
-            child.isSelected = null
-          } else if(this.type == 'search') {
-            child.children.forEach(child => {
-              child.isSelected = false
-            })
-            child.searchTerm = ''
-          } else {
-            child.isSelected = false
-          }
-        })
+      updateAllTo (condition) {
+        if(typeof condition === 'boolean') {
+          // set the isSelected property on all options to true/false
+          const boolean = condition
+          
+          this.children.forEach(child => {
+            if(this.type == 'boolean') {
+              if(boolean) { child.isSelected = null }
+                return false
+            } else if(this.type == 'search') {
+              child.children.forEach(child => {
+                child.isSelected = boolean
+              })
+              child.searchTerm = ''
+            } else {
+              child.isSelected = boolean
+            }
+          })
+        } else {
+          // set the isSelected property true/false depending on whether it statisfies the criteria
+          this.children.forEach(child => {
+            if(this.type == 'boolean') { return false 
+            } else if(this.type == 'search') {
+              child.children.forEach(child => {
+                if(condition.propName in child && child[condition.propName]) {
+                  child.isSelected = condition.select
+                }
+              })
+              child.searchTerm = ''
+            } else {
+              if(condition.propName in child && child[condition.propName]) {
+                child.isSelected = condition.select
+              }
+            }
+          })
+        }
       },
 
       apply () {
@@ -199,7 +223,7 @@
       },
 
       reset () {
-        this.clear()
+        this.updateAllTo(false)
         this.apply()
       }
     }

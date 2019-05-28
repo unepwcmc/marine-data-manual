@@ -5,7 +5,8 @@
         :name="filter.name"
         :title="filter.title" 
         :options="filter.options"
-        :type="filter.type">
+        :type="filter.type"
+        :selectMultiple="filter.selectMultiple">
       </v-filter>
     </div>
 
@@ -73,7 +74,6 @@
       },
 
       clearFilters () {
-        console.log('clearFilters')
         eventHub.$emit('clearFilter')
       }
     }

@@ -7,10 +7,18 @@
     </div>
 
     <ul class="ul-unstyled filter__options-list filter__options-list--search filter__options-padding">
+      <filter-select-multiple v-if="selectMultiple"
+        :option="selectMultiple.title"
+        :filterBy="selectMultiple.filter"
+        v-on:click:selectMultiple="selectMultipleOptions"
+        >
+      </filter-select-multiple>
+
       <template v-for="option in options">
         <filter-option v-show="matches(option)"
           :option="option"
-          :selected="false">
+          :selected="false"
+          ref="childOption">
         </filter-option>
       </template>
     </ul>
@@ -20,11 +28,12 @@
 <script>
   import { eventHub } from '../../metadata.js'
   import FilterOption from './FilterOption.vue'
+  import FilterSelectMultiple from './FilterSelectMultiple.vue'
 
   export default {
     name: 'filter-search',
 
-    components: { FilterOption },
+    components: { FilterOption, FilterSelectMultiple },
 
     props: {
       options: {
@@ -42,13 +51,14 @@
       type: {
         required: true,
         type: String
-      }
+      },
+      selectMultiple: Object
     },
 
     data () {
       return {
-        children: this.$children,
-        searchTerm: '',
+        children: {},
+        searchTerm: ''
       }
     },
 
@@ -64,6 +74,10 @@
 
     created () {
       eventHub.$on('resetSearchTerm', this.resetSearchTerm)
+    },
+
+    mounted () {
+      this.children = this.$refs.childOption
     },
 
     methods: {
@@ -86,6 +100,10 @@
       applySearch () {
         this.resetSearchTerm()
         this.$emit('apply:filter')
+      },
+
+      selectMultipleOptions (object) {
+        this.$emit('click:selectMultipleOptions', object)
       }
     }
   }
