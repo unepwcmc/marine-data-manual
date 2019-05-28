@@ -59,7 +59,7 @@ $color-text-active: $black;
     cursor: pointer;
     font-weight: bold;
     margin: 0;
-    padding:rem-calc(9 32 10 13);
+    padding:rem-calc(9 36 10 12);
 
     position: relative;
 
@@ -101,7 +101,7 @@ $color-text-active: $black;
         display: block;
 
         position: absolute;
-        right: rem-calc(9);
+        right: rem-calc(7);
       }
   }
 
