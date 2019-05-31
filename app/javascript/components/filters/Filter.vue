@@ -133,7 +133,8 @@
     },
 
     created () {
-      eventHub.$on('clearFilter', this.reset)
+      eventHub.$on('clearFilter', this.clear)
+      eventHub.$on('resetFilter', this.reset)
     },
 
     methods: {
@@ -207,6 +208,7 @@
 
       apply () {
         this.closeSelect()
+        eventHub.$emit('clearSearch')
 
         if(this.type == 'search') { eventHub.$emit('resetSearchTerm') }
 
@@ -217,9 +219,13 @@
           filter: this.name,
           options: this.activeOptions
         }
-
+        
         this.$store.dispatch('updateFilterParameters', newFilterOptions)
         eventHub.$emit('getNewItems')
+      },
+
+      clear () {
+        this.updateAllTo(false)
       },
 
       reset () {

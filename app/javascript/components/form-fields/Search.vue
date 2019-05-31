@@ -2,7 +2,7 @@
   <div class="search">
     <input type="text" v-model="searchTerm" @keyup.enter="applySearch()" placeholder="Search" class="search__input">
     <i class="search__icon" v-show="!haveSearched" @click="applySearch()"></i>
-    <i class="search__icon close" v-show="haveSearched" @click="clear()"></i>
+    <i class="search__icon close" v-show="haveSearched" @click="reset()"></i>
   </div>
 </template>
 
@@ -29,6 +29,10 @@
       }
     },
 
+    created () {
+      eventHub.$on('clearSearch', this.clear)
+    },
+
     methods: {
       applySearch () {
         eventHub.$emit('clearFilter')
@@ -40,8 +44,12 @@
       clear () {
         this.searchTerm = ''
         this.$store.dispatch('search', this.searchTerm)
-        eventHub.$emit('getNewItems')
         this.haveSearched = false
+      },
+
+      reset () {
+        this.clear()
+        eventHub.$emit('getNewItems')
       }
     }
   }
