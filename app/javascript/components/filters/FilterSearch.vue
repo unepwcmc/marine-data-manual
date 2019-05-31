@@ -1,9 +1,9 @@
 <template>
   <div class="height-100">
-    <div class="relative">
-      <input type="text" v-model="searchTerm" :placeholder="placeholder" class="filter--search">
-      <i class="filter--search-icon" v-show="noSearchTerm" @click="applySearch()"></i>
-      <i class="filter--search-icon close" v-show="!noSearchTerm" @click="clear()"></i>
+    <div class="filter--search">
+      <input type="text" v-model="searchTerm" :placeholder="placeholder" class="search__input">
+      <i class="search__icon" v-show="noSearchTerm" @click="applySearch()"></i>
+      <i class="search__icon close" v-show="!noSearchTerm" @click="clear()"></i>
     </div>
 
     <ul class="ul-unstyled filter__options-list filter__options-list--search filter__options-padding">

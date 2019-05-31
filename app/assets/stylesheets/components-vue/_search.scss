@@ -1,0 +1,40 @@
+//--------------------------------------------------
+// search
+//--------------------------------------------------
+@mixin create_search () {
+  display: inline-block;
+  position: relative;
+
+  &__input {
+    border-radius: 6px;
+    border: solid 1px $black;
+    font-size: rem-calc(16);
+    padding: rem-calc(0 43 0 12);
+    width: rem-calc(265); height: rem-calc(43);
+  }
+
+    &__icon {
+      background: image-url('icons/search.svg') no-repeat center;
+      background-size: 50%;
+      cursor: pointer;
+      width: rem-calc(43);
+
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+
+      &.close {
+        background-image: image-url('icons/close.svg');
+        background-size: 35%;
+      }
+    }  
+}
+
+//--------------------------------------------------
+// search
+//--------------------------------------------------
+.search {
+  @include create_search();
+  margin-bottom: rem-calc(20);
+}

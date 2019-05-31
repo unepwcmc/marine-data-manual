@@ -1,5 +1,7 @@
 <template>
   <div>
+    <search></search>
+    
     <filters :filters="filters"></filters>
 
     <v-table :tableHeaders="tableHeaders" :items="items"></v-table>
@@ -20,13 +22,14 @@
 
   import Filters from './filters/Filters.vue'
   import Pagination from './pagination/Pagination.vue'
+  import Search from './form-fields/Search.vue'
   import VTable from './table/Table.vue'
 
   export default {
     name: 'metadata',
 
     components: {
-      Filters, Pagination, VTable
+      Filters, Pagination, Search, VTable
     },
 
     props: {
