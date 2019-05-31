@@ -15,7 +15,7 @@
 
     methods: {
       download () {
-        window.ga('send', 'event', 'Button', 'click', 'Download metadata csv')
+        this.$ga.event('Button - Download Metadata CSV', 'click', 'Click download metadata csv')
         
         const csrf = document.querySelectorAll('meta[name="csrf-token"]')[0].getAttribute('content'),
         data = {
@@ -41,9 +41,11 @@
               filename = `marine-data-manual-${date}.csv`
 
             this.createBlob(filename, response.data)
+            this.$ga.event('AJAX - Download Metadata CSV', 'request', 'Metadata csv request successful')
           })
           .catch(function (error) {
             console.log(error)
+            this.$ga.event('AJAX- Download Metadata CSV', 'request', 'Metadata csv request failed')
           })
       },
 

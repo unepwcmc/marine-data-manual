@@ -1,5 +1,5 @@
 import Vue from 'vue/dist/vue.esm'
-import VueMultianalytics from 'vue-multianalytics'
+import VueAnalytics from 'vue-analytics'
 
 import store from './store/store.js'
 
@@ -10,6 +10,10 @@ import Metadata from './components/Metadata.vue'
 import NavBurger from './components/nav/NavBurger.vue'
 import NavLink from './components/nav/NavLink.vue'
 import Popout from './components/popout/Popout.vue'
+
+Vue.use(VueAnalytics, {
+  id: 'UA-112614361-2'
+})
 
 // create event hub and export so that it can be imported into .vue files
 export const eventHub = new Vue()
