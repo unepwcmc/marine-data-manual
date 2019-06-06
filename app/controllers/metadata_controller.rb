@@ -32,6 +32,7 @@ class MetadataController < ApplicationController
 
   def permitted_attributes
     params.require(:params)
-          .permit(:requested_page, :items_per_page, :sortDirection, :sortField, filters: [:name, :type, options: []])
+          .permit(:requested_page, :items_per_page, :sortDirection, :sortField,
+                  :searchTerm, filters: [:name, :type, options: []])
   end
 end
