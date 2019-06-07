@@ -33,12 +33,13 @@
 
     data () {
       return {
-        children: this.$children
+        children: this.$children,
+        SelectedFilterOptionsCreated: false
       }
     },
 
     created () {
-      this.createSelectedFilterOptions()
+      eventHub.$on('createSelectedFilterArray', this.createSelectedFilterOptions)
     },
 
     mounted () {
@@ -57,6 +58,9 @@
       },
 
       createSelectedFilterOptions () {
+        if(this.selectedFilterOptionsCreated) { return false }
+
+        console.log('create', this.filters)
         let array = []
 
         // create an empty array for each filter
@@ -73,6 +77,7 @@
         })
 
         this.$store.commit('setFilterOptions', array)
+        this.selectedFilterOptionsCreated = true
       },
 
       clearFilters () {

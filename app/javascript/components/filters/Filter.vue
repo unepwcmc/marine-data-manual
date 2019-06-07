@@ -212,6 +212,7 @@
 
       apply () {
         this.closeSelect()
+        eventHub.$emit('createSelectedFilterArray')
         eventHub.$emit('clearSearch')
 
         if(this.type == 'search') { eventHub.$emit('resetSearchTerm') }

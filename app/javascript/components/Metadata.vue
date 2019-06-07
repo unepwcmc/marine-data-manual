@@ -53,9 +53,6 @@
       }
     },
 
-    created () {
-    },
-
     mounted () {
       this.checkThemeParameter()
       this.getNewItems()
@@ -71,6 +68,7 @@
         this.totalItems = data.total_items
         this.totalPages = data.total_pages
         this.items = data.items
+        
       },
 
       getNewItems () {
@@ -84,6 +82,8 @@
             searchTerm: this.$store.state.searchTerm
           }
         }
+
+        console.log('data', data.params.filters)
         
         setCsrfToken(axios)
         axios.defaults.headers.common['Accept'] = 'application/json'
@@ -91,6 +91,7 @@
 
         axios.post('/metadata-list', data)
         .then(response => {
+          console.log(response)
           this.updateProperties(response.data)
         })
         .catch(function (error) {

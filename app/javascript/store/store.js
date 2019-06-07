@@ -31,6 +31,7 @@ export default new Vuex.Store({
 
     updateFilterOptions (state, newOptions) {
       // find the correct filter to update
+      console.log('this.state.selectedFilterOptions', this.state.selectedFilterOptions)
       this.state.selectedFilterOptions.forEach(filter => {
         if(filter.name == newOptions.filter){
 
@@ -61,6 +62,7 @@ export default new Vuex.Store({
     },
 
     updateFilterParameters ({ commit }, filterOptions) {
+      console.log('store filterOptions', filterOptions)
       commit('updateFilterOptions', filterOptions)
       commit('updateSortDirection', '')
       commit('updateSortField', '')
