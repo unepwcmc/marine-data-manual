@@ -229,12 +229,10 @@
       },
 
       clear () {
-        console.log('clear')
         this.updateAllTo(false)
       },
 
       reset () {
-        console.log('reseet')
         this.updateAllTo(false)
         this.apply()
       }
