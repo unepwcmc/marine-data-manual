@@ -13,6 +13,11 @@ class MetadataController < ApplicationController
     @metadata = MetadataSerializer.new(data).pagination(DEFAULT_ATTRIBUTES['requested_page'], count)
   end
 
+  def filters
+    @filters = MetadataSerializer.new(data).filters()
+    render json: @filters
+  end
+
   def metadata_list
     data, count = Metadata.metadata(permitted_attributes.as_json)
     @metadata = MetadataSerializer.new(data).pagination(permitted_attributes.as_json['requested_page'], count)

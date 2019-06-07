@@ -2,7 +2,7 @@
   <div>
     <search></search>
     
-    <filters :filters="filters"></filters>
+    <filters filterSrc="/filters"></filters>
 
     <v-table :tableHeaders="tableHeaders" :items="items"></v-table>
 

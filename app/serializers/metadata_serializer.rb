@@ -85,7 +85,7 @@ class MetadataSerializer
           filter: "open_access"
         }
       }
-    ]
+    ].to_json
   end
 
   def pagination(page, total_count)

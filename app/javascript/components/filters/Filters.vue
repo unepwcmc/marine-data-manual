@@ -17,7 +17,9 @@
 </template>
 
 <script>
-  import { eventHub } from "../../metadata.js"
+  import axios from 'axios'
+  import { eventHub } from '../../metadata.js'
+  import { setCsrfToken } from '../../helpers/request-helpers'
   import VFilter from './Filter.vue'
 
   export default {
@@ -26,19 +28,23 @@
     components: { VFilter },
 
     props: {
-      filters: {
-        type: Array
+      filterSrc: {
+        type: String,
+        required: true
       }
     },
 
     data () {
       return {
+        filters: [],
         children: this.$children,
         SelectedFilterOptionsCreated: false
       }
     },
 
     created () {
+      this.getNewFilters()
+      eventHub.$on('getNewFilters', this.getNewFilters)
       eventHub.$on('createSelectedFilterArray', this.createSelectedFilterOptions)
     },
 
@@ -47,6 +53,26 @@
     },
 
     methods: {
+      getNewFilters () {
+        let data = {
+          params: {
+            filters: this.$store.state.selectedFilterOptions
+          }
+        }
+        
+        setCsrfToken(axios)
+        axios.defaults.headers.common['Accept'] = 'application/json'
+
+
+        axios.post(this.filterSrc, data)
+        .then(response => {
+          this.updateProperties(response.data)
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
+      },
+
       updateDropdowns (name) {
         this.children.forEach(filter => {
           if(filter.name == name) {
