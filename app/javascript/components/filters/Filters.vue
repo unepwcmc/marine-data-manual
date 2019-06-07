@@ -66,7 +66,8 @@
 
         axios.post(this.filterSrc, data)
         .then(response => {
-          this.updateProperties(response.data)
+          console.log(response.data)
+          this.filters = response.data.filters
         })
         .catch(function (error) {
           console.log(error)

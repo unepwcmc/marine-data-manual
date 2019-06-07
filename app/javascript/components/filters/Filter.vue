@@ -227,6 +227,7 @@
         
         this.$store.dispatch('updateFilterParameters', newFilterOptions)
         eventHub.$emit('getNewItems')
+        eventHub.$emit('getNewFilters')
       },
 
       clear () {
