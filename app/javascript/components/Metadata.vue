@@ -2,7 +2,7 @@
   <div>
     <search></search>
     
-    <filters filterSrc="/filters"></filters>
+    <filters v-if="filterSrc" :filterSrc="filterSrc"></filters>
 
     <v-table :tableHeaders="tableHeaders" :items="items"></v-table>
 
@@ -33,6 +33,7 @@
     },
 
     props: {
+      filterSrc: String,
       tableHeaders: Array,
       itemsPerPage: {
         type: Number,
