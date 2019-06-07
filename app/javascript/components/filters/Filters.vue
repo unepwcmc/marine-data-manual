@@ -60,7 +60,6 @@
       createSelectedFilterOptions () {
         if(this.selectedFilterOptionsCreated) { return false }
 
-        console.log('create', this.filters)
         let array = []
 
         // create an empty array for each filter
