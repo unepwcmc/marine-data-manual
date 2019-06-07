@@ -63,7 +63,6 @@
         setCsrfToken(axios)
         axios.defaults.headers.common['Accept'] = 'application/json'
 
-
         axios.post(this.filterSrc, data)
         .then(response => {
           console.log(response.data)
