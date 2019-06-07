@@ -33,7 +33,6 @@
     },
 
     props: {
-      filters: Array,
       tableHeaders: Array,
       itemsPerPage: {
         type: Number,
@@ -43,6 +42,7 @@
 
     data () {
       return {
+        filters: [],
         currentPage: 1,
         pageItemsStart: 0,
         pageItemsEnd: 0,
@@ -64,6 +64,7 @@
 
     methods: {
       updateProperties (data) {
+        this.filters = data.filters
         this.currentPage = data.current_page
         this.pageItemsStart = data.page_items_start
         this.pageItemsEnd = data.page_items_end

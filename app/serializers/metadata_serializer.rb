@@ -3,7 +3,7 @@ class MetadataSerializer
     @metadata = metadata
   end
 
-  def filters_to_json
+  def filters
     unique_categories = @metadata.pluck(:category).compact.uniq.sort
     unique_country = Country.pluck(:name).sort
     unique_region = Region.pluck(:name).sort
@@ -14,12 +14,14 @@ class MetadataSerializer
       {
         name: "category",
         title: "Category",
+        filter: true,
         options: unique_categories,
         sortButtons: true
       },
       {
         name: "resource",
         title: "Resource",
+        filter: true,
         options: unique_resource,
         sortButtons: true,
         type: 'search'
@@ -42,6 +44,7 @@ class MetadataSerializer
       {
         name: "metadata",
         title: "Metadata",
+        filter: true,
         options: [true, false],
         sortButtons: false,
         type: "boolean"
@@ -49,6 +52,7 @@ class MetadataSerializer
       {
         name: "themes",
         title: "Themes",
+        filter: true,
         options: ["Marine spatial planning", "Education", "Ecosystem assessment", "Environmental impact assessment", "Ecosystem services"],
         sortButtons: false,
         type: "multiple"
@@ -56,6 +60,7 @@ class MetadataSerializer
       {
         name: "country",
         title: "Country",
+        filter: true,
         options: unique_country,
         sortButtons: false,
         type: "search"
@@ -63,6 +68,7 @@ class MetadataSerializer
       {
         name: "region",
         title: "Region",
+        filter: true,
         options: unique_region,
         sortButtons: false,
         type: "search"
@@ -70,6 +76,7 @@ class MetadataSerializer
       {
         name: "license_number",
         title: "Licence",
+        filter: true,
         options: unique_license,
         sortButtons: false,
         type: "search",
@@ -78,12 +85,13 @@ class MetadataSerializer
           filter: "open_access"
         }
       }
-    ].to_json
+    ]
   end
 
   def pagination(page, total_count)
     page ||= 1
     {
+      filters: filters,
       current_page: page,
       page_items_start: page * 10 - 9,
       page_items_end: [page * 10, total_count].min,

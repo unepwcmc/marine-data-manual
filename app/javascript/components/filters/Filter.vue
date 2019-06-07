@@ -1,5 +1,5 @@
 <template>
-  <div v-if="hasOptions" class="filter">
+  <div class="filter">
     <p
       @click="openSelect()"
       class="filter__button button"
@@ -92,29 +92,29 @@
         return this.name === 'themes'
       },
 
-      // only show the select if the filter is a real filter and not just a table title
-      hasOptions () {
-        return this.options != undefined && this.name != undefined
-      },
+      hasOptions () { return this.options.length > 0 },
 
       selectedOptions () {
         let selectedArray = []
 
-        this.children.forEach(child => {
-          if(this.type == 'boolean' && child.isSelected != null) {
-            selectedArray.push(child.isSelected)
-          } else if (this.type == 'search') {
-            child.children.forEach(child => {
+        if(this.hasOptions) {
+
+          this.children.forEach(child => {
+            if(this.type == 'boolean' && child.isSelected != null) {
+              selectedArray.push(child.isSelected)
+            } else if (this.type == 'search') {
+              child.children.forEach(child => {
+                if(child.isSelected){
+                  selectedArray.push(child.option)
+                }
+              })
+            } else {
               if(child.isSelected){
                 selectedArray.push(child.option)
               }
-            })
-          } else {
-            if(child.isSelected){
-              selectedArray.push(child.option)
             }
-          }
-        })
+          })
+        }
 
         return selectedArray
       },
@@ -153,56 +153,60 @@
       cancel() {
         this.closeSelect()
 
-        // reset each option to the correct state
-        this.children.forEach(child => {
-          if(this.type == 'boolean') {
-            child.isSelected = this.activeOptions[0]
-          } else if(this.type == 'search') {
-            child.children.forEach(child => {
+        if(this.hasOptions) {
+          // reset each option to the correct state
+          this.children.forEach(child => {
+            if(this.type == 'boolean') {
+              child.isSelected = this.activeOptions[0]
+            } else if(this.type == 'search') {
+              child.children.forEach(child => {
+                child.isSelected = this.activeOptions.indexOf(child.option) > -1 ? true : false
+              })
+              child.searchTerm = ''
+            } else {
               child.isSelected = this.activeOptions.indexOf(child.option) > -1 ? true : false
-            })
-            child.searchTerm = ''
-          } else {
-            child.isSelected = this.activeOptions.indexOf(child.option) > -1 ? true : false
-          }
-        })
+            }
+          })
+        }
       },
 
       updateAllTo (condition) {
-        if(typeof condition === 'boolean') {
-          // set the isSelected property on all options to true/false
-          const boolean = condition
-          
-          this.children.forEach(child => {
-            if(this.type == 'boolean') {
-              if(boolean) { child.isSelected = null }
+        if(this.hasOptions) {
+          if(typeof condition === 'boolean') {
+            // set the isSelected property on all options to true/false
+            const boolean = condition
+            
+            this.children.forEach(child => {
+              if(this.type == 'boolean') {
+                child.isSelected = condition ? true : null
                 return false
-            } else if(this.type == 'search') {
-              child.children.forEach(child => {
+              } else if(this.type == 'search') {
+                child.children.forEach(child => {
+                  child.isSelected = boolean
+                })
+                child.searchTerm = ''
+              } else {
                 child.isSelected = boolean
-              })
-              child.searchTerm = ''
-            } else {
-              child.isSelected = boolean
-            }
-          })
-        } else {
-          // set the isSelected property true/false depending on whether it statisfies the criteria
-          this.children.forEach(child => {
-            if(this.type == 'boolean') { return false 
-            } else if(this.type == 'search') {
-              child.children.forEach(child => {
+              }
+            })
+          } else {
+            // set the isSelected property true/false depending on whether it statisfies the criteria
+            this.children.forEach(child => {
+              if(this.type == 'boolean') { return false 
+              } else if(this.type == 'search') {
+                child.children.forEach(child => {
+                  if(condition.propName in child && child[condition.propName]) {
+                    child.isSelected = condition.select
+                  }
+                })
+                child.searchTerm = ''
+              } else {
                 if(condition.propName in child && child[condition.propName]) {
                   child.isSelected = condition.select
                 }
-              })
-              child.searchTerm = ''
-            } else {
-              if(condition.propName in child && child[condition.propName]) {
-                child.isSelected = condition.select
               }
-            }
-          })
+            })
+          }
         }
       },
 
@@ -225,10 +229,12 @@
       },
 
       clear () {
+        console.log('clear')
         this.updateAllTo(false)
       },
 
       reset () {
+        console.log('reseet')
         this.updateAllTo(false)
         this.apply()
       }
