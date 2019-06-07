@@ -24,7 +24,8 @@
             items_per_page: this.itemsPerPage,
             requested_page: this.$store.state.requestedPage,
             sortDirection: this.$store.state.sortDirection,
-            sortField: this.$store.state.sortField
+            sortField: this.$store.state.sortField,
+            searchTerm: this.$store.state.sortTerm
           }
         },
         config = {
