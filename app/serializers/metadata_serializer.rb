@@ -1,14 +1,16 @@
 class MetadataSerializer
-  def initialize(metadata)
+  def initialize(metadata, all_data)
     @metadata = metadata
+    @all_data = all_data
   end
 
   def filters
-    unique_categories = @metadata.pluck(:category).compact.uniq.sort
+    # byebug 
+    unique_categories = @all_data.pluck('category').compact.uniq.sort
     unique_country = Country.pluck(:name).sort
     unique_region = Region.pluck(:name).sort
-    unique_license = @metadata.pluck(:license_number).compact.uniq.sort
-    unique_resource = @metadata.pluck(:resource).compact.uniq.sort
+    unique_license = @all_data.pluck('license_number').compact.uniq.sort
+    unique_resource = @all_data.pluck('resource').compact.uniq.sort
 
     [
       {

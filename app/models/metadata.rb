@@ -55,7 +55,7 @@ class Metadata < ApplicationRecord
       meta_attributes.delete_if { |k| ["created_at", "updated_at"].include? k }
       output << meta_attributes
     end
-    [output, filter_data.count]
+    [output, filter_data.count, filter_data]
   end
 
   def self.sorting_data(params, data, pagination)
