@@ -5,12 +5,11 @@ class MetadataSerializer
   end
 
   def filters
-    # byebug 
+    # byebug
     unique_categories = @all_data.pluck('category').compact.uniq.sort
-    unique_country = Country.pluck(:name).sort
-    unique_region = Region.pluck(:name).sort
     unique_license = @all_data.pluck('license_number').compact.uniq.sort
     unique_resource = @all_data.pluck('resource').compact.uniq.sort
+    metadata_presence = @all_data.pluck('metadata').compact.uniq.rotate!
 
     [
       {
@@ -47,7 +46,7 @@ class MetadataSerializer
         name: "metadata",
         title: "Metadata",
         filter: true,
-        options: [true, false],
+        options: metadata_presence,
         sortButtons: false,
         type: "boolean"
       },
@@ -63,7 +62,7 @@ class MetadataSerializer
         name: "country",
         title: "Country",
         filter: true,
-        options: unique_country,
+        options: unique_location('country'),
         sortButtons: false,
         type: "search"
       },
@@ -71,7 +70,7 @@ class MetadataSerializer
         name: "region",
         title: "Region",
         filter: true,
-        options: unique_region,
+        options: unique_location('region'),
         sortButtons: false,
         type: "search"
       },
@@ -88,6 +87,16 @@ class MetadataSerializer
         }
       }
     ]
+  end
+
+  def unique_location(location)
+    uniq_data = []
+    place = location.pluralize.to_sym
+    datas = @all_data.includes(place)
+    datas.each do |data|
+      uniq_data << data.send(place).pluck(:name)
+    end
+    uniq_data.flatten.uniq.sort
   end
 
   def pagination(page, total_count)
