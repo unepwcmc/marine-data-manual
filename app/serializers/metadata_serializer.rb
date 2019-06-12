@@ -54,7 +54,7 @@ class MetadataSerializer
         name: "themes",
         title: "Themes",
         filter: true,
-        options: ["Marine spatial planning", "Education", "Ecosystem assessment", "Environmental impact assessment", "Ecosystem services"],
+        options: unique_theme, # ["Marine spatial planning", "Education", "Ecosystem assessment", "Environmental impact assessment", "Ecosystem services"],
         sortButtons: false,
         type: "multiple"
       },
@@ -94,9 +94,20 @@ class MetadataSerializer
     place = location.pluralize.to_sym
     datas = @all_data.includes(place)
     datas.each do |data|
-      uniq_data << data.send(place).pluck(:name)
+      uniq_data << data.public_send(place).pluck(:name)
     end
     uniq_data.flatten.uniq.sort
+  end
+
+  def unique_theme
+    themes = []
+    @all_data.each do |data|
+      themes << data.attributes
+                    .select { |_k, v| v == true }
+                    .delete_if { |k, _v| k.in? %w[metadata open_access] }
+                    .keys
+    end
+    themes.flatten.uniq.map(&:humanize).sort
   end
 
   def pagination(page, total_count)
