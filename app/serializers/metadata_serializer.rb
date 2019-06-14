@@ -107,7 +107,7 @@ class MetadataSerializer
                     .delete_if { |k, _v| k.in? %w[metadata open_access] }
                     .keys
     end
-    themes.flatten.uniq.map(&:humanize).sort
+    themes.flatten.uniq.map(&:humanize).sort.rotate!
   end
 
   def pagination(page, total_count)
