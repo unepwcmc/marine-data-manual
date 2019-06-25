@@ -13,7 +13,7 @@ $color-text-active: $black;
 // filters
 //--------------------------------------------------
 .filters {
-  @include breakpoint_down($small) {
+  @include breakpoint_down($medium) {
     overflow-x: scroll;
 
     display: flex;
@@ -25,6 +25,7 @@ $color-text-active: $black;
   &__clear {
     font-weight: bold;
     cursor: pointer;
+    flex-shrink: 0;
     outline: none;
 
     &:before {
