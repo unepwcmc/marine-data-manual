@@ -75,7 +75,7 @@
       name: String,
       options: Array,
       type: String,
-      selectMultiple: Object
+      selectMultiple: Object // { filterBy: String, option: String }
     },
 
     data () {
@@ -182,7 +182,7 @@
                 child.isSelected = condition ? true : null
                 return false
               } else if(this.type == 'search') {
-                child.children.forEach(child => {
+                child.$children.forEach(child => {
                   child.isSelected = boolean
                 })
                 child.searchTerm = ''
