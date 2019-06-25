@@ -18,6 +18,7 @@
         <filter-option v-show="matches(option)"
           :option="option"
           :selected="false"
+          :isAlreadySelected="isAlreadySelected(option)"
           ref="childOption">
         </filter-option>
       </template>
@@ -52,7 +53,8 @@
         required: true,
         type: String
       },
-      selectMultiple: Object
+      selectMultiple: Object,
+      activeOptions: Array
     },
 
     data () {
@@ -87,6 +89,10 @@
           match = option.match(regex)
 
         return noSearch || match
+      },
+
+      isAlreadySelected (option) {
+        return this.activeOptions.indexOf(option) > -1
       },
 
       resetSearchTerm () {

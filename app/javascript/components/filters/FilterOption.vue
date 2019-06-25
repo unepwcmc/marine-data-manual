@@ -15,6 +15,7 @@
       option: {
         required: true
       },
+      isAlreadySelected: Boolean,
       isTheme: Boolean
     },
 
@@ -34,14 +35,20 @@
         const event = 'select_' + this.option.toLowerCase().replace(regex, '')
         
         eventHub.$on(event, this.preselectOption)
-      }
+      }      
     },
 
-    computed : {
+    computed: {
       optionId () {
         const regex = new RegExp(' ', 'g'),
           regex2 = new RegExp('"', 'g')
         return this.option.replace(regex, '-').replace(regex2, '').toLowerCase()
+      }
+    },
+
+    watch: {
+      isAlreadySelected () {
+        if(this.isAlreadySelected) { this.selectOption() }
       }
     },
 

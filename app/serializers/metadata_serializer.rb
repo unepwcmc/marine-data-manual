@@ -5,7 +5,6 @@ class MetadataSerializer
   end
 
   def filters
-    # byebug
     unique_categories = @all_data.pluck('category').compact.uniq.sort
     unique_license = @all_data.pluck('license_number').compact.uniq.sort
     unique_resource = @all_data.pluck('resource').compact.uniq.sort

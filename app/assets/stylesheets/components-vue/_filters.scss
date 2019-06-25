@@ -13,19 +13,13 @@ $color-text-active: $black;
 // filters
 //--------------------------------------------------
 .filters {
-  @include breakpoint_down($medium) {
-    overflow-x: scroll;
-
-    display: flex;
-  }
-
+  
 //--------------------------------------------------
 // clear
 //--------------------------------------------------
   &__clear {
     font-weight: bold;
     cursor: pointer;
-    flex-shrink: 0;
     outline: none;
 
     &:before {
@@ -143,7 +137,7 @@ $color-text-active: $black;
     }
 
     .filter:last-child & {
-      @include breakpoint($small) { right: 0; }
+      // @include breakpoint($small) { right: 0; }
     }
 
     &--active {

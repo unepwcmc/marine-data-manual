@@ -20,7 +20,8 @@
             :name="name"
             :title="title"
             :type="type"
-            :selectMultiple="selectMultiple">
+            :selectMultiple="selectMultiple"
+            :activeOptions="activeOptions">
           </filter-search>
         </div>
       </template>
@@ -115,7 +116,7 @@
             }
           })
         }
-
+        
         return selectedArray
       },
 
