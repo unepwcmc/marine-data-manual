@@ -1,11 +1,9 @@
-<div class="theme background--<%= theme[:cssName] %>">
-  <div class="theme__container container--small flex f-v-center">
-    <i class="icon--theme icon--theme-<%= theme[:cssName] %> theme__icon"></i>
+<div class="theme background--<%= theme[:cssName] %> flex flex-column">
+  <i class="icon--theme icon--theme-<%= theme[:cssName] %> theme__icon margin-center"></i>
 
-    <div class="theme__content">
-      <h2><%= theme[:title] %></h2>
-      <p class="theme__copy"><%= theme[:content] %></p>
-      <%= link_to 'View more', theme[:link], title: 'View more information about ' + theme[:title], class: 'button button--line-white button--outline theme__button' %>
-    </div>
-  </div>
+  <h3 class="heading--theme"><%= theme[:title] %></h3>
+
+  <p class="theme__copy"><%= theme[:content] %></p>
+
+  <%= link_to 'View more', theme[:link], title: 'View more information about ' + theme[:title], class: 'button button--line-white button--outline theme__button flex-h-end flex-v-start' %>
 </div>

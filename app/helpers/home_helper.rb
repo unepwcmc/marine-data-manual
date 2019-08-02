@@ -1,6 +1,18 @@
 module HomeHelper
+  def title
+    'Dive into Marine data'
+  end
+
   def about
-    '<p>Home to more than half of all life on Earth, the Ocean covers over 70% of the surface of the planet.</p><p>The ocean contains some of the most productive ecosystems, vast natural resources, and unique habitats on Earth. The ocean also plays a vital role in regulating the planet’s climate. However, the marine environment is facing many pressures, from the impacts of climate change and overfishing to the effects of pollution from microplastics and marine litter.</p><p>Accurate and up-to-date data and information are required to support adaptive conservation and resource management that can help to mitigate these impacts, and to conserve marine species and habitats.</p><p><b>Ocean+ Library</b> addresses this need for information by providing an overview of global marine and coastal datasets of biodiversity importance, including some datasets of regional interest.</p>'
+    '<p>Ocean+ Library connects to the latest data and online resources on ocean biodiversity.</p><p>With technological advances, access to and use of the ocean has increased dramatically, along with available information on the state of the ocean and its resources. Through Ocean+ Library, identify the online data and information you need to make decisions about what matters to you.</p>'
+  end
+
+  def theme_title 
+    'How can these be used?'
+  end
+
+  def theme_intro
+    'Marine and coastal data can be used to support a variety of activities and purposes. These have been grouped into five themes and examples for each are provided in the sections below.'
   end
 
   def themes 
