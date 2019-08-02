@@ -34,6 +34,8 @@
   align-items: center;
   display: flex;
 
+  a { color: inherit; }
+
   &__content {
     margin-top: rem-calc(60); //match the height of the topbar
       

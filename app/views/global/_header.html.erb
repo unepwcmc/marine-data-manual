@@ -6,7 +6,7 @@
     <% if defined? intro %>
       <div class="header__intro">
         <% intro.each do |p| %>
-          <p><%= p %></p>
+          <p><%= p.html_safe %></p>
         <% end %>
       </div>
     <% end %>
