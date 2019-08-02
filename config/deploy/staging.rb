@@ -1,6 +1,5 @@
 set :stage, :staging
-set :branch, "feature/metadata-updates"
-
+set :branch, "develop"
 
 server "web-supported-staging.linode.unep-wcmc.org", user: 'wcmc', roles: %w{app web db}
 
