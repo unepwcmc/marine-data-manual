@@ -1,7 +1,12 @@
 <div class="resource flex flex-h-between">
   <div class="resource__content flex-3-fiths">
     <h3><%= resource[:title] %></h3>
-    <p><%= resource[:content].html_safe %></p>
+    
+    <div>
+      <% resource[:content].each do |p| %>
+        <p><%= p.html_safe %></p>
+      <% end %>
+    </div>
 
     <% if resource[:url] %>
       <%= link_to 'Further information', resource[:url], title: "Further information about #{resource[:title]}", target: '_blank', class: 'button--link button--link-chevron' %>
