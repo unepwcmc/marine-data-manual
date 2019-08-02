@@ -10,6 +10,8 @@ namespace :import do
 
   def import_csv_file file
 
+    Metadata.destroy_all
+
     csv = File.open(file, encoding: "utf-8")
 
     csv_headers = File.readlines(csv).first.split(",")
@@ -33,7 +35,7 @@ namespace :import do
       ecosystem_services: csv_headers[17],
       pdf_link: csv_headers[18].chomp
     }
-    
+
     CSV.parse(csv, headers: true, encoding: "utf-8") do |row|
       csv_hash = row.to_hash
       csv_metadata_row = csv_hash.except('Country', 'Region', 'Other access use constraints')
