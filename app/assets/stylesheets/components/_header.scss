@@ -91,6 +91,7 @@
       &__content {
         background-color: $black-translucent;
         color: white;
+        margin: auto;
         font-size: rem-calc(16);
         padding: rem-calc(14 25 18 25);
         text-align: center;
@@ -107,6 +108,8 @@
 // theme header
 //--------------------------------------------------
   &--theme {
+    background-position: center;
+    background-size: cover;
     color: white;
     padding: rem-calc(90 0 40 0);
 
