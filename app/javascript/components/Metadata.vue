@@ -89,6 +89,7 @@
 
         axios.post('/metadata-list', data)
         .then(response => {
+          console.log(response.data)
           this.updateProperties(response.data)
         })
         .catch(function (error) {

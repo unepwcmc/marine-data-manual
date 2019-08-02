@@ -15,7 +15,7 @@
           <filter-search
             v-on:apply:filter="apply"
             v-on:clear:filter="updateAllTo(false)"
-            v-on:click:selectMultipleOptions="updateAllTo"
+            v-on:selectMultipleOptions="updateAllTo"
             :options="options"
             :name="name"
             :title="title"
@@ -172,6 +172,8 @@
       },
 
       updateAllTo (condition) {
+        console.log('here', condition)
+        
         if(this.hasOptions) {
           console.log(condition)
           if(typeof condition === 'boolean') {
@@ -197,6 +199,7 @@
               if(this.type == 'boolean') { return false 
               } else if(this.type == 'search') {
                 child.children.forEach(child => {
+                  console.log('here', child)
                   if(condition.propName in child && child[condition.propName]) {
                     child.isSelected = condition.select
                   }
