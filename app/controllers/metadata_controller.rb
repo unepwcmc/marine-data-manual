@@ -8,7 +8,6 @@ class MetadataController < ApplicationController
   }.freeze
 
   def index
-    # byebug
     @table_headers = Metadata::TABLE_HEADERS
     data, count, all_data = Metadata.metadata(DEFAULT_ATTRIBUTES.as_json)
     @metadata = MetadataSerializer.new(data, all_data).pagination(DEFAULT_ATTRIBUTES['requested_page'], count)

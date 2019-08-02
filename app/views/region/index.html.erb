@@ -1,0 +1,11 @@
+<%= render partial: 'global/header', locals: { title: t('region.title'), intro: t('region.intro') } %>
+
+<div class="container">
+  <div class="padding--page">
+    <metadata
+      data-src="/region-list"
+      :table-headers="<%= @table_headers %>"
+      :items-per-page="10">
+    </metadata>
+  </div>
+</div>
