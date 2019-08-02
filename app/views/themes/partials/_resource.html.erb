@@ -2,11 +2,9 @@
   <div class="resource__content flex-3-fiths">
     <h3><%= resource[:title] %></h3>
     
-    <div>
-      <% resource[:content].each do |p| %>
-        <p><%= p.html_safe %></p>
-      <% end %>
-    </div>
+    <p><%= resource[:content].html_safe %></p>
+
+    <p><strong>Resource type:</strong> <%= resource[:type] %></p>
 
     <% if resource[:url] %>
       <%= link_to 'Further information', resource[:url], title: "Further information about #{resource[:title]}", target: '_blank', class: 'button--link button--link-chevron' %>

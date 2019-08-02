@@ -2,3 +2,33 @@ en:
   theme:
     ecosystem-assessment:
       title: Ecosystem Assessment
+      en:
+  theme:
+    education:
+      title: Education
+      tagline: Effective measurements of biodiversity change require a clear understanding of the biological and ecological characteristics of the feature of interest, and the appropriate scales and time frames over which a significant change in condition would occur. Appropriate data are essential to assess changes in condition, and to respond with appropriate and timely management measures.
+      intro:
+        - 
+        - 
+      case-study-intro: 
+      case-study-bullets:
+        -
+        -
+        -
+      resources:
+        - 
+          title: 
+          content: 
+            -
+          url: 
+        - 
+          title: 
+          content:
+            - 
+            - 
+          url: 
+        - 
+          title: 
+          content:
+            - 
+          url: 
