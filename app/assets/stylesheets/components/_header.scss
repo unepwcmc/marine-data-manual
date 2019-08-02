@@ -126,7 +126,12 @@
 //--------------------------------------------------
 // hero images
 //--------------------------------------------------
-  &--metadata { background-image: image-url('hero/coral.jpg'); }
-  &--data-limitations { background-image: image-url('hero/river.jpg'); }
   &--contact { background-image: image-url('hero/shark.jpg'); }
+  &--data-limitations { background-image: image-url('hero/river.jpg'); }
+  &--ecosystem-assessment { background-image: image-url('hero/ecosystem-assessment.jpg'); }
+  &--ecosystem-services { background-image: image-url('hero/ecosystem-services.jpg'); }
+  &--education { background-image: image-url('hero/education.jpg'); }
+  &--environmental-impact-assessment { background-image: image-url('hero/environmental-impact-assessment.jpg'); } 
+  &--marine-spatial-planning { background-image: image-url('hero/marine-spatial-planning.jpg'); }
+  &--metadata { background-image: image-url('hero/coral.jpg'); } 
 }
