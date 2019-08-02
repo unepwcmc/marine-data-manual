@@ -173,6 +173,7 @@
 
       updateAllTo (condition) {
         if(this.hasOptions) {
+          console.log(condition)
           if(typeof condition === 'boolean') {
             // set the isSelected property on all options to true/false
             const boolean = condition
