@@ -42,6 +42,7 @@
   }
 
   &__button {
+    align-self: flex-start; //needed for IE11
     font-size: rem-calc(16);
     margin: auto auto 0 0;
   }
