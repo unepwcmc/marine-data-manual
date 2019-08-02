@@ -16,5 +16,6 @@ module MarineDataManual
     # -- all .rb files in that directory are automatically loaded.
 
     config.assets.paths << Rails.root.join('node_modules')
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
   end
 end
