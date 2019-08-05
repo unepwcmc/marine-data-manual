@@ -34,6 +34,7 @@
 
     props: {
       tableHeaders: Array,
+      dataSrc: String,
       itemsPerPage: {
         type: Number,
         default: 10
@@ -87,7 +88,7 @@
         axios.defaults.headers.common['Accept'] = 'application/json'
 
 
-        axios.post('/metadata-list', data)
+        axios.post(this.dataSrc, data)
         .then(response => {
           this.updateProperties(response.data)
         })
