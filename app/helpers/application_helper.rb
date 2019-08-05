@@ -73,4 +73,25 @@ module ApplicationHelper
 
     link_to '', href, title: title, class: 'icon--social icon--social-email', target: '_self'
   end
+
+  def get_nav
+    [
+      {
+        href: metadata_path ,
+        title: 'Global resources'
+      },
+      {
+        href: region_path,
+        title: 'Regional resources'
+      },
+      {
+        href: contact_path,
+        title: 'Submit metadata'
+      },
+      {
+        href: data_limitations_path,
+        title: 'Data limitations'
+      }
+    ]
+  end
 end

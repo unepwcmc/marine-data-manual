@@ -4,25 +4,12 @@
   <% end %>
 
   <nav-burger classes="nav--burger">
-    <nav-link 
-      href="<%= metadata_path %>" 
-      :current-page="<%= active_nav_item? metadata_path %>"
-      title="Global resources"
-      classes="topbar__nav-link">
-    </nav-link>
-
-    <nav-link 
-      href="<%= contact_path %>"
-      :current-page="<%= active_nav_item? contact_path %>"
-      title="Submit metadata"
-      classes="topbar__nav-link">
-    </nav-link>
-
-    <nav-link 
-      href="<%= data_limitations_path %>"
-      :current-page="<%= active_nav_item? data_limitations_path %>"
-      title="Data limitations"
-      classes="topbar__nav-link">
-    </nav-link>
-  </nav-burger>
+    <% get_nav.each do |link| %>
+      <nav-link 
+        href="<%= link[:href] %>" 
+        :current-page="<%= active_nav_item? link[:href] %>"
+        title="<%= link[:title] %>"
+        classes="topbar__nav-link">
+      </nav-link>
+    <% end %>
 </div>
