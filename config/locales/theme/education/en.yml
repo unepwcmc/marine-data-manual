@@ -2,32 +2,36 @@ en:
   theme:
     education:
       title: Education
-      tagline: Marine datasets and the tools that accompany them can be useful in an educational setting to further students' understanding of the ocean, and to support the teaching of marine-related subjects and software.
+      tagline: Marine datasets can tell us about our relationship with the ocean, both in terms of how it supports us, and the impact that we have on it.
       intro:
-        - Marine datasets and the tools that accompany them can be useful in an educational setting to further students’ understanding of the ocean, and to support the teaching of new subjects and software.
-        - For example, data layers can often be downloaded as shapefiles and used to teach students how to use ArcGIS or open source mapping software, such as QGIS. This provides students with an opportunity to work with datasets that demonstrate the current state of knowledge with regards to the ocean, while also learning new skills.
-      case-study-intro: "Marine and coastal biodiversity data can be used alongside other datasets to support educational projects. Those hosted on the <b>Ocean Data Viewer</b> have been used by:"
+        - Marine datasets and the tools that accompany them (including mapping and data analysis tools) can be useful in both formal and informal educational settings. They can be used to further individuals’ understanding of the ocean and to support the teaching of marine-related subjects.
+        - For example, data layers can often be downloaded as shapefiles and used to teach students how to use mapping software, such as ArcGIS or QGIS. This provides the opportunity to work with datasets that demonstrate the current state of knowledge with regard to the ocean, while also learning new skills.
+      case-study-intro: "Marine and coastal biodiversity datasets can be used alongside other datasets to support educational projects. To date, those hosted on the Ocean+ Data Viewer have been used by:"
       case-study-bullets:
-        - "<b>Academics</b> and <b>teachers</b> to teach ArcGIS to students, and to strengthen their understanding of global biodiversity in the ocean"
-        - "<b>Governments</b> to develop public awareness campaigns and educational displays at international meetings"
-        - "<b>Not-for-profits</b> to educate themselves or others (e.g. training, education, workshops)"
-        - "The <b>media</b> to educate the  public and raise awareness of environmental issues"
-        - "The <b>technology sector</b> to educate their staff or others and to develop related software"
+        - <strong>Academics and teachers</strong> to train students and other individuals in how to use mapping software such as ArcGIS, to help strengthen their understanding of global marine biodiversity.
+        - <strong>Governments</strong> have used biodiversity data to support the development of public awareness campaigns and educational displays at international meetings. These efforts have raised awareness of key marine areas of biodiversity importance.
+        - <strong>Not-for-profits</strong> have used marine and coastal biodiversity data to improve their own understanding of marine biodiversity issues, and that of others. For example, through the hosting of workshops and training sessions.
+        - The <strong>media</strong> use biodiversity datasets to educate the public and raise awareness of environment and sustainable development issues. This often involves extracting key facts and figures and representing them in a more accessible manner. 
+        - The <strong>technology sector</strong> uses biodiversity data to increase their understanding of global environmental issues in line with their corporate social responsibilities. In turn, marine and coastal biodiversity datasets have been used to develop specialist software to tackle issues or reduce gaps in knowledge. 
+      resources-intro: Various tools and resources exist, which utilise marine and coastal biodiversity data for educational purposes and to raise awareness.
       resources:
         - 
           title: Ocean Data Viewer
-          content: 
-            - The <i>Ocean Data Viewer</i> is an online tool that offers the opportunity to view and download a range of spatial datasets. These datasets are useful for teaching students about the locations of marine and coastal biodiversity, including habitats such as coral reefs, seagrasses, and mangroves.
-            - These datasets have been used by government agencies, scientists, researchers, the corporate sector, and non-governmental organisations to inform decision-making in order to sustainably use and conserve ocean resources.
+          content: The Ocean Data Viewer is an online tool that offers the opportunity to view and download a range of spatial datasets. These datasets are useful for raising awareness of the locations of marine and coastal biodiversity and habitats such as coral reefs, seagrasses, and mangroves.
+          type: Website
           url: http://data.unep-wcmc.org/
         - 
           title: Protected Planet
-          content:
-            - Protected Planet is a publicly available online platform that hosts the most up-to-date information on terrestrial and marine protected areas. The site is updated monthly and enables a spectrum of users to utilise data for information-based decision making, policy development, and business and conservation planning.
-            - Users can access area statistics and download data from the World Database on Protected Areas (WDPA). Protected Planet is managed by the UN Environment World Conservation Monitoring Centre (UNEP-WCMC) with support from IUCN and its World Commission on Protected Areas (WCPA).
+          content: Protected Planet is a publicly available online platform that hosts the most up-to-date information on terrestrial and marine protected areas. Users can access area statistics and download data from the World Database on Protected Areas (WDPA). The site is updated monthly and enables a spectrum of users to utilise data for information-based decision making, policy development, and business and conservation planning.
+          type: Website
           url: https://protectedplanet.net
         - 
+          title: IOC-UNESCO Ocean Literacy Portal
+          content: The Ocean Literacy Portal serves as a worldwide one-stop shop, providing resources and content available to all, with the goal of creating an ocean-literate society able to make informed and responsible decisions on ocean resources and ocean sustainability. The Ocean Literacy Portal is a universal sharing platform.
+          type: Website
+          url: https://oceanliteracy.unesco.org/home/
+        - 
           title: The Importance of Mangroves to People
-          content:
-            - <i>The Importance of Mangroves to People</i> provides accessible information and downloadable images on the location and ecology of mangroves (Chapter 1). There is also information on the services and benefits that mangroves provide to humans, as well as the risks associated with losing these services as a result of ongoing global habitat loss and degradation (Chapters 2 and 3). The report concludes with management and policy options at the local, regional and global level that could prevent further losses through effective conservation measures, sustainable management and successful restoration (Chapter 4).
+          content: This report provides accessible information and downloadable images on the location and ecology of mangroves. It provides a science-based synthesis of the different types of goods and services provided by mangroves and the associated risks in losing these services in the face of ongoing global habitat loss and degradation. The report provides management and policy options at the local, regional and global level with the aim of preventing further losses through effective conservation measures, sustainable management and successful restoration.
+          type: Document
           url: https://www.unep-wcmc.org/resources-and-data/the-importance-of-mangroves-to-people--a-call-to-action
