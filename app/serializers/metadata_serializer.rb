@@ -80,10 +80,10 @@ class MetadataSerializer
         options: unique_license,
         sortButtons: false,
         type: "search",
-        selectMultiple: {
-          title: "Select ALL open access licences",
-          filter: "open_access"
-        }
+        # selectMultiple: {
+        #   title: "Select ALL open access licences",
+        #   filter: "open_access"
+        # }
       }
     ]
   end
