@@ -4,7 +4,7 @@
     
     <filters :filters="filters"></filters>
 
-    <v-table :tableHeaders="tableHeaders" :items="items"></v-table>
+    <v-table :tableHeaders="tableHeaders" :items="items" :post="post"></v-table>
 
     <pagination 
       :currentPage="currentPage"
@@ -38,7 +38,8 @@
       itemsPerPage: {
         type: Number,
         default: 10
-      }
+      },
+      post: String
     },
 
     data () {

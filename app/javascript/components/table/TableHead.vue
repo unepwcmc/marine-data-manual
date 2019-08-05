@@ -9,7 +9,7 @@
       </table-header>
     </tr>
 
-    <download-csv class="table__button"></download-csv>
+    <download-csv :post="post" class="table__button"></download-csv>
   </thead>
 </template>
 
@@ -26,7 +26,8 @@
       tableHeaders: {
         required: true,
         type: Array
-      }
+      },
+      post: String
     },
 
     data() {

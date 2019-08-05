@@ -13,6 +13,10 @@
   export default {
     name: 'download-csv',
 
+    props: {
+      post: String
+    },
+
     methods: {
       download () {
         this.$ga.event('Button - Download Metadata CSV', 'click', 'Click download metadata csv')
@@ -34,7 +38,7 @@
           }
         }
 
-        axios.post('/download', data, config)
+        axios.post(this.post, data, config)
           .then((response) => {
             const date = new Date().toJSON().slice(0,10),
               filename = `marine-data-manual-${date}.csv`
