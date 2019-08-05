@@ -1,14 +1,19 @@
 require 'csv'
 
 namespace :import do
+  # usage bundle exec rake import:metadata[path/to/file,global]
+  # global import only global metadata, regional import regional metadata
   desc "import CSV data into database"
-  task :metadata, [:csv_file] => [:environment] do |_t, args|
+  task :metadata, [:csv_file, :meta_type] => [:environment] do |_t, args|
 
-    import_csv_file(args.csv_file)
+    import_csv_file(args.csv_file, args.meta_type)
 
   end
 
-  def import_csv_file file
+  def import_csv_file(file, meta_type)
+
+    method = "#{meta_type}_metadata"
+    Metadata.send(method).destroy_all
 
     csv = File.open(file, encoding: "utf-8")
 
@@ -33,12 +38,12 @@ namespace :import do
       ecosystem_services: csv_headers[17],
       pdf_link: csv_headers[18].chomp
     }
-    
+
     CSV.parse(csv, headers: true, encoding: "utf-8") do |row|
       csv_hash = row.to_hash
       csv_metadata_row = csv_hash.except('Country', 'Region', 'Other access use constraints')
-      csv_country_row = csv_hash.delete('Country').split(';')
-      csv_region_row = csv_hash.delete('Region').split(';')
+      csv_country_row = csv_hash.delete('Country').split(',')
+      csv_region_row = csv_hash.delete('Region').split(',')
       metadata_row_hash = {}
 
       metadata_hash.keys.each do |key|

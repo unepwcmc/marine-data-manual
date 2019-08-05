@@ -14,15 +14,13 @@ class MetadataController < ApplicationController
   end
 
   def metadata_list
-    # byebug
     data, count, all_data = Metadata.metadata(permitted_attributes.as_json)
-    # all_data = Metadata.metadata(permitted_attributes.as_json, false).first
     @metadata = MetadataSerializer.new(data, all_data).pagination(permitted_attributes.as_json['requested_page'], count)
     render json: @metadata
   end
 
   def download
-    data = Metadata.metadata(permitted_attributes.as_json, false).first
+    data = Metadata.metadata(permitted_attributes.as_json, 'global', false).first
     send_data Metadata.to_csv(data), {
               type: "text/csv; charset=utf-8; header=present",
               disposition: "attachment",
