@@ -1,6 +1,7 @@
 en:
   theme:
     education:
+      id: education
       title: Education
       tagline: Marine datasets can tell us about our relationship with the ocean, both in terms of how it supports us, and the impact that we have on it.
       intro:

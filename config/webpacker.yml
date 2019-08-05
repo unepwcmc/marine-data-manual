@@ -6,7 +6,6 @@ default: &default
   public_output_path: packs
   public_root_path: public
   cache_path: tmp/cache/webpacker
-  public_root_path: public
 
   # Additional paths webpack should lookup modules
   # ['app/assets', 'engine/foo/app/assets']

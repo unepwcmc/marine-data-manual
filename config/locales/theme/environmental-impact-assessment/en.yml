@@ -1,6 +1,7 @@
 en:
   theme:
     environmental-impact-assessment:
+      id: environmental-impact-assessment
       title: Environmental Impact Assessment
       tagline: Environmental Impact Assessments (EIAs) examine the anticipated environmental effects of proposed projects and begin at the design stage. Suitable data are required to support the prediction and assessment of potential impacts an activity may have on the marine environment.
       intro:

@@ -1,6 +1,7 @@
 en:
   theme:
     ecosystem-assessment:
+      id: ecosystem-assessment
       title: Ecosystem Assessment
       tagline: Marine and coastal datasets can help users to understand biological, ecological and oceanographic characteristics of a feature of interest. Relevant data are essential to assess and respond to changes in condition.
       intro:
