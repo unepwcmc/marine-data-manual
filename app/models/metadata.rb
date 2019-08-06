@@ -4,8 +4,8 @@ class Metadata < ApplicationRecord
   has_and_belongs_to_many :countries
   has_and_belongs_to_many :regions
 
-  scope :global_metadata, -> { joins(:countries).merge(Country.where(name: 'Global')) }
-  scope :regional_metadata, -> { joins(:countries).merge(Country.where.not(name: 'Global')).distinct }
+  scope :global_metadata, -> { joins(:countries).merge(Country.where(name: 'Global')).where.not(resource: exceptions.pluck(:resource)) }
+  scope :regional_metadata, -> { joins(:countries).merge(Country.where.not(name: 'Global').or(exceptions)).distinct }
 
   TABLE_HEADERS = [
     {
@@ -33,6 +33,10 @@ class Metadata < ApplicationRecord
       onMobile: false
     }
   ].to_json
+
+  def self.exceptions
+    Metadata.where(resource: ['Tropical Coastal Ecosystem Portal', 'Tracking apex marine predator movements in a dynamic ocean', 'Large-scale marine protected areas: guidelines for design and management'])
+  end
 
   def self.metadata(params, type = 'global', pagination = true)
     output = []
