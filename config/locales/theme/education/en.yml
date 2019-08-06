@@ -7,7 +7,7 @@ en:
       intro:
         - Marine datasets and the tools that accompany them (including mapping and data analysis tools) can be useful in both formal and informal educational settings. They can be used to further individuals’ understanding of the ocean and to support the teaching of marine-related subjects.
         - For example, data layers can often be downloaded as shapefiles and used to teach students how to use mapping software, such as ArcGIS or QGIS. This provides the opportunity to work with datasets that demonstrate the current state of knowledge with regard to the ocean, while also learning new skills.
-      case-study-intro: "Marine and coastal biodiversity datasets can be used alongside other datasets to support educational projects. To date, those hosted on the Ocean+ Data Viewer have been used by:"
+      case-study-intro: "Marine and coastal biodiversity datasets can be used alongside other datasets to support educational projects. To date, those hosted on the <a href='https://data.unep-wcmc.org' target='_blank' title='View the Ocean+ Data Viewer'>Ocean+ Data Viewer</a> have been used by:"
       case-study-bullets:
         - <strong>Academics and teachers</strong> to train students and other individuals in how to use mapping software such as ArcGIS, to help strengthen their understanding of global marine biodiversity.
         - <strong>Governments</strong> have used biodiversity data to support the development of public awareness campaigns and educational displays at international meetings. These efforts have raised awareness of key marine areas of biodiversity importance.
