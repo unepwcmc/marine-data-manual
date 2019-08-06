@@ -253,5 +253,7 @@ a {
 .item-padding--top { @include item-padding('top'); }
 .item-padding--bottom { @include item-padding('bottom'); }
 
+.item-margin { @include item-padding('all', 'margin'); }
+
 .item-margin--top { @include item-padding('top', 'margin'); }
 .item-margin--bottom { @include item-padding('bottom', 'margin'); }
