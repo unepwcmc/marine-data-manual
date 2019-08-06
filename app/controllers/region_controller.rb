@@ -10,12 +10,12 @@ class RegionController < ApplicationController
   def index
     @table_headers = Metadata::TABLE_HEADERS
     data, count, all_data = Metadata.metadata(DEFAULT_ATTRIBUTES.as_json, 'regional')
-    @metadata = MetadataSerializer.new(data, all_data).pagination(DEFAULT_ATTRIBUTES['requested_page'], count)
+    @metadata = RegionalSerializer.new(data, all_data).pagination(DEFAULT_ATTRIBUTES['requested_page'], count)
   end
 
   def region_list
     data, count, all_data = Metadata.metadata(permitted_attributes.as_json, 'regional')
-    @metadata = MetadataSerializer.new(data, all_data).pagination(permitted_attributes.as_json['requested_page'], count)
+    @metadata = RegionalSerializer.new(data, all_data).pagination(permitted_attributes.as_json['requested_page'], count)
     render json: @metadata
   end
 
