@@ -78,49 +78,7 @@ a {
   }
 }
 
-//--------------------------------------------------
-// site structure
-//--------------------------------------------------
-// .site-width { 
-//   @include breakpoint($medium) { width: $site-width; } 
-// }
-
-// .container {
-//   margin: 0 auto;
-//   padding: rem-calc(0 $gutter-small);
-//   width: 100%;
-
-//   @include breakpoint($small){ padding: rem-calc(0) $gutter-medium; }
-
-//   @include breakpoint($medium){ 
-//     padding: 0;
-//     width: $site-width;
-//   }
-
-//   &--medium {
-//     margin: 0 auto;
-//     padding: rem-calc(0 $gutter-small);
-//     width: 100%;
-
-//     @include breakpoint($small){ padding: rem-calc(0 $gutter-medium); }
-
-//     @include breakpoint($medium){ width: $site-width-medium; }
-//   }
-
-//   &--small {
-//     margin: 0 auto;
-//     padding: rem-calc(0 $gutter-small);
-//     width: 100%;
-    
-//     @include breakpoint($small){ width: 65%; }
-
-//     @include breakpoint($medium){ 
-//       padding: rem-calc(0 $gutter-medium); 
-//       width: $site-width-small;
-//     } 
-//   }
-// }
-
+emphasis { font-style: italic; }
 
 //--------------------------------------------------
 // site structure - reusable styles/mixins

@@ -1,18 +1,20 @@
 <div class="container--medium padding--page-top padding--content-bottom">
   <h2>Introduction</h2>
 
-  <%= @intro.html_safe %>
+  <% t("theme.#{@id}.intro").each do |p| %>
+    <p><%= p.html_safe %></p>
+  <% end %>
 </div>
 
 <div class="background--grey padding--page-top padding--content-bottom">
     <div class="container--medium">
     <h2>Case Studies</h2>
 
-    <p><%= @case_study_intro.html_safe %></p>
+    <p><%= t("theme.#{@id}.case-study-intro").html_safe %></p>
     
-    <% if @case_study_bullets %>
+    <% if t("theme.#{@id}.case-study-bullets") %>
       <ul class="ul-2-columns">
-        <% @case_study_bullets.each do |bullet| %>
+        <% t("theme.#{@id}.case-study-bullets").each do |bullet| %>
           <li><%= bullet.html_safe %></li>
         <% end %>
       </ul>
@@ -21,11 +23,13 @@
   </div>
 </div>
 
-<% if @resources %>
+<% if t("theme.#{@id}.resources") %>
   <div class="container--medium padding--page">
     <h2>Tools & Resources</h2>
 
-    <% @resources.each do |resource| %>
+    <p><%= t("theme.#{@id}.resources-intro") %></p>
+
+    <% t("theme.#{@id}.resources").each do |resource| %>
       <%= render partial: 'themes/partials/resource', locals: { resource: resource } %>
     <% end %>
   </div>

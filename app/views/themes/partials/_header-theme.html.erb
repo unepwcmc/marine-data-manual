@@ -1,8 +1,8 @@
 <header class="header--theme header--<%= create_class(controller_name) %>">
   <div class="header--theme__title container--medium center">
-    <i class="header--theme__icon icon--theme icon--theme-<%= @headerClass %>"></i>
-    <h1><%= @title %></h1>
-    <p class="header--theme__intro intro"><%= @tagline.html_safe %></p>
+    <i class="header--theme__icon icon--theme icon--theme-<%= @id %>"></i>
+    <h1><%= t("theme.#{@id}.title") %></h1>
+    <p class="header--theme__intro intro"><%= t("theme.#{@id}.tagline").html_safe %></p>
     <div>
       <%= link_to 'Global resources', metadata_path + '?theme=' + @theme, title: 'View the list of global resources', class: 'button button--large button--outline button--line-orange item-margin' %>
       <%= link_to 'Regional resources', region_path + '?theme=' + @theme, title: 'View the list of regional resources', class: 'button button--large button--outline button--line-orange item-margin' %>

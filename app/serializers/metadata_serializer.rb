@@ -63,7 +63,11 @@ class MetadataSerializer
         filter: true,
         options: unique_license,
         sortButtons: false,
-        type: "search"
+        type: "search",
+        # selectMultiple: {
+        #   title: "Select ALL open access licences",
+        #   filter: "open_access"
+        # }
       }
     ]
   end

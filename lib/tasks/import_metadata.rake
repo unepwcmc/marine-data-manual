@@ -15,6 +15,8 @@ namespace :import do
     method = "#{meta_type}_metadata"
     Metadata.send(method).destroy_all
 
+    Metadata.destroy_all
+
     csv = File.open(file, encoding: "utf-8")
 
     csv_headers = File.readlines(csv).first.split(",")

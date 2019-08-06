@@ -18,34 +18,34 @@ module HomeHelper
   def themes 
     [
       {
-        title: 'Marine spatial planning',
-        content: marine_spatial_planning_tagline,
+        title: t('theme.marine-spatial-planning.title'),
+        content: t('theme.marine-spatial-planning.tagline'),
         link: marine_spatial_planning_path,
-        cssName: 'marine-spatial-planning'
+        cssName: t('theme.marine-spatial-planning.id')
       },
       {
-        title: 'Education',
-        content: education_tagline,
+        title: t('theme.education.title'),
+        content: t('theme.education.tagline'),
         link: education_path,
-        cssName: 'education'
+        cssName: t('theme.education.id')
       },
       {
-        title: 'Environmental impact assessment',
-        content: environmental_impact_assessment_tagline,
+        title: t('theme.environmental-impact-assessment.title'),
+        content: t('theme.environmental-impact-assessment.tagline'),
         link: environmental_impact_assessment_path,
-        cssName: 'environmental-impact-assessment'
+        cssName: t('theme.environmental-impact-assessment.id')
       },
       {
-        title: 'Ecosystem assessment',
-        content: ecosystem_assessment_tagline,
+        title: t('theme.ecosystem-assessment.title'),
+        content: t('theme.ecosystem-assessment.tagline'),
         link: ecosystem_assessment_path,
-        cssName: 'ecosystem-assessment'
+        cssName: t('theme.ecosystem-assessment.id')
       },
       {
-        title: 'Ecosystem services and natural capital',
-        content: ecosystem_services_tagline,
+        title: t('theme.ecosystem-services.title'),
+        content: t('theme.ecosystem-services.tagline'),
         link: ecosystem_services_path,
-        cssName: 'ecosystem-services'
+        cssName: t('theme.ecosystem-services.id')
       }
     ]
   end
