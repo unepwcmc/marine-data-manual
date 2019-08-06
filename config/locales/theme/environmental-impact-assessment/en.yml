@@ -1,0 +1,29 @@
+en:
+  theme:
+    environmental-impact-assessment:
+      id: environmental-impact-assessment
+      title: Environmental Impact Assessment
+      tagline: Environmental Impact Assessments (EIAs) examine the anticipated environmental effects of proposed projects and begin at the design stage. Suitable data are required to support the prediction and assessment of potential impacts an activity may have on the marine environment.
+      intro:
+        - Environmental impact assessment (EIA) refers to the process of examining the potential environmental effects of a proposed project on the environment. It is undertaken at the project design stage. A report is produced and then evaluated by a competent authority, who looks at it in detail, considers public responses and decides whether the project can proceed.
+        - Products or tools created to support the sustainable use of biodiversity can be used to inform environmental impact assessment reporting. For example, the Integrated Biodiversity Assessment Tool (IBAT) provides information and tools to help make decisions about risks to biodiversity, as well as reports on environmental performance.
+        - An important emerging regulatory framework that helps business operations track environmental sustainability is the International Finance Corporation’s (IFC’s) Performance Standard 6 (PS6). Within this framework, the significance of biodiversity is represented through the concept of ‘Critical Habitat’, defined by the IFC and detailed through criteria that align with those under other internationally accepted biodiversity designations.
+      case-study-intro: "Marine and coastal biodiversity data can be used, alongside other datasets to support environmental impact assessments and high-level screening for biodiversity. To date, those hosted on the <a href='https://data.unep-wcmc.org' target='_blank' title='View the Ocean+ Data Viewer'>Ocean+ Data Viewer</a> have been used by:"
+      case-study-bullets:
+        - <strong>Academia</strong> to identify and map vulnerable marine areas or marine species  and/or potential pressures.
+        - <strong>Government</strong> and <strong>UN-associated organisations</strong> to improve knowledge and awareness of human impacts on the marine environment (for example, navigation, infrastructure, water quality). Data has also been used to conduct risk assessments (such as emergency response preparedness or oil spill responses) on national and local scales.
+        - <strong>Research institutions</strong> to undertake environmental assessments or screening, and to combine habitat and climate data to produce emergency preparedness and response strategies (for example in response to climate change, coral bleaching events or habitat destruction).
+        - The <strong>development finance sector</strong> and <strong>UN-associated organisations</strong> to screen areas in comparison to current/potential project sites, including monitoring and assessments at regional and local scales.
+        - <strong>Proteus partners</strong> to assess the environmental impacts of projects on marine and coastal habitats (for example, threat analyses, rapid biodiversity assessments, environmental analyses) and to provide recommendations.
+      resources-intro: Various tools and resources exist which may be useful for finding out more about or supporting environmental impact assessments.
+      resources:
+        - 
+          title: Integrated Biodiversity Assessment Tool for Business (IBAT)
+          content: IBAT is a global biodiversity decision-support platform, providing access to information and tools to inform decisions about biodiversity risk and reporting on environmental performance. Access to online maps and toolkits are tailored to business needs and offer information on the location of protected areas, priority sites for conservation and threatened species.
+          type: Web platform
+          url: https://www.ibat-alliance.org/
+        - 
+          title: A global map to aid the identification and screening of critical habitat for marine industries
+          content: Industries operating in the marine environment face a number of risks that require analysis before decisions are made on the siting of operations and facilities. This preliminary global screening layer aligns with the International Finance Corporation’s Performance Standard 6 criteria, where biodiversity significance is expressed through the concept of “Critical Habitat.” The layer classifies more than 13 million km2 of marine and coastal areas of importance for biodiversity, and can be used to support early screening prior to in situ assessments.
+          type: Peer reviewed academic paper
+          url: https://doi.org/10.1016/j.marpol.2014.11.007

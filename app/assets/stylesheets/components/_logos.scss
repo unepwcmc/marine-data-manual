@@ -17,7 +17,7 @@
 .logo {
   &--cpps {
     @include logo-basic();
-    width: 58px; height: 58px;
+    width: 70px; height: 70px;
   }
   
   &--fao {
@@ -32,7 +32,7 @@
 
   &--nairobi-convention {
     @include logo-basic();
-    width: 58px; height: 58px;
+    width: 70px; height: 70px;
   }
 
   &--unep {

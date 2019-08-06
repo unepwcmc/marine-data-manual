@@ -91,6 +91,7 @@
 
         axios.post(this.dataSrc, data)
         .then(response => {
+          console.log(response.data)
           this.updateProperties(response.data)
         })
         .catch(function (error) {

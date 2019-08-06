@@ -39,7 +39,8 @@
 
     watch: {
       isSelected () {
-        eventHub.$emit('selectMultipleOptions', { propName: this.filterBy, select: this.isSelected })
+        console.log('here - select')
+        this.$emit('selectMultipleOptions', { propName: this.filterBy, select: this.isSelected })
       }
     }
   }

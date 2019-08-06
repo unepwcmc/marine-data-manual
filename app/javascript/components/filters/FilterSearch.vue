@@ -10,7 +10,7 @@
       <filter-select-multiple v-if="selectMultiple"
         :option="selectMultiple.title"
         :filterBy="selectMultiple.filter"
-        v-on:click:selectMultiple="selectMultipleOptions"
+        v-on:selectMultipleOptions="selectMultipleOptions"
         >
       </filter-select-multiple>
 
@@ -109,7 +109,8 @@
       },
 
       selectMultipleOptions (object) {
-        this.$emit('click:selectMultipleOptions', object)
+        console.log('here', object)
+        this.$emit('selectMultipleOptions', object)
       }
     }
   }

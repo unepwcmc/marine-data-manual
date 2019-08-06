@@ -1,0 +1,60 @@
+en:
+  theme:
+    marine-spatial-planning:
+      id: marine-spatial-planning
+      title: Marine Spatial Planning
+      tagline: Marine spatial planning involves allocating space to different marine and coastal activities to ensure balanced and sustainable use of the marine environment. Marine and coastal biodiversity data can be used to identify priority areas for management or conservation and to guide spatial planning processes.
+      intro:
+        - Marine spatial planning is a way to manage where different ocean-based activities will take place in space and time. The aim is to ensure sustainable use and protection of the marine environment by balancing different user activities in order to maximize benefits and prevent conflict.
+        - Each maritime country has its own area of the ocean under its jurisdiction, yet the ocean is interconnected and knows no boundaries. This means that countries and stakeholders must cooperate and coordinate to share resources effectively and sustainably.
+        - This can be challenging due to the many different stakeholders involved. These may include industry and government representatives, conservationists and recreational users, amongst others. By bringing everyone together in the same room, they can make informed and collaborative decisions about how best to use ocean resources.
+        - The situation becomes more complex when resources are spread across multiple countries. In these circumstances, it is necessary to jointly consider any impacts of any activities and how to secure benefits for all stakeholders involved.
+        - Identifying good practices can support marine spatial planning processes, aid national policy and strengthen relationships between countries.
+        - To support this, global, regional and national datasets on the marine environment and ecology, marine spatial users and marine boundaries have been developed. These can be used to guide spatial planning and identify priority areas for management and conservation.
+      case-study-intro: "Marine and coastal biodiversity data can be used alongside other datasets to support marine spatial planning. For example, datasets hosted on the <a href='https://data.unep-wcmc.org' target='_blank' title='View the Ocean Data Viewer'>Ocean Data Viewer</a> have been used by:"
+      case-study-bullets:
+        - <strong>Academics</strong> and the <strong>not-for-profit sector</strong> have used biodiversity data to undertake marine spatial planning, to make a case for establishing marine protected areas and to identify important areas for conservation.
+        - <strong>Governments</strong> have developed reports for national and global policy reporting using biodiversity data, including the development of <a href='https://www.cbd.int/nbsap/' target='_blank' title='View the National Biodiversity Strategies and Action Plans'>National Biodiversity Strategies and Action Plans</a> for the Convention on Biological Diversity (CBD) and to report on global targets such as the <a href='https://sustainabledevelopment.un.org/?menu=1300' target='_blank' title='View the Sustainable Development Goals'>Sustainable Development Goals</a> (SDGs).
+        - <strong>Research institutes</strong> and the <strong>development financing sector</strong> have used biodiversity data to update or provide information to different marine users on current national policies, including marine spatial planning.
+      resources-intro: Various tools and resources which present or build upon marine and coastal biodiversity data have been developed and can be used to support marine spatial planning.
+      resources:
+        - 
+          title: Cross-border cooperation in Maritime Spatial Planning
+          content: This study presents lessons learned and recommendations for cross-border maritime/marine spatial planning, including in areas beyond national jurisdiction. It draws upon detailed investigations of four non-European case studies from the Rhode Island in the United States of America, the Coral Triangle in Southeast Asia, Xiamin in China and the Southern Ocean
+          type: Document
+          url: https://www.unep-wcmc.org/system/comfy/cms/files/files/000/001/059/original/MARE201440_Final_report_May2017.pdf
+        - 
+          title: "Cross-border collaboration in Maritime Spatial Planning Case Study Summary Report: the Commission for the Conservation of Antarctic Marine Living Resources (CCAMLR)"
+          content: This report presents an analysis of the CCAMLR, an international commission operating under the Convention for the Conservation of Antarctic Marine Living Resources (CAMLR Convention). The analysis explores  the context, drivers, scope and design, stakeholder collaboration and implementation of the CCAMLR, with particular emphasis on its cross-border cooperation in a Maritime/Marine Spatial Planning context.
+          type: Document
+          url: https://www.unep-wcmc.org/resources-and-data/cross-border-collaboration-in-maritime-spatial-planning-case-study-summary-report--the-commission-for-conservation-of-antarctic-marine-living-resources-ccamlr
+        - 
+          title: "Marine Spatial Planning: A Step-by-Step Approach Toward Ecosystem-Based Management"
+          content: A 10-step guide to understanding what marine spatial planning is about, insight into the steps and tasks of setting up a successful marine spatial planning initiative that can help achieving ecosystem-based management, and awareness of what has worked and what has not in marine spatial planning practice around the world.
+          type: Document
+          url: http://msp.ioc-unesco.org/msp-guides/msp-step-by-step-approach/
+        -
+          title: IOC World-Wide Inventory of MSP Activities
+          content: Over the past 15 years, marine spatial planning (MSP) has gained considerable importance all around the world. About 70 countries now have MSP initiatives, ranging from early stages (new authority, new funding arrangements) to plan revisions and adaptation. This website presents a summary of MSP activities from around the world.
+          type: Website
+          url: http://msp.ioc-unesco.org/world-applications/overview/
+        -
+          title: European MSP Platform
+          content: The European MSP Platform is an information and communication gateway designed to offer support to all EU Member States in their efforts to implement Maritime Spatial Planning (MSP) in the years to come.
+          type: Website 
+          url: https://www.msp-platform.eu/
+        -
+          title: Assessing the integration of an ecosystem-based approach into UK and Ireland Marine Spatial Plans
+          content: Marine planning in the UK and Ireland is committed to applying an ecosystem-based approach. Seven marine plans from England, Scotland, Wales and Ireland were compared and assessed, using a checklist approach, to evaluate the extent to which they could be considered ecosystem-based. This study is the first to comprehensively assess existing UK and Irish marine plans and processes against each other, according to a consistent set of criteria. The study offers an early indication about the effectiveness and ambition of ecosystem-based marine planning across the UK and Ireland, highlighting areas of positive progress as well as areas of potential improvement.
+          type: Study
+          url: https://www.unep-wcmc.org/resources-and-data/delivering-ecosystem-based-marine-spatial-planning-in-practice
+        -
+          title: A review of area-based planning tools. What is the potential for cross-sectoral planning in areas beyond national jurisdiction?
+          content: A review of existing sectoral area-based planning tools to determine their potential to support cross-sectoral planning for the purposes of biodiversity conservation and sustainable use in areas beyond national jurisdiction.
+          type: Document
+          url: https://www.unep-wcmc.org/system/comfy/cms/files/files/000/001/476/original/UNEP-WCMC_2018_Review_of_area-based_planning_tools_Final_HB.pdf
+        -
+          title: "Learning from experience: case studies of area-based planning in ABNJ"
+          content: This report explores four case study regions in which area-based planning has been undertaken in Areas Beyond National Jurisdiction (ABNJ). The report explores the different institutional and legal frameworks in place to facilitate planning, different types of area-based planning, as well as the enabling conditions present in each region.
+          type: Document
+          url: https://www.unep-wcmc.org/resources-and-data/area-based-case-studies

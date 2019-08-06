@@ -2,10 +2,10 @@
   <div class="header__content container--medium">
     <h1><%= title %></h1>
     <%= about.html_safe %>
-
-    <%= link_to 'Explore online resources', 
-      metadata_path, 
-      title: 'Explore the Metadata list', 
-      class: 'button button--xlarge button--outline button--line-orange item-margin--top item-margin--bottom' %>
+    
+    <div>
+      <%= link_to 'Global resources', metadata_path, title: 'View the list of global resources', class: 'button button--xlarge button--outline button--line-orange item-margin' %>
+      <%= link_to 'Regional resources', region_path, title: 'View the list of regional resources', class: 'button button--xlarge button--outline button--line-orange item-margin' %>
+    </div>
   </div>
 </header>

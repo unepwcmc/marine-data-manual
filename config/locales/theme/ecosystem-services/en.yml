@@ -1,0 +1,46 @@
+en:
+  theme:
+    ecosystem-services:
+      id: ecosystem-services
+      title: Ecosystem services and natural capital
+      tagline: Natural capital and ecosystem services underpin our economy and society, and are therefore directly relevant to policy and business decision-making. Improved data enables the development of ecosystem valuation indicators that can be incorporated into government and businesses management.
+      intro:
+        - Natural capital and ecosystem services underpin our economy and society, and are therefore directly relevant to policy and business decision-making. The World Forum on Natural Capital defines natural capital as <emphasis>'the world's stock of natural resources, which includes geology, soils, air, water and all living organisms'</emphasis>.
+        - Natural capital assets provide people with a wide range of free goods and services, often called ‘ecosystem services’. For example, seagrass beds are components of natural capital, while climate regulation is one of the ecosystem services they provide (seagrasses do this by sequestering and storing ‘blue’ carbon from the atmosphere and oceans)
+        - "Ecosystem services are split into four broad categories:<ul><li>Provisional – e.g. food production</li><li>Regulating – e.g. control of climate and disease</li><li>Supporting – e.g. nutrient cycles and pollination</li><li>Cultural – e.g. recreational and spiritual benefits</li></ul>"
+        - Understanding these concepts allows them to be measured, monitored reported, and then incorporated into policy and business decision-making. To achieve this, the development and use of indicators can help to implement appropriate monitoring and valuation of marine biodiversity.
+        - There are also a wide range of tools to aid valuation. For instance, the Toolkit for Ecosystem Service Site-based Assessment (TESSA) can be used to evaluate the benefits people receive from nature at particular sites in order to generate information that can be used to influence decision-making.
+      case-study-intro: 
+      case-study-bullets:
+        - <strong>Not-for-profit</strong> and <strong>UN-associated organisations</strong> to assess natural capital, ecosystem value and blue carbon.
+        - <strong>Governments</strong> to assess habitats for blue carbon (e.g., scoping studies, national- and global-level carbon assessments).
+        - <strong>Research institutions</strong> to map resources and conduct ecosystem valuation (e.g., blue carbon).
+        - The <strong>development financing sector</strong> to identify environmental assets in a region.
+        - <strong>Media organisations</strong> to compare habitat distributions in terms of ecological or economic value.
+      resources-intro: Various tools and resources exist which may be useful for finding out more about, ecosystem services and natural capital.
+      resources:
+        -
+          title: Blue carbon mapping toolkit 
+          content: This toolkit can be used to broadly assess the impact of development on coastal marine ecosystems and the associated blue carbon stock. Carbon stocks are based on the above- and below ground carbon stored within each ecosystem type, estimated from field-based measurements.
+          type: Online toolkit
+          url: http://bluecarbon.unep-wcmc.org/en/home 
+        -
+          title: The Importance of Mangroves to People
+          content: This report provides accessible information and downloadable images on the location and ecology of mangroves. It provides a science-based synthesis of the different types of goods and services provided by mangroves and the associated risks in losing these services in the face of ongoing global habitat loss and degradation. The report provides management and policy options at the local, regional and global level with the aim of preventing further losses through effective conservation measures, sustainable management and successful restoration.
+          type: Document
+          url: https://www.unep-wcmc.org/resources-and-data/the-importance-of-mangroves-to-people--a-call-to-action
+        -
+          title: "Measuring ecosystem services: Guidance on developing ecosystem service indicators"
+          content: These guidelines have been produced to support the development of ecosystem service indicators at the national and regional level. The indicators can be used for reporting, assessments, policy making, biodiversity conservation, ecosystem management, environmental management, development planning and education.
+          type: Document
+          url: https://www.unep-wcmc.org/resources-and-data/measuring-ecosystem-services--guidance-on-developing-ecosystem-service-indicators
+        -
+          title: "Towards a global map of natural capital: key ecosystem assets"
+          content: Fundamental to human wellbeing, natural capital comprises both ecosystem assets (such as freshwater) and natural resources (such as fossil fuel deposits). This report represents the first global composite map of ecosystem assets, combining a number of existing global spatial datasets to produce a map for both terrestrial and marine realms.
+          type: Document
+          url: https://www.unep-wcmc.org/resources-and-data/towards-a-global-map-of-natural-capital 
+        -
+          title: Toolkit for Ecosystem Service Site-based Assessment (TESSA)
+          content: The Toolkit for Ecosystem Service Site-Based Assessment (TESSA) is designed to provide accessible guidance on low-cost methods for evaluating the benefits people receive from nature at particular sites. TESSA is primarily designed for use by conservation practitioners, but may be applicable across a wide range of uses such as natural resource management, land use planning, and use by the private sector.
+          type: Online toolkit
+          url: http://www.birdlife.org/worldwide/science/assessing-ecosystem-services-tessa
