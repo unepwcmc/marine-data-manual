@@ -42,7 +42,7 @@
       optionId () {
         const regex = new RegExp(' ', 'g'),
           regex2 = new RegExp('"', 'g')
-        return this.option.replace(regex, '-').replace(regex2, '').toLowerCase()
+        return this.option.replace(regex, '-').replace(regex2, '').toLowerCase() + Math.random()
       }
     },
 
