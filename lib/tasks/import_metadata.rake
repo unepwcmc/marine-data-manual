@@ -42,8 +42,8 @@ namespace :import do
     CSV.parse(csv, headers: true, encoding: "utf-8") do |row|
       csv_hash = row.to_hash
       csv_metadata_row = csv_hash.except('Country', 'Region', 'Other access use constraints')
-      csv_country_row = csv_hash.delete('Country').split(',')
-      csv_region_row = csv_hash.delete('Region').split(',')
+      csv_country_row = csv_hash.delete('Country').split(';')
+      csv_region_row = csv_hash.delete('Region').split(';')
       metadata_row_hash = {}
 
       metadata_hash.keys.each do |key|
