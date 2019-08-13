@@ -14,7 +14,7 @@ $hoverColor: $grey;
     @include breakpoint($medium) { width: rem-calc(232); }
   }
 
-  &:nth-child(4) { 
+  &:nth-child(4) {
     @include breakpoint($medium) { width: rem-calc(464); }
   }
 }
@@ -23,14 +23,14 @@ $hoverColor: $grey;
 // table
 //--------------------------------------------------
 .table {
-  &--head { 
+  &--head {
     margin-top: rem-calc(30);
     height: rem-calc(64);  // must match height of the <head> tag
 
     position: relative;
   }
 
-  &--body { 
+  &--body {
     border-bottom: solid rem-calc(2) $grey;
     margin-bottom: rem-calc(40);
   }
@@ -56,7 +56,7 @@ $hoverColor: $grey;
       @include breakpoint($medium) { width: rem-calc(1160); }
     }
   }
-    
+
     &__header {
       margin-right: rem-calc(6);
       vertical-align: middle;
@@ -65,7 +65,7 @@ $hoverColor: $grey;
     }
 
       &__button {
-        position: absolute; 
+        position: absolute;
         top: 50%;
         right: rem-calc(9);
 
@@ -76,13 +76,13 @@ $hoverColor: $grey;
 // columns
 //--------------------------------------------------
 // fix the columns widths so that they don't change
-// size when you use the pagination 
+// size when you use the pagination
 
   th,td { text-align: left;}
 
   th { padding: rem-calc(20 14); }
 
-  td { 
+  td {
     padding: rem-calc(14);
     vertical-align: middle;
 
@@ -93,15 +93,15 @@ $hoverColor: $grey;
 // row
 //--------------------------------------------------
   &__row-wrapper {
-    &:nth-child(odd){ 
-      .table__row { 
-        background-color: $grey-light; 
+    &:nth-child(odd){
+      .table__row {
+        background-color: $grey-light;
 
         &:hover { background-color: $hoverColor; }
       }
     }
   }
-  
+
     &__row {
       background-color: white;
       cursor: pointer;
@@ -111,11 +111,11 @@ $hoverColor: $grey;
       &:hover { background-color: $hoverColor; }
 
       &--head { display: flex; }
-      
-      &--active { 
-        background-color: $hoverColor; 
 
-        .table__row-wrapper:nth-child(odd) & { 
+      &--active {
+        background-color: $hoverColor;
+
+        .table__row-wrapper:nth-child(odd) & {
           background-color: $hoverColor;
         }
       }
@@ -128,31 +128,31 @@ $hoverColor: $grey;
 
         display: flex;
         flex-wrap: wrap;
-      
+
         transition: max-height .3s ease-in-out;
 
         @include breakpoint($small) { flex-wrap: nowrap; }
 
         h3 { margin-top: rem-calc(18); }
-      } 
+      }
 
         &--expandable__td {
-          &:first-child { 
-            padding: rem-calc(18 14 0 14); 
+          &:first-child {
+            padding: rem-calc(18 14 0 14);
             width: 100%;
 
-            @include breakpoint($medium) { 
-              padding: rem-calc(18 14); 
+            @include breakpoint($medium) {
+              padding: rem-calc(18 14);
               width: 40%;
             }
           }
 
-          &:last-child { 
-            padding: rem-calc(0 14); 
+          &:last-child {
+            padding: rem-calc(0 14);
             width: 100%;
 
-            @include breakpoint($small) { 
-              padding: rem-calc(18 14); 
+            @include breakpoint($small) {
+              padding: rem-calc(18 14);
               width: 60%;
             }
           }
@@ -160,10 +160,10 @@ $hoverColor: $grey;
 
       &--open {
         border-top: solid white rem-calc(1);
-        max-height: rem-calc(610);
+        max-height: rem-calc(680);
 
-        @include breakpoint($medium) { max-height: rem-calc(310); }
-      } 
+        @include breakpoint($medium) { max-height: rem-calc(480); }
+      }
     }
 
       &__th,
@@ -201,18 +201,18 @@ $hoverColor: $grey;
         &__themes {
           padding-bottom: rem-calc(30);
         }
-          
-          &__themes-list { 
-            width: 100%; 
+
+          &__themes-list {
+            width: 100%;
 
             display: block;
           }
 
             //N.B flexbox layout doesn't work in IE so going back to using float
-            &__theme { 
+            &__theme {
               margin-bottom: rem-calc(8);
-              width: 100%; 
-    
+              width: 100%;
+
               float: left;
 
               @include breakpoint($medium) { width: 50%; }
