@@ -39,7 +39,6 @@
 
     watch: {
       isSelected () {
-        console.log('here - select')
         this.$emit('selectMultipleOptions', { propName: this.filterBy, select: this.isSelected })
       }
     }
