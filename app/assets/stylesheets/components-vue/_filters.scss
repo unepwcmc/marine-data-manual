@@ -145,10 +145,6 @@ $color-text-active: $black;
       left: inherit; // must be inherit for IE
     }
 
-    .filter:last-child & {
-      // @include breakpoint($small) { right: 0; }
-    }
-
     &--active {
       display: flex;
       flex-direction: column;
