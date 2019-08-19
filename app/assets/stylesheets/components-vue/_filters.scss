@@ -15,6 +15,12 @@ $color-text-active: $black;
 .filters {
   @include breakpoint-down($medium) {
     overflow-x: scroll;
+    width: 100%;
+  }
+
+  &__wrapper {
+    display: inline-block;
+    white-space: nowrap;
   }
 
 //--------------------------------------------------
