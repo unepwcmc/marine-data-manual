@@ -19,6 +19,7 @@
         <p><span class="bold">Resource:</span> {{ item.resource }}</p>
         <p><span class="bold">Version:</span> {{ item.version }}</p>
         <p><span class="bold">ID:</span> {{ item.dataset_id }}</p>
+        <p><span class="bold">Language:</span> {{ item.language }}</p>
         <p><span class="bold">Metadata:</span> <a v-if="hasMetadata" :href="item.pdf_link" title="View metadata" class="external" target="_blank">Link ></a></p>
         <p><span class="bold">Factsheet:</span> <a v-if="hasFactsheet" :href="item.factsheet" title="View factsheet" class="external" target="_blank">Link ></a></p>
         <p><span class="bold">Licence:</span> <a v-if="hasLicence" :href="item.licence_url" title="View licence" class="external" target="_blank">Link ></a></p>
