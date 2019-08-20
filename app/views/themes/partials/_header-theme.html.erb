@@ -1,8 +1,8 @@
-<header class="header--theme background--<%= @headerClass %>">
+<header class="header--theme header--<%= create_class(controller_name) %>">
   <div class="header--theme__title container--medium center">
-    <i class="header--theme__icon icon--theme icon--theme-<%= @headerClass %>"></i>
-    <h1><%= @title %></h1>
-    <p class="header--theme__intro intro"><%= @tagline.html_safe %></p>
-    <%= link_to 'Metadata list', metadata_path + '?theme=' + @theme, title: 'View the list of Metadata', class: 'button button--large button--outline button--line-orange' %>
+    <i class="header--theme__icon icon--theme icon--theme-<%= @id %>"></i>
+    <h1><%= t("theme.#{@id}.title") %></h1>
+    <p class="header--theme__intro intro"><%= t("theme.#{@id}.tagline").html_safe %></p>
+    <%= link_to 'Metadata list', metadata_path + '?theme=' + @id, title: 'View the list of Metadata', class: 'button button--large button--outline button--line-orange' %>
   </div>
 </header>

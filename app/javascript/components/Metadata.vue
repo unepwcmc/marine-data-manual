@@ -48,13 +48,13 @@
         pageItemsEnd: 0,
         totalItems: 0,
         totalPages: 0,
-        sortDirection: 1,
         items: []
       }
     },
 
     mounted () {
       this.checkThemeParameter()
+      this.$store.dispatch('updateSortParameters', { direction: 'ASC', field: 'resource' })
       this.getNewItems()
       eventHub.$on('getNewItems', this.getNewItems)
     },

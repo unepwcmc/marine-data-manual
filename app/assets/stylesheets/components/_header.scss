@@ -1,10 +1,24 @@
 //--------------------------------------------------
-// header
+// mixins
 //--------------------------------------------------
-// - global
-// - home
-// - theme
-// - hero images
+@mixin header-text-background {
+  color: $white;
+
+  position: relative;
+  z-index: 0;
+
+  &:before {
+    background-color: $black-translucent;
+    content: '';
+    width: rem-calc(2000); height: 100%;
+    
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: -1;
+  }
+}
+
 //--------------------------------------------------
 // global header
 //--------------------------------------------------
@@ -12,46 +26,52 @@
   background-color: $primary;
   background-position: center;
   background-size: cover;
-  height: rem-calc(250);
+  min-height: rem-calc(250);
 
-  @include breakpoint($small){ height: rem-calc(390); }
-  @include breakpoint($medium){ height: rem-calc(451); }
+  @include breakpoint($small){ min-height: rem-calc(390); }
+  @include breakpoint($medium){ height: rem-calc(500); }
   
   align-items: center;
   display: flex;
 
-  &__title {
+  a { color: inherit; }
+
+  &__content {
     margin-top: rem-calc(60); //match the height of the topbar
-    
+      
     @include breakpoint($small){ margin-top: rem-calc(81); } //match the height of the topbar
-
     @include breakpoint($medium){ 
-      margin-top: rem-calc(77); //match the height of the topbar
+      margin-top: rem-calc(96); //match the height of the topbar
       margin-right: rem-calc(160);
-    }
+    } 
+  }
 
-    h1 {
+    &__title {
+      @include header-text-background;
+      margin: rem-calc(30 0);
       padding: rem-calc(14 25 18 0);
 
       display: inline-block;
-      position: relative;
-      z-index: 0;
 
-      @include breakpoint($small){ padding: rem-calc(20 35 24 52); }
+      @include breakpoint($small){ padding: rem-calc(20 35 24 24); }
       @include breakpoint($medium){ padding: rem-calc(24 45 30 60); }
+    }
 
-      &:before {
-        background-color: $black-translucent;
-        content: '';
-        width: rem-calc(2000); height: 100%;
-        
-        position: absolute;
-        top: 0;
-        right: 0;
-        z-index: -1;
+    &__intro {
+      @include header-text-background;
+      margin-bottom: rem-calc(30);
+      padding: rem-calc(10 25 14 0);
+
+      @include breakpoint($small){ 
+        padding: rem-calc(16 20 10 24); 
+        width: 80%;
+      }
+
+      @include breakpoint($medium){ 
+        font-size: rem-calc(18);
+        padding: rem-calc(20 20 10 60); 
       }
     }
-  }
 
 //--------------------------------------------------
 // home header
@@ -71,6 +91,7 @@
       &__content {
         background-color: $black-translucent;
         color: white;
+        margin: auto;
         font-size: rem-calc(16);
         padding: rem-calc(14 25 18 25);
         text-align: center;
@@ -87,6 +108,8 @@
 // theme header
 //--------------------------------------------------
   &--theme {
+    background-position: center;
+    background-size: cover;
     color: white;
     padding: rem-calc(90 0 40 0);
 
@@ -94,7 +117,9 @@
 
     h1 { margin: rem-calc(10 0 22 0); }
 
-    &__intro { margin-bottom: rem-calc(24); }
+    &__intro { 
+      margin-bottom: rem-calc(24); 
+    }
 
     &__icon {
       width: rem-calc(66); height: rem-calc(66);
@@ -104,7 +129,12 @@
 //--------------------------------------------------
 // hero images
 //--------------------------------------------------
-  &--metadata { background-image: image-url('hero/coral.jpg'); }
-  &--data-limitations { background-image: image-url('hero/river.jpg'); }
   &--contact { background-image: image-url('hero/shark.jpg'); }
+  &--data-limitations { background-image: image-url('hero/river.jpg'); }
+  &--ecosystem-assessment { background-image: image-url('hero/ecosystem-assessment.jpg'); }
+  &--ecosystem-services { background-image: image-url('hero/ecosystem-services.jpg'); }
+  &--education { background-image: image-url('hero/education.jpg'); }
+  &--environmental-impact-assessment { background-image: image-url('hero/environmental-impact-assessment.jpg'); } 
+  &--marine-spatial-planning { background-image: image-url('hero/marine-spatial-planning.jpg'); }
+  &--metadata { background-image: image-url('hero/coral.jpg'); } 
 }
