@@ -1,5 +1,7 @@
 <template>
   <div>
+    <search></search>
+    
     <filters :filters="filters"></filters>
 
     <v-table :tableHeaders="tableHeaders" :items="items"></v-table>
@@ -20,17 +22,17 @@
 
   import Filters from './filters/Filters.vue'
   import Pagination from './pagination/Pagination.vue'
+  import Search from './form-fields/Search.vue'
   import VTable from './table/Table.vue'
 
   export default {
     name: 'metadata',
 
     components: {
-      Filters, Pagination, VTable
+      Filters, Pagination, Search, VTable
     },
 
     props: {
-      filters: Array,
       tableHeaders: Array,
       itemsPerPage: {
         type: Number,
@@ -40,6 +42,7 @@
 
     data () {
       return {
+        filters: [],
         currentPage: 1,
         pageItemsStart: 0,
         pageItemsEnd: 0,
@@ -50,9 +53,6 @@
       }
     },
 
-    created () {
-    },
-
     mounted () {
       this.checkThemeParameter()
       this.getNewItems()
@@ -61,12 +61,14 @@
 
     methods: {
       updateProperties (data) {
+        this.filters = data.filters
         this.currentPage = data.current_page
         this.pageItemsStart = data.page_items_start
         this.pageItemsEnd = data.page_items_end
         this.totalItems = data.total_items
         this.totalPages = data.total_pages
         this.items = data.items
+        
       },
 
       getNewItems () {
@@ -76,9 +78,11 @@
             items_per_page: this.itemsPerPage,
             requested_page: this.$store.state.requestedPage,
             sortDirection: this.$store.state.sortDirection,
-            sortField: this.$store.state.sortField
+            sortField: this.$store.state.sortField,
+            searchTerm: this.$store.state.searchTerm
           }
         }
+        
         setCsrfToken(axios)
         axios.defaults.headers.common['Accept'] = 'application/json'
 

@@ -1,13 +1,18 @@
 <template>
-  <div class="filters">
-    <span class="filter__title bold">Filters:</span>
+  <div class="filters flex flex-h-between">
+    <div class="filters__wrapper">
+      <template v-for="filter in filters">
+        <v-filter v-if="filter.filter"
+          :name="filter.name"
+          :title="filter.title" 
+          :options="filter.options"
+          :type="filter.type"
+          :selectMultiple="filter.selectMultiple">
+        </v-filter>
+      </template>
+    </div>
 
-    <v-filter v-for="filter in filters"
-      :name="filter.name"
-      :title="filter.title" 
-      :options="filter.options"
-      :type="filter.type">
-    </v-filter>
+    <button @click="clearFilters" class="filters__clear button--plain">Clear all filters</button>
   </div>
 </template>
 
@@ -28,12 +33,13 @@
 
     data () {
       return {
-        children: this.$children
+        children: this.$children,
+        SelectedFilterOptionsCreated: false
       }
     },
 
     created () {
-      this.createSelectedFilterOptions()
+      eventHub.$on('createSelectedFilterArray', this.createSelectedFilterOptions)
     },
 
     mounted () {
@@ -52,6 +58,8 @@
       },
 
       createSelectedFilterOptions () {
+        if(this.selectedFilterOptionsCreated) { return false }
+
         let array = []
 
         // create an empty array for each filter
@@ -68,7 +76,12 @@
         })
 
         this.$store.commit('setFilterOptions', array)
+        this.selectedFilterOptionsCreated = true
       },
+
+      clearFilters () {
+        eventHub.$emit('resetFilter')
+      }
     }
   }
 </script>

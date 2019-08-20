@@ -1,16 +1,25 @@
 <template>
   <div class="height-100">
-    <div class="relative">
-      <input type="text" v-model="searchTerm" :placeholder="placeholder" class="filter--search">
-      <i class="filter--search-icon" v-show="noSearchTerm" @click="applySearch()"></i>
-      <i class="filter--search-icon close" v-show="!noSearchTerm" @click="clear()"></i>
+    <div class="filter--search">
+      <input type="text" v-model="searchTerm" :placeholder="placeholder" class="search__input">
+      <i class="search__icon" v-show="noSearchTerm" @click="applySearch()"></i>
+      <i class="search__icon close" v-show="!noSearchTerm" @click="clear()"></i>
     </div>
 
     <ul class="ul-unstyled filter__options-list filter__options-list--search filter__options-padding">
+      <filter-select-multiple v-if="selectMultiple"
+        :option="selectMultiple.title"
+        :filterBy="selectMultiple.filter"
+        v-on:selectMultipleOptions="selectMultipleOptions"
+        >
+      </filter-select-multiple>
+
       <template v-for="option in options">
         <filter-option v-show="matches(option)"
           :option="option"
-          :selected="false">
+          :selected="false"
+          :isAlreadySelected="isAlreadySelected(option)"
+          ref="childOption">
         </filter-option>
       </template>
     </ul>
@@ -20,11 +29,12 @@
 <script>
   import { eventHub } from '../../metadata.js'
   import FilterOption from './FilterOption.vue'
+  import FilterSelectMultiple from './FilterSelectMultiple.vue'
 
   export default {
     name: 'filter-search',
 
-    components: { FilterOption },
+    components: { FilterOption, FilterSelectMultiple },
 
     props: {
       options: {
@@ -42,13 +52,15 @@
       type: {
         required: true,
         type: String
-      }
+      },
+      selectMultiple: Object,
+      activeOptions: Array
     },
 
     data () {
       return {
-        children: this.$children,
-        searchTerm: '',
+        children: {},
+        searchTerm: ''
       }
     },
 
@@ -66,6 +78,10 @@
       eventHub.$on('resetSearchTerm', this.resetSearchTerm)
     },
 
+    mounted () {
+      this.children = this.$refs.childOption
+    },
+
     methods: {
       matches (option) {
         const noSearch = this.searchTerm == '',
@@ -73,6 +89,10 @@
           match = option.match(regex)
 
         return noSearch || match
+      },
+
+      isAlreadySelected (option) {
+        return this.activeOptions.indexOf(option) > -1
       },
 
       resetSearchTerm () {
@@ -86,6 +106,10 @@
       applySearch () {
         this.resetSearchTerm()
         this.$emit('apply:filter')
+      },
+
+      selectMultipleOptions (object) {
+        this.$emit('selectMultipleOptions', object)
       }
     }
   }

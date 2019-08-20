@@ -16,7 +16,8 @@ export default new Vuex.Store({
     requestedPage: 1,
     selectedFilterOptions: [], // an array containing an object for each filter that has an array of selected options
     sortDirection: '',
-    sortField: ''
+    sortField: '',
+    searchTerm: ''
   },
 
   mutations: {
@@ -45,6 +46,10 @@ export default new Vuex.Store({
 
     updateSortField (state, field) {
       this.state.sortField = field
+    },
+
+    updateSearchTerm (state, searchTerm) {
+      this.state.searchTerm = searchTerm
     }
   },
 
@@ -63,7 +68,10 @@ export default new Vuex.Store({
     },
 
     search ({ commit }, searchTerm) {
-
+      commit('updateSearchTerm', searchTerm)
+      commit('updateSortDirection', '')
+      commit('updateSortField', '')
+      commit('updateRequestedPage', 1)
     }
   }
 })

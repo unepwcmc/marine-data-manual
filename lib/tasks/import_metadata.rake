@@ -10,6 +10,8 @@ namespace :import do
 
   def import_csv_file file
 
+    Metadata.destroy_all
+
     csv = File.open(file, encoding: "utf-8")
 
     csv_headers = File.readlines(csv).first.split(",")
@@ -24,12 +26,14 @@ namespace :import do
       website_download_link: csv_headers[6],
       factsheet: csv_headers[7],
       license_number: csv_headers[10],
-      marine_spatial_planning: csv_headers[12],
-      education: csv_headers[13],
-      environmental_impact_assessment: csv_headers[14],
-      ecosystem_assessment: csv_headers[15],
-      ecosystem_services: csv_headers[16],
-      pdf_link: csv_headers[17].chomp
+      license_url: csv_headers[11],
+      open_access: csv_headers[12],
+      marine_spatial_planning: csv_headers[13],
+      education: csv_headers[14],
+      environmental_impact_assessment: csv_headers[15],
+      ecosystem_assessment: csv_headers[16],
+      ecosystem_services: csv_headers[17],
+      pdf_link: csv_headers[18].chomp
     }
 
     CSV.parse(csv, headers: true, encoding: "utf-8") do |row|

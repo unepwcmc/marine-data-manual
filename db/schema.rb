@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190312130627) do
+ActiveRecord::Schema.define(version: 20190603130627) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,8 @@ ActiveRecord::Schema.define(version: 20190312130627) do
     t.datetime "updated_at", null: false
     t.string "license_number"
     t.string "pdf_link"
+    t.string "license_url"
+    t.boolean "open_access"
   end
 
   create_table "metadata_regions", id: false, force: :cascade do |t|

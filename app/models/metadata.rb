@@ -34,12 +34,14 @@ class Metadata < ApplicationRecord
   def self.metadata(params, pagination = true)
     output = []
     filters = sanitize_params(params['filters'])
-    filter_data = if params.dig('filters').present?
+    filter_data = if params.dig('searchTerm').present?
+                    Metadata.like_query(params['searchTerm'])
+                  elsif params.dig('filters').present?
                     Metadata.where(filters)
                   else
                     Metadata.all
                   end
-    filter_data = location_filter(filter_data, @location_filters)
+    filter_data = location_filter(filter_data, @location_filters) unless params.dig('searchTerm').present?
     metadata = sorting_data(params, filter_data, pagination)
     metadata.to_a.each do |meta|
       meta_attributes = meta.attributes
@@ -53,7 +55,7 @@ class Metadata < ApplicationRecord
       meta_attributes.delete_if { |k| ["created_at", "updated_at"].include? k }
       output << meta_attributes
     end
-    [output, filter_data.count]
+    [output, filter_data.count, filter_data]
   end
 
   def self.sorting_data(params, data, pagination)
@@ -62,6 +64,10 @@ class Metadata < ApplicationRecord
     page = pagination ? params['requested_page'] || 1 : 1
     data.order("#{field} #{direction}")
         .paginate(page: page, per_page: pagination ? 10 : data.count)
+  end
+
+  def self.like_query(text_search)
+    where('category ILIKE :search OR resource ILIKE :search OR contact_organisation ILIKE :search OR dataset_id ILIKE :search OR license_number ILIKE :search', search: "%#{text_search}%")
   end
 
   def self.sanitize_params(filters)

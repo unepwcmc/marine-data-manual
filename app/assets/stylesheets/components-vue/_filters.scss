@@ -5,13 +5,44 @@ $color-active: $secondary;
 $color-text-active: $black;
 
 //--------------------------------------------------
+// search
+//--------------------------------------------------
+@import './search';
+
+//--------------------------------------------------
 // filters
 //--------------------------------------------------
 .filters {
-  @include breakpoint_down($small) {
+  @include breakpoint-down($medium) {
     overflow-x: scroll;
+    width: 100%;
+  }
 
-    display: flex;
+  &__wrapper {
+    display: inline-block;
+    white-space: nowrap;
+  }
+
+//--------------------------------------------------
+// clear
+//--------------------------------------------------
+  &__clear {
+    cursor: pointer;
+    flex-shrink: 0;
+    font-weight: bold;
+    outline: none;
+
+    &:before {
+      @extend .icon--clear;
+      background-size: cover; 
+      content: '';
+      margin-right: rem-calc(7);
+      width: rem-calc(18); height: rem-calc(18);
+
+      display: inline-block;
+      position: relative;
+      top: rem-calc(4);
+    }
   }
 }
 
@@ -28,6 +59,7 @@ $color-text-active: $black;
     font-size: rem-calc(20);
     margin-right: rem-calc(20);
   }
+
 //--------------------------------------------------
 // button
 //--------------------------------------------------
@@ -37,7 +69,7 @@ $color-text-active: $black;
     cursor: pointer;
     font-weight: bold;
     margin: 0;
-    padding:rem-calc(9 39 10 13);
+    padding:rem-calc(9 36 10 12);
 
     position: relative;
 
@@ -50,7 +82,7 @@ $color-text-active: $black;
       margin: rem-calc(2 0 0 7);
       width: rem-calc(8); height: rem-calc(6);
 
-      right: rem-calc(24);
+      right: rem-calc(17);
     }
     
     &--active {
@@ -79,7 +111,7 @@ $color-text-active: $black;
         display: block;
 
         position: absolute;
-        right: rem-calc(9);
+        right: rem-calc(7);
       }
   }
 
@@ -101,7 +133,7 @@ $color-text-active: $black;
     left: $gutter-small;
     z-index: 1;
 
-    @include breakpoint($small) {
+    @include breakpoint($medium) {
       margin-top: rem-calc(18);
       overflow: hidden;
       min-width: rem-calc(300);
@@ -111,11 +143,6 @@ $color-text-active: $black;
       right: inherit; // must be inherit for IE
       bottom: inherit; // must be inherit for IE
       left: inherit; // must be inherit for IE
-
-    }
-
-    .filter:last-child & {
-      @include breakpoint($small) { right: 0; }
     }
 
     &--active {
@@ -124,13 +151,13 @@ $color-text-active: $black;
     }
 
     &--resource { 
-      @include breakpoint($small){ width: rem-calc(500); }
+      @include breakpoint($medium){ width: rem-calc(500); }
     }
 
     &--search {
       height: calc(100% - 65px);
 
-      @include breakpoint($small) { height: auto; }
+      @include breakpoint($medium) { height: auto; }
     }
 
     &-list {
@@ -138,7 +165,7 @@ $color-text-active: $black;
       overflow-y: scroll;
       overflow-x: hidden; //for IE11
 
-      @include breakpoint($small) {
+      @include breakpoint($medium) {
         height: auto;
         max-height: rem-calc(300);   
       }
@@ -146,7 +173,7 @@ $color-text-active: $black;
       &--search { 
         margin-bottom: rem-calc(25);
   
-        @include breakpoint($small) { margin-bottom: 0; }
+        @include breakpoint($medium) { margin-bottom: 0; }
       }
     }
 
@@ -221,45 +248,36 @@ $color-text-active: $black;
 // search
 //--------------------------------------------------
   &--search {
-    border-top-left-radius: 6px;
-    border-top-right-radius: 6px;
-    border: none;
-    border-bottom: 1px solid grey;
-    font-size: rem-calc(16);
-    padding: rem-calc(0 56 0 25);
-    width: 100%; height: 56px;
-  }
+    @include create_search();
+    width: 100%; 
 
-    &--search-icon {
-      background: image-url('icons/search.svg') no-repeat center;
-      background-size: 50%;
-      cursor: pointer;
-      width: rem-calc(50);
-
-      position: absolute;
-      right: 0;
-      top: 0;
-      bottom: 0;
-
-      &.close {
-        background-image: image-url('icons/close.svg');
-        background-size: 35%;
-      }
+    .search__input {
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+      border: none;
+      border-bottom: 1px solid grey;
+      padding: rem-calc(0 56 0 25);
+      width: 100%; height: rem-calc(56);  
     }
 
-      &--search-label {
-        cursor: pointer;
-        padding: rem-calc(9 30);
+    .search__icon {
+      width: rem-calc(50); height: rem-calc(56);
+    }
+  }
 
-        display: block;
+    &--search-label {
+      cursor: pointer;
+      padding: rem-calc(9 30);
 
-        &:hover {
-          background-color: lighten($color-active, 30%);
-        }
+      display: block;
 
-        &--active,
-        &--active:hover {
-          background-color: $color-active;
-        }
+      &:hover {
+        background-color: lighten($color-active, 30%);
       }
+
+      &--active,
+      &--active:hover {
+        background-color: $color-active;
+      }
+    }
 }

@@ -3,7 +3,7 @@
     @click="download()"
     title="Download CSV file"
     class="inline-block button button--download button--green filter__download">
-    CSV
+    Download
   </a>
 </template>
 
@@ -15,14 +15,15 @@
 
     methods: {
       download () {
+        this.$ga.event('Button - Download Metadata CSV', 'click', 'Click download metadata csv')
+        
         const csrf = document.querySelectorAll('meta[name="csrf-token"]')[0].getAttribute('content'),
         data = {
           params: {
             filters: this.$store.state.selectedFilterOptions,
-            items_per_page: this.itemsPerPage,
-            requested_page: this.$store.state.requestedPage,
             sortDirection: this.$store.state.sortDirection,
-            sortField: this.$store.state.sortField
+            sortField: this.$store.state.sortField,
+            searchTerm: this.$store.state.searchTerm
           }
         },
         config = {
@@ -39,9 +40,10 @@
               filename = `marine-data-manual-${date}.csv`
 
             this.createBlob(filename, response.data)
+            this.$ga.event('AJAX - Download Metadata CSV', 'request', 'Metadata csv request successful')
           })
           .catch(function (error) {
-            console.log(error)
+            this.$ga.event('AJAX- Download Metadata CSV', 'request', 'Metadata csv request failed')
           })
       },
 
