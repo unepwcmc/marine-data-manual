@@ -2,7 +2,7 @@
 // mixins
 //--------------------------------------------------
 @mixin logo-basic() {
-  margin: rem-calc(20);
+  margin: rem-calc(14) rem-calc(20);
 }
 
 //--------------------------------------------------
@@ -43,6 +43,6 @@
 
   &--unep {
     @include logo-basic();
-    width:80px; height: 58px;
+    width: 76px; height: 76px;
   }
 }
