@@ -1,6 +1,6 @@
 <template>
   <div class="filters flex flex-h-between">
-    <div class="flex">
+    <div class="filters__wrapper">
       <template v-for="filter in filters">
         <v-filter v-if="filter.filter"
           :name="filter.name"
