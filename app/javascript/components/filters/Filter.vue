@@ -171,11 +171,8 @@
         }
       },
 
-      updateAllTo (condition) {
-        console.log('here', condition)
-        
+      updateAllTo (condition) {        
         if(this.hasOptions) {
-          console.log(condition)
           if(typeof condition === 'boolean') {
             // set the isSelected property on all options to true/false
             const boolean = condition
@@ -199,7 +196,6 @@
               if(this.type == 'boolean') { return false 
               } else if(this.type == 'search') {
                 child.children.forEach(child => {
-                  console.log('here', child)
                   if(condition.propName in child && child[condition.propName]) {
                     child.isSelected = condition.select
                   }

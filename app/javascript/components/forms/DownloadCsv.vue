@@ -47,7 +47,6 @@
             this.$ga.event('AJAX - Download Metadata CSV', 'request', 'Metadata csv request successful')
           })
           .catch(function (error) {
-            console.log(error)
             this.$ga.event('AJAX- Download Metadata CSV', 'request', 'Metadata csv request failed')
           })
       },

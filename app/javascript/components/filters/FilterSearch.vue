@@ -109,7 +109,6 @@
       },
 
       selectMultipleOptions (object) {
-        console.log('here', object)
         this.$emit('selectMultipleOptions', object)
       }
     }
