@@ -11,29 +11,7 @@
   </div>
 </div>
 
-<div class="background--grey">
-  <div class="logos flex-center section-padding">
-    <%= link_to 'https://www.thegef.org/', title: 'Visit GEF', target: '_blank', class: 'flex-inline' do %>
-      <%= image_tag 'logos/logo-gef.png', alt: 'GEF logo', class: 'logo--gef' %>
-    <% end %>
-
-    <%= link_to 'http://www.fao.org/home/en/', title: 'Visit FAO', target: '_blank', class: 'flex-inline' do %>
-      <%= image_tag 'logos/logo-fao.svg', alt: 'FAO logo', class: 'logo--fao' %>
-    <% end %>
-
-    <%= link_to 'https://www.unenvironment.org/', title: 'Visit UN Environment Programme', target: '_blank', class: 'flex-inline' do %>
-      <%= image_tag 'logos/logo-unep.svg', alt: 'UN Environment Programme logo', class: 'logo--unep' %>
-    <% end %>
-
-    <%= link_to 'http://www.cpps-int.org/', title: 'Visit the CPPS', target: '_blank', class: 'flex-inline' do %>
-      <%= image_tag 'logos/logo-cpps.jpg', alt: 'CPPS logo', class: 'logo--cpps' %>
-    <% end %>
-
-    <%= link_to 'https://www.unenvironment.org/nairobiconvention/', title: 'Visit the Nairobi Convention', target: '_blank', class: 'flex-inline' do %>
-      <%= image_tag 'logos/logo-nairobi-convention.jpg', alt: 'CPPS logo', class: 'logo--nairobi-convention' %>
-    <% end %>
-  </div>
-</div>
+<%= render 'region/logos' %>
 
 <div class="container">
   <div class="smallprint section-padding">
