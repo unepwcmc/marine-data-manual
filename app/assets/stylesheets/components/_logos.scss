@@ -12,6 +12,12 @@
   @include flex-wrap;
 
   @include breakpoint($medium) { @include flex-nowrap; }
+
+  &__header {
+    font-size: rem-calc(16);
+    line-height: $header-lh;
+    margin-bottom: 0;
+  }
 }
 
 .logo {

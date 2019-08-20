@@ -1,5 +1,8 @@
 <div class="background--grey">
-  <div class="logos flex-center section-padding">
+  <h2 class="logos__header section-padding--top container--medium">
+    <%= t('region.logos_header') %>
+  </h2>
+  <div class="logos flex-center section-padding--bottom">
     <%= link_to 'https://www.thegef.org/', title: 'Visit GEF', target: '_blank', class: 'flex-inline' do %>
       <%= image_tag 'logos/logo-gef.png', alt: 'GEF logo', class: 'logo--gef' %>
     <% end %>
