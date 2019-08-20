@@ -1,4 +1,8 @@
 module ApplicationHelper
+  def is_theme_page
+    controller.class.superclass.to_s == 'ThemesController'
+  end
+  
   def site_title
     'Ocean+ Library'
   end 
