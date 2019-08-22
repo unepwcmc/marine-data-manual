@@ -76,18 +76,38 @@
 //--------------------------------------------------
 // home header
 //--------------------------------------------------
-  &--home {
+  &--home {    
     background-image: image-url('hero/turtle.jpg');
     background-position: center;
     background-size: cover;
     padding-top: rem-calc(80);
-
-    h1 { margin-bottom: .5em; }
     
-    @include breakpoint($small){ padding-top: rem-calc(120); }
+    @include breakpoint($small){ 
+      padding-top: rem-calc(120); 
+    }
+
     @include breakpoint($medium){ padding-top: rem-calc(180); }
 
+    h1 { margin-bottom: .5em; }
+
     .header {
+      &__video {
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+
+        display: none;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+      
+        @include breakpoint($small) {
+          display: block;
+        }
+      }
+
       &__content {
         background-color: $black-translucent;
         color: white;
@@ -95,6 +115,9 @@
         font-size: rem-calc(16);
         padding: rem-calc(14 25 18 25);
         text-align: center;
+
+        position: relative;
+        z-index: 1;
 
         @include breakpoint($small){ 
           font-size: rem-calc(20);
