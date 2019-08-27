@@ -46,12 +46,15 @@ namespace :import do
       csv_country_row = csv_hash.delete('Country').split(';')
       csv_region_row = csv_hash.delete('Region').split(';')
       metadata_row_hash = {}
+      languages = nil
 
       metadata_hash.keys.each do |key|
         if key == :metadata
           metadata_row_hash[key] = csv_metadata_row[metadata_hash[key]]&.strip || false
         elsif key == :factsheet
           metadata_row_hash[key] = csv_metadata_row[metadata_hash[key]]&.strip || nil
+        elsif key == :language
+          languages = csv_metadata_row[metadata_hash[key]]&.split(",").map{|s| s.strip }
         else
           metadata_row_hash[key] = csv_metadata_row[metadata_hash[key]]&.strip
         end
@@ -65,8 +68,17 @@ namespace :import do
                    metadata.update_attributes(metadata_row_hash)
                  end
 
+          languages.each do |l|
+            lang = Language.find_or_create_by(language_id: l, name: l)
+            
+            MetadataLanguage.find_or_create_by(
+              language_id: lang.id, 
+              metadata_id: meta.id
+            )
+          end
           import_location('country', csv_country_row, meta)
           import_location('region', csv_region_row, meta)
+
         end
       rescue => e
         p e

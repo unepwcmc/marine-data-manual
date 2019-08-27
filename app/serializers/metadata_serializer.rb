@@ -6,6 +6,7 @@ class MetadataSerializer
 
   def filters
     unique_categories = @all_data.pluck('category').compact.uniq.sort
+    unique_language = Language.all.pluck('name').compact.sort #TODO: do this
     unique_license = @all_data.pluck('license_number').compact.uniq.sort
     unique_resource = @all_data.pluck('resource').compact.uniq.sort
     metadata_presence = @all_data.pluck('metadata').compact.uniq.rotate!
@@ -68,6 +69,14 @@ class MetadataSerializer
         #   title: "Select ALL open access licences",
         #   filter: "open_access"
         # }
+      },
+      {
+        name: "language",
+        title: "Language",
+        filter: true,
+        options: unique_language,
+        sortButtons: false,
+        type: "multiple"
       }
     ]
   end

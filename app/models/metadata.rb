@@ -3,6 +3,8 @@ require 'csv'
 class Metadata < ApplicationRecord
   has_and_belongs_to_many :countries
   has_and_belongs_to_many :regions
+  has_many :metadata_languages
+  has_many :languages, through: :metadata_languages
 
   scope :global_metadata, -> { joins(:countries).merge(Country.where(name: 'Global')).where.not(resource: exceptions.pluck(:resource)) }
   scope :regional_metadata, -> { joins(:countries).merge(Country.where.not(name: 'Global').or(exceptions)).distinct }
