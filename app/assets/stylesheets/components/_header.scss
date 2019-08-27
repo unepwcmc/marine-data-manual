@@ -103,7 +103,7 @@
         left: 50%;
         transform: translateX(-50%);
       
-        @include breakpoint($small) {
+        @include breakpoint($medium) {
           display: block;
         }
       }
