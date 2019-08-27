@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   get 'ecosystem-services', to: 'ecosystem_services#index'
   get 'data-limitations', to: 'data_limitations#index'
 
+  get 'turtle-video', to: 'video#index'
+
   post '/metadata-list', to: 'metadata#metadata_list'
   post '/region-list', to: 'region#region_list'
   post '/download', to: 'metadata#download'
