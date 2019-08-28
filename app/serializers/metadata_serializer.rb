@@ -6,7 +6,6 @@ class MetadataSerializer
 
   def filters
     unique_categories = @all_data.pluck('category').compact.uniq.sort
-    unique_language = Language.all.pluck('name').compact.sort #TODO: do this
     unique_license = @all_data.pluck('license_number').compact.uniq.sort
     unique_resource = @all_data.pluck('resource').compact.uniq.sort
     metadata_presence = @all_data.pluck('metadata').compact.uniq.rotate!
@@ -74,11 +73,21 @@ class MetadataSerializer
         name: "language",
         title: "Language",
         filter: true,
-        options: unique_language,
+        options: unique_language('language'),
         sortButtons: false,
         type: "multiple"
       }
     ]
+  end
+
+  def unique_language(language)
+    uniq_data = []
+    lang = language.pluralize.to_sym
+    datas = @all_data.includes(lang)
+    datas.each do |data|
+      uniq_data << data.public_send(lang).pluck(:name)
+    end
+    uniq_data.flatten.uniq.sort
   end
 
   def unique_theme
