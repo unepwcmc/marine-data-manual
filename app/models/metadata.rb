@@ -51,11 +51,12 @@ class Metadata < ApplicationRecord
                   else
                     data
                   end
-    filter_data = location_filter(filter_data, @location_filters) unless params.dig('searchTerm').present?
+    filter_data = association_filter(filter_data, @association_filters) unless params.dig('searchTerm').present?
     metadata = sorting_data(params, filter_data, pagination)
     metadata.to_a.each do |meta|
       meta_attributes = meta.attributes
       meta_attributes[:metadata] = metadata_url(meta)
+      meta_attributes[:language] = meta.languages.pluck(:name).join(', ')
       meta_attributes[:themes] = []
       ["marine_spatial_planning", "education", "environmental_impact_assessment",
       "ecosystem_assessment", "ecosystem_services"].each do |attribute|
@@ -90,11 +91,11 @@ class Metadata < ApplicationRecord
         query[filter['name']] = filter['options']
       end
     end
-    @location_filters = query.extract!('country', 'region')
+    @association_filters = query.extract!('country', 'region', 'language')
     query.delete_if { |_k, v| v.empty? }
   end
 
-  def self.location_filter(data, filters)
+  def self.association_filter(data, filters)
     return data if filters.nil?
     filters.each do |k, v|
       next if v.blank?
@@ -116,7 +117,7 @@ class Metadata < ApplicationRecord
     csv_string = CSV.generate(encoding: 'UTF-8') do |csv|
       metadata_columns = Metadata.new.attributes.keys
       metadata_columns.delete_if { |k| ["id", "created_at", "updated_at"].include? k }
-      (metadata_columns << ['country', 'region']).flatten!
+      (metadata_columns << ['country', 'region', 'language']).flatten!
 
       metadata_columns.map! { |e| e.tr('_', ' ').capitalize }
 
@@ -142,9 +143,17 @@ class Metadata < ApplicationRecord
           ON regions.id = metadata_regions.region_id
           WHERE metadata_regions.metadata_id = #{meta.id}
         SQL
+        language_query = <<-SQL
+          SELECT languages.name
+          FROM languages
+          INNER JOIN metadata_languages
+          ON languages.id = metadata_languages.language_id
+          WHERE metadata_languages.metadata_id = #{meta.id}
+        SQL
 
-        (metadata_attributes << execute_query(country_query).values.join(','))
-        (metadata_attributes << execute_query(region_query).values.join(','))
+        metadata_attributes << execute_query(country_query).values.join(',')
+        metadata_attributes << execute_query(region_query).values.join(',')
+        metadata_attributes << execute_query(language_query).values.join(',')
         csv << metadata_attributes
       end
       csv
