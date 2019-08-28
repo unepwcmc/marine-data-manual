@@ -16,7 +16,7 @@
         width: rem-calc(30); height: rem-calc(22); 
         display: block;
 
-        @include breakpoint($small) { display: none; }
+        @include breakpoint($medium) { display: none; }
       }
 
       &__target {
@@ -34,7 +34,7 @@
 
         transition: transform .3s ease-in-out;
         
-        @include breakpoint($small) { 
+        @include breakpoint($medium) { 
           background-color: transparent;
           padding: 0;
           width: auto;
@@ -60,7 +60,7 @@
           top: rem-calc(17);
           right: rem-calc(13);
 
-          @include breakpoint($small) { display: none; }
+          @include breakpoint($medium) { display: none; }
         }
 
         &__a {
@@ -74,7 +74,7 @@
 
           display: block; 
 
-          @include breakpoint($small) { 
+          @include breakpoint($medium) { 
             margin-bottom: 0;
             width: auto;
 

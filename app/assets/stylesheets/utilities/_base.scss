@@ -180,6 +180,26 @@ emphasis { font-style: italic; }
 }
 
 //--------------------------------------------------
+// section padding
+//--------------------------------------------------
+.section-padding--top {
+  padding-top: $section-padding-top-mobile;
+  @include breakpoint($small) { padding-top: $section-padding-top-tablet; }
+  @include breakpoint($medium) { padding-top: $section-padding-top-desktop; }
+}
+
+.section-padding--bottom {
+  padding-bottom: $section-padding-bottom-mobile;
+  @include breakpoint($small) { padding-bottom: $section-padding-bottom-tablet; }
+  @include breakpoint($medium) { padding-bottom: $section-padding-bottom-desktop; }
+}
+
+.section-padding {
+  @extend .section-padding--top;
+  @extend .section-padding--bottom;
+}
+
+//--------------------------------------------------
 // item padding
 //--------------------------------------------------
 .item-padding { @include item-padding(); }
@@ -190,6 +210,8 @@ emphasis { font-style: italic; }
 
 .item-padding--top { @include item-padding('top'); }
 .item-padding--bottom { @include item-padding('bottom'); }
+
+.item-margin { @include item-padding('all', 'margin'); }
 
 .item-margin--top { @include item-padding('top', 'margin'); }
 .item-margin--bottom { @include item-padding('bottom', 'margin'); }

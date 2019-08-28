@@ -4,6 +4,9 @@ class Metadata < ApplicationRecord
   has_and_belongs_to_many :countries
   has_and_belongs_to_many :regions
 
+  scope :global_metadata, -> { joins(:countries).merge(Country.where(name: 'Global')).where.not(resource: exceptions.pluck(:resource)) }
+  scope :regional_metadata, -> { joins(:countries).merge(Country.where.not(name: 'Global').or(exceptions)).distinct }
+
   TABLE_HEADERS = [
     {
       name: "category",
@@ -31,15 +34,20 @@ class Metadata < ApplicationRecord
     }
   ].to_json
 
-  def self.metadata(params, pagination = true)
+  def self.exceptions
+    Metadata.where(resource: ['Tropical Coastal Ecosystem Portal', 'Tracking apex marine predator movements in a dynamic ocean', 'Large-scale marine protected areas: guidelines for design and management'])
+  end
+
+  def self.metadata(params, type = 'global', pagination = true)
     output = []
+    data = Metadata.public_send("#{type}_metadata")
     filters = sanitize_params(params['filters'])
     filter_data = if params.dig('searchTerm').present?
-                    Metadata.like_query(params['searchTerm'])
+                    data.like_query(params['searchTerm'])
                   elsif params.dig('filters').present?
-                    Metadata.where(filters)
+                    data.where(filters)
                   else
-                    Metadata.all
+                    data
                   end
     filter_data = location_filter(filter_data, @location_filters) unless params.dig('searchTerm').present?
     metadata = sorting_data(params, filter_data, pagination)

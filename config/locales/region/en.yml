@@ -1,0 +1,9 @@
+en:
+  region:
+    title: Regional and national resources
+    intro: 
+      - The evolving list on this page identifies regional and national marine and coastal datasets of biodiversity importance, updated on a quarterly basis. Information or 'metadata' on each dataset is also provided, indicating the source, type, access and uses of each. Use the filters below to explore the list. 
+      - "Download the <a href='http://wcmc.io/MarineDataManual' title='View the metadata sheets' target='_blank'>full set of detailed metadata sheets</a> accompanying this resource from the UNEP-WCMC website."
+      - For metadata relevant to global data, please visit our <a href="/metadata" title="View regional and national resources">global resources</a>.
+    disclaimer-cpps: Technical reports made by specialists may contain points of view that are not necessarily shared by the General Secretariat or by CPPS Member countries.
+    disclaimer-fao: The views expressed in this information product are those of the author(s) and do not necessarily reflect the views or policies of the Food and Agriculture Organization of the United Nations (FAO).

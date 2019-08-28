@@ -1,4 +1,4 @@
-class MetadataSerializer
+class RegionalSerializer
   def initialize(metadata, all_data)
     @metadata = metadata
     @all_data = all_data
@@ -58,18 +58,40 @@ class MetadataSerializer
         type: "multiple"
       },
       {
+        name: "country",
+        title: "Country",
+        filter: true,
+        options: unique_location('country'),
+        sortButtons: false,
+        type: "search"
+      },
+      {
+        name: "region",
+        title: "Region",
+        filter: true,
+        options: unique_location('region'),
+        sortButtons: false,
+        type: "search"
+      },
+      {
         name: "license_number",
         title: "Licence",
         filter: true,
         options: unique_license,
         sortButtons: false,
-        type: "search",
-        # selectMultiple: {
-        #   title: "Select ALL open access licences",
-        #   filter: "open_access"
-        # }
+        type: "search"
       }
     ]
+  end
+
+  def unique_location(location)
+    uniq_data = []
+    place = location.pluralize.to_sym
+    datas = @all_data.includes(place)
+    datas.each do |data|
+      uniq_data << data.public_send(place).pluck(:name)
+    end
+    uniq_data.flatten.uniq.sort
   end
 
   def unique_theme

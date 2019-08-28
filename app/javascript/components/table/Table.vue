@@ -1,7 +1,7 @@
 <template>
   <div>
     <table class="table table--head">
-      <table-head :tableHeaders="tableHeaders"></table-head>
+      <table-head :post="post" :tableHeaders="tableHeaders"></table-head>
     </table>
     
     <table class="table table--body">
@@ -28,7 +28,8 @@
 
     props: {
       tableHeaders: { type: Array },
-      items: { type: Array }
+      items: { type: Array },
+      post: String
     },
 
     mounted () {

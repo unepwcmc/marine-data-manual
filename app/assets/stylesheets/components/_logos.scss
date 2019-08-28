@@ -1,0 +1,42 @@
+//--------------------------------------------------
+// mixins
+//--------------------------------------------------
+@mixin logo-basic() {
+  margin: rem-calc(20);
+}
+
+//--------------------------------------------------
+// classes
+//--------------------------------------------------
+.logos {
+  @include flex-wrap;
+
+  @include breakpoint($medium) { @include flex-nowrap; }
+}
+
+.logo {
+  &--cpps {
+    @include logo-basic();
+    width: 70px; height: 70px;
+  }
+  
+  &--fao {
+    @include logo-basic();
+    width: 170px; height: 58px;
+  }
+
+  &--gef {
+    @include logo-basic();
+    width: 50px; height: 58px;
+  }
+
+  &--nairobi-convention {
+    @include logo-basic();
+    width: 70px; height: 70px;
+  }
+
+  &--unep {
+    @include logo-basic();
+    width:80px; height: 58px;
+  }
+}

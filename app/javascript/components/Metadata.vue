@@ -4,7 +4,7 @@
     
     <filters :filters="filters"></filters>
 
-    <v-table :tableHeaders="tableHeaders" :items="items"></v-table>
+    <v-table :tableHeaders="tableHeaders" :items="items" :post="post"></v-table>
 
     <pagination 
       :currentPage="currentPage"
@@ -34,10 +34,12 @@
 
     props: {
       tableHeaders: Array,
+      dataSrc: String,
       itemsPerPage: {
         type: Number,
         default: 10
-      }
+      },
+      post: String
     },
 
     data () {
@@ -87,7 +89,7 @@
         axios.defaults.headers.common['Accept'] = 'application/json'
 
 
-        axios.post('/metadata-list', data)
+        axios.post(this.dataSrc, data)
         .then(response => {
           this.updateProperties(response.data)
         })

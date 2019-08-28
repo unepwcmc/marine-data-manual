@@ -1,4 +1,4 @@
-class MetadataController < ApplicationController
+class RegionController < ApplicationController
   DEFAULT_ATTRIBUTES = {
     'filters': [],
     'items_per_page': 10,
@@ -9,18 +9,18 @@ class MetadataController < ApplicationController
 
   def index
     @table_headers = Metadata::TABLE_HEADERS
-    data, count, all_data = Metadata.metadata(DEFAULT_ATTRIBUTES.as_json)
-    @metadata = MetadataSerializer.new(data, all_data).pagination(DEFAULT_ATTRIBUTES['requested_page'], count)
+    data, count, all_data = Metadata.metadata(DEFAULT_ATTRIBUTES.as_json, 'regional')
+    @metadata = RegionalSerializer.new(data, all_data).pagination(DEFAULT_ATTRIBUTES['requested_page'], count)
   end
 
-  def metadata_list
-    data, count, all_data = Metadata.metadata(permitted_attributes.as_json)
-    @metadata = MetadataSerializer.new(data, all_data).pagination(permitted_attributes.as_json['requested_page'], count)
+  def region_list
+    data, count, all_data = Metadata.metadata(permitted_attributes.as_json, 'regional')
+    @metadata = RegionalSerializer.new(data, all_data).pagination(permitted_attributes.as_json['requested_page'], count)
     render json: @metadata
   end
 
   def download
-    data = Metadata.metadata(permitted_attributes.as_json, 'global', false).first
+    data = Metadata.metadata(permitted_attributes.as_json, 'regional', false).first
     send_data Metadata.to_csv(data), {
               type: "text/csv; charset=utf-8; header=present",
               disposition: "attachment",

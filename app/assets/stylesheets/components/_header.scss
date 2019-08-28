@@ -29,7 +29,7 @@
   min-height: rem-calc(250);
 
   @include breakpoint($small){ min-height: rem-calc(390); }
-  @include breakpoint($medium){ height: rem-calc(500); }
+  @include breakpoint($medium){ min-height: rem-calc(500); }
   
   align-items: center;
   display: flex;
@@ -42,7 +42,7 @@
     @include breakpoint($small){ margin-top: rem-calc(81); } //match the height of the topbar
     @include breakpoint($medium){ 
       margin-top: rem-calc(96); //match the height of the topbar
-      margin-right: rem-calc(160);
+      margin-bottom: rem-calc(40);
     } 
   }
 
@@ -54,7 +54,7 @@
       display: inline-block;
 
       @include breakpoint($small){ padding: rem-calc(20 35 24 24); }
-      @include breakpoint($medium){ padding: rem-calc(24 45 30 60); }
+      @include breakpoint($medium){ padding: rem-calc(24 45 30 $gutter-large); }
     }
 
     &__intro {
@@ -69,7 +69,7 @@
 
       @include breakpoint($medium){ 
         font-size: rem-calc(18);
-        padding: rem-calc(20 20 10 60); 
+        padding: rem-calc(20 20 10 $gutter-large); 
       }
     }
 
@@ -137,4 +137,5 @@
   &--environmental-impact-assessment { background-image: image-url('hero/environmental-impact-assessment.jpg'); } 
   &--marine-spatial-planning { background-image: image-url('hero/marine-spatial-planning.jpg'); }
   &--metadata { background-image: image-url('hero/coral.jpg'); } 
+  &--region { background-image: image-url('hero/regional-metadata.jpg'); } 
 }

@@ -2,7 +2,7 @@ en:
   theme:
     marine-spatial-planning:
       id: marine-spatial-planning
-      title: Marine Spaital Planning
+      title: Marine Spatial Planning
       tagline: Marine spatial planning involves allocating space to different marine and coastal activities to ensure balanced and sustainable use of the marine environment. Marine and coastal biodiversity data can be used to identify priority areas for management or conservation and to guide spatial planning processes.
       intro:
         - Marine spatial planning is a way to manage where different ocean-based activities will take place in space and time. The aim is to ensure sustainable use and protection of the marine environment by balancing different user activities in order to maximize benefits and prevent conflict.

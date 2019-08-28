@@ -1,7 +1,7 @@
-<footer class="footer flex-stacked-small flex-h-between flex-v-center">
+<footer class="footer flex-h-between flex-v-center">
   <%= image_tag 'logos/logo-ocean-plus-library.svg', alt: 'Ocean+ Library logo', class: 'footer__logo' %>
 
-  <div class="flex-stacked-small flex-v-center">
+  <div class="footer__logos flex-v-center">
     <div class="footer__partner-logos flex flex-v-center">
       <%= link_to 'https://panorama.solutions/en/portal/marine-and-coastal', title: 'Visit Panorama', target: '_blank', class: 'footer__link flex-inline' do %>
         <%= image_tag 'logos/logo-panorama.svg', alt: 'Panorama logo', class: 'footer__logo--panorama' %>
@@ -16,10 +16,10 @@
       <% end %>
 
       <%= link_to 'http://unep-wcmc.org', title: 'Visit the UN Environment World Conservation Monitoring Centre', target: '_blank', class: 'footer__link flex-inline' do %>
-        <%= image_tag 'https://s3.amazonaws.com/wcmc.logo/UN-Environment-WCMC+logo+2017+white.svg', alt: 'UN Environment World Conservation Monitoring Centre logo', class: 'footer__logo--wcmc' %>
+        <%= image_tag 'https://s3.amazonaws.com/wcmc.logo/UNEP_WCMC_logo_white.svg', alt: 'UN Environment World Conservation Monitoring Centre logo', class: 'footer__logo--wcmc' %>
     	<% end %>
     </div>
 
-  	<span class="italic">&copy; Copyright <%= Date.today.year %></span>
+    <span class="italic">&copy; Copyright <%= Date.today.year %></span>
   </div>
 </footer>

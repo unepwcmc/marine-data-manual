@@ -3,6 +3,9 @@
     <i class="header--theme__icon icon--theme icon--theme-<%= @id %>"></i>
     <h1><%= t("theme.#{@id}.title") %></h1>
     <p class="header--theme__intro intro"><%= t("theme.#{@id}.tagline").html_safe %></p>
-    <%= link_to 'Metadata list', metadata_path + '?theme=' + @id, title: 'View the list of Metadata', class: 'button button--large button--outline button--line-orange' %>
+    <div>
+      <%= link_to 'Global resources', metadata_path + '?theme=' + @id, title: 'View the list of global resources', class: 'button button--large button--outline button--line-orange item-margin' %>
+      <%= link_to 'Regional resources', region_path + '?theme=' + @id, title: 'View the list of regional resources', class: 'button button--large button--outline button--line-orange item-margin' %>
+    </div>
   </div>
 </header>
