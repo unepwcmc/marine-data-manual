@@ -36,25 +36,22 @@ namespace :import do
       environmental_impact_assessment: csv_headers[15],
       ecosystem_assessment: csv_headers[16],
       ecosystem_services: csv_headers[17],
-      pdf_link: csv_headers[18],
-      language: csv_headers[19].chomp
+      pdf_link: csv_headers[18].chomp
     }
 
     CSV.parse(csv, headers: true, encoding: "utf-8") do |row|
       csv_hash = row.to_hash
-      csv_metadata_row = csv_hash.except('Country', 'Region', 'Other access use constraints')
+      csv_metadata_row = csv_hash.except('Country', 'Region', 'Language')
       csv_country_row = csv_hash.delete('Country').split(';')
       csv_region_row = csv_hash.delete('Region').split(';')
+      csv_language_row = csv_hash.delete('Language').split(Regexp.union([',', ';']))
       metadata_row_hash = {}
-      languages = nil
 
       metadata_hash.keys.each do |key|
         if key == :metadata
           metadata_row_hash[key] = csv_metadata_row[metadata_hash[key]]&.strip || false
         elsif key == :factsheet
           metadata_row_hash[key] = csv_metadata_row[metadata_hash[key]]&.strip || nil
-        elsif key == :language
-          languages = csv_metadata_row[metadata_hash[key]]&.split(",").map{|s| s.strip }
         else
           metadata_row_hash[key] = csv_metadata_row[metadata_hash[key]]&.strip
         end
@@ -65,20 +62,11 @@ namespace :import do
       begin
         ActiveRecord::Base.transaction do
           meta = Metadata.find_or_create_by(dataset_id: current_dataset_id) do |metadata|
-                   metadata.update_attributes(metadata_row_hash)
-                 end
-
-          languages.each do |l|
-            lang = Language.find_or_create_by(language_id: l, name: l)
-            
-            MetadataLanguage.find_or_create_by(
-              language_id: lang.id, 
-              metadata_id: meta.id
-            )
+            metadata.update_attributes(metadata_row_hash)
           end
-          import_location('country', csv_country_row, meta)
-          import_location('region', csv_region_row, meta)
-
+          import_association('country', csv_country_row, meta)
+          import_association('region', csv_region_row, meta)
+          import_association('language', csv_language_row, meta)
         end
       rescue => e
         p e
@@ -91,7 +79,7 @@ namespace :import do
     Rails.logger.info "Imported Metadata, total records: #{Metadata.count}"
   end
 
-  def import_location(field, values, metadata)
+  def import_association(field, values, metadata)
     klass = field.titleize.constantize
     association = field.pluralize
     values.each do |value|
