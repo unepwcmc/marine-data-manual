@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190603130627) do
+ActiveRecord::Schema.define(version: 20190821103816) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,13 @@ ActiveRecord::Schema.define(version: 20190603130627) do
   create_table "countries_metadata", id: false, force: :cascade do |t|
     t.bigint "metadata_id", null: false
     t.bigint "country_id", null: false
+  end
+
+  create_table "languages", force: :cascade do |t|
+    t.string "language_id"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "metadata", force: :cascade do |t|
@@ -46,6 +53,13 @@ ActiveRecord::Schema.define(version: 20190603130627) do
     t.string "pdf_link"
     t.string "license_url"
     t.boolean "open_access"
+  end
+
+  create_table "metadata_languages", force: :cascade do |t|
+    t.bigint "language_id"
+    t.bigint "metadata_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "metadata_regions", id: false, force: :cascade do |t|

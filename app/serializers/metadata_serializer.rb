@@ -68,8 +68,26 @@ class MetadataSerializer
         #   title: "Select ALL open access licences",
         #   filter: "open_access"
         # }
+      },
+      {
+        name: "language",
+        title: "Language",
+        filter: true,
+        options: unique_language('language'),
+        sortButtons: false,
+        type: "multiple"
       }
     ]
+  end
+
+  def unique_language(language)
+    uniq_data = []
+    lang = language.pluralize.to_sym
+    datas = @all_data.includes(lang)
+    datas.each do |data|
+      uniq_data << data.public_send(lang).pluck(:name)
+    end
+    uniq_data.flatten.uniq.sort
   end
 
   def unique_theme
