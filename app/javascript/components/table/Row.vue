@@ -23,6 +23,7 @@
         <p><span class="bold">Metadata:</span> <a v-if="hasMetadata" :href="item.pdf_link" title="View metadata" class="external" target="_blank">Link ></a></p>
         <p><span class="bold">Factsheet:</span> <a v-if="hasFactsheet" :href="item.factsheet" title="View factsheet" class="external" target="_blank">Link ></a></p>
         <p><span class="bold">Licence:</span> <a v-if="hasLicence" :href="item.licence_url" title="View licence" class="external" target="_blank">Link ></a></p>
+        <p><span class="bold">ABNJ related:</span> {{ item.abnj_rel }}</p>
       </div>
       <div class="table__row--expandable__td">
         <p class="bold">Themes:</p>
