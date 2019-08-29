@@ -36,7 +36,9 @@ namespace :import do
       environmental_impact_assessment: csv_headers[15],
       ecosystem_assessment: csv_headers[16],
       ecosystem_services: csv_headers[17],
-      pdf_link: csv_headers[18].chomp
+      pdf_link: csv_headers[18],
+      abnj_rel: csv_headers[20],
+      abnj_proj: csv_headers[21].chomp
     }
 
     CSV.parse(csv, headers: true, encoding: "utf-8") do |row|
