@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190821103816) do
+ActiveRecord::Schema.define(version: 20190829130627) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,8 @@ ActiveRecord::Schema.define(version: 20190821103816) do
     t.string "pdf_link"
     t.string "license_url"
     t.boolean "open_access"
+    t.boolean "abnj_rel"
+    t.boolean "abnj_proj"
   end
 
   create_table "metadata_languages", force: :cascade do |t|
