@@ -95,7 +95,7 @@ class MetadataSerializer
     @all_data.each do |data|
       themes << data.attributes
                     .select { |_k, v| v == true }
-                    .delete_if { |k, _v| k.in? %w[metadata open_access] }
+                    .delete_if { |k, _v| k.in? %w[metadata open_access abnj_rel abnj_proj] }
                     .keys
     end
     themes.flatten.uniq.map(&:humanize).sort.rotate!
