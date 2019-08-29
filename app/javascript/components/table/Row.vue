@@ -23,7 +23,7 @@
         <p><span class="bold">Metadata:</span> <a v-if="hasMetadata" :href="item.pdf_link" title="View metadata" class="external" target="_blank">Link ></a></p>
         <p><span class="bold">Factsheet:</span> <a v-if="hasFactsheet" :href="item.factsheet" title="View factsheet" class="external" target="_blank">Link ></a></p>
         <p><span class="bold">Licence:</span> <a v-if="hasLicence" :href="item.licence_url" title="View licence" class="external" target="_blank">Link ></a></p>
-        <p><span class="bold">ABNJ related:</span> {{ item.abnj_rel }}</p>
+        <p><span class="bold">Includes data for ABNJ:</span> {{ includesABNJ(item) }}</p>
       </div>
       <div class="table__row--expandable__td">
         <p class="bold">Themes:</p>
@@ -82,6 +82,10 @@
     },
 
     methods: {
+      includesABNJ (item) {
+        return item.abnj_rel ? 'Yes' : 'No'
+      },
+      
       trim (phrase) {
         const length = phrase.length
         let output
