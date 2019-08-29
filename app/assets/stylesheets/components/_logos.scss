@@ -2,7 +2,7 @@
 // mixins
 //--------------------------------------------------
 @mixin logo-basic() {
-  margin: rem-calc(20);
+  margin: rem-calc(14 20);
 }
 
 //--------------------------------------------------
@@ -12,6 +12,12 @@
   @include flex-wrap;
 
   @include breakpoint($medium) { @include flex-nowrap; }
+
+  &__header {
+    font-size: rem-calc(16);
+    line-height: $header-lh;
+    margin-bottom: 0;
+  }
 }
 
 .logo {
@@ -32,11 +38,11 @@
 
   &--nairobi-convention {
     @include logo-basic();
-    width: 70px; height: 70px;
+    width: 58px; height: 58px;
   }
 
   &--unep {
     @include logo-basic();
-    width:80px; height: 58px;
+    width: 76px; height: 76px;
   }
 }

@@ -1,4 +1,10 @@
-<header class="header--home %>">
+<header class="relative header--home">
+  <%= video_tag 'turtle.mp4', 
+    autoplay: :autoplay, 
+    loop: :loop, 
+    muted: :muted,
+    class: "header__video" 
+  %>
   <div class="header__content container--medium">
     <h1><%= title %></h1>
     <%= about.html_safe %>

@@ -8,6 +8,11 @@
 
     <div id="v-app">
       <%= render 'global/topbar' %>
+
+      <% if is_theme_page %>
+        <%= render partial: 'themes/partials/header-theme', locals: { title: @title, headerClass: @headerClass, intro: @intro } %>
+      <% end %>
+
       <%= render 'global/social-sharing' %>
 
       <%= yield %>

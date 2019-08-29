@@ -80,15 +80,15 @@ class RegionalSerializer
         options: unique_license,
         sortButtons: false,
         type: "search"
-      },
-      {
-        name: "language",
-        title: "Language",
-        filter: true,
-        options: unique_location('language'),
-        sortButtons: false,
-        type: "multiple"
-      }
+      } #,
+      # {
+      #   name: "language",
+      #   title: "Language",
+      #   filter: true,
+      #   options: unique_location('language'),
+      #   sortButtons: false,
+      #   type: "multiple"
+      # }
     ]
   end
 

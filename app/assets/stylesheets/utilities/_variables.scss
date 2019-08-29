@@ -44,7 +44,8 @@ $header-lh: 1.4;
 //--------------------------------------------------
 // dimensions
 //--------------------------------------------------
-$site-width: rem-calc(1200);
+$site-width-px: 1200;
+$site-width: rem-calc($site-width-px);
 $site-width-medium: $site-width * .80;
 $site-width-small: $site-width * .60;
 
@@ -61,8 +62,8 @@ $radius-link: rem-calc(22);
 //--------------------------------------------------
 // breakpoints
 //--------------------------------------------------
-$small: rem-calc(720);
-$medium: $site-width;
+$small: 720;
+$medium: $site-width-px;
 
 //--------------------------------------------------
 // padding
