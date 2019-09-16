@@ -1,3 +1,7 @@
+### 2.1.1
+
+* Update csv
+
 ### 2.1.0
 
 * Addition of a contact form to submit metadata suggestions

@@ -10,7 +10,6 @@
 ## Local development
 
 - Clone repo
-- Request an `.env` file from the team
 - `bundle install`
 - `yarn install`
 - `rails s`
@@ -19,5 +18,5 @@
 
 - rails db:create db:migrate
 - Import metadata rake task
-- `rake import:metadata['lib/data/seed/OceanPlusLibrary-MetadataList-9Mar2019.csv']`
+- `rake import:metadata['lib/data/seed/oceanplus-library-11Sep2019-regional.csv']`
 - Check logs to see any errors
