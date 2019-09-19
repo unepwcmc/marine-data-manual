@@ -3,7 +3,7 @@ en:
     ecosystem-assessment:
       id: ecosystem-assessment
       title: Ecosystem Assessment
-      tagline: Marine and coastal datasets can help users to understand biological, ecological and oceanographic characteristics of a feature of interest. Relevant data are essential to assess and respond to changes in condition.
+      tagline: Marine and coastal datasets can help users understand biological, ecological and oceanographic characteristics of a feature of interest. Relevant data are essential to assess and respond to changes in condition.
       intro:
         - Limited access to the data required to track long-term changes in marine and coastal ecosystems or species can make it difficult to assess changes in condition, and to respond with appropriate and timely management measures.
         - Effective measurements of biodiversity change require a clear understanding of the biological and ecological characteristics of the feature of interest, and the appropriate scale and time frames over which a significant change in health and condition would occur.
