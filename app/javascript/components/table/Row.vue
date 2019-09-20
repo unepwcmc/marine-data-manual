@@ -22,7 +22,7 @@
         <p><span class="bold">Language:</span> {{ item.language }}</p>
         <p><span class="bold">Metadata:</span> <a v-if="hasMetadata" :href="item.pdf_link" title="View metadata" class="external" target="_blank">Link ></a></p>
         <p><span class="bold">Factsheet:</span> <a v-if="hasFactsheet" :href="item.factsheet" title="View factsheet" class="external" target="_blank">Link ></a></p>
-        <p><span class="bold">Licence:</span> <a v-if="hasLicence" :href="item.licence_url" title="View licence" class="external" target="_blank">Link ></a></p>
+        <p><span class="bold">Licence:</span> <a v-if="hasLicence" :href="item.license_url" title="View licence" class="external" target="_blank">Link ></a></p>
         <p><span class="bold">Includes data for ABNJ:</span> {{ includesABNJ(item) }}</p>
       </div>
       <div class="table__row--expandable__td">
@@ -73,7 +73,7 @@
       },
 
       hasLicence () {
-        return !!this.item.licence
+        return !!this.item.license_number
       },
 
       hasResourceLink () {
