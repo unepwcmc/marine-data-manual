@@ -19,5 +19,6 @@
 
 - rails db:create db:migrate
 - Import metadata rake task
-- `rake import:metadata['lib/data/seed/OceanPlusLibrary-MetadataList-9Mar2019.csv']`
+- bundle exec rake import:metadata[lib/data/seed/oceanplus-library-22Aug2019-global.csv,global]
+- bundle exec rake import:metadata[lib/data/seed/oceanplus-library-18Sep2019-regional.csv,regional]
 - Check logs to see any errors
