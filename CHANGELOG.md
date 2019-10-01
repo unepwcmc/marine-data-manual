@@ -1,3 +1,9 @@
+### 3.0.0
+
+* Addition of regional and global resources pages
+* Refresh homepage styling
+* Add new metadata fields shown in expanded view
+
 ### 2.1.0
 
 * Addition of a contact form to submit metadata suggestions

@@ -21,28 +21,23 @@
 }
 
 .logo {
-  &--cpps {
+  &--common-oceans {
     @include logo-basic();
-    width: 70px; height: 70px;
-  }
-  
-  &--fao {
-    @include logo-basic();
-    width: 170px; height: 58px;
+    width: rem-calc(116); height: rem-calc(58);
   }
 
-  &--gef {
+  &--cpps {
     @include logo-basic();
-    width: 50px; height: 58px;
+    width: rem-calc(70); height: rem-calc(70);
   }
 
   &--nairobi-convention {
     @include logo-basic();
-    width: 58px; height: 58px;
+    width: rem-calc(58); height: rem-calc(58);
   }
 
   &--unep {
     @include logo-basic();
-    width: 76px; height: 76px;
+    width: rem-calc(76); height: rem-calc(76);
   }
 }
