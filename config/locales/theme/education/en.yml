@@ -9,11 +9,11 @@ en:
         - For example, data layers can often be downloaded as shapefiles and used to teach students how to use mapping software, such as ArcGIS or QGIS. This provides the opportunity to work with datasets that demonstrate the current state of knowledge with regard to the ocean, while also learning new skills.
       case-study-intro: "Marine and coastal biodiversity datasets can be used alongside other datasets to support educational projects. To date, those hosted on the <a href='https://data.unep-wcmc.org' target='_blank' title='View the Ocean+ Data Viewer'>Ocean+ Data Viewer</a> have been used by:"
       case-study-bullets:
-        - <strong>Academics and teachers</strong> to train students and other individuals in how to use mapping software such as ArcGIS, to help strengthen their understanding of global marine biodiversity.
-        - <strong>Governments</strong> have used biodiversity data to support the development of public awareness campaigns and educational displays at international meetings. These efforts have raised awareness of key marine areas of biodiversity importance.
-        - <strong>Not-for-profits</strong> have used marine and coastal biodiversity data to improve their own understanding of marine biodiversity issues, and that of others. For example, through the hosting of workshops and training sessions.
-        - The <strong>media</strong> use biodiversity datasets to educate the public and raise awareness of environment and sustainable development issues. This often involves extracting key facts and figures and representing them in a more accessible manner. 
-        - The <strong>technology sector</strong> uses biodiversity data to increase their understanding of global environmental issues in line with their corporate social responsibilities. In turn, marine and coastal biodiversity datasets have been used to develop specialist software to tackle issues or reduce gaps in knowledge. 
+        - <strong>Academics and teachers</strong> to train students and other individuals in how to use mapping software such as ArcGIS and help strengthen their understanding of global marine biodiversity.
+        - <strong>Governments</strong> to support the development of public awareness campaigns and educational displays at international meetings. These efforts have raised awareness of key marine areas of biodiversity importance.
+        - <strong>Not-for-profits</strong> to improve their own understanding of marine biodiversity issues, and that of others. For example, through the hosting of workshops and training sessions.
+        - The <strong>media</strong> to educate the public and raise awareness of environment and sustainable development issues. This often involves extracting key facts and figures and representing them in a more accessible manner.
+        - The <strong>technology sector</strong> to increase their understanding of global environmental issues in line with their corporate social responsibilities. In turn, marine and coastal biodiversity datasets have been used to develop specialist software to tackle issues or reduce gaps in knowledge.
       resources-intro: Various tools and resources exist, which utilise marine and coastal biodiversity data for educational purposes and to raise awareness.
       resources:
         - 
@@ -28,7 +28,7 @@ en:
           url: https://protectedplanet.net
         - 
           title: IOC-UNESCO Ocean Literacy Portal
-          content: The Ocean Literacy Portal serves as a worldwide one-stop shop, providing resources and content available to all, with the goal of creating an ocean-literate society able to make informed and responsible decisions on ocean resources and ocean sustainability. The Ocean Literacy Portal is a universal sharing platform.
+          content: The Ocean Literacy Portal serves as a worldwide one-stop shop, providing resources and content available to all, with the goal of creating an ocean-literate society that makes informed and responsible decisions on ocean resources and ocean sustainability. The Ocean Literacy Portal is a universal sharing platform.
           type: Website
           url: https://oceanliteracy.unesco.org/home/
         - 

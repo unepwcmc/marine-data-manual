@@ -1,10 +1,10 @@
 module HomeHelper
   def title
-    'Dive into Marine data'
+    'Dive into marine data'
   end
 
   def about
-    '<p>Ocean+ Library connects to the latest data and online resources on ocean biodiversity.</p><p>With technological advances, access to and use of the ocean has increased dramatically, along with available information on the state of the ocean and its resources. Through Ocean+ Library, identify the online data and information you need to make decisions about what matters to you.</p>'
+    '<p>Ocean+ Library connects to the latest data and online resources on ocean biodiversity.</p><p>With technological advances, access to ocean data has increased dramatically, including information on the state of the ocean and its resources. Through Ocean+ Library, identify the online data and information you need to make decisions about what matters to you.</p>'
   end
 
   def theme_title 
