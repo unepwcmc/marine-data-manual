@@ -23,21 +23,21 @@
 .logo {
   &--common-oceans {
     @include logo-basic();
-    width: 116px; height: 58px;
+    width: rem-calc(116); height: rem-calc(58);
   }
 
   &--cpps {
     @include logo-basic();
-    width: 70px; height: 70px;
+    width: rem-calc(70); height: rem-calc(70);
   }
 
   &--nairobi-convention {
     @include logo-basic();
-    width: 58px; height: 58px;
+    width: rem-calc(58); height: rem-calc(58);
   }
 
   &--unep {
     @include logo-basic();
-    width: 76px; height: 76px;
+    width: rem-calc(76); height: rem-calc(76);
   }
 }
