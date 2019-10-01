@@ -21,19 +21,14 @@
 }
 
 .logo {
+  &--common-oceans {
+    @include logo-basic();
+    width: 116px; height: 58px;
+  }
+
   &--cpps {
     @include logo-basic();
     width: 70px; height: 70px;
-  }
-  
-  &--fao {
-    @include logo-basic();
-    width: 170px; height: 58px;
-  }
-
-  &--gef {
-    @include logo-basic();
-    width: 50px; height: 58px;
   }
 
   &--nairobi-convention {
