@@ -11,9 +11,12 @@ import NavBurger from './components/nav/NavBurger.vue'
 import NavLink from './components/nav/NavLink.vue'
 import Popout from './components/popout/Popout.vue'
 
-Vue.use(VueAnalytics, {
-  id: 'UA-112614361-2'
-})
+if (window._railsEnv === 'production') {
+  Vue.use(VueAnalytics, {
+    id: 'UA-112614361-2',
+    checkDuplicatedScript: true
+  })
+}
 
 // create event hub and export so that it can be imported into .vue files
 export const eventHub = new Vue()
