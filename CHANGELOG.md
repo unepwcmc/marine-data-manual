@@ -1,3 +1,7 @@
+### 3.0.1
+
+* Fix analytics
+
 ### 3.0.0
 
 * Addition of regional and global resources pages
