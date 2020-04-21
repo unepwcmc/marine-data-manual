@@ -1,98 +1,96 @@
 //--------------------------------------------------
 // icons
 //--------------------------------------------------
-.icon {
 
-  &--round {
-    background-size: 100%;
-    border-radius: 100%;
-    width: rem-calc(39); height: rem-calc(39);
-    text-align: center;
+.icon--round {
+  background-size: 100%;
+  border-radius: 100%;
+  text-align: center;
+  width: rem-calc(39); height: rem-calc(39);
 
-    display: inline-block;
-  }
+  display: inline-block;
+}
 
-  &--plus { background-image: image-url('icons/plus.svg'); }
+.icon--plus { background-image: image-url('icons/plus.svg'); }
 
-  &--minus { background-image: image-url('icons/minus.svg'); }
+.icon--minus { background-image: image-url('icons/minus.svg'); }
 
-  &--share { background-image: image-url('icons/share.svg'); }
+.icon--share { background-image: image-url('icons/share.svg'); }
 
-  &--tick { background-image: image-url('icons/tick.svg'); }
+.icon--tick { background-image: image-url('icons/tick.svg'); }
 
-  &--clear { background-image: image-url('icons/clear.svg'); }
+.icon--clear { background-image: image-url('icons/clear.svg'); }
 
-  &--theme {
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-    color: white;
+.icon--theme {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  color: $white;
 
-    display: inline-block;
+  display: inline-block;
 
-    &-marine-spatial-planning { 
-      background-image: image-url('icons/marine.svg');
-      
-      &.icon--round { 
-        background-color: $theme-1; 
-        background-size: rem-calc(23);
-      }
-    }
+  &-marine-spatial-planning { 
+    background-image: image-url('icons/marine.svg');
     
-    &-education { 
-      background-image: image-url('icons/education.svg');
-
-      &.icon--round { 
-        background-color: $theme-2; 
-        background-size: rem-calc(23);
-      }
-    }
-
-    &-ecosystem-assessment { 
-      background-image: image-url('icons/ecosystem-assessment.svg');
-
-      &.icon--round { 
-        background-color: $theme-3;
-        background-size: rem-calc(23);
-      }
-    }
-
-    &-environmental-impact-assessment { 
-      background-image: image-url('icons/environmental.svg');
-
-      &.icon--round { 
-        background-color: $theme-4; 
-        background-size: rem-calc(23);
-      }
-    }
-
-    &-ecosystem-services { 
-      background-image: image-url('icons/ecosystem-services.svg');
-
-      &.icon--round { 
-        background-color: $theme-5; 
-        background-size: rem-calc(23);
-      }
+    &.icon--round { 
+      background-color: $theme-1; 
+      background-size: rem-calc(23);
     }
   }
+
+  &-education { 
+    background-image: image-url('icons/education.svg');
+
+    &.icon--round { 
+      background-color: $theme-2; 
+      background-size: rem-calc(23);
+    }
+  }
+
+  &-ecosystem-assessment { 
+    background-image: image-url('icons/ecosystem-assessment.svg');
+
+    &.icon--round { 
+      background-color: $theme-3;
+      background-size: rem-calc(23);
+    }
+  }
+
+  &-environmental-impact-assessment { 
+    background-image: image-url('icons/environmental.svg');
+
+    &.icon--round { 
+      background-color: $theme-4; 
+      background-size: rem-calc(23);
+    }
+  }
+
+  &-ecosystem-services { 
+    background-image: image-url('icons/ecosystem-services.svg');
+
+    &.icon--round { 
+      background-color: $theme-5; 
+      background-size: rem-calc(23);
+    }
+  }
+}
 
 //--------------------------------------------------
 // social
 //--------------------------------------------------
-  &--social {
-    background-position: center;
-    background-repeat: no-repeat;
-    width: rem-calc(48); height: rem-calc(48);
+.icon--social {
+  background-position: center;
+  background-repeat: no-repeat;
+  width: rem-calc(48); height: rem-calc(48);
 
-    display: block;
+  display: block;
 
-    @include breakpoint($small) { width: rem-calc(58); }
+  @include breakpoint($small) { width: rem-calc(58); }
 
-    &:hover { opacity: .75; }
+  &:hover { opacity: .75; }
 
-    &-facebook { background-image: image-url('icons/facebook.svg'); }
-    &-email { background-image: image-url('icons/email.svg'); }
-    &-twitter { background-image: image-url('icons/twitter.svg'); }
-    &-linkedin { background-image: image-url('icons/linkedin.svg'); }
-  }
+  &-facebook { background-image: image-url('icons/facebook.svg'); }
+  &-email { background-image: image-url('icons/email.svg'); }
+  &-twitter { background-image: image-url('icons/twitter.svg'); }
+  &-linkedin { background-image: image-url('icons/linkedin.svg'); }
 }

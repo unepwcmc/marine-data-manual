@@ -13,14 +13,14 @@
   position: absolute;
   z-index: $z-100;
 
-  @include breakpoint($small){ padding: rem-calc(17 20 16 20); }
+  @include breakpoint($small) { padding: rem-calc(17 20 16 20); }
   
   &__logo {
     width: rem-calc(94); height: rem-calc(33);
 
     display: block;
 
-    @include breakpoint($small){ width: rem-calc(140); height: rem-calc(48); }
-    @include breakpoint($medium){ width: rem-calc(183); height: rem-calc(63); }
+    @include breakpoint($small) { width: rem-calc(140); height: rem-calc(48); }
+    @include breakpoint($medium) { width: rem-calc(183); height: rem-calc(63); }
   }
 }

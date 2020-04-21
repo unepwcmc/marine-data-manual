@@ -4,13 +4,13 @@
 .footer {
   @include flex-column;
   background-color: $primary;
-  color: white;
+  color: $white;
   font-size: rem-calc(13);
   padding: rem-calc(20) $gutter-small;
   width: 100%;
-
-  align-items: center;
+  
   display: flex;
+  align-items: center;
 
   @include breakpoint($small) {
     @include flex-row;
@@ -41,8 +41,8 @@
           @include breakpoint($small) { width: rem-calc(90); height: rem-calc(34); }
           @include breakpoint($medium) { width: rem-calc(105); height: rem-calc(36); }
 
-          &--wcmc, 
-          &--geobon, 
+          &--wcmc,
+          &--geobon,
           &--proteus,
           &--panorama {
             margin-right: rem-calc(12);
@@ -60,3 +60,4 @@
           }
         }
 }
+

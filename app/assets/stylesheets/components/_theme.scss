@@ -2,10 +2,10 @@
 // theme
 //--------------------------------------------------
 .theme {
-  color: white;
+  color: $white;
   padding: rem-calc(30);
   
-  @include breakpoint($small) { margin: 1% 0 1% 0; }
+  @include breakpoint($small) { margin: 1% 0; }
   @include breakpoint($medium) { margin: 1%; }
 
   &:nth-child(1),
@@ -29,12 +29,14 @@
 
     display: block;
 
-    @include breakpoint($small){
+    @include breakpoint($small) {
       margin-bottom: 0;
       width: rem-calc(90); height: rem-calc(90);
     }
 
-    @include breakpoint($medium){ width: rem-calc(122); height: rem-calc(122); }
+    @include breakpoint($medium) { 
+      width: rem-calc(122); height: rem-calc(122); 
+    }
   }
 
   &__copy {
@@ -42,8 +44,9 @@
   }
 
   &__button {
-    align-self: flex-start; //needed for IE11
     font-size: rem-calc(16);
     margin: auto auto 0 0;
+
+    align-self: flex-start; //needed for IE11
   }
 }

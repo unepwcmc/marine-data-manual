@@ -151,7 +151,7 @@ $color-text-active: $black;
     }
 
     &--resource { 
-      @include breakpoint($medium){ width: rem-calc(500); }
+      @include breakpoint($medium) { width: rem-calc(500); }
     }
 
     &--search {
@@ -254,7 +254,7 @@ $color-text-active: $black;
     .search__input {
       border-bottom-right-radius: 0;
       border-bottom-left-radius: 0;
-      border: none;
+      border: 0;
       border-bottom: 1px solid grey;
       padding: rem-calc(0 56 0 25);
       width: 100%; height: rem-calc(56);  

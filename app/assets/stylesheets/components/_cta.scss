@@ -3,17 +3,17 @@
 //--------------------------------------------------
 .cta {
   background-color: rgba($primary, .9);
-  color: white;
+  color: $white;
   padding: rem-calc(32 20 22 20);
 
-  a { color: white; }
+  a { color: $white; }
 
   &__content {
     margin: 0 auto;
     width: 84%;
   }
 
-    &__small {
-      font-size: rem-calc(14);
-    }
+  &__small {
+    font-size: rem-calc(14);
+  }
 }

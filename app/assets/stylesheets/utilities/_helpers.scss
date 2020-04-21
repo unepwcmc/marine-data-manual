@@ -48,13 +48,13 @@
   margin-top: rem-calc(26);
   padding-left: rem-calc(20);
 
-  @include breakpoint($small){ padding-left: 0; }
+  @include breakpoint($small) { padding-left: 0; }
 
   li {
     margin-bottom: rem-calc(14);
     padding-right: rem-calc(26);
 
-    @include breakpoint($small){
+    @include breakpoint($small) {
       flex: 0 1 48%;
       margin-left: 2%;
     }

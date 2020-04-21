@@ -1,7 +1,7 @@
 //--------------------------------------------------
 // button mixins
 //--------------------------------------------------
-@mixin button-background($colour){
+@mixin button-background($colour) {
   background-color: $colour;
 
   &:hover { background-color: lighten($colour, 10%); }
@@ -22,93 +22,93 @@
 //--------------------------------------------------
 .button {
   border-radius: $radius-global;
-  border: none;
-  color: white;
+  border: 0;
+  color: $white;
   cursor: pointer;
   font-weight: bold;
   padding: rem-calc(12 17);
   text-decoration: none;
 
   display: inline-block;
+}
 
-  &--large { 
-    font-size: rem-calc(18);
+.button--large { 
+  font-size: rem-calc(18);
 
-    @include breakpoint($small){ font-size: rem-calc(20); }
-  }
-  
-  &--blue { @include button-background($blue); }
-  &--green { @include button-background($green); }
-  &--grey { @include button-background($grey-dark); }
+  @include breakpoint($small) { font-size: rem-calc(20); }
+}
 
-  &--line-white { border: solid white rem-calc(2); }
-  &--line-orange { border: solid $secondary rem-calc(2); }
+.button--blue { @include button-background($blue); }
+.button--green { @include button-background($green); }
+.button--grey { @include button-background($grey-dark); }
 
-  &--outline { 
-    border-radius: $radius-link; 
-    padding: rem-calc(6 15 7 15);
+.button--line-white { border: solid $white rem-calc(2); }
+.button--line-orange { border: solid $secondary rem-calc(2); }
 
-    &:hover { background-color: rgba(white, .25); }
+.button--outline { 
+  border-radius: $radius-link; 
+  padding: rem-calc(6 15 7 15);
 
-    &.button--large { 
-      padding: rem-calc(4 10 5 10); 
-      @include breakpoint($small){ padding: rem-calc(7 18 8 18); }
-    }
+  &:hover { background-color: rgba($white, .25); }
 
-    &.button--xlarge { 
-      border-radius: rem-calc(38);
-      @include breakpoint($medium){ padding: rem-calc(22 34 24 34); }
-    }
+  &.button--large { 
+    padding: rem-calc(4 10 5 10); 
+    @include breakpoint($small) { padding: rem-calc(7 18 8 18); }
   }
 
-  &--download {
-    background: $green image-url('icons/download.svg') no-repeat rem-calc(21) center;
-    color: white;
-    padding-right: rem-calc(21);
-    padding-left: rem-calc(52);
+  &.button--xlarge { 
+    border-radius: rem-calc(38);
+    @include breakpoint($medium) { padding: rem-calc(22 34 24 34); }
   }
+}
 
-  &--next {
-    @extend %button--pagination;
-    background-image: image-url('icons/chevron-right.svg');
-  }
+.button--download {
+  background: $green image-url('icons/download.svg') no-repeat rem-calc(21) center;
+  color: $white;
+  padding-right: rem-calc(21);
+  padding-left: rem-calc(52);
+}
 
-  &--previous {
-    @extend %button--pagination;
-    background-image: image-url('icons/chevron-left.svg');
-    margin: rem-calc(0 6 0 8);
-  }
+.button--next {
+  @extend %button--pagination;
+  background-image: image-url('icons/chevron-right.svg');
+}
 
-  &--plain {
-    background-color: transparent;
-    border: none;
-    border-radius: 0;
-    font-size: $body-font-size;
-  }
+.button--previous {
+  @extend %button--pagination;
+  background-image: image-url('icons/chevron-left.svg');
+  margin: rem-calc(0 6 0 8);
+}
 
-  &--disabled {
-    background-color: $grey-light;
-    cursor: default;
+.button--plain {
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  font-size: $body-font-size;
+}
 
-    &:hover { background-color: $grey-light; }
-  }
+.button--disabled {
+  background-color: $grey-light;
+  cursor: default;
 
-  &--link {
-    background-color: transparent;
-    border: none;
-    border-radius: 0;
-    color: $body-font;
-    cursor: pointer;
-    font-size: rem-calc(18);
+  &:hover { background-color: $grey-light; }
+}
 
-    &:hover { text-decoration: underline; }
-  }
+.button--link {
+  background-color: transparent;
+  border: 0;
+  border-radius: 0;
+  color: $body-font;
+  cursor: pointer;
+  font-size: rem-calc(18);
 
-  &--link--green { color: $green; }
+  &:hover { text-decoration: underline; }
+}
 
-  &--link-chevron {
-    font-weight: bold;
+.button--link--green { color: $green; }
 
-    &:after { content: ' >' }
-  }
+.button--link-chevron {
+  font-weight: bold;
+
+  &::after { content: ' >'; }
 }

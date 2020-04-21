@@ -20,21 +20,21 @@ h1 {
   font-size: rem-calc(26);
   margin: 0;
 
-  @include breakpoint($small){ font-size: rem-calc(42); }
-  @include breakpoint($medium){ font-size: rem-calc(48); }
+  @include breakpoint($small) { font-size: rem-calc(42); }
+  @include breakpoint($medium) { font-size: rem-calc(48); }
 }
 
 h2 { 
   font-size: rem-calc(22);
   margin: rem-calc(0 0 10 0);
 
-  @include breakpoint($small){ font-size: rem-calc(24); }
+  @include breakpoint($small) { font-size: rem-calc(24); }
 
   &.heading--home {
     font-size: rem-calc(26);
     margin: 0 0 .6em 0;
 
-    @include breakpoint($small){ font-size: rem-calc(36); }
+    @include breakpoint($small) { font-size: rem-calc(36); }
   }
 }
 
@@ -47,9 +47,9 @@ h3 {
     font-size: rem-calc(22);
     margin: rem-calc(14 0 10 0);
 
-    @include breakpoint($small){ font-size: rem-calc(24); }
+    @include breakpoint($small) { font-size: rem-calc(24); }
     
-    @include breakpoint($medium){ min-height: calc(2 * #{$header-lh} * 24px); }
+    @include breakpoint($medium) { min-height: calc(2 * #{$header-lh} * 24px); }
   }
 }
 
@@ -116,15 +116,15 @@ emphasis { font-style: italic; }
 // site structure
 //--------------------------------------------------
 .site-width {
-  @include breakpoint($medium){ width: $site-width; }
+  @include breakpoint($medium) { width: $site-width; }
 }
 
 .site-width-small {
-  @include breakpoint($medium){ width: $site-width-small; }
+  @include breakpoint($medium) { width: $site-width-small; }
 }
 
 .site-width-medium {
-  @include breakpoint($medium){ width: $site-width-medium; }
+  @include breakpoint($medium) { width: $site-width-medium; }
 }
 
 .gutter {
@@ -161,14 +161,14 @@ emphasis { font-style: italic; }
 //--------------------------------------------------
 .padding--page-top { 
   padding-top: rem-calc(18);
-  @include breakpoint($small){ padding-top: rem-calc(42); }
+  @include breakpoint($small) { padding-top: rem-calc(42); }
 }
 
 .padding--page {
   @extend .padding--page-top;
   padding-bottom: rem-calc(18);
   
-  @include breakpoint($small){ 
+  @include breakpoint($small) { 
     padding-right: rem-calc(20);
     padding-bottom: rem-calc(120);
     padding-left: rem-calc(20);

@@ -1,18 +1,18 @@
 //--------------------------------------------------
 // colours
 //--------------------------------------------------
-$black: #000000;
-$black-translucent: rgba(black, .5);
-$white: #ffffff;
+$black: #000;
+$black-translucent: rgba($black, .5);
+$white: #fff;
 
-$blue-faint: #33548F;
-$blue-light: #EDEEF1;
+$blue-faint: #33548f;
+$blue-light: #edeef1;
 $blue: #2e425e;
 $blue-dark: #293039;
-$blue-link: #2D51B4;
+$blue-link: #2d51b4;
 
-$grey-light: #FAFAFB;
-$grey: #D5D8E1;
+$grey-light: #fafafb;
+$grey: #d5d8e1;
 $grey-dark: #606060;
 
 $green: #398439;
@@ -46,8 +46,8 @@ $header-lh: 1.4;
 //--------------------------------------------------
 $site-width-px: 1200;
 $site-width: rem-calc($site-width-px);
-$site-width-medium: $site-width * .80;
-$site-width-small: $site-width * .60;
+$site-width-medium: $site-width * .8;
+$site-width-small: $site-width * .6;
 
 $z-100: 100;
 $z-200: 200;
@@ -68,7 +68,7 @@ $medium: $site-width-px;
 //--------------------------------------------------
 // padding
 //--------------------------------------------------
-$gutter-small: rem-calc(11); 
+$gutter-small: rem-calc(11);
 $gutter-medium: rem-calc(18);
 $gutter-large: rem-calc(24);
 
