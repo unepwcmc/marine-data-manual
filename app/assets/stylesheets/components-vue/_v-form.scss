@@ -1,4 +1,5 @@
-.v-form__error {
+.v-form {
+  &__error {
     color: $red-required;
     font-style: normal;
     font-weight: bold;
