@@ -1,0 +1,73 @@
+{
+  "extends": "stylelint-config-sass-guidelines",
+  "plugins": [
+    "stylelint-order"
+  ],
+  "rules": {
+    "declaration-block-semicolon-newline-after": "always-multi-line",
+    "number-leading-zero": null,
+    "order/order": [
+      "dollar-variables",
+      {
+        "type": "at-rule",
+        "name": "include"
+      },
+      "declarations",
+      {
+        "type": "at-rule",
+        "name": "include",
+        "parameter": "breakpoint",
+        "hasBlock": true
+      },
+      "rules"
+    ],
+    "order/properties-order": [
+      [
+        {
+          "groupName": "dimensions",
+          "emptyLineBefore": "never",
+          "properties": [
+            "width", "height", 
+            "max-width", "max-height"
+          ]
+        },
+        {
+          "groupName": "positioning",
+          "emptyLineBefore": "threshold",
+          "properties": [
+            "display",
+            "flex",
+            "flex-direction",
+            "flex-wrap",
+            "flex-flow",
+            "order",
+            "flex-grow",
+            "flex-shrink",
+            "flex-basis",
+            "align-content",
+            "align-items",
+            "align-self",
+            "justify-content",
+            "position",
+            "top",
+            "right",
+            "bottom",
+            "left",
+            "z-index"
+          ]
+        },
+        {
+          "groupName": "transitions",
+          "emptyLineBefore": "threshold",
+          "properties": [
+            "animation",
+            "transform",
+            "translate"
+          ]
+        }
+      ],
+      { "unspecified": "top" }
+    ],
+    "order/properties-alphabetical-order": false
+  }
+}
