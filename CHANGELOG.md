@@ -1,3 +1,7 @@
+### 3.0.2
+
+* Add hotjar
+
 ### 3.0.1
 
 * Fix analytics
