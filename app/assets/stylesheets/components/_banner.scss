@@ -1,0 +1,69 @@
+//--------------------------------------------------
+// topbar
+//--------------------------------------------------
+.banner-background {
+  background-image: url('hero/banner-background.png');
+  background-size: 110%;
+  padding: rem-calc(24 205);
+  margin: rem-calc(10 0);
+  gap: rem-calc(12);
+  width: rem-calc(1524);
+  height: rem-calc(159);
+  top: rem-calc(79);
+  z-index: $z-100;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: absolute;
+
+  @include breakpoint($small){ padding: rem-calc(17 20 16 20); }
+}
+
+.banner {
+  gap: rem-calc(24);
+  width: rem-calc(1057);
+  height: rem-calc(126);
+  justify-content: center;
+
+  // display: flex;
+  // align-items: center;
+  align-self: center;
+  flex-direction: row;
+
+  &__title {
+    p,
+    img {
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
+
+  &__alert {
+    padding-right: rem-calc(20);
+  }
+
+  &__text {
+    width: rem-calc(416);
+    height: rem-calc(33);
+
+    font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: rem-calc(24);
+    line-height: rem-calc(33);  /* identical to box height */
+
+    color: #FFFFFF;
+    }
+
+  &__content{
+    font-family: 'Noto Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: rem-calc(16);
+    line-height: rem-calc(22);
+
+    color: #FFFFFF;
+  }
+}
