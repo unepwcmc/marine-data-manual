@@ -9,6 +9,8 @@
     <div id="v-app">
       <%= render 'global/topbar' %>
 
+      <%= render 'global/banner' %>
+
       <% if is_theme_page %>
         <%= render partial: 'themes/partials/header-theme', locals: { title: @title, headerClass: @headerClass, intro: @intro } %>
       <% end %>

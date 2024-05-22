@@ -1,10 +1,10 @@
 .sticky {
   background-color: rgba($secondary, 0.9);
-  
+
   position: fixed;
   top: 18%;
   right: 0;
-  z-index: 1;
+  z-index: 101;
 
-  @imclude breakpoint($small){ top: 34%; }
+  @include breakpoint($small){ top: 34%; }
 }

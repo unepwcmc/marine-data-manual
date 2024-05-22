@@ -1,14 +1,14 @@
 <header class="relative header--home">
-  <%= video_tag 'turtle.mp4', 
-    autoplay: :autoplay, 
-    loop: :loop, 
+  <%= video_tag 'turtle.mp4',
+    autoplay: :autoplay,
+    loop: :loop,
     muted: :muted,
-    class: "header__video" 
+    class: "header__video"
   %>
-  <div class="header__content container--medium">
+  <div class="header__content container--medium" style="margin-top: 156px">
     <h1><%= title %></h1>
     <%= about.html_safe %>
-    
+
     <div>
       <%= link_to 'Global resources', metadata_path, title: 'View the list of global resources', class: 'button button--xlarge button--outline button--line-orange item-margin' %>
       <%= link_to 'Regional resources', region_path, title: 'View the list of regional resources', class: 'button button--xlarge button--outline button--line-orange item-margin' %>
