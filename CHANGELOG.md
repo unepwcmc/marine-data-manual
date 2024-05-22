@@ -1,3 +1,7 @@
+### 3.0.3
+
+* Add divestment banner
+
 ### 3.0.2
 
 * Add hotjar
