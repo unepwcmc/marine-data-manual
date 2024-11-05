@@ -8,7 +8,6 @@
   margin: rem-calc(10 0);
   gap: rem-calc(12);
   width: 100%;
-  height: rem-calc(159);
   top: rem-calc(79);
   z-index: $z-banner;
 
@@ -23,8 +22,7 @@
 
 .banner {
   gap: rem-calc(24);
-  width: rem-calc(1057);
-  height: rem-calc(126);
+  max-width: rem-calc(1057);
   justify-content: center;
 
   // display: flex;
