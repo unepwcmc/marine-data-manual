@@ -11,10 +11,10 @@
   align-items: center;
   justify-content: space-between;
   position: absolute;
-  z-index: $z-100;
+  z-index: $z-app-bar;
 
   @include breakpoint($small){ padding: rem-calc(17 20 16 20); }
-  
+
   &__logo {
     width: rem-calc(94); height: rem-calc(33);
 

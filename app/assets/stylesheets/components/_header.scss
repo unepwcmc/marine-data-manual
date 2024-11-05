@@ -5,17 +5,17 @@
   color: $white;
 
   position: relative;
-  z-index: 0;
+  z-index: $z-default;
 
   &:before {
     background-color: $black-translucent;
     content: '';
     width: rem-calc(2000); height: 100%;
-    
+
     position: absolute;
     top: 0;
     right: 0;
-    z-index: -1;
+    z-index: $z-behind;
   }
 }
 
@@ -30,7 +30,7 @@
 
   @include breakpoint($small){ min-height: rem-calc(390); }
   @include breakpoint($medium){ min-height: rem-calc(500); }
-  
+
   align-items: center;
   display: flex;
 
@@ -38,12 +38,12 @@
 
   &__content {
     margin-top: rem-calc(60); //match the height of the topbar
-      
+
     @include breakpoint($small){ margin-top: rem-calc(81); } //match the height of the topbar
-    @include breakpoint($medium){ 
+    @include breakpoint($medium){
       margin-top: rem-calc(96); //match the height of the topbar
       margin-bottom: rem-calc(40);
-    } 
+    }
   }
 
     &__title {
@@ -62,28 +62,28 @@
       margin-bottom: rem-calc(30);
       padding: rem-calc(10 25 14 0);
 
-      @include breakpoint($small){ 
-        padding: rem-calc(16 20 10 24); 
+      @include breakpoint($small){
+        padding: rem-calc(16 20 10 24);
         width: 80%;
       }
 
-      @include breakpoint($medium){ 
+      @include breakpoint($medium){
         font-size: rem-calc(18);
-        padding: rem-calc(20 20 10 $gutter-large); 
+        padding: rem-calc(20 20 10 $gutter-large);
       }
     }
 
 //--------------------------------------------------
 // home header
 //--------------------------------------------------
-  &--home {    
+  &--home {
     background-image: image-url('hero/turtle.jpg');
     background-position: center;
     background-size: cover;
     padding-top: rem-calc(80);
-    
-    @include breakpoint($small){ 
-      padding-top: rem-calc(120); 
+
+    @include breakpoint($small){
+      padding-top: rem-calc(120);
     }
 
     @include breakpoint($medium){ padding-top: rem-calc(180); }
@@ -102,7 +102,7 @@
         bottom: 0;
         left: 50%;
         transform: translateX(-50%);
-      
+
         @include breakpoint($medium) {
           display: block;
         }
@@ -119,9 +119,9 @@
         position: relative;
         z-index: 1;
 
-        @include breakpoint($small){ 
+        @include breakpoint($small){
           font-size: rem-calc(20);
-          padding: rem-calc(42 60); 
+          padding: rem-calc(42 60);
         }
       }
     }
@@ -140,8 +140,8 @@
 
     h1 { margin: rem-calc(10 0 22 0); }
 
-    &__intro { 
-      margin-bottom: rem-calc(24); 
+    &__intro {
+      margin-bottom: rem-calc(24);
     }
 
     &__icon {
@@ -157,8 +157,8 @@
   &--ecosystem-assessment { background-image: image-url('hero/ecosystem-assessment.jpg'); }
   &--ecosystem-services { background-image: image-url('hero/ecosystem-services.jpg'); }
   &--education { background-image: image-url('hero/education.jpg'); }
-  &--environmental-impact-assessment { background-image: image-url('hero/environmental-impact-assessment.jpg'); } 
+  &--environmental-impact-assessment { background-image: image-url('hero/environmental-impact-assessment.jpg'); }
   &--marine-spatial-planning { background-image: image-url('hero/marine-spatial-planning.jpg'); }
-  &--metadata { background-image: image-url('hero/coral.jpg'); } 
-  &--region { background-image: image-url('hero/regional-metadata.jpg'); } 
+  &--metadata { background-image: image-url('hero/coral.jpg'); }
+  &--region { background-image: image-url('hero/regional-metadata.jpg'); }
 }

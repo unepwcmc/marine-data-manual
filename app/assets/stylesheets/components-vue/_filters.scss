@@ -34,7 +34,7 @@ $color-text-active: $black;
 
     &:before {
       @extend .icon--clear;
-      background-size: cover; 
+      background-size: cover;
       content: '';
       margin-right: rem-calc(7);
       width: rem-calc(18); height: rem-calc(18);
@@ -84,7 +84,7 @@ $color-text-active: $black;
 
       right: rem-calc(17);
     }
-    
+
     &--active {
       border-color: $color-active;
 
@@ -94,7 +94,7 @@ $color-text-active: $black;
 
     &--has-selected {
       color: $color-text-active;
-      
+
       &:after,
       &:hover:after { content: none; }
     }
@@ -123,7 +123,7 @@ $color-text-active: $black;
     border: solid rem-calc(1) $black;
     border-radius: $radius-global;
     font-size: rem-calc(16);
-    
+
     grid-template-rows: 1fr auto;
     display: none;
     position: fixed;
@@ -131,7 +131,7 @@ $color-text-active: $black;
     right: $gutter-small;
     bottom: $gutter-small;
     left: $gutter-small;
-    z-index: 1;
+    z-index: $z-modal;
 
     @include breakpoint($medium) {
       margin-top: rem-calc(18);
@@ -150,7 +150,7 @@ $color-text-active: $black;
       flex-direction: column;
     }
 
-    &--resource { 
+    &--resource {
       @include breakpoint($medium){ width: rem-calc(500); }
     }
 
@@ -167,12 +167,12 @@ $color-text-active: $black;
 
       @include breakpoint($medium) {
         height: auto;
-        max-height: rem-calc(300);   
+        max-height: rem-calc(300);
       }
 
-      &--search { 
+      &--search {
         margin-bottom: rem-calc(25);
-  
+
         @include breakpoint($medium) { margin-bottom: 0; }
       }
     }
@@ -249,7 +249,7 @@ $color-text-active: $black;
 //--------------------------------------------------
   &--search {
     @include create_search();
-    width: 100%; 
+    width: 100%;
 
     .search__input {
       border-bottom-right-radius: 0;
@@ -257,7 +257,7 @@ $color-text-active: $black;
       border: none;
       border-bottom: 1px solid grey;
       padding: rem-calc(0 56 0 25);
-      width: 100%; height: rem-calc(56);  
+      width: 100%; height: rem-calc(56);
     }
 
     .search__icon {

@@ -49,10 +49,6 @@ $site-width: rem-calc($site-width-px);
 $site-width-medium: $site-width * .80;
 $site-width-small: $site-width * .60;
 
-$z-100: 100;
-$z-200: 200;
-$z-300: 300;
-
 //--------------------------------------------------
 // buttons
 //--------------------------------------------------
@@ -68,7 +64,7 @@ $medium: $site-width-px;
 //--------------------------------------------------
 // padding
 //--------------------------------------------------
-$gutter-small: rem-calc(11); 
+$gutter-small: rem-calc(11);
 $gutter-medium: rem-calc(18);
 $gutter-large: rem-calc(24);
 
@@ -83,3 +79,20 @@ $section-padding-bottom-desktop: 30px;
 $item-padding-small: rem-calc(18);
 $item-padding-medium: rem-calc(26);
 $item-padding-large: rem-calc(32);
+
+//--------------------------------------------------
+// z-index
+//--------------------------------------------------
+$z-behind: -1000;
+$z-default: 0;
+$z-banner: 600;
+$z-sticky: 700;
+// terms from https://mui.com/material-ui/customization/z-index/
+$z-mobile-stepper: 1000;
+$z-fab: 1050;
+$z-speed-dial: 1050;
+$z-app-bar: 1100;
+$z-drawer: 1200;
+$z-modal: 1300;
+$z-snackbar: 1400;
+$z-tooltip: 1500;
