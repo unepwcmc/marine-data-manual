@@ -89,6 +89,7 @@
       text-decoration: underline;
     }
   }
+
   .wcmc-ct-modal-panel {
     color: initial;
 
@@ -142,6 +143,12 @@
   }
 }
 
+.faqs {
+  a:link, a:visited {
+    color: $blue-link;
+  }
+}
+
 .faq-table {
   border-spacing: 0;
 
@@ -185,7 +192,7 @@
       text-decoration: 2px underline;
 
       &:hover {
-        text-decoration: none
+        text-decoration: none;
       }
     }
   }
