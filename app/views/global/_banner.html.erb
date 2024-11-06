@@ -4,7 +4,32 @@
       <p class="banner__text"> <%= image_tag("icons/triangle-alert.svg", class: "banner__alert") %>  Changes to Ocean+ Library </p>
     </div>
     <div class="banner__content">
-      <p> UNEP-WCMC are planning to restructure the Ocean+ Library platform by the end of 2024. A condensed database of the resources accessible on Ocean+ Library will instead be available on the <%= link_to "UNEP-WCMC Resources page", 'https://resources.unep-wcmc.org/', class: "banner__content", style: "text-decoration: underline", target: "_blank" %>. We would love your feedback on this proposed restructure in the <strong>survey pop-up below</strong>.</p>
+      <p>
+        Ocean+ Library will be retired in 2025. To learn more about these changes, please read our
+        <modal-launcher wrapper-component="span">
+          <template slot="launcherContent">frequently asked questions.</template>
+          <template v-slot:default="{ closeModal }">
+            <modal-panel :close-modal="closeModal">
+              <template slot="modalHeaderContent">
+                <h2>Frequently Asked Questions</h2>
+              </template>
+              <template slot="default">
+                <%= render 'global/banner_faq' %>
+              </template>
+            </modal-panel>
+          </template>
+        </modal-launcher>
+      </p>
+      <p>
+        A collection of all of the resources on Ocean+ Library will remain available on the
+        <a target="_blank" href="https://resources.unep-wcmc.org/products/WCMC_DT007">UNEP-WCMC Resources</a>
+        page.
+      </p>
+      <p>
+        For the latest authoritative information on the status and conservation of the world's coastal habitats, please visit
+        <a target="_blank" href="https://habitats.oceanplus.org/">Ocean+ Habitats</a>,
+        which will continue to be updated.
+      </p>
     </div>
   </div>
 </div>
