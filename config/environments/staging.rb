@@ -73,6 +73,11 @@ Rails.application.configure do
     password: ENV["MAILER_PASSWORD"]
   }
 
+  config.action_mailer.default_options = {
+    from: ENV["MAILER_FROM"],
+    reply_to: ENV["MAILER_FROM"]
+  }
+
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
