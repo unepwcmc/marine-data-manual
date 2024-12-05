@@ -9,6 +9,9 @@ import VForm from './components/forms/VForm'
 import Metadata from './components/Metadata.vue'
 import NavBurger from './components/nav/NavBurger.vue'
 import NavLink from './components/nav/NavLink.vue'
+import ModalLauncher from './components/modal/Launcher'
+import ModalPanel from './components/modal/Panel'
+import ModalWrapper from './components/modal/Wrapper'
 import Popout from './components/popout/Popout.vue'
 
 if (window._railsEnv === 'production') {
@@ -25,6 +28,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
     el: '#v-app',
     store,
-    components: { Accordion, AccordionItem, Metadata, NavBurger, NavLink, Popout, VForm }
+    components: {
+      Accordion,
+      AccordionItem,
+      Metadata,
+      ModalLauncher,
+      ModalPanel,
+      ModalWrapper,
+      NavBurger,
+      NavLink,
+      Popout,
+      VForm,
+    }
   })
 })

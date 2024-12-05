@@ -3,16 +3,16 @@
 //--------------------------------------------------
 .nav {
 //--------------------------------------------------
-// burger nav 
+// burger nav
 //--------------------------------------------------
   &--burger {
-  
+
     .nav {
       &__trigger {
         background-image: image-url('icons/burger.svg');
         background-size: cover;
         cursor: pointer;
-        width: rem-calc(30); height: rem-calc(22); 
+        width: rem-calc(30); height: rem-calc(22);
         display: block;
 
         @include breakpoint($medium) { display: none; }
@@ -27,13 +27,13 @@
         top: 0;
         right: rem-calc(-10);
         bottom: 0;
-        z-index: $z-100;
+        z-index: $z-drawer;
 
         transform: translateX(100%);
 
         transition: transform .3s ease-in-out;
-        
-        @include breakpoint($medium) { 
+
+        @include breakpoint($medium) {
           background-color: transparent;
           padding: 0;
           width: auto;
@@ -48,7 +48,7 @@
 
         &.active { transform: translateX(-10px); }
       }
-    
+
         &__close {
           background-image: image-url('icons/close-white.svg');
           background-size: cover;
@@ -71,13 +71,13 @@
           text-decoration: none;
           width: 100%;
 
-          display: block; 
+          display: block;
 
-          @include breakpoint($medium) { 
+          @include breakpoint($medium) {
             margin-bottom: 0;
             width: auto;
 
-            display: inline-block; 
+            display: inline-block;
           }
 
           &.active { border: solid rem-calc(2) $secondary; }

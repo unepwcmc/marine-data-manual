@@ -4,7 +4,7 @@
   position: fixed;
   top: 18%;
   right: 0;
-  z-index: 101;
+  z-index: $z-sticky;
 
   @include breakpoint($small){ top: 34%; }
 }
